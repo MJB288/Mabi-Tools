@@ -45,5 +45,10 @@ namespace Mabi_Tools
                 this.clboxprevSelected = clboxGoods.SelectedIndex;
             }
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
