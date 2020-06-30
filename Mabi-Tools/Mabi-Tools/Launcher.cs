@@ -20,7 +20,13 @@ namespace Mabi_Tools
         private void btnCommerce_Click(object sender, EventArgs e)
         {
             frmCommerce nextForm = new frmCommerce();
-            nextForm.ShowDialog();
+            nextForm.Show();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            //Close Entire Application if Clicking Exit. 
+            System.Windows.Forms.Application.Exit();
         }
     }
 }
