@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mabi-Tools", "Mabi-Tools\Mabi-Tools.csproj", "{C33C919F-C37B-4163-A794-3BDBCC0B3DF1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C33C919F-C37B-4163-A794-3BDBCC0B3DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C33C919F-C37B-4163-A794-3BDBCC0B3DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C33C919F-C37B-4163-A794-3BDBCC0B3DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C33C919F-C37B-4163-A794-3BDBCC0B3DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC6501AE-846F-42A5-9EB6-CD16B657F993}
+	EndGlobalSection
+EndGlobal
