@@ -17,7 +17,7 @@ namespace Mabi_Tools
         //Adjust this value to change the default selected value. If I make a configure file, I could add an option to change the default
         private int clboxprevSelectedG = 0;
         private int clboxprevSelectedT = 0;
-        private List<String> CityNames;
+        private List<String> CityNames, TransportNames;
         public frmCommerce()
         {
             InitializeComponent();
@@ -30,9 +30,16 @@ namespace Mabi_Tools
             //I decided to add dynamic loading into the mix to allow for more flexiility in the event it happens anyway
             this.loadCommerceData("Cities.txt");
             this.populateCheckListBox(clboxCities, CityNames);
+
+            //Similarly, with the transport Mounts
+            this.loadTransportData("Transport.txt");
+            this.generateRadioButtons(flpTransport, TransportNames);
+            
             //Check off the default value in the lists when loading
             clboxGoods.SetItemChecked(this.clboxprevSelectedG, true);
             clboxCities.SetItemChecked(this.clboxprevSelectedT, true);
+            //Check off the first one for now.
+            flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
             
         }
 
@@ -72,19 +79,6 @@ namespace Mabi_Tools
                 return clistbox.SelectedIndex;
             }
         }
-        private void loadCommerceData(String citiesFile)
-        {
-            //Will be expanded upon later - for now only need cities
-            try
-            {
-                CityNames = File.ReadAllLines(citiesFile).ToList();
-            }catch(FileNotFoundException ex)
-            {
-                MessageBox.Show("Fatal Error while loading City data : \n" + ex.Message, "Error");
-                this.Close();
-            }
-        }
-
 
         private void populateCheckListBox(CheckedListBox checkbox, List<String> data)
         {
@@ -93,6 +87,42 @@ namespace Mabi_Tools
             foreach(String s in data)
             {
                 checkbox.Items.Add(s);
+            }
+        }
+
+        private void generateRadioButtons(FlowLayoutPanel flow, List<String> data)
+        {
+            //Dynamically create radio buttons for each type of transport
+            foreach(String s in data)
+            {
+                flow.Controls.Add(new RadioButton {Text = s });
+            }
+        }
+
+        private void loadTransportData(String transportFile)
+        {
+            //Will be expanded upon later - for now only need name of transports
+            try
+            {
+                TransportNames = File.ReadAllLines(transportFile).ToList();
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show("Error while loading Transport Data : \n" + ex.Message, "Error");
+                this.Close();
+            }
+        }
+        private void loadCommerceData(String citiesFile)
+        {
+            //Will be expanded upon later - for now only need cities
+            try
+            {
+                CityNames = File.ReadAllLines(citiesFile).ToList();
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show("Error while loading City data : \n" + ex.Message, "Error");
+                this.Close();
             }
         }
     }

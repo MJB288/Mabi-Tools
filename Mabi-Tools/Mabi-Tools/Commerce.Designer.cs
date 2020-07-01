@@ -51,13 +51,15 @@
             this.tboxTown7 = new System.Windows.Forms.TextBox();
             this.tboxTown8 = new System.Windows.Forms.TextBox();
             this.lblTown8 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTown9 = new System.Windows.Forms.Label();
             this.tboxTown9 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTown10 = new System.Windows.Forms.Label();
             this.tboxTown10 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.rbtnTransport1 = new System.Windows.Forms.RadioButton();
             this.lblTransport = new System.Windows.Forms.Label();
+            this.lblPrices = new System.Windows.Forms.Label();
+            this.flpTransport = new System.Windows.Forms.FlowLayoutPanel();
+            this.cboxCommerce = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // clboxGoods
@@ -90,7 +92,7 @@
             this.lblGoods.AutoSize = true;
             this.lblGoods.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblGoods.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGoods.Location = new System.Drawing.Point(61, 236);
+            this.lblGoods.Location = new System.Drawing.Point(63, 236);
             this.lblGoods.Name = "lblGoods";
             this.lblGoods.Size = new System.Drawing.Size(52, 22);
             this.lblGoods.TabIndex = 2;
@@ -108,9 +110,8 @@
             "Town5",
             "Town6",
             "Town7",
-            "Town8",
-            "Town9"});
-            this.clboxCities.Location = new System.Drawing.Point(30, 78);
+            "Town8"});
+            this.clboxCities.Location = new System.Drawing.Point(30, 66);
             this.clboxCities.Name = "clboxCities";
             this.clboxCities.Size = new System.Drawing.Size(118, 139);
             this.clboxCities.TabIndex = 3;
@@ -121,7 +122,7 @@
             this.lblCities.AutoSize = true;
             this.lblCities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCities.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCities.Location = new System.Drawing.Point(61, 53);
+            this.lblCities.Location = new System.Drawing.Point(67, 41);
             this.lblCities.Name = "lblCities";
             this.lblCities.Size = new System.Drawing.Size(44, 22);
             this.lblCities.TabIndex = 4;
@@ -285,14 +286,14 @@
             this.lblTown8.TabIndex = 22;
             this.lblTown8.Text = "Town 8";
             // 
-            // label1
+            // lblTown9
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(232, 345);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Town 9";
+            this.lblTown9.AutoSize = true;
+            this.lblTown9.Location = new System.Drawing.Point(232, 345);
+            this.lblTown9.Name = "lblTown9";
+            this.lblTown9.Size = new System.Drawing.Size(43, 13);
+            this.lblTown9.TabIndex = 23;
+            this.lblTown9.Text = "Town 9";
             // 
             // tboxTown9
             // 
@@ -302,14 +303,14 @@
             this.tboxTown9.TabIndex = 24;
             this.tboxTown9.Text = "0";
             // 
-            // label2
+            // lblTown10
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(232, 378);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 13);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Town 10";
+            this.lblTown10.AutoSize = true;
+            this.lblTown10.Location = new System.Drawing.Point(232, 378);
+            this.lblTown10.Name = "lblTown10";
+            this.lblTown10.Size = new System.Drawing.Size(49, 13);
+            this.lblTown10.TabIndex = 25;
+            this.lblTown10.Text = "Town 10";
             // 
             // tboxTown10
             // 
@@ -328,40 +329,59 @@
             this.button1.Text = "Compute";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // rbtnTransport1
-            // 
-            this.rbtnTransport1.AutoSize = true;
-            this.rbtnTransport1.Location = new System.Drawing.Point(437, 77);
-            this.rbtnTransport1.Name = "rbtnTransport1";
-            this.rbtnTransport1.Size = new System.Drawing.Size(85, 17);
-            this.rbtnTransport1.TabIndex = 28;
-            this.rbtnTransport1.TabStop = true;
-            this.rbtnTransport1.Text = "radioButton1";
-            this.rbtnTransport1.UseVisualStyleBackColor = true;
-            // 
             // lblTransport
             // 
             this.lblTransport.AutoSize = true;
             this.lblTransport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTransport.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransport.Location = new System.Drawing.Point(450, 43);
+            this.lblTransport.Location = new System.Drawing.Point(456, 41);
             this.lblTransport.Name = "lblTransport";
             this.lblTransport.Size = new System.Drawing.Size(66, 22);
             this.lblTransport.TabIndex = 29;
             this.lblTransport.Text = "Transport";
+            // 
+            // lblPrices
+            // 
+            this.lblPrices.AutoSize = true;
+            this.lblPrices.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblPrices.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrices.Location = new System.Drawing.Point(269, 41);
+            this.lblPrices.Name = "lblPrices";
+            this.lblPrices.Size = new System.Drawing.Size(49, 22);
+            this.lblPrices.TabIndex = 30;
+            this.lblPrices.Text = "Prices";
+            // 
+            // flpTransport
+            // 
+            this.flpTransport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpTransport.Location = new System.Drawing.Point(430, 128);
+            this.flpTransport.Name = "flpTransport";
+            this.flpTransport.Size = new System.Drawing.Size(127, 213);
+            this.flpTransport.TabIndex = 34;
+            // 
+            // cboxCommerce
+            // 
+            this.cboxCommerce.Location = new System.Drawing.Point(420, 72);
+            this.cboxCommerce.Name = "cboxCommerce";
+            this.cboxCommerce.Size = new System.Drawing.Size(153, 50);
+            this.cboxCommerce.TabIndex = 35;
+            this.cboxCommerce.Text = "Commerce Partner +1 Slot +100 Weight Capacity";
+            this.cboxCommerce.UseVisualStyleBackColor = true;
             // 
             // frmCommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cboxCommerce);
+            this.Controls.Add(this.flpTransport);
+            this.Controls.Add(this.lblPrices);
             this.Controls.Add(this.lblTransport);
-            this.Controls.Add(this.rbtnTransport1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tboxTown10);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblTown10);
             this.Controls.Add(this.tboxTown9);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTown9);
             this.Controls.Add(this.lblTown8);
             this.Controls.Add(this.tboxTown8);
             this.Controls.Add(this.tboxTown7);
@@ -418,12 +438,14 @@
         private System.Windows.Forms.TextBox tboxTown7;
         private System.Windows.Forms.TextBox tboxTown8;
         private System.Windows.Forms.Label lblTown8;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTown9;
         private System.Windows.Forms.TextBox tboxTown9;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTown10;
         private System.Windows.Forms.TextBox tboxTown10;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.RadioButton rbtnTransport1;
         private System.Windows.Forms.Label lblTransport;
+        private System.Windows.Forms.Label lblPrices;
+        private System.Windows.Forms.FlowLayoutPanel flpTransport;
+        private System.Windows.Forms.CheckBox cboxCommerce;
     }
 }
