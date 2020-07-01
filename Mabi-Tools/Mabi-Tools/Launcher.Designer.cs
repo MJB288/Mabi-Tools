@@ -60,7 +60,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(37, 13);
             this.lblVersion.TabIndex = 2;
-            this.lblVersion.Text = "v0.0.1";
+            this.lblVersion.Text = "v0.0.2";
             // 
             // MainLauncher
             // 

@@ -20,6 +20,7 @@ namespace Mabi_Tools
         private void btnCommerce_Click(object sender, EventArgs e)
         {
             frmCommerce nextForm = new frmCommerce();
+            //We want the user to display as many windows as they choose, therefore using Show instead of ShowDialog
             nextForm.Show();
         }
 

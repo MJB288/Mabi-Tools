@@ -31,7 +31,7 @@
             this.clboxGoods = new System.Windows.Forms.CheckedListBox();
             this.lblTest = new System.Windows.Forms.Label();
             this.lblGoods = new System.Windows.Forms.Label();
-            this.clboxTowns = new System.Windows.Forms.CheckedListBox();
+            this.clboxCities = new System.Windows.Forms.CheckedListBox();
             this.lblCities = new System.Windows.Forms.Label();
             this.lboxResults = new System.Windows.Forms.ListBox();
             this.lblResults = new System.Windows.Forms.Label();
@@ -96,10 +96,11 @@
             this.lblGoods.TabIndex = 2;
             this.lblGoods.Text = "Goods";
             // 
-            // clboxTowns
+            // clboxCities
             // 
-            this.clboxTowns.FormattingEnabled = true;
-            this.clboxTowns.Items.AddRange(new object[] {
+            this.clboxCities.CheckOnClick = true;
+            this.clboxCities.FormattingEnabled = true;
+            this.clboxCities.Items.AddRange(new object[] {
             "Town1",
             "Town2",
             "Town3",
@@ -107,11 +108,13 @@
             "Town5",
             "Town6",
             "Town7",
-            "Town8"});
-            this.clboxTowns.Location = new System.Drawing.Point(30, 78);
-            this.clboxTowns.Name = "clboxTowns";
-            this.clboxTowns.Size = new System.Drawing.Size(118, 124);
-            this.clboxTowns.TabIndex = 3;
+            "Town8",
+            "Town9"});
+            this.clboxCities.Location = new System.Drawing.Point(30, 78);
+            this.clboxCities.Name = "clboxCities";
+            this.clboxCities.Size = new System.Drawing.Size(118, 139);
+            this.clboxCities.TabIndex = 3;
+            this.clboxCities.SelectedIndexChanged += new System.EventHandler(this.clboxCities_SelectedIndexChanged);
             // 
             // lblCities
             // 
@@ -378,7 +381,7 @@
             this.Controls.Add(this.lblResults);
             this.Controls.Add(this.lboxResults);
             this.Controls.Add(this.lblCities);
-            this.Controls.Add(this.clboxTowns);
+            this.Controls.Add(this.clboxCities);
             this.Controls.Add(this.lblGoods);
             this.Controls.Add(this.lblTest);
             this.Controls.Add(this.clboxGoods);
@@ -395,7 +398,7 @@
         private System.Windows.Forms.CheckedListBox clboxGoods;
         private System.Windows.Forms.Label lblTest;
         private System.Windows.Forms.Label lblGoods;
-        private System.Windows.Forms.CheckedListBox clboxTowns;
+        private System.Windows.Forms.CheckedListBox clboxCities;
         private System.Windows.Forms.Label lblCities;
         private System.Windows.Forms.ListBox lboxResults;
         private System.Windows.Forms.Label lblResults;
