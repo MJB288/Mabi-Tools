@@ -55,7 +55,7 @@
             this.txtTown8 = new System.Windows.Forms.TextBox();
             this.lblTown9 = new System.Windows.Forms.Label();
             this.txtTown9 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCompute = new System.Windows.Forms.Button();
             this.lblTransport = new System.Windows.Forms.Label();
             this.lblPrices = new System.Windows.Forms.Label();
             this.flpTransport = new System.Windows.Forms.FlowLayoutPanel();
@@ -73,16 +73,16 @@
             "Test3",
             "Test4",
             "Test5"});
-            this.clboxGoods.Location = new System.Drawing.Point(30, 261);
+            this.clboxGoods.Location = new System.Drawing.Point(17, 261);
             this.clboxGoods.Name = "clboxGoods";
-            this.clboxGoods.Size = new System.Drawing.Size(118, 124);
+            this.clboxGoods.Size = new System.Drawing.Size(145, 124);
             this.clboxGoods.TabIndex = 0;
             this.clboxGoods.SelectedIndexChanged += new System.EventHandler(this.clboxGoods_SelectedIndexChanged);
             // 
             // lblTest
             // 
             this.lblTest.AutoSize = true;
-            this.lblTest.Location = new System.Drawing.Point(620, 184);
+            this.lblTest.Location = new System.Drawing.Point(690, 184);
             this.lblTest.Name = "lblTest";
             this.lblTest.Size = new System.Drawing.Size(57, 13);
             this.lblTest.TabIndex = 1;
@@ -134,7 +134,7 @@
             this.lboxResults.FormattingEnabled = true;
             this.lboxResults.Items.AddRange(new object[] {
             "Nothing"});
-            this.lboxResults.Location = new System.Drawing.Point(589, 261);
+            this.lboxResults.Location = new System.Drawing.Point(659, 261);
             this.lboxResults.Name = "lboxResults";
             this.lboxResults.Size = new System.Drawing.Size(120, 121);
             this.lboxResults.TabIndex = 5;
@@ -144,7 +144,7 @@
             this.lblResults.AutoSize = true;
             this.lblResults.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblResults.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResults.Location = new System.Drawing.Point(622, 236);
+            this.lblResults.Location = new System.Drawing.Point(692, 236);
             this.lblResults.Name = "lblResults";
             this.lblResults.Size = new System.Drawing.Size(55, 22);
             this.lblResults.TabIndex = 6;
@@ -152,7 +152,7 @@
             // 
             // txtTown0
             // 
-            this.txtTown0.Location = new System.Drawing.Point(234, 78);
+            this.txtTown0.Location = new System.Drawing.Point(262, 78);
             this.txtTown0.Name = "txtTown0";
             this.txtTown0.Size = new System.Drawing.Size(100, 20);
             this.txtTown0.TabIndex = 7;
@@ -161,7 +161,7 @@
             // lblTown0
             // 
             this.lblTown0.AutoSize = true;
-            this.lblTown0.Location = new System.Drawing.Point(172, 81);
+            this.lblTown0.Location = new System.Drawing.Point(182, 81);
             this.lblTown0.Name = "lblTown0";
             this.lblTown0.Size = new System.Drawing.Size(43, 13);
             this.lblTown0.TabIndex = 8;
@@ -170,7 +170,7 @@
             // lblTown1
             // 
             this.lblTown1.AutoSize = true;
-            this.lblTown1.Location = new System.Drawing.Point(172, 114);
+            this.lblTown1.Location = new System.Drawing.Point(182, 114);
             this.lblTown1.Name = "lblTown1";
             this.lblTown1.Size = new System.Drawing.Size(43, 13);
             this.lblTown1.TabIndex = 9;
@@ -178,7 +178,7 @@
             // 
             // txtTown1
             // 
-            this.txtTown1.Location = new System.Drawing.Point(234, 111);
+            this.txtTown1.Location = new System.Drawing.Point(262, 111);
             this.txtTown1.Name = "txtTown1";
             this.txtTown1.Size = new System.Drawing.Size(100, 20);
             this.txtTown1.TabIndex = 10;
@@ -187,7 +187,7 @@
             // lblTown2
             // 
             this.lblTown2.AutoSize = true;
-            this.lblTown2.Location = new System.Drawing.Point(172, 147);
+            this.lblTown2.Location = new System.Drawing.Point(182, 147);
             this.lblTown2.Name = "lblTown2";
             this.lblTown2.Size = new System.Drawing.Size(43, 13);
             this.lblTown2.TabIndex = 11;
@@ -195,7 +195,7 @@
             // 
             // txtTown2
             // 
-            this.txtTown2.Location = new System.Drawing.Point(234, 144);
+            this.txtTown2.Location = new System.Drawing.Point(262, 144);
             this.txtTown2.Name = "txtTown2";
             this.txtTown2.Size = new System.Drawing.Size(100, 20);
             this.txtTown2.TabIndex = 12;
@@ -204,7 +204,7 @@
             // lblTown3
             // 
             this.lblTown3.AutoSize = true;
-            this.lblTown3.Location = new System.Drawing.Point(172, 180);
+            this.lblTown3.Location = new System.Drawing.Point(182, 180);
             this.lblTown3.Name = "lblTown3";
             this.lblTown3.Size = new System.Drawing.Size(43, 13);
             this.lblTown3.TabIndex = 13;
@@ -212,7 +212,7 @@
             // 
             // txtTown3
             // 
-            this.txtTown3.Location = new System.Drawing.Point(234, 177);
+            this.txtTown3.Location = new System.Drawing.Point(262, 177);
             this.txtTown3.Name = "txtTown3";
             this.txtTown3.Size = new System.Drawing.Size(100, 20);
             this.txtTown3.TabIndex = 14;
@@ -221,7 +221,7 @@
             // lblTown4
             // 
             this.lblTown4.AutoSize = true;
-            this.lblTown4.Location = new System.Drawing.Point(172, 213);
+            this.lblTown4.Location = new System.Drawing.Point(182, 213);
             this.lblTown4.Name = "lblTown4";
             this.lblTown4.Size = new System.Drawing.Size(43, 13);
             this.lblTown4.TabIndex = 15;
@@ -229,7 +229,7 @@
             // 
             // txtTown4
             // 
-            this.txtTown4.Location = new System.Drawing.Point(234, 210);
+            this.txtTown4.Location = new System.Drawing.Point(262, 210);
             this.txtTown4.Name = "txtTown4";
             this.txtTown4.Size = new System.Drawing.Size(100, 20);
             this.txtTown4.TabIndex = 16;
@@ -238,7 +238,7 @@
             // lblTown5
             // 
             this.lblTown5.AutoSize = true;
-            this.lblTown5.Location = new System.Drawing.Point(172, 246);
+            this.lblTown5.Location = new System.Drawing.Point(182, 246);
             this.lblTown5.Name = "lblTown5";
             this.lblTown5.Size = new System.Drawing.Size(43, 13);
             this.lblTown5.TabIndex = 17;
@@ -246,7 +246,7 @@
             // 
             // txtTown5
             // 
-            this.txtTown5.Location = new System.Drawing.Point(234, 243);
+            this.txtTown5.Location = new System.Drawing.Point(262, 243);
             this.txtTown5.Name = "txtTown5";
             this.txtTown5.Size = new System.Drawing.Size(100, 20);
             this.txtTown5.TabIndex = 18;
@@ -255,7 +255,7 @@
             // lblTown6
             // 
             this.lblTown6.AutoSize = true;
-            this.lblTown6.Location = new System.Drawing.Point(172, 279);
+            this.lblTown6.Location = new System.Drawing.Point(182, 279);
             this.lblTown6.Name = "lblTown6";
             this.lblTown6.Size = new System.Drawing.Size(43, 13);
             this.lblTown6.TabIndex = 19;
@@ -263,7 +263,7 @@
             // 
             // txtTown6
             // 
-            this.txtTown6.Location = new System.Drawing.Point(234, 276);
+            this.txtTown6.Location = new System.Drawing.Point(262, 276);
             this.txtTown6.Name = "txtTown6";
             this.txtTown6.Size = new System.Drawing.Size(100, 20);
             this.txtTown6.TabIndex = 20;
@@ -271,7 +271,7 @@
             // 
             // txtTown7
             // 
-            this.txtTown7.Location = new System.Drawing.Point(234, 309);
+            this.txtTown7.Location = new System.Drawing.Point(262, 309);
             this.txtTown7.Name = "txtTown7";
             this.txtTown7.Size = new System.Drawing.Size(100, 20);
             this.txtTown7.TabIndex = 21;
@@ -280,7 +280,7 @@
             // lblTown7
             // 
             this.lblTown7.AutoSize = true;
-            this.lblTown7.Location = new System.Drawing.Point(172, 312);
+            this.lblTown7.Location = new System.Drawing.Point(182, 312);
             this.lblTown7.Name = "lblTown7";
             this.lblTown7.Size = new System.Drawing.Size(43, 13);
             this.lblTown7.TabIndex = 22;
@@ -289,7 +289,7 @@
             // lblTown8
             // 
             this.lblTown8.AutoSize = true;
-            this.lblTown8.Location = new System.Drawing.Point(172, 345);
+            this.lblTown8.Location = new System.Drawing.Point(182, 345);
             this.lblTown8.Name = "lblTown8";
             this.lblTown8.Size = new System.Drawing.Size(43, 13);
             this.lblTown8.TabIndex = 23;
@@ -297,7 +297,7 @@
             // 
             // txtTown8
             // 
-            this.txtTown8.Location = new System.Drawing.Point(234, 342);
+            this.txtTown8.Location = new System.Drawing.Point(262, 342);
             this.txtTown8.Name = "txtTown8";
             this.txtTown8.Size = new System.Drawing.Size(100, 20);
             this.txtTown8.TabIndex = 24;
@@ -306,7 +306,7 @@
             // lblTown9
             // 
             this.lblTown9.AutoSize = true;
-            this.lblTown9.Location = new System.Drawing.Point(172, 378);
+            this.lblTown9.Location = new System.Drawing.Point(182, 378);
             this.lblTown9.Name = "lblTown9";
             this.lblTown9.Size = new System.Drawing.Size(49, 13);
             this.lblTown9.TabIndex = 25;
@@ -314,27 +314,27 @@
             // 
             // txtTown9
             // 
-            this.txtTown9.Location = new System.Drawing.Point(234, 375);
+            this.txtTown9.Location = new System.Drawing.Point(262, 375);
             this.txtTown9.Name = "txtTown9";
             this.txtTown9.Size = new System.Drawing.Size(100, 20);
             this.txtTown9.TabIndex = 26;
             this.txtTown9.Text = "0";
             // 
-            // button1
+            // btnCompute
             // 
-            this.button1.Location = new System.Drawing.Point(589, 66);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 61);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Compute";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCompute.Location = new System.Drawing.Point(650, 70);
+            this.btnCompute.Name = "btnCompute";
+            this.btnCompute.Size = new System.Drawing.Size(129, 61);
+            this.btnCompute.TabIndex = 27;
+            this.btnCompute.Text = "Compute";
+            this.btnCompute.UseVisualStyleBackColor = true;
             // 
             // lblTransport
             // 
             this.lblTransport.AutoSize = true;
             this.lblTransport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTransport.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransport.Location = new System.Drawing.Point(427, 66);
+            this.lblTransport.Location = new System.Drawing.Point(455, 66);
             this.lblTransport.Name = "lblTransport";
             this.lblTransport.Size = new System.Drawing.Size(66, 22);
             this.lblTransport.TabIndex = 29;
@@ -345,7 +345,7 @@
             this.lblPrices.AutoSize = true;
             this.lblPrices.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPrices.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrices.Location = new System.Drawing.Point(209, 41);
+            this.lblPrices.Location = new System.Drawing.Point(237, 41);
             this.lblPrices.Name = "lblPrices";
             this.lblPrices.Size = new System.Drawing.Size(49, 22);
             this.lblPrices.TabIndex = 30;
@@ -354,14 +354,14 @@
             // flpTransport
             // 
             this.flpTransport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpTransport.Location = new System.Drawing.Point(362, 162);
+            this.flpTransport.Location = new System.Drawing.Point(390, 162);
             this.flpTransport.Name = "flpTransport";
             this.flpTransport.Size = new System.Drawing.Size(211, 233);
             this.flpTransport.TabIndex = 34;
             // 
             // cboxCommerce
             // 
-            this.cboxCommerce.Location = new System.Drawing.Point(362, 96);
+            this.cboxCommerce.Location = new System.Drawing.Point(390, 96);
             this.cboxCommerce.Name = "cboxCommerce";
             this.cboxCommerce.Size = new System.Drawing.Size(221, 26);
             this.cboxCommerce.TabIndex = 35;
@@ -370,7 +370,7 @@
             // 
             // checkBox1
             // 
-            this.checkBox1.Location = new System.Drawing.Point(362, 128);
+            this.checkBox1.Location = new System.Drawing.Point(390, 128);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(238, 28);
             this.checkBox1.TabIndex = 36;
@@ -381,13 +381,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(830, 449);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.cboxCommerce);
             this.Controls.Add(this.flpTransport);
             this.Controls.Add(this.lblPrices);
             this.Controls.Add(this.lblTransport);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCompute);
             this.Controls.Add(this.txtTown9);
             this.Controls.Add(this.lblTown9);
             this.Controls.Add(this.txtTown8);
@@ -452,7 +452,7 @@
         private System.Windows.Forms.TextBox txtTown8;
         private System.Windows.Forms.Label lblTown9;
         private System.Windows.Forms.TextBox txtTown9;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCompute;
         private System.Windows.Forms.Label lblTransport;
         private System.Windows.Forms.Label lblPrices;
         private System.Windows.Forms.FlowLayoutPanel flpTransport;

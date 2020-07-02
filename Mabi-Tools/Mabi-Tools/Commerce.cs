@@ -35,7 +35,7 @@ namespace Mabi_Tools
             //While it is extremely unlikely that they'll add another city or trade post to the game
             //I decided to add dynamic loading into the mix to allow for more flexiility in the event it happens anyway
             this.loadCommerceData("Cities.txt");
-            this.populateCheckListBox(clboxCities, CityData);
+            this.populateCityCheckListBox(clboxCities, CityData);
 
             Label[] testLabels = { lblTown0, lblTown1, lblTown2, lblTown3, lblTown4, lblTown5, lblTown6, lblTown7, lblTown8, lblTown9 };
             CityLabels = testLabels;
@@ -50,8 +50,11 @@ namespace Mabi_Tools
             this.adjustLabelsCities(0, 0);
 
             //Check off the default value in the lists when loading
-            clboxGoods.SetItemChecked(this.clboxprevSelectedG, true);
+            
             clboxCities.SetItemChecked(this.clboxprevSelectedT, true);
+            clboxCities.SelectedItem = clboxCities.Items[clboxprevSelectedG];
+            populateGoodCheckListBox(clboxGoods, CityData[CityData.Keys.ToList()[this.clboxprevSelectedT]]);
+            
             //Check off the first one for now.
             flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
             
@@ -69,7 +72,8 @@ namespace Mabi_Tools
             adjustLabelsCities(clboxprevSelectedT, clboxCities.SelectedIndex);
             clboxprevSelectedT = makeListBoxExclusitivity(clboxCities, clboxprevSelectedT);
             lblTest.Text = clboxCities.SelectedItem.ToString();
-            
+            //Now adjust the Goods Box based off of the currently selected city
+            populateGoodCheckListBox(clboxGoods, CityData[clboxCities.SelectedItem.ToString()]);
 
         }
 
@@ -95,15 +99,25 @@ namespace Mabi_Tools
             }
         }
 
-        private void populateCheckListBox(CheckedListBox checkbox, Dictionary<String, City> data)
+        private void populateCityCheckListBox(CheckedListBox checkbox, Dictionary<String, City> data)
         {
-            //Clear all the items since they are placeholders
             checkbox.Items.Clear();
-            foreach(String s in data.Keys)
-            {
-                checkbox.Items.Add(s);
-            }
+            checkbox.Items.AddRange(data.Keys.ToArray());
         }
+        //There are some subtle changes in this method which is why I'm not reusing the one above this
+        private void populateGoodCheckListBox(CheckedListBox checkbox, City city)
+        {
+            checkbox.Items.Clear();
+            foreach(Good good in city.getGoods())
+            {
+                checkbox.Items.Add(good.getName());
+            }
+            //Since we just cleared all items, we must recheck the last one the user selected
+            checkbox.SetItemChecked(clboxprevSelectedG, true);
+            checkbox.SelectedItem = checkbox.Items[clboxprevSelectedG];
+        }
+
+       
 
         private void generateRadioButtons(FlowLayoutPanel flow, Dictionary<String, Transport> data)
         {
