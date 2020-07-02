@@ -166,7 +166,6 @@
             this.lblTown0.Size = new System.Drawing.Size(43, 13);
             this.lblTown0.TabIndex = 8;
             this.lblTown0.Text = "Town 1";
-            this.lblTown0.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblTown1
             // 
@@ -359,7 +358,6 @@
             this.flpTransport.Name = "flpTransport";
             this.flpTransport.Size = new System.Drawing.Size(211, 233);
             this.flpTransport.TabIndex = 34;
-            this.flpTransport.Paint += new System.Windows.Forms.PaintEventHandler(this.flpTransport_Paint);
             // 
             // cboxCommerce
             // 

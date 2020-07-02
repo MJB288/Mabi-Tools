@@ -37,6 +37,7 @@ namespace Mabi_Tools
 
             Label[] testLabels = { lblTown0, lblTown1, lblTown2, lblTown3, lblTown4, lblTown5, lblTown6, lblTown7, lblTown8, lblTown9 };
             CityLabels = testLabels;
+            testLabels = null;
 
             //Similarly, with the transport Mounts
             this.loadTransportData("Transport.txt");
@@ -51,8 +52,6 @@ namespace Mabi_Tools
             clboxCities.SetItemChecked(this.clboxprevSelectedT, true);
             //Check off the first one for now.
             flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
-
-            //Maybe I missed a note somewhere, but have to do this for some reason instead of assigning directly
             
         }
 
@@ -60,11 +59,6 @@ namespace Mabi_Tools
         {
             clboxprevSelectedG = makeListBoxExclusitivity(clboxGoods, clboxprevSelectedG);
             lblTest.Text = clboxGoods.SelectedItem.ToString();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void clboxCities_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,7 +109,7 @@ namespace Mabi_Tools
             //Dynamically create radio buttons for each type of transport
             foreach(Transport t in data.Values)
             {
-                RadioButton temp = new RadioButton { Text = t.name + "\nSlots - " + t.slots + "     Weight Capacity - " + t.weight, Name = "rbtnTransport" + i };
+                RadioButton temp = new RadioButton { Text = t.getName() + "\nSlots - " + t.getSlots() + "     Weight Capacity - " + t.getWeight(), Name = "rbtnTransport" + i };
                 temp.AutoSize = false;
                 temp.Width = flow.Width-5;
                 temp.Height = (int) (temp.Height  * 1.5);
@@ -175,6 +169,8 @@ namespace Mabi_Tools
         private void loadTransportData(String transportFile)
         {
             TransportData = new Dictionary<String, Transport>();
+            //Moving this variable out for Error Reporting
+            String name = "";
             //Will be expanded upon later - for now only need name of transports
             try
             {
@@ -186,7 +182,7 @@ namespace Mabi_Tools
                     //This could be condensed into one line of code, saving a bit of memory, but for Readability purposes I decided against that
                     int graveI = s.IndexOf("`");
                     int semiI = s.IndexOf(";");
-                    String name = s.Substring(0, graveI);
+                    name = s.Substring(0, graveI);
                     String slots = s.Substring(graveI + 1, semiI - graveI - 1);
                     String weight = s.Substring(semiI + 1, s.Length - semiI - 1);
                     TransportNames.Add(name);
@@ -201,7 +197,7 @@ namespace Mabi_Tools
             }
             catch(FormatException fex)
             {
-                MessageBox.Show("Error formatting Transport Data : \n" + fex.Message, "Error");
+                MessageBox.Show("Error formatting Transport Data for '" + name  + "' : \n" + fex.Message, "Error");
             }
              
         }
@@ -219,22 +215,11 @@ namespace Mabi_Tools
             }
         }
 
-        private void flpTransport_Paint(object sender, PaintEventArgs e)
-        {
+       
 
-        }
+      
+        
 
-        private class Transport 
-        {
-            public String name;
-            public int slots, weight;
-            public Transport(String newName, int newSlots, int newWeight)
-            {
-                name = newName;
-                slots = newSlots;
-                weight = newWeight;
-            }
-        }
 
     }
 }
