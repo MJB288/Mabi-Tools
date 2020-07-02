@@ -1,4 +1,4 @@
-﻿Backpack`4;400
-Handcart`6;800
-Wagon`8;900
-Elephant`7;1700
+﻿Backpack`4`400
+Handcart`6`800
+Wagon`8`900
+Elephant`7`1700

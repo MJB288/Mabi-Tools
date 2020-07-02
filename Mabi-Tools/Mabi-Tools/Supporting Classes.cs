@@ -62,6 +62,7 @@ namespace Mabi_Tools
         
         public City(String name, Good[]goods)
         {
+            this.goods = new Good[goods.Length];
             this.name = name;
             goods.CopyTo(this.goods,0);
         }
@@ -85,6 +86,7 @@ namespace Mabi_Tools
             name = newName;
         }
 
+        //Assumes array is of same length or less
         public void setGoods(Good[] newGoods)
         {
             newGoods.CopyTo(goods, 0);

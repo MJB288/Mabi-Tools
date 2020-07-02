@@ -13,11 +13,13 @@ namespace Mabi_Tools
 {
     public partial class frmCommerce : Form
     {
+        private readonly char MAIN_TEXT_SEPARATOR = '`';
+        private readonly char SECONDARY_TEXT_SEPARATOR = ';';
         //Rememberes the actively selected index.
         //Adjust this value to change the default selected value. If I make a configure file, I could add an option to change the default
         private int clboxprevSelectedG = 0;
         private int clboxprevSelectedT = 0;
-        private List<String> CityNames, TransportNames;
+        private Dictionary<String, City> CityData;
         private Dictionary<String, Transport> TransportData;
         private Label[] CityLabels;
         public frmCommerce()
@@ -33,7 +35,7 @@ namespace Mabi_Tools
             //While it is extremely unlikely that they'll add another city or trade post to the game
             //I decided to add dynamic loading into the mix to allow for more flexiility in the event it happens anyway
             this.loadCommerceData("Cities.txt");
-            this.populateCheckListBox(clboxCities, CityNames);
+            this.populateCheckListBox(clboxCities, CityData);
 
             Label[] testLabels = { lblTown0, lblTown1, lblTown2, lblTown3, lblTown4, lblTown5, lblTown6, lblTown7, lblTown8, lblTown9 };
             CityLabels = testLabels;
@@ -93,11 +95,11 @@ namespace Mabi_Tools
             }
         }
 
-        private void populateCheckListBox(CheckedListBox checkbox, List<String> data)
+        private void populateCheckListBox(CheckedListBox checkbox, Dictionary<String, City> data)
         {
             //Clear all the items since they are placeholders
             checkbox.Items.Clear();
-            foreach(String s in data)
+            foreach(String s in data.Keys)
             {
                 checkbox.Items.Add(s);
             }
@@ -122,10 +124,10 @@ namespace Mabi_Tools
         {
             //Since I left room for a couple Extra cities - adjust visibility based on the amount of detected cities
             //Needs to be adjusted for more flexibility and more reusability friendly
-            if(10 - CityNames.Count > 0)
+            if(10 - CityData.Count > 0)
             {
                 labelTextBoxInvisible(lblTown9, txtTown9);
-                if (10 - CityNames.Count > 1)
+                if (10 - CityData.Count > 1)
                 {
                     labelTextBoxInvisible(lblTown8, txtTown8);
                 }
@@ -140,20 +142,20 @@ namespace Mabi_Tools
             }
                
             //Let's Loop Through all of them. Could Adjust that only start at the one that was previously changed
-            for(int i = oldindex; i < CityNames.Count; i++)
+            for(int i = oldindex; i < CityData.Count; i++)
             {
                 //
-                if (i == CityNames.Count - 1)
+                if (i == CityData.Count - 1)
                 {
                     CityLabels[i].Text = "Smuggler";
                 }
                 else if (i >= newIndex)
                 {
-                    CityLabels[i].Text = CityNames[i + 1];
+                    CityLabels[i].Text = CityData.Keys.ToList()[i + 1];
                 }
                 else
                 {
-                    CityLabels[i].Text = CityNames[i];
+                    CityLabels[i].Text = CityData.Keys.ToList()[i];
                 }
             }
         }
@@ -173,20 +175,20 @@ namespace Mabi_Tools
             String name = "";
             //Will be expanded upon later - for now only need name of transports
             try
-            {
-                TransportNames = new List<string>();
-                //TransportNames = File.ReadAllLines(transportFile).ToList();
+            { 
                 string[] rawdata = File.ReadAllLines(transportFile);
                 foreach (String s in rawdata)
                 {
                     //This could be condensed into one line of code, saving a bit of memory, but for Readability purposes I decided against that
-                    int graveI = s.IndexOf("`");
+                    /*int graveI = s.IndexOf(MAIN_TEXT_SEPARATOR);
                     int semiI = s.IndexOf(";");
                     name = s.Substring(0, graveI);
                     String slots = s.Substring(graveI + 1, semiI - graveI - 1);
-                    String weight = s.Substring(semiI + 1, s.Length - semiI - 1);
-                    TransportNames.Add(name);
-                    Transport temp = new Transport(name, Int32.Parse(slots), Int32.Parse(weight));
+                    String weight = s.Substring(semiI + 1, s.Length - semiI - 1);*/
+                    String[] split = s.Split('`');
+                    name = split[0];
+                    //Current ordering assumes number of slots comes first and weight second
+                    Transport temp = new Transport(name, Int32.Parse(split[1]), Int32.Parse(split[2]));
                     TransportData[name] = temp;
                 }
             }
@@ -203,16 +205,46 @@ namespace Mabi_Tools
         }
         private void loadCommerceData(String citiesFile)
         {
-            //Will be expanded upon later - for now only need cities
+            CityData = new Dictionary<string, City>();
             try
             {
-                CityNames = File.ReadAllLines(citiesFile).ToList();
+                //CityNames = File.ReadAllLines(citiesFile).ToList();
+                String [] rawData = File.ReadAllLines(citiesFile);
+                foreach(String s in rawData)
+                {
+                    //Separate the individual good strings and process
+                    String [] goodStrings = s.Split(MAIN_TEXT_SEPARATOR);
+                    Good[] cityGoods = convertStringArrayToGoods(goodStrings);
+                    //Now add the data to the Dictionary
+                    CityData[goodStrings[0]] = new City(goodStrings[0], cityGoods);
+                }
             }
             catch (FileNotFoundException ex)
             {
                 MessageBox.Show("Error while loading City data : \n" + ex.Message, "Error");
                 this.Close();
             }
+        }
+
+        private Good[] convertStringArrayToGoods(String[] input)
+        {
+            //Currently, I am operating under the assumption the first item in the string array is the city name - therefore I will skip over it
+            Good[] returnArray = new Good[input.Length - 1]; 
+            for(int i = 1; i < input.Length; i++)
+            {
+                //Split the strings further
+                String[] goodSplit = input[i].Split(SECONDARY_TEXT_SEPARATOR);
+                try
+                {
+                    //Add the new good to the array
+                    returnArray[i - 1] = new Good(goodSplit[0], Int32.Parse(goodSplit[1]), Int32.Parse(goodSplit[2]));
+                }
+                catch(FormatException ex)
+                {
+                    MessageBox.Show("Error Processing Data For City '" + input[0] + " and Good '" + goodSplit[0] + "' : \n" + ex.Message, "Format Error");
+                }
+            }
+            return returnArray;
         }
 
        
