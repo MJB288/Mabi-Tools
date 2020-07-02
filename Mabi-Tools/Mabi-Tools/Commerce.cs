@@ -18,11 +18,15 @@ namespace Mabi_Tools
         private int clboxprevSelectedG = 0;
         private int clboxprevSelectedT = 0;
         private List<String> CityNames, TransportNames;
+        private Dictionary<String, Transport> TransportData;
+        private Label[] CityLabels;
         public frmCommerce()
         {
             InitializeComponent();
         }
 
+        //Event Handler Methods
+        //-------------------------------------------------------------------------------------
         private void frmCommerce_Load(object sender, EventArgs e)
         {
             //First Load the Cities
@@ -31,15 +35,24 @@ namespace Mabi_Tools
             this.loadCommerceData("Cities.txt");
             this.populateCheckListBox(clboxCities, CityNames);
 
+            Label[] testLabels = { lblTown0, lblTown1, lblTown2, lblTown3, lblTown4, lblTown5, lblTown6, lblTown7, lblTown8, lblTown9 };
+            CityLabels = testLabels;
+
             //Similarly, with the transport Mounts
             this.loadTransportData("Transport.txt");
-            this.generateRadioButtons(flpTransport, TransportNames);
-            
+            this.generateRadioButtons(flpTransport, TransportData);
+
+            //Adjust Visibility based on the amount of towns detected.
+            this.adjustTextBoxesVisibilityCommerce();
+            this.adjustLabelsCities(0, 0);
+
             //Check off the default value in the lists when loading
             clboxGoods.SetItemChecked(this.clboxprevSelectedG, true);
             clboxCities.SetItemChecked(this.clboxprevSelectedT, true);
             //Check off the first one for now.
             flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
+
+            //Maybe I missed a note somewhere, but have to do this for some reason instead of assigning directly
             
         }
 
@@ -56,10 +69,16 @@ namespace Mabi_Tools
 
         private void clboxCities_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //Adjust as necessary 
+            adjustLabelsCities(clboxprevSelectedT, clboxCities.SelectedIndex);
             clboxprevSelectedT = makeListBoxExclusitivity(clboxCities, clboxprevSelectedT);
             lblTest.Text = clboxCities.SelectedItem.ToString();
+            
+
         }
 
+        //Form Adjustment Methods
+        //----------------------------------------------------------------------------------------------------------
         //Let's turn this into a method for reusability
         private static int makeListBoxExclusitivity(CheckedListBox clistbox, int prevSelected)
         {
@@ -90,27 +109,101 @@ namespace Mabi_Tools
             }
         }
 
-        private void generateRadioButtons(FlowLayoutPanel flow, List<String> data)
+        private void generateRadioButtons(FlowLayoutPanel flow, Dictionary<String, Transport> data)
         {
+            int i = 1;
             //Dynamically create radio buttons for each type of transport
-            foreach(String s in data)
+            foreach(Transport t in data.Values)
             {
-                flow.Controls.Add(new RadioButton {Text = s });
+                RadioButton temp = new RadioButton { Text = t.name + "\nSlots - " + t.slots + "     Weight Capacity - " + t.weight, Name = "rbtnTransport" + i };
+                temp.AutoSize = false;
+                temp.Width = flow.Width-5;
+                temp.Height = (int) (temp.Height  * 1.5);
+                flow.Controls.Add(temp);
             }
         }
 
+        //Since this will be implementation specific - just use the form variables
+        private void adjustTextBoxesVisibilityCommerce()
+        {
+            //Since I left room for a couple Extra cities - adjust visibility based on the amount of detected cities
+            //Needs to be adjusted for more flexibility and more reusability friendly
+            if(10 - CityNames.Count > 0)
+            {
+                labelTextBoxInvisible(lblTown9, txtTown9);
+                if (10 - CityNames.Count > 1)
+                {
+                    labelTextBoxInvisible(lblTown8, txtTown8);
+                }
+            }
+        }
+
+        private void adjustLabelsCities(int oldindex, int newIndex)
+        {
+            if(oldindex > newIndex)
+            {
+                oldindex = newIndex;
+            }
+               
+            //Let's Loop Through all of them. Could Adjust that only start at the one that was previously changed
+            for(int i = oldindex; i < CityNames.Count; i++)
+            {
+                //
+                if (i == CityNames.Count - 1)
+                {
+                    CityLabels[i].Text = "Smuggler";
+                }
+                else if (i >= newIndex)
+                {
+                    CityLabels[i].Text = CityNames[i + 1];
+                }
+                else
+                {
+                    CityLabels[i].Text = CityNames[i];
+                }
+            }
+        }
+
+        private static void labelTextBoxInvisible(Label label, TextBox txtbox)
+        {
+            label.Visible = false;
+            txtbox.Visible = false;
+        }
+
+        //Methods for loading data from files
+        //-------------------------------------------------------------------------------------------------
         private void loadTransportData(String transportFile)
         {
+            TransportData = new Dictionary<String, Transport>();
             //Will be expanded upon later - for now only need name of transports
             try
             {
-                TransportNames = File.ReadAllLines(transportFile).ToList();
+                TransportNames = new List<string>();
+                //TransportNames = File.ReadAllLines(transportFile).ToList();
+                string[] rawdata = File.ReadAllLines(transportFile);
+                foreach (String s in rawdata)
+                {
+                    //This could be condensed into one line of code, saving a bit of memory, but for Readability purposes I decided against that
+                    int graveI = s.IndexOf("`");
+                    int semiI = s.IndexOf(";");
+                    String name = s.Substring(0, graveI);
+                    String slots = s.Substring(graveI + 1, semiI - graveI - 1);
+                    String weight = s.Substring(semiI + 1, s.Length - semiI - 1);
+                    TransportNames.Add(name);
+                    Transport temp = new Transport(name, Int32.Parse(slots), Int32.Parse(weight));
+                    TransportData[name] = temp;
+                }
             }
             catch (FileNotFoundException ex)
             {
                 MessageBox.Show("Error while loading Transport Data : \n" + ex.Message, "Error");
                 this.Close();
             }
+            catch(FormatException fex)
+            {
+                MessageBox.Show("Error formatting Transport Data : \n" + fex.Message, "Error");
+            }
+             
         }
         private void loadCommerceData(String citiesFile)
         {
@@ -125,5 +218,23 @@ namespace Mabi_Tools
                 this.Close();
             }
         }
+
+        private void flpTransport_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private class Transport 
+        {
+            public String name;
+            public int slots, weight;
+            public Transport(String newName, int newSlots, int newWeight)
+            {
+                name = newName;
+                slots = newSlots;
+                weight = newWeight;
+            }
+        }
+
     }
 }

@@ -35,31 +35,32 @@
             this.lblCities = new System.Windows.Forms.Label();
             this.lboxResults = new System.Windows.Forms.ListBox();
             this.lblResults = new System.Windows.Forms.Label();
-            this.tboxTown1 = new System.Windows.Forms.TextBox();
+            this.txtTown0 = new System.Windows.Forms.TextBox();
+            this.lblTown0 = new System.Windows.Forms.Label();
             this.lblTown1 = new System.Windows.Forms.Label();
+            this.txtTown1 = new System.Windows.Forms.TextBox();
             this.lblTown2 = new System.Windows.Forms.Label();
-            this.tboxTown2 = new System.Windows.Forms.TextBox();
+            this.txtTown2 = new System.Windows.Forms.TextBox();
             this.lblTown3 = new System.Windows.Forms.Label();
-            this.tboxTown3 = new System.Windows.Forms.TextBox();
+            this.txtTown3 = new System.Windows.Forms.TextBox();
             this.lblTown4 = new System.Windows.Forms.Label();
-            this.tboxTown4 = new System.Windows.Forms.TextBox();
+            this.txtTown4 = new System.Windows.Forms.TextBox();
             this.lblTown5 = new System.Windows.Forms.Label();
-            this.tboxTown5 = new System.Windows.Forms.TextBox();
+            this.txtTown5 = new System.Windows.Forms.TextBox();
             this.lblTown6 = new System.Windows.Forms.Label();
-            this.tboxTown6 = new System.Windows.Forms.TextBox();
+            this.txtTown6 = new System.Windows.Forms.TextBox();
+            this.txtTown7 = new System.Windows.Forms.TextBox();
             this.lblTown7 = new System.Windows.Forms.Label();
-            this.tboxTown7 = new System.Windows.Forms.TextBox();
-            this.tboxTown8 = new System.Windows.Forms.TextBox();
             this.lblTown8 = new System.Windows.Forms.Label();
+            this.txtTown8 = new System.Windows.Forms.TextBox();
             this.lblTown9 = new System.Windows.Forms.Label();
-            this.tboxTown9 = new System.Windows.Forms.TextBox();
-            this.lblTown10 = new System.Windows.Forms.Label();
-            this.tboxTown10 = new System.Windows.Forms.TextBox();
+            this.txtTown9 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.lblTransport = new System.Windows.Forms.Label();
             this.lblPrices = new System.Windows.Forms.Label();
             this.flpTransport = new System.Windows.Forms.FlowLayoutPanel();
             this.cboxCommerce = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // clboxGoods
@@ -149,176 +150,176 @@
             this.lblResults.TabIndex = 6;
             this.lblResults.Text = "Results";
             // 
-            // tboxTown1
+            // txtTown0
             // 
-            this.tboxTown1.Location = new System.Drawing.Point(294, 78);
-            this.tboxTown1.Name = "tboxTown1";
-            this.tboxTown1.Size = new System.Drawing.Size(100, 20);
-            this.tboxTown1.TabIndex = 7;
-            this.tboxTown1.Text = "0";
+            this.txtTown0.Location = new System.Drawing.Point(234, 78);
+            this.txtTown0.Name = "txtTown0";
+            this.txtTown0.Size = new System.Drawing.Size(100, 20);
+            this.txtTown0.TabIndex = 7;
+            this.txtTown0.Text = "0";
+            // 
+            // lblTown0
+            // 
+            this.lblTown0.AutoSize = true;
+            this.lblTown0.Location = new System.Drawing.Point(172, 81);
+            this.lblTown0.Name = "lblTown0";
+            this.lblTown0.Size = new System.Drawing.Size(43, 13);
+            this.lblTown0.TabIndex = 8;
+            this.lblTown0.Text = "Town 1";
+            this.lblTown0.Click += new System.EventHandler(this.label1_Click);
             // 
             // lblTown1
             // 
             this.lblTown1.AutoSize = true;
-            this.lblTown1.Location = new System.Drawing.Point(232, 81);
+            this.lblTown1.Location = new System.Drawing.Point(172, 114);
             this.lblTown1.Name = "lblTown1";
             this.lblTown1.Size = new System.Drawing.Size(43, 13);
-            this.lblTown1.TabIndex = 8;
-            this.lblTown1.Text = "Town 1";
-            this.lblTown1.Click += new System.EventHandler(this.label1_Click);
+            this.lblTown1.TabIndex = 9;
+            this.lblTown1.Text = "Town 2";
+            // 
+            // txtTown1
+            // 
+            this.txtTown1.Location = new System.Drawing.Point(234, 111);
+            this.txtTown1.Name = "txtTown1";
+            this.txtTown1.Size = new System.Drawing.Size(100, 20);
+            this.txtTown1.TabIndex = 10;
+            this.txtTown1.Text = "0";
             // 
             // lblTown2
             // 
             this.lblTown2.AutoSize = true;
-            this.lblTown2.Location = new System.Drawing.Point(232, 114);
+            this.lblTown2.Location = new System.Drawing.Point(172, 147);
             this.lblTown2.Name = "lblTown2";
             this.lblTown2.Size = new System.Drawing.Size(43, 13);
-            this.lblTown2.TabIndex = 9;
-            this.lblTown2.Text = "Town 2";
+            this.lblTown2.TabIndex = 11;
+            this.lblTown2.Text = "Town 3";
             // 
-            // tboxTown2
+            // txtTown2
             // 
-            this.tboxTown2.Location = new System.Drawing.Point(294, 111);
-            this.tboxTown2.Name = "tboxTown2";
-            this.tboxTown2.Size = new System.Drawing.Size(100, 20);
-            this.tboxTown2.TabIndex = 10;
-            this.tboxTown2.Text = "0";
+            this.txtTown2.Location = new System.Drawing.Point(234, 144);
+            this.txtTown2.Name = "txtTown2";
+            this.txtTown2.Size = new System.Drawing.Size(100, 20);
+            this.txtTown2.TabIndex = 12;
+            this.txtTown2.Text = "0";
             // 
             // lblTown3
             // 
             this.lblTown3.AutoSize = true;
-            this.lblTown3.Location = new System.Drawing.Point(232, 147);
+            this.lblTown3.Location = new System.Drawing.Point(172, 180);
             this.lblTown3.Name = "lblTown3";
             this.lblTown3.Size = new System.Drawing.Size(43, 13);
-            this.lblTown3.TabIndex = 11;
-            this.lblTown3.Text = "Town 3";
+            this.lblTown3.TabIndex = 13;
+            this.lblTown3.Text = "Town 4";
             // 
-            // tboxTown3
+            // txtTown3
             // 
-            this.tboxTown3.Location = new System.Drawing.Point(294, 144);
-            this.tboxTown3.Name = "tboxTown3";
-            this.tboxTown3.Size = new System.Drawing.Size(100, 20);
-            this.tboxTown3.TabIndex = 12;
-            this.tboxTown3.Text = "0";
+            this.txtTown3.Location = new System.Drawing.Point(234, 177);
+            this.txtTown3.Name = "txtTown3";
+            this.txtTown3.Size = new System.Drawing.Size(100, 20);
+            this.txtTown3.TabIndex = 14;
+            this.txtTown3.Text = "0";
             // 
             // lblTown4
             // 
             this.lblTown4.AutoSize = true;
-            this.lblTown4.Location = new System.Drawing.Point(232, 180);
+            this.lblTown4.Location = new System.Drawing.Point(172, 213);
             this.lblTown4.Name = "lblTown4";
             this.lblTown4.Size = new System.Drawing.Size(43, 13);
-            this.lblTown4.TabIndex = 13;
-            this.lblTown4.Text = "Town 4";
+            this.lblTown4.TabIndex = 15;
+            this.lblTown4.Text = "Town 5";
             // 
-            // tboxTown4
+            // txtTown4
             // 
-            this.tboxTown4.Location = new System.Drawing.Point(294, 177);
-            this.tboxTown4.Name = "tboxTown4";
-            this.tboxTown4.Size = new System.Drawing.Size(100, 20);
-            this.tboxTown4.TabIndex = 14;
-            this.tboxTown4.Text = "0";
+            this.txtTown4.Location = new System.Drawing.Point(234, 210);
+            this.txtTown4.Name = "txtTown4";
+            this.txtTown4.Size = new System.Drawing.Size(100, 20);
+            this.txtTown4.TabIndex = 16;
+            this.txtTown4.Text = "0";
             // 
             // lblTown5
             // 
             this.lblTown5.AutoSize = true;
-            this.lblTown5.Location = new System.Drawing.Point(232, 213);
+            this.lblTown5.Location = new System.Drawing.Point(172, 246);
             this.lblTown5.Name = "lblTown5";
             this.lblTown5.Size = new System.Drawing.Size(43, 13);
-            this.lblTown5.TabIndex = 15;
-            this.lblTown5.Text = "Town 5";
+            this.lblTown5.TabIndex = 17;
+            this.lblTown5.Text = "Town 6";
             // 
-            // tboxTown5
+            // txtTown5
             // 
-            this.tboxTown5.Location = new System.Drawing.Point(294, 210);
-            this.tboxTown5.Name = "tboxTown5";
-            this.tboxTown5.Size = new System.Drawing.Size(100, 20);
-            this.tboxTown5.TabIndex = 16;
-            this.tboxTown5.Text = "0";
+            this.txtTown5.Location = new System.Drawing.Point(234, 243);
+            this.txtTown5.Name = "txtTown5";
+            this.txtTown5.Size = new System.Drawing.Size(100, 20);
+            this.txtTown5.TabIndex = 18;
+            this.txtTown5.Text = "0";
             // 
             // lblTown6
             // 
             this.lblTown6.AutoSize = true;
-            this.lblTown6.Location = new System.Drawing.Point(232, 246);
+            this.lblTown6.Location = new System.Drawing.Point(172, 279);
             this.lblTown6.Name = "lblTown6";
             this.lblTown6.Size = new System.Drawing.Size(43, 13);
-            this.lblTown6.TabIndex = 17;
-            this.lblTown6.Text = "Town 6";
+            this.lblTown6.TabIndex = 19;
+            this.lblTown6.Text = "Town 7";
             // 
-            // tboxTown6
+            // txtTown6
             // 
-            this.tboxTown6.Location = new System.Drawing.Point(294, 243);
-            this.tboxTown6.Name = "tboxTown6";
-            this.tboxTown6.Size = new System.Drawing.Size(100, 20);
-            this.tboxTown6.TabIndex = 18;
-            this.tboxTown6.Text = "0";
+            this.txtTown6.Location = new System.Drawing.Point(234, 276);
+            this.txtTown6.Name = "txtTown6";
+            this.txtTown6.Size = new System.Drawing.Size(100, 20);
+            this.txtTown6.TabIndex = 20;
+            this.txtTown6.Text = "0";
+            // 
+            // txtTown7
+            // 
+            this.txtTown7.Location = new System.Drawing.Point(234, 309);
+            this.txtTown7.Name = "txtTown7";
+            this.txtTown7.Size = new System.Drawing.Size(100, 20);
+            this.txtTown7.TabIndex = 21;
+            this.txtTown7.Text = "0";
             // 
             // lblTown7
             // 
             this.lblTown7.AutoSize = true;
-            this.lblTown7.Location = new System.Drawing.Point(232, 279);
+            this.lblTown7.Location = new System.Drawing.Point(172, 312);
             this.lblTown7.Name = "lblTown7";
             this.lblTown7.Size = new System.Drawing.Size(43, 13);
-            this.lblTown7.TabIndex = 19;
-            this.lblTown7.Text = "Town 7";
-            // 
-            // tboxTown7
-            // 
-            this.tboxTown7.Location = new System.Drawing.Point(294, 276);
-            this.tboxTown7.Name = "tboxTown7";
-            this.tboxTown7.Size = new System.Drawing.Size(100, 20);
-            this.tboxTown7.TabIndex = 20;
-            this.tboxTown7.Text = "0";
-            // 
-            // tboxTown8
-            // 
-            this.tboxTown8.Location = new System.Drawing.Point(294, 309);
-            this.tboxTown8.Name = "tboxTown8";
-            this.tboxTown8.Size = new System.Drawing.Size(100, 20);
-            this.tboxTown8.TabIndex = 21;
-            this.tboxTown8.Text = "0";
+            this.lblTown7.TabIndex = 22;
+            this.lblTown7.Text = "Town 8";
             // 
             // lblTown8
             // 
             this.lblTown8.AutoSize = true;
-            this.lblTown8.Location = new System.Drawing.Point(232, 312);
+            this.lblTown8.Location = new System.Drawing.Point(172, 345);
             this.lblTown8.Name = "lblTown8";
             this.lblTown8.Size = new System.Drawing.Size(43, 13);
-            this.lblTown8.TabIndex = 22;
-            this.lblTown8.Text = "Town 8";
+            this.lblTown8.TabIndex = 23;
+            this.lblTown8.Text = "Town 9";
+            // 
+            // txtTown8
+            // 
+            this.txtTown8.Location = new System.Drawing.Point(234, 342);
+            this.txtTown8.Name = "txtTown8";
+            this.txtTown8.Size = new System.Drawing.Size(100, 20);
+            this.txtTown8.TabIndex = 24;
+            this.txtTown8.Text = "0";
             // 
             // lblTown9
             // 
             this.lblTown9.AutoSize = true;
-            this.lblTown9.Location = new System.Drawing.Point(232, 345);
+            this.lblTown9.Location = new System.Drawing.Point(172, 378);
             this.lblTown9.Name = "lblTown9";
-            this.lblTown9.Size = new System.Drawing.Size(43, 13);
-            this.lblTown9.TabIndex = 23;
-            this.lblTown9.Text = "Town 9";
+            this.lblTown9.Size = new System.Drawing.Size(49, 13);
+            this.lblTown9.TabIndex = 25;
+            this.lblTown9.Text = "Town 10";
             // 
-            // tboxTown9
+            // txtTown9
             // 
-            this.tboxTown9.Location = new System.Drawing.Point(294, 342);
-            this.tboxTown9.Name = "tboxTown9";
-            this.tboxTown9.Size = new System.Drawing.Size(100, 20);
-            this.tboxTown9.TabIndex = 24;
-            this.tboxTown9.Text = "0";
-            // 
-            // lblTown10
-            // 
-            this.lblTown10.AutoSize = true;
-            this.lblTown10.Location = new System.Drawing.Point(232, 378);
-            this.lblTown10.Name = "lblTown10";
-            this.lblTown10.Size = new System.Drawing.Size(49, 13);
-            this.lblTown10.TabIndex = 25;
-            this.lblTown10.Text = "Town 10";
-            // 
-            // tboxTown10
-            // 
-            this.tboxTown10.Location = new System.Drawing.Point(294, 375);
-            this.tboxTown10.Name = "tboxTown10";
-            this.tboxTown10.Size = new System.Drawing.Size(100, 20);
-            this.tboxTown10.TabIndex = 26;
-            this.tboxTown10.Text = "0";
+            this.txtTown9.Location = new System.Drawing.Point(234, 375);
+            this.txtTown9.Name = "txtTown9";
+            this.txtTown9.Size = new System.Drawing.Size(100, 20);
+            this.txtTown9.TabIndex = 26;
+            this.txtTown9.Text = "0";
             // 
             // button1
             // 
@@ -334,7 +335,7 @@
             this.lblTransport.AutoSize = true;
             this.lblTransport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTransport.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransport.Location = new System.Drawing.Point(456, 41);
+            this.lblTransport.Location = new System.Drawing.Point(427, 66);
             this.lblTransport.Name = "lblTransport";
             this.lblTransport.Size = new System.Drawing.Size(66, 22);
             this.lblTransport.TabIndex = 29;
@@ -345,7 +346,7 @@
             this.lblPrices.AutoSize = true;
             this.lblPrices.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPrices.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrices.Location = new System.Drawing.Point(269, 41);
+            this.lblPrices.Location = new System.Drawing.Point(209, 41);
             this.lblPrices.Name = "lblPrices";
             this.lblPrices.Size = new System.Drawing.Size(49, 22);
             this.lblPrices.TabIndex = 30;
@@ -354,50 +355,61 @@
             // flpTransport
             // 
             this.flpTransport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpTransport.Location = new System.Drawing.Point(430, 128);
+            this.flpTransport.Location = new System.Drawing.Point(362, 162);
             this.flpTransport.Name = "flpTransport";
-            this.flpTransport.Size = new System.Drawing.Size(127, 213);
+            this.flpTransport.Size = new System.Drawing.Size(211, 233);
             this.flpTransport.TabIndex = 34;
+            this.flpTransport.Paint += new System.Windows.Forms.PaintEventHandler(this.flpTransport_Paint);
             // 
             // cboxCommerce
             // 
-            this.cboxCommerce.Location = new System.Drawing.Point(420, 72);
+            this.cboxCommerce.Location = new System.Drawing.Point(362, 96);
             this.cboxCommerce.Name = "cboxCommerce";
-            this.cboxCommerce.Size = new System.Drawing.Size(153, 50);
+            this.cboxCommerce.Size = new System.Drawing.Size(221, 26);
             this.cboxCommerce.TabIndex = 35;
-            this.cboxCommerce.Text = "Commerce Partner +1 Slot +100 Weight Capacity";
+            this.cboxCommerce.Text = "Commerce Partner +1 Slot +100 Weight";
             this.cboxCommerce.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Location = new System.Drawing.Point(362, 128);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(238, 28);
+            this.checkBox1.TabIndex = 36;
+            this.checkBox1.Text = "Alpaca (Wagon Only) +2 Slots +200 Weight";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // frmCommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.cboxCommerce);
             this.Controls.Add(this.flpTransport);
             this.Controls.Add(this.lblPrices);
             this.Controls.Add(this.lblTransport);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.tboxTown10);
-            this.Controls.Add(this.lblTown10);
-            this.Controls.Add(this.tboxTown9);
+            this.Controls.Add(this.txtTown9);
             this.Controls.Add(this.lblTown9);
+            this.Controls.Add(this.txtTown8);
             this.Controls.Add(this.lblTown8);
-            this.Controls.Add(this.tboxTown8);
-            this.Controls.Add(this.tboxTown7);
             this.Controls.Add(this.lblTown7);
-            this.Controls.Add(this.tboxTown6);
+            this.Controls.Add(this.txtTown7);
+            this.Controls.Add(this.txtTown6);
             this.Controls.Add(this.lblTown6);
-            this.Controls.Add(this.tboxTown5);
+            this.Controls.Add(this.txtTown5);
             this.Controls.Add(this.lblTown5);
-            this.Controls.Add(this.tboxTown4);
+            this.Controls.Add(this.txtTown4);
             this.Controls.Add(this.lblTown4);
-            this.Controls.Add(this.tboxTown3);
+            this.Controls.Add(this.txtTown3);
             this.Controls.Add(this.lblTown3);
-            this.Controls.Add(this.tboxTown2);
+            this.Controls.Add(this.txtTown2);
             this.Controls.Add(this.lblTown2);
+            this.Controls.Add(this.txtTown1);
             this.Controls.Add(this.lblTown1);
-            this.Controls.Add(this.tboxTown1);
+            this.Controls.Add(this.lblTown0);
+            this.Controls.Add(this.txtTown0);
             this.Controls.Add(this.lblResults);
             this.Controls.Add(this.lboxResults);
             this.Controls.Add(this.lblCities);
@@ -422,30 +434,31 @@
         private System.Windows.Forms.Label lblCities;
         private System.Windows.Forms.ListBox lboxResults;
         private System.Windows.Forms.Label lblResults;
-        private System.Windows.Forms.TextBox tboxTown1;
+        private System.Windows.Forms.TextBox txtTown0;
+        private System.Windows.Forms.Label lblTown0;
         private System.Windows.Forms.Label lblTown1;
+        private System.Windows.Forms.TextBox txtTown1;
         private System.Windows.Forms.Label lblTown2;
-        private System.Windows.Forms.TextBox tboxTown2;
+        private System.Windows.Forms.TextBox txtTown2;
         private System.Windows.Forms.Label lblTown3;
-        private System.Windows.Forms.TextBox tboxTown3;
+        private System.Windows.Forms.TextBox txtTown3;
         private System.Windows.Forms.Label lblTown4;
-        private System.Windows.Forms.TextBox tboxTown4;
+        private System.Windows.Forms.TextBox txtTown4;
         private System.Windows.Forms.Label lblTown5;
-        private System.Windows.Forms.TextBox tboxTown5;
+        private System.Windows.Forms.TextBox txtTown5;
         private System.Windows.Forms.Label lblTown6;
-        private System.Windows.Forms.TextBox tboxTown6;
+        private System.Windows.Forms.TextBox txtTown6;
+        private System.Windows.Forms.TextBox txtTown7;
         private System.Windows.Forms.Label lblTown7;
-        private System.Windows.Forms.TextBox tboxTown7;
-        private System.Windows.Forms.TextBox tboxTown8;
         private System.Windows.Forms.Label lblTown8;
+        private System.Windows.Forms.TextBox txtTown8;
         private System.Windows.Forms.Label lblTown9;
-        private System.Windows.Forms.TextBox tboxTown9;
-        private System.Windows.Forms.Label lblTown10;
-        private System.Windows.Forms.TextBox tboxTown10;
+        private System.Windows.Forms.TextBox txtTown9;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblTransport;
         private System.Windows.Forms.Label lblPrices;
         private System.Windows.Forms.FlowLayoutPanel flpTransport;
         private System.Windows.Forms.CheckBox cboxCommerce;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
