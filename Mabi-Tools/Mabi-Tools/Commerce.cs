@@ -19,6 +19,7 @@ namespace Mabi_Tools
         //Adjust this value to change the default selected value. If I make a configure file, I could add an option to change the default
         private int clboxprevSelectedG = 0;
         private int clboxprevSelectedT = 0;
+        private int selectedGoodWeight = 0, selectedGoodSlots = 0;
         private Dictionary<String, City> CityData;
         private Dictionary<String, Transport> TransportData;
         private Label[] CityLabels;
@@ -64,6 +65,11 @@ namespace Mabi_Tools
         {
             clboxprevSelectedG = makeListBoxExclusitivity(clboxGoods, clboxprevSelectedG);
             lblTest.Text = clboxGoods.SelectedItem.ToString();
+            //Now pull up the Weight And Slot statistics
+            selectedGoodSlots = CityData[clboxCities.SelectedItem.ToString()].getGoods()[clboxprevSelectedG].getSlotCapacity();
+            selectedGoodWeight = CityData[clboxCities.SelectedItem.ToString()].getGoods()[clboxprevSelectedG].getWeight();
+            lblItemWeight.Text = "Weight : " + selectedGoodWeight;
+            lblItemSlots.Text = "Slot Capacity : " + selectedGoodSlots;
         }
 
         private void clboxCities_SelectedIndexChanged(object sender, EventArgs e)
@@ -261,11 +267,23 @@ namespace Mabi_Tools
             return returnArray;
         }
 
+        private void cboxCommerce_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cboxCommerce.Checked)
+                cboxAlpaca.Checked = false;
+        }
+
+        private void cboxAlpaca_CheckedChanged(object sender, EventArgs e)
+        {
+            if(cboxAlpaca.Checked)
+                cboxCommerce.Checked = false;
+        }
+
        
 
-      
-        
-
-
+        private void btnCompute_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

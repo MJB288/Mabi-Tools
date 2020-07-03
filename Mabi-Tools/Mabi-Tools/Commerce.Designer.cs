@@ -60,7 +60,10 @@
             this.lblPrices = new System.Windows.Forms.Label();
             this.flpTransport = new System.Windows.Forms.FlowLayoutPanel();
             this.cboxCommerce = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cboxAlpaca = new System.Windows.Forms.CheckBox();
+            this.lblItemWeight = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblItemSlots = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // clboxGoods
@@ -73,7 +76,7 @@
             "Test3",
             "Test4",
             "Test5"});
-            this.clboxGoods.Location = new System.Drawing.Point(17, 261);
+            this.clboxGoods.Location = new System.Drawing.Point(15, 265);
             this.clboxGoods.Name = "clboxGoods";
             this.clboxGoods.Size = new System.Drawing.Size(145, 124);
             this.clboxGoods.TabIndex = 0;
@@ -93,7 +96,7 @@
             this.lblGoods.AutoSize = true;
             this.lblGoods.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblGoods.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGoods.Location = new System.Drawing.Point(63, 236);
+            this.lblGoods.Location = new System.Drawing.Point(61, 240);
             this.lblGoods.Name = "lblGoods";
             this.lblGoods.Size = new System.Drawing.Size(52, 22);
             this.lblGoods.TabIndex = 2;
@@ -112,7 +115,7 @@
             "Town6",
             "Town7",
             "Town8"});
-            this.clboxCities.Location = new System.Drawing.Point(30, 66);
+            this.clboxCities.Location = new System.Drawing.Point(28, 70);
             this.clboxCities.Name = "clboxCities";
             this.clboxCities.Size = new System.Drawing.Size(118, 139);
             this.clboxCities.TabIndex = 3;
@@ -123,7 +126,7 @@
             this.lblCities.AutoSize = true;
             this.lblCities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblCities.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCities.Location = new System.Drawing.Point(67, 41);
+            this.lblCities.Location = new System.Drawing.Point(65, 24);
             this.lblCities.Name = "lblCities";
             this.lblCities.Size = new System.Drawing.Size(44, 22);
             this.lblCities.TabIndex = 4;
@@ -328,13 +331,14 @@
             this.btnCompute.TabIndex = 27;
             this.btnCompute.Text = "Compute";
             this.btnCompute.UseVisualStyleBackColor = true;
+            this.btnCompute.Click += new System.EventHandler(this.btnCompute_Click);
             // 
             // lblTransport
             // 
             this.lblTransport.AutoSize = true;
             this.lblTransport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblTransport.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransport.Location = new System.Drawing.Point(455, 66);
+            this.lblTransport.Location = new System.Drawing.Point(458, 24);
             this.lblTransport.Name = "lblTransport";
             this.lblTransport.Size = new System.Drawing.Size(66, 22);
             this.lblTransport.TabIndex = 29;
@@ -345,7 +349,7 @@
             this.lblPrices.AutoSize = true;
             this.lblPrices.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblPrices.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrices.Location = new System.Drawing.Point(237, 41);
+            this.lblPrices.Location = new System.Drawing.Point(233, 24);
             this.lblPrices.Name = "lblPrices";
             this.lblPrices.Size = new System.Drawing.Size(49, 22);
             this.lblPrices.TabIndex = 30;
@@ -367,22 +371,54 @@
             this.cboxCommerce.TabIndex = 35;
             this.cboxCommerce.Text = "Commerce Partner +1 Slot +100 Weight";
             this.cboxCommerce.UseVisualStyleBackColor = true;
+            this.cboxCommerce.CheckedChanged += new System.EventHandler(this.cboxCommerce_CheckedChanged);
             // 
-            // checkBox1
+            // cboxAlpaca
             // 
-            this.checkBox1.Location = new System.Drawing.Point(390, 128);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(238, 28);
-            this.checkBox1.TabIndex = 36;
-            this.checkBox1.Text = "Alpaca (Wagon Only) +2 Slots +200 Weight";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.cboxAlpaca.Location = new System.Drawing.Point(390, 128);
+            this.cboxAlpaca.Name = "cboxAlpaca";
+            this.cboxAlpaca.Size = new System.Drawing.Size(238, 28);
+            this.cboxAlpaca.TabIndex = 36;
+            this.cboxAlpaca.Text = "Alpaca (Wagon Only) +2 Slots +200 Weight";
+            this.cboxAlpaca.UseVisualStyleBackColor = true;
+            this.cboxAlpaca.CheckedChanged += new System.EventHandler(this.cboxAlpaca_CheckedChanged);
+            // 
+            // lblItemWeight
+            // 
+            this.lblItemWeight.AutoSize = true;
+            this.lblItemWeight.Location = new System.Drawing.Point(65, 392);
+            this.lblItemWeight.Name = "lblItemWeight";
+            this.lblItemWeight.Size = new System.Drawing.Size(47, 13);
+            this.lblItemWeight.TabIndex = 37;
+            this.lblItemWeight.Text = "Weight :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(707, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "label1";
+            // 
+            // lblItemSlots
+            // 
+            this.lblItemSlots.AutoSize = true;
+            this.lblItemSlots.Location = new System.Drawing.Point(49, 405);
+            this.lblItemSlots.Name = "lblItemSlots";
+            this.lblItemSlots.Size = new System.Drawing.Size(78, 13);
+            this.lblItemSlots.TabIndex = 40;
+            this.lblItemSlots.Text = "Slot Capacity : ";
             // 
             // frmCommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(830, 449);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.lblItemSlots);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblItemWeight);
+            this.Controls.Add(this.cboxAlpaca);
             this.Controls.Add(this.cboxCommerce);
             this.Controls.Add(this.flpTransport);
             this.Controls.Add(this.lblPrices);
@@ -457,6 +493,9 @@
         private System.Windows.Forms.Label lblPrices;
         private System.Windows.Forms.FlowLayoutPanel flpTransport;
         private System.Windows.Forms.CheckBox cboxCommerce;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox cboxAlpaca;
+        private System.Windows.Forms.Label lblItemWeight;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblItemSlots;
     }
 }
