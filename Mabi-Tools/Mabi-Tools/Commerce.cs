@@ -301,12 +301,9 @@ namespace Mabi_Tools
             if (cboxAlpaca.Checked)
             {
                 cboxCommerce.Checked = false;
-                if (selectedTransportName.Equals("Wagon"))
-                {
-                    selectedTransportSlots += 2;
-                    selectedTransportWeight += 200;
-                    
-                }
+                selectedTransportSlots += 2;
+                selectedTransportWeight += 200;
+
             }
             else
             {
