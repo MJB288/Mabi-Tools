@@ -15,11 +15,13 @@ namespace Mabi_Tools
     {
         private readonly char MAIN_TEXT_SEPARATOR = '`';
         private readonly char SECONDARY_TEXT_SEPARATOR = ';';
-        //Rememberes the actively selected index.
-        //Adjust this value to change the default selected value. If I make a configure file, I could add an option to change the default
-        private int clboxprevSelectedG = 0;
-        private int clboxprevSelectedT = 0;
+        //Remembers the actively selected index for each checklist box.
+        //Adjust these values to change the default selected value. If I make a configure file, I could add an option to change the default
+        private int clboxprevSelectedG = 0, clboxprevSelectedT = 0;
+        //These are for tracking the weight and slot capacity of the currently selected good
         private int selectedGoodWeight = 0, selectedGoodSlots = 0;
+        //These are for tracking the current Weight Capacity and Slots of the transport
+        private int selectedTransportWeight = 0, selectedTransportSlots = 0;
         private Dictionary<String, City> CityData;
         private Dictionary<String, Transport> TransportData;
         private Label[] CityLabels;
@@ -127,16 +129,22 @@ namespace Mabi_Tools
 
         private void generateRadioButtons(FlowLayoutPanel flow, Dictionary<String, Transport> data)
         {
-            int i = 1;
+            int i = 1, rbtnHeight = 0;
             //Dynamically create radio buttons for each type of transport
             foreach(Transport t in data.Values)
             {
-                RadioButton temp = new RadioButton { Text = t.getName() + "\nSlots - " + t.getSlots() + "     Weight Capacity - " + t.getWeight(), Name = "rbtnTransport" + i };
+                //RadioButton temp = new RadioButton { Text = t.getName() + "\nSlots - " + t.getSlots() + "     Weight Capacity - " + t.getWeight(), Name = "rbtnTransport" + i };
+                RadioButton temp = new RadioButton { Text = t.getName(), Name = "rbtnTransport" + i };
                 temp.AutoSize = false;
                 temp.Width = flow.Width-5;
-                temp.Height = (int) (temp.Height  * 1.5);
+                //temp.Height = (int) (temp.Height  * 1.5);
+                temp.CheckedChanged += (this.rbtnTransport_CheckedChanged);
                 flow.Controls.Add(temp);
+                i++;
+                rbtnHeight = temp.Height;
             }
+            //Trim the Height of the Flow Panel to remove whitespace
+            flow.Height = (int) (flow.Controls.OfType<RadioButton>().Count() * rbtnHeight * 1.3);
         }
 
         //Since this will be implementation specific - just use the form variables
@@ -269,17 +277,73 @@ namespace Mabi_Tools
 
         private void cboxCommerce_CheckedChanged(object sender, EventArgs e)
         {
-            if(cboxCommerce.Checked)
+            //Increment if checked - Decrement if not Checked
+            if (cboxCommerce.Checked) 
+            { 
+                //The alpaca bonus cannot stack with the commerce bonus.
                 cboxAlpaca.Checked = false;
+                selectedTransportSlots += 1;
+                selectedTransportWeight += 100;
+            }
+            else
+            {
+                selectedTransportSlots -= 1;
+                selectedTransportWeight -= 100;
+            }
+
+
+            lblTransportSlots.Text = "Slots : " + selectedTransportSlots;
+            lblTransportWeight.Text = "Weight Capacity : " + selectedTransportWeight;
         }
 
         private void cboxAlpaca_CheckedChanged(object sender, EventArgs e)
         {
-            if(cboxAlpaca.Checked)
+            if (cboxAlpaca.Checked)
+            {
                 cboxCommerce.Checked = false;
+                if (selectedTransportName.Equals("Wagon"))
+                {
+                    selectedTransportSlots += 2;
+                    selectedTransportWeight += 200;
+                    
+                }
+            }
+            else
+            {
+                selectedTransportSlots -= 2;
+                selectedTransportWeight -= 200;
+            }
+            lblTransportSlots.Text = "Slots : " + selectedTransportSlots;
+            lblTransportWeight.Text = "Weight Capacity : " + selectedTransportWeight;
         }
 
-       
+        private void rbtnTransport_CheckedChanged(object sender, EventArgs e)
+        {
+            //The RadioButton Text should be exactly the same as the indexes used in the Dictionary. An alternative would be using the number found at the end of each radiobutton name
+            RadioButton selectedRBTN = flpTransport.Controls.OfType<RadioButton>().FirstOrDefault(rbtn => rbtn.Checked);
+            selectedTransportSlots = TransportData[selectedRBTN.Text].getSlots();
+            selectedTransportWeight = TransportData[selectedRBTN.Text].getWeight();
+           
+            //If the player has a commerce partner - they get a small boost to weight capacity and slots
+            if (cboxCommerce.Checked)
+            {
+                selectedTransportSlots += 1;
+                selectedTransportWeight += 100;
+            }
+            //Enable the player to check the Alpaca bonus
+            if(selectedRBTN.Text.Equals("Wagon"))
+            {
+                cboxAlpaca.Enabled = true;
+            }
+            else
+            {
+                //Trigger the CheckedChanged for the alpaca to cause it to auto decrement instead of decrementing here
+                cboxAlpaca.Checked = false;
+                cboxAlpaca.Enabled = false;
+            }
+            lblTransportSlots.Text = "Slots : " + selectedTransportSlots;
+            lblTransportWeight.Text = "Weight Capacity : " + selectedTransportWeight;
+        }
 
         private void btnCompute_Click(object sender, EventArgs e)
         {
