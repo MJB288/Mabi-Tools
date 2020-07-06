@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.Button btnDucats;
             this.clboxGoods = new System.Windows.Forms.CheckedListBox();
             this.lblTest = new System.Windows.Forms.Label();
             this.lblGoods = new System.Windows.Forms.Label();
@@ -65,6 +66,9 @@
             this.lblTransportSlots = new System.Windows.Forms.Label();
             this.lblItemSlots = new System.Windows.Forms.Label();
             this.lblTransportWeight = new System.Windows.Forms.Label();
+            this.lblFilter = new System.Windows.Forms.Label();
+            this.btnNetProfit = new System.Windows.Forms.Button();
+            btnDucats = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // clboxGoods
@@ -86,7 +90,7 @@
             // lblTest
             // 
             this.lblTest.AutoSize = true;
-            this.lblTest.Location = new System.Drawing.Point(648, 169);
+            this.lblTest.Location = new System.Drawing.Point(447, 392);
             this.lblTest.Name = "lblTest";
             this.lblTest.Size = new System.Drawing.Size(57, 13);
             this.lblTest.TabIndex = 1;
@@ -138,7 +142,7 @@
             this.lboxResults.FormattingEnabled = true;
             this.lboxResults.Items.AddRange(new object[] {
             "Nothing"});
-            this.lboxResults.Location = new System.Drawing.Point(617, 246);
+            this.lboxResults.Location = new System.Drawing.Point(621, 246);
             this.lboxResults.Name = "lboxResults";
             this.lboxResults.Size = new System.Drawing.Size(120, 121);
             this.lboxResults.TabIndex = 5;
@@ -148,7 +152,7 @@
             this.lblResults.AutoSize = true;
             this.lblResults.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblResults.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResults.Location = new System.Drawing.Point(650, 221);
+            this.lblResults.Location = new System.Drawing.Point(654, 221);
             this.lblResults.Name = "lblResults";
             this.lblResults.Size = new System.Drawing.Size(55, 22);
             this.lblResults.TabIndex = 6;
@@ -420,11 +424,43 @@
             this.lblTransportWeight.TabIndex = 41;
             this.lblTransportWeight.Text = "Weight Capacity : ";
             // 
+            // lblFilter
+            // 
+            this.lblFilter.AutoSize = true;
+            this.lblFilter.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFilter.Location = new System.Drawing.Point(646, 145);
+            this.lblFilter.Name = "lblFilter";
+            this.lblFilter.Size = new System.Drawing.Size(70, 19);
+            this.lblFilter.TabIndex = 42;
+            this.lblFilter.Text = "Filter by:";
+            // 
+            // btnNetProfit
+            // 
+            this.btnNetProfit.Location = new System.Drawing.Point(590, 186);
+            this.btnNetProfit.Name = "btnNetProfit";
+            this.btnNetProfit.Size = new System.Drawing.Size(75, 23);
+            this.btnNetProfit.TabIndex = 43;
+            this.btnNetProfit.Text = "Net Profit";
+            this.btnNetProfit.UseVisualStyleBackColor = true;
+            // 
+            // btnDucats
+            // 
+            btnDucats.Enabled = false;
+            btnDucats.Location = new System.Drawing.Point(704, 186);
+            btnDucats.Name = "btnDucats";
+            btnDucats.Size = new System.Drawing.Size(75, 23);
+            btnDucats.TabIndex = 44;
+            btnDucats.Text = "Ducats/min";
+            btnDucats.UseVisualStyleBackColor = true;
+            // 
             // frmCommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(830, 449);
+            this.Controls.Add(btnDucats);
+            this.Controls.Add(this.btnNetProfit);
+            this.Controls.Add(this.lblFilter);
             this.Controls.Add(this.lblTransportWeight);
             this.Controls.Add(this.lblItemSlots);
             this.Controls.Add(this.lblTransportSlots);
@@ -509,5 +545,7 @@
         private System.Windows.Forms.Label lblTransportSlots;
         private System.Windows.Forms.Label lblItemSlots;
         private System.Windows.Forms.Label lblTransportWeight;
+        private System.Windows.Forms.Label lblFilter;
+        private System.Windows.Forms.Button btnNetProfit;
     }
 }

@@ -24,7 +24,10 @@ namespace Mabi_Tools
         private int selectedTransportWeight = 0, selectedTransportSlots = 0;
         private Dictionary<String, City> CityData;
         private Dictionary<String, Transport> TransportData;
+        //Keeping this in global memory for filter purposes
+        private Dictionary<String, int> EndResults;
         private Label[] CityLabels;
+        private TextBox[] CityTextboxes;
         public frmCommerce()
         {
             InitializeComponent();
@@ -41,8 +44,11 @@ namespace Mabi_Tools
             this.populateCityCheckListBox(clboxCities, CityData);
 
             Label[] testLabels = { lblTown0, lblTown1, lblTown2, lblTown3, lblTown4, lblTown5, lblTown6, lblTown7, lblTown8, lblTown9 };
+            TextBox[] textBoxes = { txtTown0, txtTown1, txtTown2, txtTown3, txtTown4, txtTown5, txtTown6, txtTown7, txtTown8, txtTown9 };
             CityLabels = testLabels;
+            CityTextboxes = textBoxes;
             testLabels = null;
+            textBoxes = null;
 
             //Similarly, with the transport Mounts
             this.loadTransportData("Transport.txt");
@@ -344,7 +350,40 @@ namespace Mabi_Tools
 
         private void btnCompute_Click(object sender, EventArgs e)
         {
-           
+            EndResults = new Dictionary<string, int>();
+            lboxResults.Items.Clear();
+            //For now - we will assume the player is transporting one good at a time. Later, I will add functioanlity for mixing and matching if necessary
+            int numGoods = 0;
+            //Calculate the total number of goods
+            //First - assume we can fill the toal number of slots
+            int ongoingWeight = selectedGoodWeight * selectedGoodSlots * selectedTransportSlots;
+            //Now check if we're over the weight limit - if yes then reduce the number of goods
+            if(ongoingWeight > selectedTransportWeight)
+            {
+                numGoods = selectedTransportWeight / selectedGoodWeight;
+            }
+            else
+            {
+                numGoods = selectedGoodSlots * selectedTransportSlots;
+            }
+
+            //Loop Through all of the text boxes
+            for(int i = 0; i < CityData.Count; i++)
+            {
+                try
+                {
+                    EndResults[CityLabels[i].Text] = (Int32.Parse(CityTextboxes[i].Text) * numGoods);
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Format Error - Could not parse Integer from price in '" + CityLabels[i].Text + "'", "Error");
+                    EndResults[CityLabels[i].Text] = 0;
+                }
+            }
+            foreach(KeyValuePair<String, int> townPrice in EndResults.OrderByDescending(key => key.Value))
+            {
+                lboxResults.Items.Add(townPrice.Key + " " + townPrice.Value);
+            }
         }
     }
 }
