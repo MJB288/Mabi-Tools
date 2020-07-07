@@ -68,8 +68,25 @@
             this.lblTransportWeight = new System.Windows.Forms.Label();
             this.lblFilter = new System.Windows.Forms.Label();
             this.btnNetProfit = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tsmmFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmmTools = new System.Windows.Forms.ToolStripMenuItem();
+            this.editCityDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timeTrackerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             btnDucats = new System.Windows.Forms.Button();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btnDucats
+            // 
+            btnDucats.Enabled = false;
+            btnDucats.Location = new System.Drawing.Point(704, 186);
+            btnDucats.Name = "btnDucats";
+            btnDucats.Size = new System.Drawing.Size(75, 23);
+            btnDucats.TabIndex = 44;
+            btnDucats.Text = "Ducats/min";
+            btnDucats.UseVisualStyleBackColor = true;
             // 
             // clboxGoods
             // 
@@ -443,15 +460,52 @@
             this.btnNetProfit.Text = "Net Profit";
             this.btnNetProfit.UseVisualStyleBackColor = true;
             // 
-            // btnDucats
+            // menuStrip1
             // 
-            btnDucats.Enabled = false;
-            btnDucats.Location = new System.Drawing.Point(704, 186);
-            btnDucats.Name = "btnDucats";
-            btnDucats.Size = new System.Drawing.Size(75, 23);
-            btnDucats.TabIndex = 44;
-            btnDucats.Text = "Ducats/min";
-            btnDucats.UseVisualStyleBackColor = true;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmmFile,
+            this.tsmmTools});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(830, 24);
+            this.menuStrip1.TabIndex = 45;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // tsmmFile
+            // 
+            this.tsmmFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiExit});
+            this.tsmmFile.Name = "tsmmFile";
+            this.tsmmFile.Size = new System.Drawing.Size(37, 20);
+            this.tsmmFile.Text = "File";
+            // 
+            // tsmiExit
+            // 
+            this.tsmiExit.Name = "tsmiExit";
+            this.tsmiExit.Size = new System.Drawing.Size(180, 22);
+            this.tsmiExit.Text = "Exit";
+            this.tsmiExit.Click += new System.EventHandler(this.tsmExit_Click);
+            // 
+            // tsmmTools
+            // 
+            this.tsmmTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editCityDataToolStripMenuItem,
+            this.timeTrackerToolStripMenuItem});
+            this.tsmmTools.Name = "tsmmTools";
+            this.tsmmTools.Size = new System.Drawing.Size(47, 20);
+            this.tsmmTools.Text = "Tools";
+            // 
+            // editCityDataToolStripMenuItem
+            // 
+            this.editCityDataToolStripMenuItem.Name = "editCityDataToolStripMenuItem";
+            this.editCityDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editCityDataToolStripMenuItem.Text = "Edit City Data";
+            // 
+            // timeTrackerToolStripMenuItem
+            // 
+            this.timeTrackerToolStripMenuItem.Name = "timeTrackerToolStripMenuItem";
+            this.timeTrackerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.timeTrackerToolStripMenuItem.Text = "Time Tracker";
             // 
             // frmCommerce
             // 
@@ -498,9 +552,13 @@
             this.Controls.Add(this.lblGoods);
             this.Controls.Add(this.lblTest);
             this.Controls.Add(this.clboxGoods);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmCommerce";
             this.Text = "Commerce Calculator";
             this.Load += new System.EventHandler(this.frmCommerce_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -547,5 +605,11 @@
         private System.Windows.Forms.Label lblTransportWeight;
         private System.Windows.Forms.Label lblFilter;
         private System.Windows.Forms.Button btnNetProfit;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsmmFile;
+        private System.Windows.Forms.ToolStripMenuItem tsmiExit;
+        private System.Windows.Forms.ToolStripMenuItem tsmmTools;
+        private System.Windows.Forms.ToolStripMenuItem editCityDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem timeTrackerToolStripMenuItem;
     }
 }

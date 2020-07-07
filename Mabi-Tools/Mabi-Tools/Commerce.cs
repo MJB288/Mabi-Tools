@@ -302,6 +302,11 @@ namespace Mabi_Tools
             lblTransportWeight.Text = "Weight Capacity : " + selectedTransportWeight;
         }
 
+        private void tsmExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void cboxAlpaca_CheckedChanged(object sender, EventArgs e)
         {
             if (cboxAlpaca.Checked)
