@@ -248,9 +248,10 @@ namespace Mabi_Tools
                 {
                     //Separate the individual good strings and process
                     String [] goodStrings = s.Split(MAIN_TEXT_SEPARATOR);
-                    Good[] cityGoods = convertStringArrayToGoods(goodStrings);
+                    List<Good> cityGoods = convertStringArrayToGoods(goodStrings);
                     //Now add the data to the Dictionary
                     CityData[goodStrings[0]] = new City(goodStrings[0], cityGoods);
+                    cityGoods = null;
                 }
             }
             catch (FileNotFoundException ex)
@@ -260,10 +261,10 @@ namespace Mabi_Tools
             }
         }
 
-        private Good[] convertStringArrayToGoods(String[] input)
+        private List<Good> convertStringArrayToGoods(String[] input)
         {
-            //Currently, I am operating under the assumption the first item in the string array is the city name - therefore I will skip over it
-            Good[] returnArray = new Good[input.Length - 1]; 
+            //Currently, I am operating under the assumption the first item in the input string array is the city name - therefore I will skip over it
+            List<Good> returnList = new List<Good>();
             for(int i = 1; i < input.Length; i++)
             {
                 //Split the strings further
@@ -271,14 +272,14 @@ namespace Mabi_Tools
                 try
                 {
                     //Add the new good to the array
-                    returnArray[i - 1] = new Good(goodSplit[0], Int32.Parse(goodSplit[1]), Int32.Parse(goodSplit[2]));
+                    returnList.Add(new Good(goodSplit[0], Int32.Parse(goodSplit[1]), Int32.Parse(goodSplit[2])));
                 }
                 catch(FormatException ex)
                 {
                     MessageBox.Show("Error Processing Data For City '" + input[0] + " and Good '" + goodSplit[0] + "' : \n" + ex.Message, "Format Error");
                 }
             }
-            return returnArray;
+            return returnList;
         }
 
         private void cboxCommerce_CheckedChanged(object sender, EventArgs e)
@@ -305,6 +306,13 @@ namespace Mabi_Tools
         private void tsmExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void editCityDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCommerceCityEditor cityEditor = new frmCommerceCityEditor();
+            //This time we want the player to make a definitive choice on editing the data before they return to frmCommerce
+            cityEditor.ShowDialog();
         }
 
         private void cboxAlpaca_CheckedChanged(object sender, EventArgs e)

@@ -3,6 +3,7 @@
  *  I don't think I need the mutators in the production code of the Commerce Tool, but to maintain personal consistency I put them in anyway
  */
 using System;
+using System.Collections.Generic;
 
 
 
@@ -58,13 +59,19 @@ namespace Mabi_Tools
     public class City
     {
         private String name;
-        private Good[] goods;
+        private List<Good> goods;
         
-        public City(String name, Good[]goods)
+        public City(String name, List<Good> goods)
         {
-            this.goods = new Good[goods.Length];
+            this.goods = goods;
             this.name = name;
-            goods.CopyTo(this.goods,0);
+        }
+
+        //This constructor is for the city editor tool
+        public City(String name)
+        {
+            this.name = name;
+            goods = new List<Good>();
         }
 
         //Accessors
@@ -74,7 +81,7 @@ namespace Mabi_Tools
             return name;
         }
 
-        public Good[] getGoods()
+        public List<Good> getGoods()
         {
             return goods;
         }
@@ -87,9 +94,19 @@ namespace Mabi_Tools
         }
 
         //Assumes array is of same length or less
-        public void setGoods(Good[] newGoods)
+        public void setGoods(List<Good> newGoods)
         {
-            newGoods.CopyTo(goods, 0);
+            goods = newGoods;
+        }
+
+        public void addGood(Good newGood)
+        {
+            goods.Add(newGood);
+        }
+
+        public void deleteGood(int delIndex)
+        {
+            goods.RemoveAt(delIndex);
         }
 
         public void setSpecificGood(Good newGood, int index)

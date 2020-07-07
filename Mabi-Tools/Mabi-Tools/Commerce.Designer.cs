@@ -500,6 +500,7 @@
             this.editCityDataToolStripMenuItem.Name = "editCityDataToolStripMenuItem";
             this.editCityDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editCityDataToolStripMenuItem.Text = "Edit City Data";
+            this.editCityDataToolStripMenuItem.Click += new System.EventHandler(this.editCityDataToolStripMenuItem_Click);
             // 
             // timeTrackerToolStripMenuItem
             // 
