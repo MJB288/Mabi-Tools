@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.clboxCities = new System.Windows.Forms.CheckedListBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lboxGoods = new System.Windows.Forms.ListBox();
             this.lblWeight = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblCities = new System.Windows.Forms.Label();
@@ -45,11 +45,13 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // clboxCities
             // 
+            this.clboxCities.CheckOnClick = true;
             this.clboxCities.FormattingEnabled = true;
             this.clboxCities.Items.AddRange(new object[] {
             "Town1",
@@ -58,15 +60,18 @@
             this.clboxCities.Name = "clboxCities";
             this.clboxCities.Size = new System.Drawing.Size(119, 124);
             this.clboxCities.TabIndex = 0;
-            this.clboxCities.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
+            this.clboxCities.SelectedIndexChanged += new System.EventHandler(this.clboxCities_SelectedIndexChanged);
             // 
-            // listBox1
+            // lboxGoods
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(87, 247);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 95);
-            this.listBox1.TabIndex = 1;
+            this.lboxGoods.FormattingEnabled = true;
+            this.lboxGoods.Items.AddRange(new object[] {
+            "Good1",
+            "Good2"});
+            this.lboxGoods.Location = new System.Drawing.Point(87, 247);
+            this.lboxGoods.Name = "lboxGoods";
+            this.lboxGoods.Size = new System.Drawing.Size(120, 108);
+            this.lboxGoods.TabIndex = 1;
             // 
             // lblWeight
             // 
@@ -100,7 +105,7 @@
             // 
             // btnAddCity
             // 
-            this.btnAddCity.Location = new System.Drawing.Point(396, 157);
+            this.btnAddCity.Location = new System.Drawing.Point(361, 168);
             this.btnAddCity.Name = "btnAddCity";
             this.btnAddCity.Size = new System.Drawing.Size(89, 23);
             this.btnAddCity.TabIndex = 5;
@@ -143,7 +148,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(373, 120);
+            this.label2.Location = new System.Drawing.Point(359, 131);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 20);
             this.label2.TabIndex = 11;
@@ -151,14 +156,14 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(518, 122);
+            this.textBox3.Location = new System.Drawing.Point(504, 133);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 12;
             // 
             // btnEditCity
             // 
-            this.btnEditCity.Location = new System.Drawing.Point(518, 157);
+            this.btnEditCity.Location = new System.Drawing.Point(504, 168);
             this.btnEditCity.Name = "btnEditCity";
             this.btnEditCity.Size = new System.Drawing.Size(89, 23);
             this.btnEditCity.TabIndex = 13;
@@ -200,21 +205,32 @@
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 17;
             // 
-            // button1
+            // btnSave
             // 
-            this.button1.Location = new System.Drawing.Point(375, 397);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(284, 397);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(84, 41);
+            this.btnSave.TabIndex = 18;
+            this.btnSave.Text = "Save and Apply";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(389, 397);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(84, 41);
+            this.btnCancel.TabIndex = 19;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmCommerceCityEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button4);
@@ -230,10 +246,11 @@
             this.Controls.Add(this.lblCities);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblWeight);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.lboxGoods);
             this.Controls.Add(this.clboxCities);
             this.Name = "frmCommerceCityEditor";
             this.Text = "Commerce_City_Editor";
+            this.Load += new System.EventHandler(this.frmCommerceCityEditor_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,7 +259,7 @@
         #endregion
 
         private System.Windows.Forms.CheckedListBox clboxCities;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox lboxGoods;
         private System.Windows.Forms.Label lblWeight;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblCities;
@@ -258,6 +275,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

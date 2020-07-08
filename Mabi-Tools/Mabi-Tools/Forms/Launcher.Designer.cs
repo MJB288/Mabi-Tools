@@ -31,6 +31,7 @@
             this.btnCommerce = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.lblCommerceVersion = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCommerce
@@ -60,13 +61,23 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(37, 13);
             this.lblVersion.TabIndex = 2;
-            this.lblVersion.Text = "v0.0.3";
+            this.lblVersion.Text = "v0.0.5";
+            // 
+            // lblCommerceVersion
+            // 
+            this.lblCommerceVersion.AutoSize = true;
+            this.lblCommerceVersion.Location = new System.Drawing.Point(202, 29);
+            this.lblCommerceVersion.Name = "lblCommerceVersion";
+            this.lblCommerceVersion.Size = new System.Drawing.Size(28, 13);
+            this.lblCommerceVersion.TabIndex = 3;
+            this.lblCommerceVersion.Text = "v0.5";
             // 
             // MainLauncher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(261, 319);
+            this.Controls.Add(this.lblCommerceVersion);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCommerce);
@@ -82,6 +93,7 @@
         private System.Windows.Forms.Button btnCommerce;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.Label lblCommerceVersion;
     }
 }
 

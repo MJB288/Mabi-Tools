@@ -40,8 +40,20 @@ namespace Mabi_Tools
             //First Load the Cities
             //While it is extremely unlikely that they'll add another city or trade post to the game
             //I decided to add dynamic loading into the mix to allow for more flexiility in the event it happens anyway
-            this.loadCommerceData("Cities.txt");
-            this.populateCityCheckListBox(clboxCities, CityData);
+            //TODO- Move from loading from a text file to other forms of storage
+            //this.loadCommerceData("Cities.txt");
+            try
+            {
+                CityData = CommerceDataLoader.loadCommerceDataText("Cities.txt");
+            }
+            catch(FileNotFoundException ex)
+            {
+                MessageBox.Show("Error while loading City data : \n" + ex.Message, "Error");
+                //We can't proceed without city data - close
+                this.Close();
+            }
+            
+            UIHelper.populateCityCheckListBox(clboxCities, CityData);
 
             Label[] testLabels = { lblTown0, lblTown1, lblTown2, lblTown3, lblTown4, lblTown5, lblTown6, lblTown7, lblTown8, lblTown9 };
             TextBox[] textBoxes = { txtTown0, txtTown1, txtTown2, txtTown3, txtTown4, txtTown5, txtTown6, txtTown7, txtTown8, txtTown9 };
@@ -51,8 +63,17 @@ namespace Mabi_Tools
             textBoxes = null;
 
             //Similarly, with the transport Mounts
-            this.loadTransportData("Transport.txt");
-            this.generateRadioButtons(flpTransport, TransportData);
+            try
+            {
+                TransportData = CommerceDataLoader.loadTransportDataText("Transport.txt");
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show("Error while loading Transport Data : \n" + ex.Message, "Error");
+                this.Close();
+            }
+
+            UIHelper.generateRadioButtons(flpTransport, TransportData, this);
 
             //Adjust Visibility based on the amount of towns detected.
             this.adjustTextBoxesVisibilityCommerce();
@@ -62,7 +83,7 @@ namespace Mabi_Tools
             
             clboxCities.SetItemChecked(this.clboxprevSelectedT, true);
             clboxCities.SelectedItem = clboxCities.Items[clboxprevSelectedG];
-            populateGoodCheckListBox(clboxGoods, CityData[CityData.Keys.ToList()[this.clboxprevSelectedT]]);
+            UIHelper.populateGoodCheckListBox(clboxGoods, CityData[CityData.Keys.ToList()[this.clboxprevSelectedT]], clboxprevSelectedG);
             
             //Check off the first one for now.
             flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
@@ -71,11 +92,11 @@ namespace Mabi_Tools
 
         private void clboxGoods_SelectedIndexChanged(object sender, EventArgs e)
         {
-            clboxprevSelectedG = makeListBoxExclusitivity(clboxGoods, clboxprevSelectedG);
+            clboxprevSelectedG = UIHelper.makeListBoxExclusitivity(clboxGoods, clboxprevSelectedG);
             lblTest.Text = clboxGoods.SelectedItem.ToString();
             //Now pull up the Weight And Slot statistics
-            selectedGoodSlots = CityData[clboxCities.SelectedItem.ToString()].getGoods()[clboxprevSelectedG].getSlotCapacity();
-            selectedGoodWeight = CityData[clboxCities.SelectedItem.ToString()].getGoods()[clboxprevSelectedG].getWeight();
+            selectedGoodSlots = CityData[clboxCities.SelectedItem.ToString()].goods[clboxprevSelectedG].slotCapacity;
+            selectedGoodWeight = CityData[clboxCities.SelectedItem.ToString()].goods[clboxprevSelectedG].weight;
             lblItemWeight.Text = "Weight : " + selectedGoodWeight;
             lblItemSlots.Text = "Slot Capacity : " + selectedGoodSlots;
         }
@@ -84,74 +105,25 @@ namespace Mabi_Tools
         {
             //Adjust as necessary 
             adjustLabelsCities(clboxprevSelectedT, clboxCities.SelectedIndex);
-            clboxprevSelectedT = makeListBoxExclusitivity(clboxCities, clboxprevSelectedT);
+            clboxprevSelectedT = UIHelper.makeListBoxExclusitivity(clboxCities, clboxprevSelectedT);
             lblTest.Text = clboxCities.SelectedItem.ToString();
             //Now adjust the Goods Box based off of the currently selected city
-            populateGoodCheckListBox(clboxGoods, CityData[clboxCities.SelectedItem.ToString()]);
+            UIHelper.populateGoodCheckListBox(clboxGoods, CityData[clboxCities.SelectedItem.ToString()], clboxprevSelectedG);
 
         }
 
         //Form Adjustment Methods
         //----------------------------------------------------------------------------------------------------------
         //Let's turn this into a method for reusability
-        private static int makeListBoxExclusitivity(CheckedListBox clistbox, int prevSelected)
-        {
-            //One item must always be selected. Re-check the box if it was the one selected.
-            //Programmer Notes - if you click fast enough - the user can bypass this protection. The threshold of clicks per second is real low so easy to do accidentally.
-            //Current Idea is auto-reselect using clboxprevSelect when the user hits "Compute"
-            if (clistbox.SelectedIndex == prevSelected)
-            {
-                clistbox.SetItemChecked(prevSelected, true);
-                return prevSelected;
-            }
-            else //Otherwise the user selected another checkbox - uncheck the previous
-            {
-                clistbox.SetItemChecked(prevSelected, false);
-                //Now remember what the new index is
-                //this.clboxprevSelected = clboxGoods.SelectedIndex;
-                return clistbox.SelectedIndex;
-            }
-        }
+       
 
-        private void populateCityCheckListBox(CheckedListBox checkbox, Dictionary<String, City> data)
-        {
-            checkbox.Items.Clear();
-            checkbox.Items.AddRange(data.Keys.ToArray());
-        }
+        
         //There are some subtle changes in this method which is why I'm not reusing the one above this
-        private void populateGoodCheckListBox(CheckedListBox checkbox, City city)
-        {
-            checkbox.Items.Clear();
-            foreach(Good good in city.getGoods())
-            {
-                checkbox.Items.Add(good.getName());
-            }
-            //Since we just cleared all items, we must recheck the last one the user selected
-            checkbox.SetItemChecked(clboxprevSelectedG, true);
-            checkbox.SelectedItem = checkbox.Items[clboxprevSelectedG];
-        }
+        
 
        
 
-        private void generateRadioButtons(FlowLayoutPanel flow, Dictionary<String, Transport> data)
-        {
-            int i = 1, rbtnHeight = 0;
-            //Dynamically create radio buttons for each type of transport
-            foreach(Transport t in data.Values)
-            {
-                //RadioButton temp = new RadioButton { Text = t.getName() + "\nSlots - " + t.getSlots() + "     Weight Capacity - " + t.getWeight(), Name = "rbtnTransport" + i };
-                RadioButton temp = new RadioButton { Text = t.getName(), Name = "rbtnTransport" + i };
-                temp.AutoSize = false;
-                temp.Width = flow.Width-5;
-                //temp.Height = (int) (temp.Height  * 1.5);
-                temp.CheckedChanged += (this.rbtnTransport_CheckedChanged);
-                flow.Controls.Add(temp);
-                i++;
-                rbtnHeight = temp.Height;
-            }
-            //Trim the Height of the Flow Panel to remove whitespace
-            flow.Height = (int) (flow.Controls.OfType<RadioButton>().Count() * rbtnHeight * 1.3);
-        }
+        
 
         //Since this will be implementation specific - just use the form variables
         private void adjustTextBoxesVisibilityCommerce()
@@ -237,50 +209,6 @@ namespace Mabi_Tools
             }
              
         }
-        private void loadCommerceData(String citiesFile)
-        {
-            CityData = new Dictionary<string, City>();
-            try
-            {
-                //CityNames = File.ReadAllLines(citiesFile).ToList();
-                String [] rawData = File.ReadAllLines(citiesFile);
-                foreach(String s in rawData)
-                {
-                    //Separate the individual good strings and process
-                    String [] goodStrings = s.Split(MAIN_TEXT_SEPARATOR);
-                    List<Good> cityGoods = convertStringArrayToGoods(goodStrings);
-                    //Now add the data to the Dictionary
-                    CityData[goodStrings[0]] = new City(goodStrings[0], cityGoods);
-                    cityGoods = null;
-                }
-            }
-            catch (FileNotFoundException ex)
-            {
-                MessageBox.Show("Error while loading City data : \n" + ex.Message, "Error");
-                this.Close();
-            }
-        }
-
-        private List<Good> convertStringArrayToGoods(String[] input)
-        {
-            //Currently, I am operating under the assumption the first item in the input string array is the city name - therefore I will skip over it
-            List<Good> returnList = new List<Good>();
-            for(int i = 1; i < input.Length; i++)
-            {
-                //Split the strings further
-                String[] goodSplit = input[i].Split(SECONDARY_TEXT_SEPARATOR);
-                try
-                {
-                    //Add the new good to the array
-                    returnList.Add(new Good(goodSplit[0], Int32.Parse(goodSplit[1]), Int32.Parse(goodSplit[2])));
-                }
-                catch(FormatException ex)
-                {
-                    MessageBox.Show("Error Processing Data For City '" + input[0] + " and Good '" + goodSplit[0] + "' : \n" + ex.Message, "Format Error");
-                }
-            }
-            return returnList;
-        }
 
         private void cboxCommerce_CheckedChanged(object sender, EventArgs e)
         {
@@ -310,7 +238,7 @@ namespace Mabi_Tools
 
         private void editCityDataToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCommerceCityEditor cityEditor = new frmCommerceCityEditor();
+            frmCommerceCityEditor cityEditor = new frmCommerceCityEditor(CityData, this);
             //This time we want the player to make a definitive choice on editing the data before they return to frmCommerce
             cityEditor.ShowDialog();
         }
@@ -333,12 +261,12 @@ namespace Mabi_Tools
             lblTransportWeight.Text = "Weight Capacity : " + selectedTransportWeight;
         }
 
-        private void rbtnTransport_CheckedChanged(object sender, EventArgs e)
+        public void rbtnTransport_CheckedChanged(object sender, EventArgs e)
         {
             //The RadioButton Text should be exactly the same as the indexes used in the Dictionary. An alternative would be using the number found at the end of each radiobutton name
             RadioButton selectedRBTN = flpTransport.Controls.OfType<RadioButton>().FirstOrDefault(rbtn => rbtn.Checked);
-            selectedTransportSlots = TransportData[selectedRBTN.Text].getSlots();
-            selectedTransportWeight = TransportData[selectedRBTN.Text].getWeight();
+            selectedTransportSlots = TransportData[selectedRBTN.Text].slots;
+            selectedTransportWeight = TransportData[selectedRBTN.Text].weight;
            
             //If the player has a commerce partner - they get a small boost to weight capacity and slots
             if (cboxCommerce.Checked)
