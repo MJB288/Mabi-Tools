@@ -45,6 +45,11 @@ namespace Mabi_Tools
             {
                 checkbox.Items.Add(good.name);
             }
+            //Since we can create new cities that do not have any goods - we need to add a check - this is for the commerce city editor
+            if (checkbox.Items.Count == 0)
+            {
+                return;
+            }
             //Since we just cleared all items, we must recheck the last one the user selected
             checkbox.SetItemChecked(prevSelected, true);
             checkbox.SelectedItem = checkbox.Items[prevSelected];
@@ -74,6 +79,29 @@ namespace Mabi_Tools
         {
             label.Visible = false;
             txtbox.Visible = false;
+        }
+
+        //A small function to delay without locking the UI with Thread.Sleep()
+        public static void Delay(int milliseconds)
+        {
+            Timer delayTimer = new Timer();
+            if (milliseconds == 0 || milliseconds < 0) return;
+
+            delayTimer.Interval = milliseconds;
+            delayTimer.Enabled = true;
+            delayTimer.Start();
+
+            delayTimer.Tick += (s, e) =>
+            {
+                delayTimer.Enabled = false;
+                delayTimer.Stop();
+                // Console.WriteLine("stop wait timer");
+            };
+
+            while (delayTimer.Enabled)
+            {
+                Application.DoEvents();
+            }
         }
     }
 }

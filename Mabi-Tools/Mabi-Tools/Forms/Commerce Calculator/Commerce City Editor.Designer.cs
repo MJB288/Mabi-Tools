@@ -174,6 +174,7 @@
             this.btnAddGood.TabIndex = 14;
             this.btnAddGood.Text = "Add";
             this.btnAddGood.UseVisualStyleBackColor = true;
+            this.btnAddGood.Click += new System.EventHandler(this.btnAddGood_Click);
             // 
             // btnEditGood
             // 

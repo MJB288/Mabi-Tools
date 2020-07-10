@@ -122,13 +122,10 @@ namespace Mabi_Tools
         {
             //Since I left room for a couple Extra cities - adjust visibility based on the amount of detected cities
             //Needs to be adjusted for more flexibility and more reusability friendly
-            if(10 - CityData.Count > 0)
+            for(int i = 9; i >= CityData.Count; i--)
             {
-                UIHelper.labelTextBoxInvisible(lblTown9, txtTown9);
-                if (10 - CityData.Count > 1)
-                {
-                    UIHelper.labelTextBoxInvisible(lblTown8, txtTown8);
-                }
+                CityLabels[i].Visible = false;
+                CityTextboxes[i].Visible = false;
             }
         }
 
