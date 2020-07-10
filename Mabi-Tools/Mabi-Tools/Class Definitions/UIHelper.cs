@@ -12,6 +12,14 @@ namespace Mabi_Tools
             //One item must always be selected. Re-check the box if it was the one selected.
             //Programmer Notes - if you click fast enough - the user can bypass this protection. The threshold of clicks per second is real low so easy to do accidentally.
             //Current Idea is auto-reselect using clboxprevSelect when the user hits "Compute"
+            
+            if(prevSelected == -1)
+            {
+                if(clistbox.Items.Count != 0)
+                {
+                    prevSelected = 0;
+                }
+            }
             if (clistbox.SelectedIndex == prevSelected)
             {
                 clistbox.SetItemChecked(prevSelected, true);

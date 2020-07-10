@@ -465,7 +465,7 @@
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(180, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(92, 22);
             this.tsmiExit.Text = "Exit";
             this.tsmiExit.Click += new System.EventHandler(this.tsmExit_Click);
             // 
@@ -481,14 +481,14 @@
             // editCityDataToolStripMenuItem
             // 
             this.editCityDataToolStripMenuItem.Name = "editCityDataToolStripMenuItem";
-            this.editCityDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editCityDataToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.editCityDataToolStripMenuItem.Text = "Edit City Data";
             this.editCityDataToolStripMenuItem.Click += new System.EventHandler(this.editCityDataToolStripMenuItem_Click);
             // 
             // timeTrackerToolStripMenuItem
             // 
             this.timeTrackerToolStripMenuItem.Name = "timeTrackerToolStripMenuItem";
-            this.timeTrackerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.timeTrackerToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.timeTrackerToolStripMenuItem.Text = "Time Tracker";
             // 
             // btnDucats
@@ -510,7 +510,7 @@
             this.lviewResults.HideSelection = false;
             this.lviewResults.Location = new System.Drawing.Point(590, 249);
             this.lviewResults.Name = "lviewResults";
-            this.lviewResults.Size = new System.Drawing.Size(192, 142);
+            this.lviewResults.Size = new System.Drawing.Size(192, 169);
             this.lviewResults.TabIndex = 46;
             this.lviewResults.UseCompatibleStateImageBehavior = false;
             this.lviewResults.View = System.Windows.Forms.View.Details;

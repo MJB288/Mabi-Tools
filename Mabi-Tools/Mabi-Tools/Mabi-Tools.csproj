@@ -47,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class Definitions\UIHelper.cs" />
-    <Compile Include="Class Definitions\CommerceDataLoader.cs" />
+    <Compile Include="Class Definitions\CommerceDataHandler.cs" />
     <Compile Include="Forms\Commerce Calculator\Commerce City Editor.cs">
       <SubType>Form</SubType>
     </Compile>

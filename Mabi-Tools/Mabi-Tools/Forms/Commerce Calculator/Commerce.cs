@@ -86,9 +86,7 @@ namespace Mabi_Tools
             
             //Check off the first one for now.
             flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
-            String[] arr = new string[3];
-            arr[0] = "1";
-            arr[1] = "2";
+            String[] arr = { "1", "2" };
             ListViewItem lItem = new ListViewItem(arr);
             lviewResults.Items.Add(lItem);
             
@@ -170,7 +168,7 @@ namespace Mabi_Tools
             //Increment if checked - Decrement if not Checked
             if (cboxCommerce.Checked) 
             { 
-                //The alpaca bonus cannot stack with the commerce bonus.
+                //The alpaca bonus cannot stack with the commerce partner bonus.
                 cboxAlpaca.Checked = false;
                 SelectedTransportSlots += 1;
                 SelectedTransportWeight += 100;
