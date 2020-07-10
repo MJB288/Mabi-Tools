@@ -34,7 +34,7 @@
             this.lblCities = new System.Windows.Forms.Label();
             this.btnAddCity = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnDeleteGood = new System.Windows.Forms.Button();
             this.txtGoodWeight = new System.Windows.Forms.TextBox();
             this.txtGoodSlots = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,6 +47,10 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.clboxGoods = new System.Windows.Forms.CheckedListBox();
+            this.btnMoveUpCity = new System.Windows.Forms.Button();
+            this.btnMoveDownCity = new System.Windows.Forms.Button();
+            this.btnMoveUpGood = new System.Windows.Forms.Button();
+            this.btnMoveDownGood = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // clboxCities
@@ -104,21 +108,22 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(225, 122);
+            this.btnDelete.Location = new System.Drawing.Point(225, 100);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // button2
+            // btnDeleteGood
             // 
-            this.button2.Location = new System.Drawing.Point(225, 276);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Delete";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDeleteGood.Location = new System.Drawing.Point(225, 262);
+            this.btnDeleteGood.Name = "btnDeleteGood";
+            this.btnDeleteGood.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteGood.TabIndex = 8;
+            this.btnDeleteGood.Text = "Delete";
+            this.btnDeleteGood.UseVisualStyleBackColor = true;
             // 
             // txtGoodWeight
             // 
@@ -229,11 +234,51 @@
             this.clboxGoods.TabIndex = 20;
             this.clboxGoods.SelectedIndexChanged += new System.EventHandler(this.clboxGoods_SelectedIndexChanged);
             // 
+            // btnMoveUpCity
+            // 
+            this.btnMoveUpCity.Location = new System.Drawing.Point(225, 134);
+            this.btnMoveUpCity.Name = "btnMoveUpCity";
+            this.btnMoveUpCity.Size = new System.Drawing.Size(75, 23);
+            this.btnMoveUpCity.TabIndex = 21;
+            this.btnMoveUpCity.Text = "Move Up";
+            this.btnMoveUpCity.UseVisualStyleBackColor = true;
+            // 
+            // btnMoveDownCity
+            // 
+            this.btnMoveDownCity.Location = new System.Drawing.Point(225, 168);
+            this.btnMoveDownCity.Name = "btnMoveDownCity";
+            this.btnMoveDownCity.Size = new System.Drawing.Size(75, 23);
+            this.btnMoveDownCity.TabIndex = 22;
+            this.btnMoveDownCity.Text = "Move Down";
+            this.btnMoveDownCity.UseVisualStyleBackColor = true;
+            // 
+            // btnMoveUpGood
+            // 
+            this.btnMoveUpGood.Location = new System.Drawing.Point(225, 295);
+            this.btnMoveUpGood.Name = "btnMoveUpGood";
+            this.btnMoveUpGood.Size = new System.Drawing.Size(75, 23);
+            this.btnMoveUpGood.TabIndex = 23;
+            this.btnMoveUpGood.Text = "Move Up";
+            this.btnMoveUpGood.UseVisualStyleBackColor = true;
+            // 
+            // btnMoveDownGood
+            // 
+            this.btnMoveDownGood.Location = new System.Drawing.Point(225, 330);
+            this.btnMoveDownGood.Name = "btnMoveDownGood";
+            this.btnMoveDownGood.Size = new System.Drawing.Size(75, 23);
+            this.btnMoveDownGood.TabIndex = 24;
+            this.btnMoveDownGood.Text = "Move Down";
+            this.btnMoveDownGood.UseVisualStyleBackColor = true;
+            // 
             // frmCommerceCityEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnMoveDownGood);
+            this.Controls.Add(this.btnMoveUpGood);
+            this.Controls.Add(this.btnMoveDownCity);
+            this.Controls.Add(this.btnMoveUpCity);
             this.Controls.Add(this.clboxGoods);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -246,7 +291,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtGoodSlots);
             this.Controls.Add(this.txtGoodWeight);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnDeleteGood);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAddCity);
             this.Controls.Add(this.lblCities);
@@ -269,7 +314,7 @@
         private System.Windows.Forms.Label lblCities;
         private System.Windows.Forms.Button btnAddCity;
         private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnDeleteGood;
         private System.Windows.Forms.TextBox txtGoodWeight;
         private System.Windows.Forms.TextBox txtGoodSlots;
         private System.Windows.Forms.Label label2;
@@ -282,5 +327,9 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.CheckedListBox clboxGoods;
+        private System.Windows.Forms.Button btnMoveUpCity;
+        private System.Windows.Forms.Button btnMoveDownCity;
+        private System.Windows.Forms.Button btnMoveUpGood;
+        private System.Windows.Forms.Button btnMoveDownGood;
     }
 }

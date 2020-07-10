@@ -88,6 +88,24 @@ namespace Mabi_Tools
             File.WriteAllLines(filepath, CityData.Select(kv => kv.Value.ToString()));
         }
 
+        //I need a function that saves in the order of a checklist box - since you can't reorder a dictionary's keys - let the checklist box determine the saving order
+
+        public static void saveCommerceDataCSVOrdered(String filepath, Dictionary<String, City> CityData, CheckedListBox orderList)
+        {
+            //We don't want to keep old data - overwrite the file
+            using (StreamWriter sw = new StreamWriter(filepath, false))
+            { 
+                for (int i = 0; i < orderList.Items.Count; i++)
+                {
+                    if (CityData[orderList.Items[i].ToString()] == null) 
+                    {
+                        continue;
+                    }
+                    sw.WriteLine(CityData[orderList.Items[i].ToString()].ToString());
+                }
+            }
+        }
+
     }
     
 

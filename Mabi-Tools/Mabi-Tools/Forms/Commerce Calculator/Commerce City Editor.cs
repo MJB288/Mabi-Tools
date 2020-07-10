@@ -44,6 +44,7 @@ namespace Mabi_Tools
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            //Don't save anything - close the window
             this.Close();
         }
 
@@ -51,6 +52,7 @@ namespace Mabi_Tools
         {
             ClboxPrevSelectedG = UIHelper.makeListBoxExclusitivity(clboxGoods, ClboxPrevSelectedG);
             Good selectedGood = CityData[clboxCities.SelectedItem.ToString()].goods[ClboxPrevSelectedG];
+            //Display the data in the text boxes for editing
             txtGoodName.Text = selectedGood.name;
             txtGoodSlots.Text = selectedGood.slotCapacity.ToString();
             txtGoodWeight.Text = selectedGood.weight.ToString();
@@ -58,7 +60,22 @@ namespace Mabi_Tools
 
         private void btnEditCity_Click(object sender, EventArgs e)
         {
+            //First - check that the new name doesn't exist in the current momemnt. We can afford to loop through all of them since the number of cities will stay a really small number
+            foreach(var item in clboxCities.Items)
+            {
+                if (item.ToString().Equals(txtCityName.Text))
+                {
+                    MessageBox.Show("City name '" + txtCityName.Text + "' already exists!", "Existence Error");
+                    return;
+                }
+            }
+
+            //First - move the old city data to the new name;
             CityData[txtCityName.Text] = CityData[clboxCities.SelectedItem.ToString()];
+            //Now rename the city object
+            CityData[txtCityName.Text].name = txtCityName.Text;
+            
+            
             CityData[clboxCities.SelectedItem.ToString()] = null;
 
             clboxCities.Items.Insert(ClboxPrevSelectedC, txtCityName.Text);
@@ -68,6 +85,11 @@ namespace Mabi_Tools
             ClboxPrevSelectedC = 0;
             clboxCities.SetItemChecked(0, true);
             
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnAddCity_Click(object sender, EventArgs e)
@@ -80,11 +102,12 @@ namespace Mabi_Tools
         {
             //Save the data and apply it to the form sent to us
             oldData = CityData;
-            foreach(KeyValuePair<String, City> ksp in CityData)
+            /*foreach(KeyValuePair<String, City> ksp in CityData)
             {
                 MessageBox.Show(ksp.Key + " || " + ksp.Value, "Test");
             }
-            CommerceDataHandler.saveCommerceDataCSV("Cities.csv", CityData);
+            CommerceDataHandler.saveCommerceDataCSV("Cities.csv", CityData);*/
+            CommerceDataHandler.saveCommerceDataCSVOrdered("Resources/Cities.csv", CityData, clboxCities);
             this.Close();
         }
     }
