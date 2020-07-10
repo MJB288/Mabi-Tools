@@ -28,13 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Button btnDucats;
             this.clboxGoods = new System.Windows.Forms.CheckedListBox();
             this.lblTest = new System.Windows.Forms.Label();
             this.lblGoods = new System.Windows.Forms.Label();
             this.clboxCities = new System.Windows.Forms.CheckedListBox();
             this.lblCities = new System.Windows.Forms.Label();
-            this.lboxResults = new System.Windows.Forms.ListBox();
             this.lblResults = new System.Windows.Forms.Label();
             this.txtTown0 = new System.Windows.Forms.TextBox();
             this.lblTown0 = new System.Windows.Forms.Label();
@@ -74,19 +72,12 @@
             this.tsmmTools = new System.Windows.Forms.ToolStripMenuItem();
             this.editCityDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timeTrackerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            btnDucats = new System.Windows.Forms.Button();
+            this.btnDucats = new System.Windows.Forms.Button();
+            this.lviewResults = new System.Windows.Forms.ListView();
+            this.clmName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnDucats
-            // 
-            btnDucats.Enabled = false;
-            btnDucats.Location = new System.Drawing.Point(704, 186);
-            btnDucats.Name = "btnDucats";
-            btnDucats.Size = new System.Drawing.Size(75, 23);
-            btnDucats.TabIndex = 44;
-            btnDucats.Text = "Ducats/min";
-            btnDucats.UseVisualStyleBackColor = true;
             // 
             // clboxGoods
             // 
@@ -153,16 +144,6 @@
             this.lblCities.Size = new System.Drawing.Size(44, 22);
             this.lblCities.TabIndex = 4;
             this.lblCities.Text = "Cities";
-            // 
-            // lboxResults
-            // 
-            this.lboxResults.FormattingEnabled = true;
-            this.lboxResults.Items.AddRange(new object[] {
-            "Nothing"});
-            this.lboxResults.Location = new System.Drawing.Point(621, 246);
-            this.lboxResults.Name = "lboxResults";
-            this.lboxResults.Size = new System.Drawing.Size(120, 121);
-            this.lboxResults.TabIndex = 5;
             // 
             // lblResults
             // 
@@ -453,12 +434,14 @@
             // 
             // btnNetProfit
             // 
+            this.btnNetProfit.BackColor = System.Drawing.Color.PaleGreen;
             this.btnNetProfit.Location = new System.Drawing.Point(590, 186);
             this.btnNetProfit.Name = "btnNetProfit";
             this.btnNetProfit.Size = new System.Drawing.Size(75, 23);
             this.btnNetProfit.TabIndex = 43;
             this.btnNetProfit.Text = "Net Profit";
-            this.btnNetProfit.UseVisualStyleBackColor = true;
+            this.btnNetProfit.UseVisualStyleBackColor = false;
+            this.btnNetProfit.Click += new System.EventHandler(this.btnNetProfit_Click);
             // 
             // menuStrip1
             // 
@@ -467,7 +450,7 @@
             this.tsmmTools});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(830, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1189, 24);
             this.menuStrip1.TabIndex = 45;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -508,12 +491,46 @@
             this.timeTrackerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.timeTrackerToolStripMenuItem.Text = "Time Tracker";
             // 
+            // btnDucats
+            // 
+            this.btnDucats.BackColor = System.Drawing.Color.LightGray;
+            this.btnDucats.Location = new System.Drawing.Point(704, 186);
+            this.btnDucats.Name = "btnDucats";
+            this.btnDucats.Size = new System.Drawing.Size(75, 23);
+            this.btnDucats.TabIndex = 44;
+            this.btnDucats.Text = "Ducats/min";
+            this.btnDucats.UseVisualStyleBackColor = false;
+            this.btnDucats.Click += new System.EventHandler(this.btnDucats_Click);
+            // 
+            // lviewResults
+            // 
+            this.lviewResults.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clmName,
+            this.clmValue});
+            this.lviewResults.HideSelection = false;
+            this.lviewResults.Location = new System.Drawing.Point(590, 249);
+            this.lviewResults.Name = "lviewResults";
+            this.lviewResults.Size = new System.Drawing.Size(192, 142);
+            this.lviewResults.TabIndex = 46;
+            this.lviewResults.UseCompatibleStateImageBehavior = false;
+            this.lviewResults.View = System.Windows.Forms.View.Details;
+            // 
+            // clmName
+            // 
+            this.clmName.Text = "Name";
+            this.clmName.Width = 100;
+            // 
+            // clmValue
+            // 
+            this.clmValue.Text = "Value";
+            // 
             // frmCommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(830, 449);
-            this.Controls.Add(btnDucats);
+            this.ClientSize = new System.Drawing.Size(1189, 460);
+            this.Controls.Add(this.lviewResults);
+            this.Controls.Add(this.btnDucats);
             this.Controls.Add(this.btnNetProfit);
             this.Controls.Add(this.lblFilter);
             this.Controls.Add(this.lblTransportWeight);
@@ -547,7 +564,6 @@
             this.Controls.Add(this.lblTown0);
             this.Controls.Add(this.txtTown0);
             this.Controls.Add(this.lblResults);
-            this.Controls.Add(this.lboxResults);
             this.Controls.Add(this.lblCities);
             this.Controls.Add(this.clboxCities);
             this.Controls.Add(this.lblGoods);
@@ -572,7 +588,6 @@
         private System.Windows.Forms.Label lblGoods;
         private System.Windows.Forms.CheckedListBox clboxCities;
         private System.Windows.Forms.Label lblCities;
-        private System.Windows.Forms.ListBox lboxResults;
         private System.Windows.Forms.Label lblResults;
         private System.Windows.Forms.TextBox txtTown0;
         private System.Windows.Forms.Label lblTown0;
@@ -612,5 +627,9 @@
         private System.Windows.Forms.ToolStripMenuItem tsmmTools;
         private System.Windows.Forms.ToolStripMenuItem editCityDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem timeTrackerToolStripMenuItem;
+        private System.Windows.Forms.Button btnDucats;
+        private System.Windows.Forms.ListView lviewResults;
+        private System.Windows.Forms.ColumnHeader clmName;
+        private System.Windows.Forms.ColumnHeader clmValue;
     }
 }

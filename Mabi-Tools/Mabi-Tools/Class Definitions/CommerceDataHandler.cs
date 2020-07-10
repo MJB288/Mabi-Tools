@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Serialization;
 
 namespace Mabi_Tools
 {
-    public static class CommerceDataLoader
+    public static class CommerceDataHandler
     {
-        private static readonly char MAIN_TEXT_SEPARATOR = '`';
-        private static readonly char SECONDARY_TEXT_SEPARATOR = ';';
+        public static readonly char MAIN_TEXT_SEPARATOR = '`';
+        public static readonly char SECONDARY_TEXT_SEPARATOR = ';';
         public static Dictionary<String, City> loadCommerceDataText(String citiesFile)
         {
             Dictionary<String, City> cityData = new Dictionary<string, City>();
@@ -77,6 +81,11 @@ namespace Mabi_Tools
             }
             return TransportData;
 
+        }
+
+        public static void saveCommerceDataCSV(String filepath, Dictionary<String, City> CityData)
+        {
+            File.WriteAllLines(filepath, CityData.Select(kv => kv.Value.ToString()));
         }
 
     }

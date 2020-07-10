@@ -61,5 +61,11 @@ namespace Mabi_Tools
             //Trim the Height of the Flow Panel to remove whitespace
             flow.Height = (int)(flow.Controls.OfType<RadioButton>().Count() * rbtnHeight * 1.3);
         }
+
+        public static void labelTextBoxInvisible(Label label, TextBox txtbox)
+        {
+            label.Visible = false;
+            txtbox.Visible = false;
+        }
     }
 }

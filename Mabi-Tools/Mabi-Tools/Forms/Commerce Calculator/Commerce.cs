@@ -13,8 +13,6 @@ namespace Mabi_Tools
 {
     public partial class frmCommerce : Form
     {
-        private readonly char MAIN_TEXT_SEPARATOR = '`';
-        private readonly char SECONDARY_TEXT_SEPARATOR = ';';
         //Remembers the actively selected index for each checklist box.
         //Adjust these values to change the default selected value. If I make a configure file, I could add an option to change the default
         private int ClboxprevSelectedG = 0, ClboxprevSelectedT = 0;
@@ -28,6 +26,7 @@ namespace Mabi_Tools
         private Dictionary<String, int> EndResults;
         private Label[] CityLabels;
         private TextBox[] CityTextboxes;
+        
         public frmCommerce()
         {
             InitializeComponent();
@@ -44,7 +43,7 @@ namespace Mabi_Tools
             //this.loadCommerceData("Cities.txt");
             try
             {
-                CityData = CommerceDataLoader.loadCommerceDataText("Cities.txt");
+                CityData = CommerceDataHandler.loadCommerceDataText("Resources/Cities.csv");
             }
             catch(FileNotFoundException ex)
             {
@@ -65,7 +64,7 @@ namespace Mabi_Tools
             //Similarly, with the transport Mounts
             try
             {
-                TransportData = CommerceDataLoader.loadTransportDataText("Transport.txt");
+                TransportData = CommerceDataHandler.loadTransportDataText("Resources/Transport.csv");
             }
             catch (FileNotFoundException ex)
             {
@@ -87,6 +86,11 @@ namespace Mabi_Tools
             
             //Check off the first one for now.
             flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
+            String[] arr = new string[3];
+            arr[0] = "1";
+            arr[1] = "2";
+            ListViewItem lItem = new ListViewItem(arr);
+            lviewResults.Items.Add(lItem);
             
         }
 
@@ -114,16 +118,6 @@ namespace Mabi_Tools
 
         //Form Adjustment Methods
         //----------------------------------------------------------------------------------------------------------
-        //Let's turn this into a method for reusability
-       
-
-        
-        //There are some subtle changes in this method which is why I'm not reusing the one above this
-        
-
-       
-
-        
 
         //Since this will be implementation specific - just use the form variables
         private void adjustTextBoxesVisibilityCommerce()
@@ -132,10 +126,10 @@ namespace Mabi_Tools
             //Needs to be adjusted for more flexibility and more reusability friendly
             if(10 - CityData.Count > 0)
             {
-                labelTextBoxInvisible(lblTown9, txtTown9);
+                UIHelper.labelTextBoxInvisible(lblTown9, txtTown9);
                 if (10 - CityData.Count > 1)
                 {
-                    labelTextBoxInvisible(lblTown8, txtTown8);
+                    UIHelper.labelTextBoxInvisible(lblTown8, txtTown8);
                 }
             }
         }
@@ -166,11 +160,7 @@ namespace Mabi_Tools
             }
         }
 
-        private static void labelTextBoxInvisible(Label label, TextBox txtbox)
-        {
-            label.Visible = false;
-            txtbox.Visible = false;
-        }
+       
 
         //Methods for loading data from files
         //-------------------------------------------------------------------------------------------------
@@ -206,6 +196,20 @@ namespace Mabi_Tools
             frmCommerceCityEditor cityEditor = new frmCommerceCityEditor(CityData, this);
             //This time we want the player to make a definitive choice on editing the data before they return to frmCommerce
             cityEditor.ShowDialog();
+        }
+
+        private void btnDucats_Click(object sender, EventArgs e)
+        {
+            //Switch colors
+            btnDucats.BackColor = Color.PaleGreen;
+            btnNetProfit.BackColor = Color.LightGray;
+        }
+
+        private void btnNetProfit_Click(object sender, EventArgs e)
+        {
+            btnNetProfit.BackColor = Color.PaleGreen;
+            btnDucats.BackColor = Color.LightGray;
+            
         }
 
         private void cboxAlpaca_CheckedChanged(object sender, EventArgs e)
@@ -257,7 +261,7 @@ namespace Mabi_Tools
         private void btnCompute_Click(object sender, EventArgs e)
         {
             EndResults = new Dictionary<string, int>();
-            lboxResults.Items.Clear();
+            lviewResults.Items.Clear();
             //For now - we will assume the player is transporting one good at a time. Later, I will add functioanlity for mixing and matching if necessary
             int numGoods = 0;
             //Calculate the total number of goods
@@ -286,9 +290,11 @@ namespace Mabi_Tools
                     EndResults[CityLabels[i].Text] = 0;
                 }
             }
-            foreach(KeyValuePair<String, int> townPrice in EndResults.OrderByDescending(key => key.Value))
+            foreach (KeyValuePair<String, int> townPrice in EndResults.OrderByDescending(key => key.Value))
             {
-                lboxResults.Items.Add(townPrice.Key + " " + townPrice.Value);
+                String[] arr = { townPrice.Key, "" + townPrice.Value};
+                ListViewItem newItem = new ListViewItem(arr);
+                lviewResults.Items.Add(newItem);
             }
         }
     }

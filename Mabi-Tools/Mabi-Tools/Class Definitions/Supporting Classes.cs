@@ -4,11 +4,11 @@
  */
 using System;
 using System.Collections.Generic;
-
-
+using System.Text;
 
 namespace Mabi_Tools 
 {
+    [Serializable()]
     public class Transport
     {
         public String name { get; set; }
@@ -25,7 +25,7 @@ namespace Mabi_Tools
 
     }
 
-    public class City
+    public class City 
     {
         public String name { get; set;  }
         public List<Good> goods { get; set; }
@@ -43,7 +43,16 @@ namespace Mabi_Tools
             goods = new List<Good>();
         }
 
-        //Accessors
+        //This is primarily for saving to a file - not to be a default toString method
+        override public String ToString()
+        {
+            StringBuilder CityString = new StringBuilder(this.name);
+            foreach (Good good in goods)
+            {
+                CityString.Append(CommerceDataHandler.MAIN_TEXT_SEPARATOR + good.ToString());
+            }
+            return CityString.ToString() ;
+        }
 
         
     }
@@ -60,6 +69,11 @@ namespace Mabi_Tools
             this.name = name;
             this.weight = weight;
             this.slotCapacity = slotcapacity;
+        }
+
+        override public String ToString()
+        {
+            return this.name + CommerceDataHandler.SECONDARY_TEXT_SEPARATOR + this.weight + CommerceDataHandler.SECONDARY_TEXT_SEPARATOR + this.slotCapacity;
         }
 
     }

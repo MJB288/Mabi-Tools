@@ -12,13 +12,14 @@ namespace Mabi_Tools
 {
     public partial class frmCommerceCityEditor : Form
     {
-        private Dictionary<String, City> CityData;
+        private Dictionary<String, City> CityData, oldData;
         private int ClboxPrevSelected = 0;
         private frmCommerce commerce;
         public frmCommerceCityEditor(Dictionary<String, City> cityData, frmCommerce Commerce)
         {
             commerce = Commerce;
             CityData = new Dictionary<string, City>(cityData);
+            oldData = cityData;
             InitializeComponent();
            
         }
@@ -40,6 +41,12 @@ namespace Mabi_Tools
             this.Close();
         }
 
-        
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            //Save the data and apply it to the form sent to us
+            oldData = CityData;
+            CommerceDataHandler.saveCommerceDataCSV("Cities.csv", CityData);
+            this.Close();
+        }
     }
 }
