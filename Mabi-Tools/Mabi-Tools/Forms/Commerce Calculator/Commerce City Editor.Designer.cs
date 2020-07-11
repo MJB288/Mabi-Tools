@@ -184,6 +184,7 @@
             this.btnEditGood.TabIndex = 15;
             this.btnEditGood.Text = "Edit Selected";
             this.btnEditGood.UseVisualStyleBackColor = true;
+            this.btnEditGood.Click += new System.EventHandler(this.btnEditGood_Click);
             // 
             // label3
             // 
@@ -243,6 +244,7 @@
             this.btnMoveUpCity.TabIndex = 21;
             this.btnMoveUpCity.Text = "Move Up";
             this.btnMoveUpCity.UseVisualStyleBackColor = true;
+            this.btnMoveUpCity.Click += new System.EventHandler(this.btnMoveUpCity_Click);
             // 
             // btnMoveDownCity
             // 
@@ -252,6 +254,7 @@
             this.btnMoveDownCity.TabIndex = 22;
             this.btnMoveDownCity.Text = "Move Down";
             this.btnMoveDownCity.UseVisualStyleBackColor = true;
+            this.btnMoveDownCity.Click += new System.EventHandler(this.btnMoveDownCity_Click);
             // 
             // btnMoveUpGood
             // 
@@ -261,6 +264,7 @@
             this.btnMoveUpGood.TabIndex = 23;
             this.btnMoveUpGood.Text = "Move Up";
             this.btnMoveUpGood.UseVisualStyleBackColor = true;
+            this.btnMoveUpGood.Click += new System.EventHandler(this.btnMoveUpGood_Click);
             // 
             // btnMoveDownGood
             // 
@@ -270,6 +274,7 @@
             this.btnMoveDownGood.TabIndex = 24;
             this.btnMoveDownGood.Text = "Move Down";
             this.btnMoveDownGood.UseVisualStyleBackColor = true;
+            this.btnMoveDownGood.Click += new System.EventHandler(this.btnMoveDownGood_Click);
             // 
             // frmCommerceCityEditor
             // 

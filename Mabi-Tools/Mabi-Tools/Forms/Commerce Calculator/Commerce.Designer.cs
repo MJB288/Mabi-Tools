@@ -150,7 +150,7 @@
             this.lblResults.AutoSize = true;
             this.lblResults.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblResults.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResults.Location = new System.Drawing.Point(654, 221);
+            this.lblResults.Location = new System.Drawing.Point(680, 220);
             this.lblResults.Name = "lblResults";
             this.lblResults.Size = new System.Drawing.Size(55, 22);
             this.lblResults.TabIndex = 6;
@@ -328,7 +328,7 @@
             // 
             // btnCompute
             // 
-            this.btnCompute.Location = new System.Drawing.Point(608, 55);
+            this.btnCompute.Location = new System.Drawing.Point(641, 54);
             this.btnCompute.Name = "btnCompute";
             this.btnCompute.Size = new System.Drawing.Size(129, 61);
             this.btnCompute.TabIndex = 27;
@@ -426,7 +426,7 @@
             // 
             this.lblFilter.AutoSize = true;
             this.lblFilter.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFilter.Location = new System.Drawing.Point(646, 145);
+            this.lblFilter.Location = new System.Drawing.Point(672, 144);
             this.lblFilter.Name = "lblFilter";
             this.lblFilter.Size = new System.Drawing.Size(70, 19);
             this.lblFilter.TabIndex = 42;
@@ -435,7 +435,7 @@
             // btnNetProfit
             // 
             this.btnNetProfit.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnNetProfit.Location = new System.Drawing.Point(590, 186);
+            this.btnNetProfit.Location = new System.Drawing.Point(616, 185);
             this.btnNetProfit.Name = "btnNetProfit";
             this.btnNetProfit.Size = new System.Drawing.Size(75, 23);
             this.btnNetProfit.TabIndex = 43;
@@ -450,7 +450,7 @@
             this.tsmmTools});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1189, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(854, 24);
             this.menuStrip1.TabIndex = 45;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -494,7 +494,7 @@
             // btnDucats
             // 
             this.btnDucats.BackColor = System.Drawing.Color.LightGray;
-            this.btnDucats.Location = new System.Drawing.Point(704, 186);
+            this.btnDucats.Location = new System.Drawing.Point(730, 185);
             this.btnDucats.Name = "btnDucats";
             this.btnDucats.Size = new System.Drawing.Size(75, 23);
             this.btnDucats.TabIndex = 44;
@@ -508,7 +508,7 @@
             this.clmName,
             this.clmValue});
             this.lviewResults.HideSelection = false;
-            this.lviewResults.Location = new System.Drawing.Point(590, 249);
+            this.lviewResults.Location = new System.Drawing.Point(616, 248);
             this.lviewResults.Name = "lviewResults";
             this.lviewResults.Size = new System.Drawing.Size(192, 169);
             this.lviewResults.TabIndex = 46;
@@ -528,7 +528,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1189, 460);
+            this.ClientSize = new System.Drawing.Size(854, 460);
             this.Controls.Add(this.lviewResults);
             this.Controls.Add(this.btnDucats);
             this.Controls.Add(this.btnNetProfit);

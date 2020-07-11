@@ -20,7 +20,7 @@ namespace Mabi_Tools
         private int SelectedGoodWeight = 0, SelectedGoodSlots = 0;
         //These are for tracking the current Weight Capacity and Slots of the transport
         private int SelectedTransportWeight = 0, SelectedTransportSlots = 0;
-        private Dictionary<String, City> CityData;
+        public Dictionary<String, City> CityData;
         private Dictionary<String, Transport> TransportData;
         //Keeping this in global memory for filter purposes
         private Dictionary<String, int> EndResults;
@@ -191,6 +191,7 @@ namespace Mabi_Tools
             frmCommerceCityEditor cityEditor = new frmCommerceCityEditor(CityData, this);
             //This time we want the player to make a definitive choice on editing the data before they return to frmCommerce
             cityEditor.ShowDialog();
+            refreshDisplay();
         }
 
         private void btnDucats_Click(object sender, EventArgs e)
@@ -291,6 +292,14 @@ namespace Mabi_Tools
                 ListViewItem newItem = new ListViewItem(arr);
                 lviewResults.Items.Add(newItem);
             }
+        }
+
+        private void refreshDisplay()
+        {
+            UIHelper.populateCityCheckListBox(clboxCities, CityData);
+            clboxCities.SetItemChecked(this.ClboxprevSelectedT, true);
+            clboxCities.SelectedItem = clboxCities.Items[ClboxprevSelectedG];
+            UIHelper.populateGoodCheckListBox(clboxGoods, CityData[CityData.Keys.ToList()[this.ClboxprevSelectedT]], ClboxprevSelectedG);
         }
     }
 }

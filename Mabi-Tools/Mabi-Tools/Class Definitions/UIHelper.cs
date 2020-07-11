@@ -103,5 +103,40 @@ namespace Mabi_Tools
                 Application.DoEvents();
             }
         }
+
+        //Two functions for moving items up and down a checklist
+        public static int moveSelectedItemUpChecklist(CheckedListBox clbox)
+        {
+            if (clbox.SelectedIndex < 0)
+            {
+                MessageBox.Show("No City Selected!", "Warning!");
+                return 0;
+            }
+            if (clbox.SelectedIndex == 0)
+            {
+                MessageBox.Show("Cannot move this up the list any further!", "Warning");
+                return 0;
+            }
+            clbox.Items.Insert(clbox.SelectedIndex + 1, clbox.Items[clbox.SelectedIndex - 1]);
+            clbox.Items.RemoveAt(clbox.SelectedIndex - 1);
+            return clbox.SelectedIndex;
+        }
+
+        public static int moveSelectedItemDownChecklist(CheckedListBox clbox)
+        {
+            if (clbox.SelectedIndex < 0)
+            {
+                MessageBox.Show("No City Selected!", "Warning!");
+                return 0;
+            }
+            if (clbox.SelectedIndex == clbox.Items.Count - 1)
+            {
+                MessageBox.Show("Cannot move this down the list any further!", "Warning");
+                return clbox.SelectedIndex;
+            }
+            clbox.Items.Insert(clbox.SelectedIndex, clbox.Items[clbox.SelectedIndex + 1]);
+            clbox.Items.RemoveAt(clbox.SelectedIndex + 1);
+            return clbox.SelectedIndex;
+        }
     }
 }
