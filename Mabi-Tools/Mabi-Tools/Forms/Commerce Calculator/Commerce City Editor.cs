@@ -215,25 +215,10 @@ namespace Mabi_Tools
         private void btnSave_Click(object sender, EventArgs e)
         {
             //Save the data and apply it to the form sent to us
-            //oldData = CityData;
-            //commerce.CityData = this.CityData;
             Dictionary<String, City> newData = new Dictionary<string, City>();
 
 
             //TODO-Add a check before saving that all cities have at least one good
-            /*foreach (KeyValuePair<String, City> kvp in CityData)
-            {
-                if (kvp.Value == null) 
-                {
-                    continue;
-                }
-                if(kvp.Value.goods.Count == 0)
-                { 
-                    CityData[kvp.Key] = null;
-                    continue;
-                }
-                n
-            }*/
             for(int i = 0; i < clboxCities.Items.Count; i++)
             {
                 //Check if item is null or has a good count of 0
@@ -250,6 +235,49 @@ namespace Mabi_Tools
             commerce.CityData = newData;
             CommerceDataHandler.saveCommerceDataCSVOrdered("Resources/Cities.csv", CityData, clboxCities);
             this.Close();
+        }
+
+        private void btnDeleteGood_Click(object sender, EventArgs e)
+        {
+            //first check that we are not at 0 or 1 
+            if (clboxGoods.Items.Count == 0 || clboxGoods.SelectedItem == null)
+            {
+                MessageBox.Show("No item selected!", "Delete Error");
+                return;
+            }
+            //I'm mandating a minimum good count of 1 primarily for saving purposes. Also controls 
+            if (clboxGoods.Items.Count == 1)
+            {
+                MessageBox.Show("Only 1 Good remains. Create another good first or delete the city!", "Error");
+                return;
+            }
+            //Now that we've cleared that - delete the good based on the selected index
+            CityData[clboxCities.SelectedItem.ToString()].goods.RemoveAt(clboxGoods.SelectedIndex);
+            //Now remove the item from the list
+            //First move the index
+            Boolean indexAt0 = false;
+            if(clboxGoods.SelectedIndex == 0)
+            {
+                clboxGoods.SelectedIndex = 1;
+                indexAt0 = true;
+            }
+            else
+            {
+                clboxGoods.SelectedIndex = clboxGoods.SelectedIndex - 1;
+            }
+            //Adjust the variables
+            ClboxPrevSelectedG = clboxGoods.SelectedIndex;
+            //Then delete the item from the window
+            if (indexAt0)
+            {
+                clboxGoods.Items.RemoveAt(0);
+            }
+            else
+            {
+                clboxGoods.Items.RemoveAt(clboxGoods.SelectedIndex + 1);
+            }
+            //Since selection doesn't automatically check off the box - just do this
+            clboxGoods.SetItemChecked(clboxGoods.SelectedIndex, true);
         }
 
         private void waitUntilIndexChanged()

@@ -124,6 +124,7 @@
             this.btnDeleteGood.TabIndex = 8;
             this.btnDeleteGood.Text = "Delete";
             this.btnDeleteGood.UseVisualStyleBackColor = true;
+            this.btnDeleteGood.Click += new System.EventHandler(this.btnDeleteGood_Click);
             // 
             // txtGoodWeight
             // 
