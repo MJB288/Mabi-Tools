@@ -60,6 +60,12 @@
     <Compile Include="Forms\Commerce Calculator\Commerce.Designer.cs">
       <DependentUpon>Commerce.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Commerce Calculator\Transport Editor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Commerce Calculator\Transport Editor.Designer.cs">
+      <DependentUpon>Transport Editor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Launcher.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Commerce Calculator\Commerce.resx">
       <DependentUpon>Commerce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Commerce Calculator\Transport Editor.resx">
+      <DependentUpon>Transport Editor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Launcher.resx">
       <DependentUpon>Launcher.cs</DependentUpon>
