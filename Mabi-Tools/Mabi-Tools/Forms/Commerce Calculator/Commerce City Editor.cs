@@ -28,7 +28,7 @@ namespace Mabi_Tools
         private void frmCommerceCityEditor_Load(object sender, EventArgs e)
         {
             //When we first load - set the data in the checklist boxes
-            UIHelper.populateCityCheckListBox(clboxCities, CityData);
+            UIHelper.populateCheckListBox(clboxCities, CityData.Keys.ToArray());
             clboxCities.SelectedIndex = ClboxPrevSelectedC;
         }
 
@@ -70,7 +70,7 @@ namespace Mabi_Tools
 
         private void btnAddCity_Click(object sender, EventArgs e)
         {
-            if (!checkForUniqueItem(txtCityName.Text, clboxCities))
+            if (!UIHelper.checkForUniqueItem(txtCityName.Text, clboxCities))
             {
                 MessageBox.Show("City '" + txtCityName.Text + "' already exists!", "Existence Error");
                 return;
@@ -87,7 +87,7 @@ namespace Mabi_Tools
         private void btnEditCity_Click(object sender, EventArgs e)
         {
             //First - check that the new name doesn't exist in the current momemnt. We can afford to loop through all of them since the number of cities will stay a really small number
-            if (!checkForUniqueItem(txtCityName.Text, clboxCities))
+            if (!UIHelper.checkForUniqueItem(txtCityName.Text, clboxCities))
             {
                 MessageBox.Show("City '" + txtCityName.Text + "' already exists!", "Existence Error");
                 return;
@@ -150,7 +150,7 @@ namespace Mabi_Tools
 
         private void btnAddGood_Click(object sender, EventArgs e)
         {
-            if (!checkForUniqueItem(txtGoodName.Text, clboxGoods))
+            if (!UIHelper.checkForUniqueItem(txtGoodName.Text, clboxGoods))
             {
                 MessageBox.Show("Good '" + txtGoodName.Text + "' already exists!", "Existence Error");
                 return;
@@ -169,7 +169,7 @@ namespace Mabi_Tools
 
         private void btnEditGood_Click(object sender, EventArgs e)
         {
-            if (!checkForUniqueItem(txtGoodName.Text, clboxGoods))
+            if (!UIHelper.checkForUniqueItem(txtGoodName.Text, clboxGoods))
             {
                 MessageBox.Show("Good '" + txtGoodName.Text + "' already exists!", "Existence Error");
                 return;
@@ -288,17 +288,6 @@ namespace Mabi_Tools
             }
         }
 
-        private Boolean checkForUniqueItem(String newItem, CheckedListBox clbox)
-        {
-            //First - check that the new name doesn't exist in the current momemnt. We can afford to loop through all of them since the number of cities will stay a really small number
-            foreach (var item in clbox.Items)
-            {
-                if (item.ToString().Equals(newItem))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+       
     }
 }

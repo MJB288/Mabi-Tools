@@ -76,6 +76,7 @@
             this.lviewResults = new System.Windows.Forms.ListView();
             this.clmName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.editTransportDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -465,7 +466,7 @@
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(92, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(180, 22);
             this.tsmiExit.Text = "Exit";
             this.tsmiExit.Click += new System.EventHandler(this.tsmExit_Click);
             // 
@@ -473,6 +474,7 @@
             // 
             this.tsmmTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editCityDataToolStripMenuItem,
+            this.editTransportDataToolStripMenuItem,
             this.timeTrackerToolStripMenuItem});
             this.tsmmTools.Name = "tsmmTools";
             this.tsmmTools.Size = new System.Drawing.Size(47, 20);
@@ -481,14 +483,14 @@
             // editCityDataToolStripMenuItem
             // 
             this.editCityDataToolStripMenuItem.Name = "editCityDataToolStripMenuItem";
-            this.editCityDataToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.editCityDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editCityDataToolStripMenuItem.Text = "Edit City Data";
             this.editCityDataToolStripMenuItem.Click += new System.EventHandler(this.editCityDataToolStripMenuItem_Click);
             // 
             // timeTrackerToolStripMenuItem
             // 
             this.timeTrackerToolStripMenuItem.Name = "timeTrackerToolStripMenuItem";
-            this.timeTrackerToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.timeTrackerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.timeTrackerToolStripMenuItem.Text = "Time Tracker";
             // 
             // btnDucats
@@ -523,6 +525,13 @@
             // clmValue
             // 
             this.clmValue.Text = "Value";
+            // 
+            // editTransportDataToolStripMenuItem
+            // 
+            this.editTransportDataToolStripMenuItem.Name = "editTransportDataToolStripMenuItem";
+            this.editTransportDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editTransportDataToolStripMenuItem.Text = "Edit Transport Data";
+            this.editTransportDataToolStripMenuItem.Click += new System.EventHandler(this.editTransportDataToolStripMenuItem_Click);
             // 
             // frmCommerce
             // 
@@ -631,5 +640,6 @@
         private System.Windows.Forms.ListView lviewResults;
         private System.Windows.Forms.ColumnHeader clmName;
         private System.Windows.Forms.ColumnHeader clmValue;
+        private System.Windows.Forms.ToolStripMenuItem editTransportDataToolStripMenuItem;
     }
 }

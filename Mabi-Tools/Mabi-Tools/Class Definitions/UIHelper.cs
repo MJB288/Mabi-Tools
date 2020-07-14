@@ -33,11 +33,13 @@ namespace Mabi_Tools
                 return clistbox.SelectedIndex;
             }
         }
-        public static void populateCityCheckListBox(CheckedListBox checkbox, Dictionary<String, City> data)
+        public static void populateCheckListBox(CheckedListBox checkbox, String[] dataArray)
         {
             checkbox.Items.Clear();
-            checkbox.Items.AddRange(data.Keys.ToArray());
+            //checkbox.Items.AddRange(data.Keys.ToArray());
+            checkbox.Items.AddRange(dataArray);
         }
+
         public static void populateGoodCheckListBox(CheckedListBox checkbox, City city, int prevSelected)
         {
             checkbox.Items.Clear();
@@ -137,6 +139,24 @@ namespace Mabi_Tools
             clbox.Items.Insert(clbox.SelectedIndex, clbox.Items[clbox.SelectedIndex + 1]);
             clbox.Items.RemoveAt(clbox.SelectedIndex + 1);
             return clbox.SelectedIndex;
+        }
+
+        public static Boolean checkForUniqueItem(String newItem, CheckedListBox clbox)
+        {
+            //First - check that the new name doesn't exist in the current momemnt. We can afford to loop through all of them since the number of cities will stay a really small number
+            foreach (var item in clbox.Items)
+            {
+                if (item.ToString().Equals(newItem))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static void deleteItemFromList(CheckedListBox clbox)
+        {
+
         }
     }
 }

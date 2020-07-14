@@ -21,7 +21,7 @@ namespace Mabi_Tools
         //These are for tracking the current Weight Capacity and Slots of the transport
         private int SelectedTransportWeight = 0, SelectedTransportSlots = 0;
         public Dictionary<String, City> CityData;
-        private Dictionary<String, Transport> TransportData;
+        public Dictionary<String, Transport> TransportData;
         //Keeping this in global memory for filter purposes
         private Dictionary<String, int> EndResults;
         private Label[] CityLabels;
@@ -52,7 +52,7 @@ namespace Mabi_Tools
                 this.Close();
             }
             
-            UIHelper.populateCityCheckListBox(clboxCities, CityData);
+            UIHelper.populateCheckListBox(clboxCities, CityData.Keys.ToArray());
 
             Label[] testLabels = { lblTown0, lblTown1, lblTown2, lblTown3, lblTown4, lblTown5, lblTown6, lblTown7, lblTown8, lblTown9 };
             TextBox[] textBoxes = { txtTown0, txtTown1, txtTown2, txtTown3, txtTown4, txtTown5, txtTown6, txtTown7, txtTown8, txtTown9 };
@@ -155,11 +155,6 @@ namespace Mabi_Tools
             }
         }
 
-       
-
-        //Methods for loading data from files
-        //-------------------------------------------------------------------------------------------------
-
         private void cboxCommerce_CheckedChanged(object sender, EventArgs e)
         {
             //Increment if checked - Decrement if not Checked
@@ -186,13 +181,7 @@ namespace Mabi_Tools
             this.Close();
         }
 
-        private void editCityDataToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmCommerceCityEditor cityEditor = new frmCommerceCityEditor(CityData, this);
-            //This time we want the player to make a definitive choice on editing the data before they return to frmCommerce
-            cityEditor.ShowDialog();
-            refreshDisplay();
-        }
+        
 
         private void btnDucats_Click(object sender, EventArgs e)
         {
@@ -224,6 +213,21 @@ namespace Mabi_Tools
             }
             lblTransportSlots.Text = "Slots : " + SelectedTransportSlots;
             lblTransportWeight.Text = "Weight Capacity : " + SelectedTransportWeight;
+        }
+
+        private void editTransportDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTransport transportEditor = new frmTransport(TransportData, this);
+            transportEditor.ShowDialog();
+        }
+
+        private void editCityDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCommerceCityEditor cityEditor = new frmCommerceCityEditor(CityData, this);
+            //This time we want the player to make a definitive choice on editing the data before they return to frmCommerce
+            cityEditor.ShowDialog();
+            //refresh the checklist boxes after the user has made changes if any
+            refreshDisplayCities();
         }
 
         public void rbtnTransport_CheckedChanged(object sender, EventArgs e)
@@ -294,12 +298,23 @@ namespace Mabi_Tools
             }
         }
 
-        private void refreshDisplay()
+        private void refreshDisplayCities()
         {
-            UIHelper.populateCityCheckListBox(clboxCities, CityData);
+            UIHelper.populateCheckListBox(clboxCities, CityData.Keys.ToArray());
             clboxCities.SetItemChecked(this.ClboxprevSelectedT, true);
             clboxCities.SelectedItem = clboxCities.Items[ClboxprevSelectedG];
             UIHelper.populateGoodCheckListBox(clboxGoods, CityData[CityData.Keys.ToList()[this.ClboxprevSelectedT]], ClboxprevSelectedG);
+            adjustTextBoxesVisibilityCommerce();          
         }
+        
+        private void refreshDisplayTransport()
+        {
+            //Since it only contains radio buttons - we can just clear them all
+            flpTransport.Controls.Clear();
+            //Now regenerate all of the Transport Options
+            UIHelper.generateRadioButtons(flpTransport, TransportData, this);
+        }
+
+
     }
 }

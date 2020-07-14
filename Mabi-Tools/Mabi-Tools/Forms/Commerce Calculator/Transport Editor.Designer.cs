@@ -1,4 +1,4 @@
-﻿namespace Mabi_Tools.Forms.Commerce_Calculator
+﻿namespace Mabi_Tools
 {
     partial class frmTransport
     {
@@ -35,8 +35,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.txt = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtWeight = new System.Windows.Forms.TextBox();
+            this.txtSlots = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.lblWeight = new System.Windows.Forms.Label();
             this.lblSlots = new System.Windows.Forms.Label();
@@ -46,6 +46,7 @@
             // 
             // clboxTransport
             // 
+            this.clboxTransport.CheckOnClick = true;
             this.clboxTransport.FormattingEnabled = true;
             this.clboxTransport.Items.AddRange(new object[] {
             "Transport1",
@@ -54,6 +55,7 @@
             this.clboxTransport.Name = "clboxTransport";
             this.clboxTransport.Size = new System.Drawing.Size(124, 124);
             this.clboxTransport.TabIndex = 0;
+            this.clboxTransport.SelectedIndexChanged += new System.EventHandler(this.clboxTransport_SelectedIndexChanged);
             // 
             // btnDelete
             // 
@@ -63,6 +65,7 @@
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnMoveUp
             // 
@@ -72,6 +75,7 @@
             this.btnMoveUp.TabIndex = 2;
             this.btnMoveUp.Text = "Move Up";
             this.btnMoveUp.UseVisualStyleBackColor = true;
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
             // 
             // btnMoveDown
             // 
@@ -81,6 +85,7 @@
             this.btnMoveDown.TabIndex = 3;
             this.btnMoveDown.Text = "Move Down";
             this.btnMoveDown.UseVisualStyleBackColor = true;
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
             // 
             // btnSave
             // 
@@ -108,19 +113,19 @@
             this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 6;
             // 
-            // txt
+            // txtWeight
             // 
-            this.txt.Location = new System.Drawing.Point(349, 85);
-            this.txt.Name = "txt";
-            this.txt.Size = new System.Drawing.Size(100, 20);
-            this.txt.TabIndex = 7;
+            this.txtWeight.Location = new System.Drawing.Point(349, 85);
+            this.txtWeight.Name = "txtWeight";
+            this.txtWeight.Size = new System.Drawing.Size(100, 20);
+            this.txtWeight.TabIndex = 7;
             // 
-            // textBox3
+            // txtSlots
             // 
-            this.textBox3.Location = new System.Drawing.Point(349, 119);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 8;
+            this.txtSlots.Location = new System.Drawing.Point(349, 119);
+            this.txtSlots.Name = "txtSlots";
+            this.txtSlots.Size = new System.Drawing.Size(100, 20);
+            this.txtSlots.TabIndex = 8;
             // 
             // lblName
             // 
@@ -160,6 +165,7 @@
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
@@ -169,6 +175,7 @@
             this.btnEdit.TabIndex = 13;
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // frmTransport
             // 
@@ -180,8 +187,8 @@
             this.Controls.Add(this.lblSlots);
             this.Controls.Add(this.lblWeight);
             this.Controls.Add(this.lblName);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.txt);
+            this.Controls.Add(this.txtSlots);
+            this.Controls.Add(this.txtWeight);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -191,6 +198,7 @@
             this.Controls.Add(this.clboxTransport);
             this.Name = "frmTransport";
             this.Text = "Transport Editor";
+            this.Load += new System.EventHandler(this.frmTransport_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,8 +213,8 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txt;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtWeight;
+        private System.Windows.Forms.TextBox txtSlots;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblWeight;
         private System.Windows.Forms.Label lblSlots;
