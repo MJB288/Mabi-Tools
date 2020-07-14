@@ -95,6 +95,7 @@
             this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save and Apply";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 

@@ -105,13 +105,40 @@ namespace Mabi_Tools
             catch (FormatException fex)
             {
                 //If the transport add method throws a format exception - don't bother adding it
-                MessageBox.Show("Formatting Error while adding transport(did you insert a letter instead of a number for weight or slots ?) : \n" + fex.Message", "Format Error");
+                MessageBox.Show("Formatting Error while adding transport(did you insert a letter instead of a number for weight or slots ?) : \n" + fex.Message, "Format Error");
             }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            
+            if(clboxTransport.Items.Count == 1)
+            {
+                MessageBox.Show("Transport Count is exactly at 1! Create another Transport first!");
+            }
+            TransportData.Remove(clboxTransport.SelectedItem.ToString());
+            UIHelper.deleteItemFromList(clboxTransport);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Dictionary<String, Transport> newData = new Dictionary<string, Transport>();
+            //This will be very similar to the Commerce City Editor save method - only this time we don't need to check for goods being equal to 0
+            for (int i = 0; i < clboxTransport.Items.Count; i++)
+            {
+                //Check if item is null or has a good count of 0
+                if (TransportData[clboxTransport.Items[i].ToString()] == null)
+                {
+                    //Set it to null (nothing is changed if already null) so that save function doesn't write it
+                    TransportData[clboxTransport.Items[i].ToString()] = null;
+                    continue;
+                }
+                //Since the only order to dictionary keys are the order they are inserted and can't be rearranged - we have to construct a new dictionary with the user intended order
+                //for the order change to show up in frmCommerce
+                newData[clboxTransport.Items[i].ToString()] = TransportData[clboxTransport.Items[i].ToString()];
+            }
+            Commerce.TransportData = newData;
+            CommerceDataHandler.saveTransportDataCSVOrdered("Resources/Transport.csv", TransportData, clboxTransport);
+            this.Close();
         }
     }
 }

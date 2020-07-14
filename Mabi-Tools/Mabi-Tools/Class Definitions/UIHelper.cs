@@ -156,7 +156,27 @@ namespace Mabi_Tools
 
         public static void deleteItemFromList(CheckedListBox clbox)
         {
+            Boolean indexAt0 = clbox.SelectedIndex == 0;
 
+            //Select the previous item - or the next item if 0
+            if (indexAt0)
+            {
+                clbox.SelectedIndex = clbox.SelectedIndex + 1;
+            }
+            else
+            {
+                clbox.SelectedIndex = clbox.SelectedIndex - 1;
+            }
+
+            clbox.SetItemChecked(clbox.SelectedIndex, true);
+            if (indexAt0)
+            {
+                clbox.Items.RemoveAt(clbox.SelectedIndex - 1);
+            }
+            else
+            {
+                clbox.Items.RemoveAt(clbox.SelectedIndex + 1);
+            }
         }
     }
 }

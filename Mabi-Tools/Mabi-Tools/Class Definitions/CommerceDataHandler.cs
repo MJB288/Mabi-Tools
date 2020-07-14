@@ -106,6 +106,22 @@ namespace Mabi_Tools
             }
         }
 
+        public static void saveTransportDataCSVOrdered(String filepath, Dictionary<String, Transport> TransportData, CheckedListBox orderList)
+        {
+            //We don't want to keep old data - overwrite the file
+            using (StreamWriter sw = new StreamWriter(filepath, false))
+            {
+                for (int i = 0; i < orderList.Items.Count; i++)
+                {
+                    if (TransportData[orderList.Items[i].ToString()] == null)
+                    {
+                        continue;
+                    }
+                    sw.WriteLine(TransportData[orderList.Items[i].ToString()].ToString());
+                }
+            }
+        }
+
     }
     
 

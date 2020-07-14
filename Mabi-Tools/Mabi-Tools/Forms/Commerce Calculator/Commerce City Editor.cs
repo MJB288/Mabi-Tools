@@ -15,7 +15,6 @@ namespace Mabi_Tools
         private Dictionary<String, City> CityData, oldData;
         private int ClboxPrevSelectedC = 0, ClboxPrevSelectedG = 0;
         private frmCommerce commerce;
-        private Boolean checkedIndexChanged = true;
         public frmCommerceCityEditor(Dictionary<String, City> cityData, frmCommerce Commerce)
         {
             commerce = Commerce;
@@ -41,7 +40,6 @@ namespace Mabi_Tools
                 UIHelper.populateGoodCheckListBox(clboxGoods, CityData[clboxCities.SelectedItem.ToString()], ClboxPrevSelectedG);
                 txtCityName.Text = clboxCities.SelectedItem.ToString();
             }
-            checkedIndexChanged = true;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -55,16 +53,14 @@ namespace Mabi_Tools
         {
            
             ClboxPrevSelectedG = UIHelper.makeListBoxExclusitivity(clboxGoods, ClboxPrevSelectedG);
-            if (ClboxPrevSelectedG >= 0 && ClboxPrevSelectedG < clboxGoods.Items.Count)
+            if (clboxGoods.SelectedIndex >= 0 && clboxGoods.SelectedIndex < CityData[clboxCities.SelectedItem.ToString()].goods.Count)
             {
 
-                Good selectedGood = CityData[clboxCities.SelectedItem.ToString()].goods[ClboxPrevSelectedG];
+                Good selectedGood = CityData[clboxCities.SelectedItem.ToString()].goods[clboxGoods.SelectedIndex];
                 //Display the data in the text boxes for editing
                 txtGoodName.Text = selectedGood.name;
                 txtGoodSlots.Text = selectedGood.slotCapacity.ToString();
                 txtGoodWeight.Text = selectedGood.weight.ToString();
-
-                checkedIndexChanged = true;
             }
         }
 
@@ -118,34 +114,11 @@ namespace Mabi_Tools
                 MessageBox.Show("Cannot have a city count of 0! Create a nother city before deleting this one!", "User Error");
                 return;
             }
-            Boolean indexAt0 = ClboxPrevSelectedC == 0;
+
 
             CityData.Remove(clboxCities.SelectedItem.ToString());
 
-            checkedIndexChanged = false;
-            //Select the previous item - or the next item if 0
-            if (indexAt0)
-            {
-                clboxCities.SelectedIndex = ClboxPrevSelectedC + 1;
-            }
-            else
-            {
-                clboxCities.SelectedIndex = ClboxPrevSelectedC - 1;   
-            }
-
-            //Wait a little bit so that the clboxCities_selectedIndex can fire and complete
-            //But automatically breakout after a small time limit if it doesn't happen
-            waitUntilIndexChanged();
-
-            clboxCities.SetItemChecked(ClboxPrevSelectedC, true);
-            if (indexAt0)
-            {
-                clboxCities.Items.RemoveAt(ClboxPrevSelectedC - 1);
-            }
-            else 
-            {
-                clboxCities.Items.RemoveAt(ClboxPrevSelectedC + 1);
-            }
+            UIHelper.deleteItemFromList(clboxCities);
         }
 
         private void btnAddGood_Click(object sender, EventArgs e)
@@ -255,7 +228,7 @@ namespace Mabi_Tools
             CityData[clboxCities.SelectedItem.ToString()].goods.RemoveAt(clboxGoods.SelectedIndex);
             //Now remove the item from the list
             //First move the index
-            Boolean indexAt0 = false;
+            /*Boolean indexAt0 = false;
             if(clboxGoods.SelectedIndex == 0)
             {
                 clboxGoods.SelectedIndex = 1;
@@ -277,16 +250,17 @@ namespace Mabi_Tools
                 clboxGoods.Items.RemoveAt(clboxGoods.SelectedIndex + 1);
             }
             //Since selection doesn't automatically check off the box - just do this
-            clboxGoods.SetItemChecked(clboxGoods.SelectedIndex, true);
+            clboxGoods.SetItemChecked(clboxGoods.SelectedIndex, true);*/
+            UIHelper.deleteItemFromList(clboxGoods);
         }
 
-        private void waitUntilIndexChanged()
+       /* private void waitUntilIndexChanged()
         {
             for (int i = 0; i < 10 && !checkedIndexChanged; i++)
             {
                 UIHelper.Delay(50);
             }
-        }
+        }*/
 
        
     }

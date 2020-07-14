@@ -219,6 +219,8 @@ namespace Mabi_Tools
         {
             frmTransport transportEditor = new frmTransport(TransportData, this);
             transportEditor.ShowDialog();
+            //Now Refresh the display with any new changes
+            refreshDisplayTransport();
         }
 
         private void editCityDataToolStripMenuItem_Click(object sender, EventArgs e)

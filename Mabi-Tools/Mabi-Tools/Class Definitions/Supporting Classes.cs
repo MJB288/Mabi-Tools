@@ -23,6 +23,10 @@ namespace Mabi_Tools
             this.weight = weight;
         }
 
+        override public String ToString()
+        {
+            return this.name + CommerceDataHandler.MAIN_TEXT_SEPARATOR + this.slots + CommerceDataHandler.MAIN_TEXT_SEPARATOR + this.weight;
+        }
     }
 
     public class City 
