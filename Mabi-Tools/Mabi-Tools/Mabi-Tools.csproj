@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class Definitions\Graph Classes.cs" />
     <Compile Include="Class Definitions\UIHelper.cs" />
     <Compile Include="Class Definitions\CommerceDataHandler.cs" />
     <Compile Include="Forms\Commerce Calculator\Commerce City Editor.cs">

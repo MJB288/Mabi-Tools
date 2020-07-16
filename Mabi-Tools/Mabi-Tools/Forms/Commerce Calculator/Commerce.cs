@@ -89,13 +89,16 @@ namespace Mabi_Tools
             String[] arr = { "1", "2" };
             ListViewItem lItem = new ListViewItem(arr);
             lviewResults.Items.Add(lItem);
+
+            TimeSpan test = new TimeSpan(0, 5, 30);
+            TimeSpan test1 = new TimeSpan(0, 6, 30);
+            lblTest.Text = (test1 > test).ToString();
             
         }
 
         private void clboxGoods_SelectedIndexChanged(object sender, EventArgs e)
         {
             ClboxprevSelectedG = UIHelper.makeListBoxExclusitivity(clboxGoods, ClboxprevSelectedG);
-            lblTest.Text = clboxGoods.SelectedItem.ToString();
             //Now pull up the Weight And Slot statistics
             SelectedGoodSlots = CityData[clboxCities.SelectedItem.ToString()].goods[ClboxprevSelectedG].slotCapacity;
             SelectedGoodWeight = CityData[clboxCities.SelectedItem.ToString()].goods[ClboxprevSelectedG].weight;
@@ -108,7 +111,6 @@ namespace Mabi_Tools
             //Adjust as necessary 
             adjustLabelsCities(ClboxprevSelectedT, clboxCities.SelectedIndex);
             ClboxprevSelectedT = UIHelper.makeListBoxExclusitivity(clboxCities, ClboxprevSelectedT);
-            lblTest.Text = clboxCities.SelectedItem.ToString();
             //Now adjust the Goods Box based off of the currently selected city
             UIHelper.populateGoodCheckListBox(clboxGoods, CityData[clboxCities.SelectedItem.ToString()], ClboxprevSelectedG);
 
