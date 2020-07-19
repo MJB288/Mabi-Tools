@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -134,7 +135,8 @@ namespace Mabi_Tools
 
         public void constructGraphCommerce(String filename)
         {
-
+            //String[] rawLines = File.ReadAllLines(filename);
+            //foreach(String s in )
         }
 
     }

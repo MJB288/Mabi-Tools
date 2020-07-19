@@ -11,7 +11,7 @@ namespace Mabi_Tools
 {
     public static class CommerceDataHandler
     {
-        public static readonly char MAIN_TEXT_SEPARATOR = '`';
+        public static readonly char MAIN_TEXT_SEPARATOR = ',';
         public static readonly char SECONDARY_TEXT_SEPARATOR = ';';
         public static Dictionary<String, City> loadCommerceDataText(String citiesFile)
         {
@@ -68,7 +68,7 @@ namespace Mabi_Tools
                     name = s.Substring(0, graveI);
                     String slots = s.Substring(graveI + 1, semiI - graveI - 1);
                     String weight = s.Substring(semiI + 1, s.Length - semiI - 1);*/
-                    String[] split = s.Split('`');
+                    String[] split = s.Split(MAIN_TEXT_SEPARATOR);
                     name = split[0];
                     //Current ordering assumes number of slots comes first and weight second
                     Transport temp = new Transport(name, Int32.Parse(split[1]), Int32.Parse(split[2]));
@@ -94,10 +94,10 @@ namespace Mabi_Tools
         {
             //We don't want to keep old data - overwrite the file
             using (StreamWriter sw = new StreamWriter(filepath, false))
-            { 
+            {
                 for (int i = 0; i < orderList.Items.Count; i++)
                 {
-                    if (CityData[orderList.Items[i].ToString()] == null) 
+                    if (CityData[orderList.Items[i].ToString()] == null)
                     {
                         continue;
                     }
@@ -120,6 +120,83 @@ namespace Mabi_Tools
                     sw.WriteLine(TransportData[orderList.Items[i].ToString()].ToString());
                 }
             }
+        }
+
+        //Compresses the time statistics into an average so that we may load it into the graph
+        public static void compressTimeData(String filepath)
+        {
+            
+        }
+
+        //A method for writing time data
+        public static void saveTimeData(String filepath, Dictionary<String, List<TimeSpan>> TimeData)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            bool firstTime = true;
+            foreach (KeyValuePair<String, List<TimeSpan>> kvp in TimeData)
+            {
+                if (!firstTime)
+                {
+                    stringBuilder.Append("\n");
+                }
+                firstTime = false;
+                for (int i = 0; i < kvp.Value.Count; i++)
+                {
+                    stringBuilder.Append(kvp.Key);
+                    stringBuilder.Append(MAIN_TEXT_SEPARATOR);
+                    stringBuilder.Append(kvp.Value[i]);
+                    //Avoid the extra new line at the end of the file
+                    if (i != kvp.Value.Count - 1)
+                    {
+                        stringBuilder.Append("\n");
+                    }
+                }
+            }
+            File.WriteAllText(filepath, stringBuilder.ToString());
+        }
+
+        public static Dictionary<String, List<TimeSpan>> loadTimeData(String filePath)
+        {
+            Dictionary<String, List<TimeSpan>> timeData = new Dictionary<String, List<TimeSpan>>();
+            
+            String[] rawLines = File.ReadAllLines(filePath);
+            //Each line of data should be structured as 'start - endpoint - lane name - time' (without the quotes)
+            for (int i = 0; i < rawLines.Length; i++)
+            {
+                String source = "", destination = "", name = "", time = "";
+                try
+                {
+                    String[] splitline = rawLines[i].Split(MAIN_TEXT_SEPARATOR);
+                    source = splitline[0];
+                    destination = splitline[1];
+                    name = splitline[2];
+                    time = splitline[3];
+
+                    String key = "";
+                    //To avoid flipping the cities around - enforce alphabetical order at both load and save
+                    if(source.CompareTo(destination) < 0) 
+                    {
+                        key = destination + MAIN_TEXT_SEPARATOR + source + MAIN_TEXT_SEPARATOR + name;
+                        //timeData[destination + MAIN_TEXT_SEPARATOR + source + MAIN_TEXT_SEPARATOR + name].Add(TimeSpan.Parse(time));
+                    }
+                    else
+                    {
+                        key = source + MAIN_TEXT_SEPARATOR + destination + MAIN_TEXT_SEPARATOR + name;
+                        //timeData[source + MAIN_TEXT_SEPARATOR + destination + MAIN_TEXT_SEPARATOR + name].Add(TimeSpan.Parse(time));
+                    }
+                    //Check for uninitiated list then add
+                    if(timeData[key] == null)
+                    {
+                        timeData[key] = new List<TimeSpan>();
+                    }
+                    timeData[key].Add(TimeSpan.Parse(time));
+                }
+                catch (FormatException fex)
+                {
+                    MessageBox.Show("Error converting '" + time + "' into a time at path '" + source + " " + destination + " " + name + "':\n" + fex.Message, "Time Formatting Error");
+                }
+            }
+            return timeData;
         }
 
     }
