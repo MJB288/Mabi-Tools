@@ -117,6 +117,9 @@
     <Content Include="Resources\Cities.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Time.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\Transport.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

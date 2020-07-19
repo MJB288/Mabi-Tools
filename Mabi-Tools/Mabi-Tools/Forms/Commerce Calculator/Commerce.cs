@@ -22,6 +22,8 @@ namespace Mabi_Tools
         private int SelectedTransportWeight = 0, SelectedTransportSlots = 0;
         public Dictionary<String, City> CityData;
         public Dictionary<String, Transport> TransportData;
+        public Dictionary<String, List<TimeSpan>> TimeData;
+        public Dictionary<String, TimeSpan> AvgTimeData;
         //Keeping this in global memory for filter purposes
         private Dictionary<String, int> EndResults;
         private Label[] CityLabels;
@@ -93,7 +95,11 @@ namespace Mabi_Tools
             TimeSpan test = new TimeSpan(0, 5, 30);
             TimeSpan test1 = new TimeSpan(0, 6, 30);
             lblTest.Text = (test1 > test).ToString();
-            
+
+            TimeData = CommerceDataHandler.loadTimeData("Resources/Time.csv");
+            AvgTimeData = CommerceDataHandler.compressTimeData(TimeData);
+            Graph newGraph = Graph.constructGraphCommerce(AvgTimeData);
+            newGraph.startDijkstra("Tir Chonaill");
         }
 
         private void clboxGoods_SelectedIndexChanged(object sender, EventArgs e)

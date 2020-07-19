@@ -123,9 +123,14 @@ namespace Mabi_Tools
         }
 
         //Compresses the time statistics into an average so that we may load it into the graph
-        public static void compressTimeData(String filepath)
+        public static Dictionary<String, TimeSpan> compressTimeData(Dictionary<String, List<TimeSpan>> TimeData)
         {
-            
+            Dictionary<String, TimeSpan> avgTime = new Dictionary<String, TimeSpan>();
+            foreach(KeyValuePair<String,List<TimeSpan>> kvp in TimeData)
+            {
+                avgTime[kvp.Key] = new TimeSpan(kvp.Value.Sum(t => t.Ticks)/kvp.Value.Count);
+            }
+            return avgTime;
         }
 
         //A method for writing time data
@@ -135,6 +140,7 @@ namespace Mabi_Tools
             bool firstTime = true;
             foreach (KeyValuePair<String, List<TimeSpan>> kvp in TimeData)
             {
+                //Basically - don't append a newline the first iteration
                 if (!firstTime)
                 {
                     stringBuilder.Append("\n");
@@ -185,7 +191,7 @@ namespace Mabi_Tools
                         //timeData[source + MAIN_TEXT_SEPARATOR + destination + MAIN_TEXT_SEPARATOR + name].Add(TimeSpan.Parse(time));
                     }
                     //Check for uninitiated list then add
-                    if(timeData[key] == null)
+                    if(!timeData.ContainsKey(key))
                     {
                         timeData[key] = new List<TimeSpan>();
                     }

@@ -61,11 +61,11 @@ namespace Mabi_Tools
             }
 
             //First check that both Vertices exist
-            if (Vertices[newEdge.Source] == null)
+            if (!Vertices.ContainsKey(newEdge.Source))
             {
                 Vertices[newEdge.Source] = new Vertex(newEdge.Source);
             }
-            if (Vertices[newEdge.Destination] == null)
+            if (!Vertices.ContainsKey(newEdge.Destination))
             {
                 Vertices[newEdge.Destination] = new Vertex(newEdge.Source);
             }
@@ -90,7 +90,7 @@ namespace Mabi_Tools
                 vVisited[Vertex] = false;
                 //I will use a random number in string form for error checking
                 prevVertex[Vertex] = "2567821279";
-                shortestDistance[Vertex] = new TimeSpan(Int32.MaxValue, Int32.MaxValue, Int32.MaxValue);
+                shortestDistance[Vertex] = new TimeSpan(0, Int32.MaxValue, Int32.MaxValue);
             }
             shortestDistance[Source] = new TimeSpan(0, 0, 0);
             Dijkstra(Vertices[Source], vVisited, prevVertex, shortestDistance);
@@ -114,7 +114,7 @@ namespace Mabi_Tools
                 }
             }
 
-            TimeSpan shortestTime = new TimeSpan(Int32.MaxValue, Int32.MaxValue, Int32.MaxValue);
+            TimeSpan shortestTime = new TimeSpan(0, Int32.MaxValue, Int32.MaxValue);
             String nextDest = "|-1|||||";
             //Now check what the next shortest distance is
             foreach(String vertex in Vertices.Keys)
@@ -133,10 +133,21 @@ namespace Mabi_Tools
             }
         }
 
-        public void constructGraphCommerce(String filename)
+
+        //Construct a graph using a dictionary of the average times
+        public static Graph constructGraphCommerce(Dictionary<String,TimeSpan> averageTime)
         {
+            Graph commerceGraph = new Graph();
             //String[] rawLines = File.ReadAllLines(filename);
             //foreach(String s in )
+            foreach(KeyValuePair<String, TimeSpan> kvp in averageTime)
+            {
+                String[] splitKey = kvp.Key.Split(CommerceDataHandler.MAIN_TEXT_SEPARATOR);
+                //The key Should be source then destination then name
+                Edge newEdge = new Edge(splitKey[2], splitKey[0], splitKey[1], kvp.Value);
+                commerceGraph.addEdgeC(newEdge);
+            }
+            return commerceGraph;
         }
 
     }
