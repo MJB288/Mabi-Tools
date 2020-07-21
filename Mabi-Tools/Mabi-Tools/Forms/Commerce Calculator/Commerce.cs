@@ -26,6 +26,7 @@ namespace Mabi_Tools
         public Dictionary<String, TimeSpan> AvgTimeData;
         //Keeping this in global memory for filter purposes
         private Dictionary<String, int> EndResults;
+        private Dictionary<String, TimeSpan> EndResultsTime;
         private Label[] CityLabels;
         private TextBox[] CityTextboxes;
         
@@ -98,8 +99,6 @@ namespace Mabi_Tools
 
             TimeData = CommerceDataHandler.loadTimeData("Resources/Time.csv");
             AvgTimeData = CommerceDataHandler.compressTimeData(TimeData);
-            Graph newGraph = Graph.constructGraphCommerce(AvgTimeData);
-            newGraph.startDijkstra("Tir Chonaill");
         }
 
         private void clboxGoods_SelectedIndexChanged(object sender, EventArgs e)
@@ -196,12 +195,15 @@ namespace Mabi_Tools
             //Switch colors
             btnDucats.BackColor = Color.PaleGreen;
             btnNetProfit.BackColor = Color.LightGray;
+            UIHelper.displayResultsTime(lviewResults, EndResults, EndResultsTime);
         }
 
         private void btnNetProfit_Click(object sender, EventArgs e)
         {
             btnNetProfit.BackColor = Color.PaleGreen;
             btnDucats.BackColor = Color.LightGray;
+            //Display the results to the user
+            UIHelper.displayResultsNetProfit(lviewResults, EndResults);
             
         }
 
@@ -271,7 +273,13 @@ namespace Mabi_Tools
         private void btnCompute_Click(object sender, EventArgs e)
         {
             EndResults = new Dictionary<string, int>();
-            lviewResults.Items.Clear();
+            //Enforcing starting in net profit mode
+            btnNetProfit.BackColor = Color.PaleGreen;
+            btnDucats.BackColor = Color.LightGray;
+
+            btnDucats.Enabled = true;
+            btnNetProfit.Enabled = true;
+            
             //For now - we will assume the player is transporting one good at a time. Later, I will add functioanlity for mixing and matching if necessary
             int numGoods = 0;
             //Calculate the total number of goods
@@ -300,12 +308,11 @@ namespace Mabi_Tools
                     EndResults[CityLabels[i].Text] = 0;
                 }
             }
-            foreach (KeyValuePair<String, int> townPrice in EndResults.OrderByDescending(key => key.Value))
-            {
-                String[] arr = { townPrice.Key, "" + townPrice.Value};
-                ListViewItem newItem = new ListViewItem(arr);
-                lviewResults.Items.Add(newItem);
-            }
+            //Display the end results to the user
+            UIHelper.displayResultsNetProfit(lviewResults, EndResults);
+
+            Graph newGraph = Graph.constructGraphCommerce(AvgTimeData);
+            EndResultsTime = newGraph.startDijkstra("Tir Chonaill");
         }
 
         private void refreshDisplayCities()

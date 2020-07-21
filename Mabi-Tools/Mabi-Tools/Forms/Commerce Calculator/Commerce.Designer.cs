@@ -71,12 +71,12 @@
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmmTools = new System.Windows.Forms.ToolStripMenuItem();
             this.editCityDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editTransportDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timeTrackerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDucats = new System.Windows.Forms.Button();
             this.lviewResults = new System.Windows.Forms.ListView();
             this.clmName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.editTransportDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -436,6 +436,7 @@
             // btnNetProfit
             // 
             this.btnNetProfit.BackColor = System.Drawing.Color.PaleGreen;
+            this.btnNetProfit.Enabled = false;
             this.btnNetProfit.Location = new System.Drawing.Point(616, 185);
             this.btnNetProfit.Name = "btnNetProfit";
             this.btnNetProfit.Size = new System.Drawing.Size(75, 23);
@@ -466,7 +467,7 @@
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(180, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(92, 22);
             this.tsmiExit.Text = "Exit";
             this.tsmiExit.Click += new System.EventHandler(this.tsmExit_Click);
             // 
@@ -483,19 +484,27 @@
             // editCityDataToolStripMenuItem
             // 
             this.editCityDataToolStripMenuItem.Name = "editCityDataToolStripMenuItem";
-            this.editCityDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editCityDataToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.editCityDataToolStripMenuItem.Text = "Edit City Data";
             this.editCityDataToolStripMenuItem.Click += new System.EventHandler(this.editCityDataToolStripMenuItem_Click);
+            // 
+            // editTransportDataToolStripMenuItem
+            // 
+            this.editTransportDataToolStripMenuItem.Name = "editTransportDataToolStripMenuItem";
+            this.editTransportDataToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.editTransportDataToolStripMenuItem.Text = "Edit Transport Data";
+            this.editTransportDataToolStripMenuItem.Click += new System.EventHandler(this.editTransportDataToolStripMenuItem_Click);
             // 
             // timeTrackerToolStripMenuItem
             // 
             this.timeTrackerToolStripMenuItem.Name = "timeTrackerToolStripMenuItem";
-            this.timeTrackerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.timeTrackerToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.timeTrackerToolStripMenuItem.Text = "Time Tracker";
             // 
             // btnDucats
             // 
             this.btnDucats.BackColor = System.Drawing.Color.LightGray;
+            this.btnDucats.Enabled = false;
             this.btnDucats.Location = new System.Drawing.Point(730, 185);
             this.btnDucats.Name = "btnDucats";
             this.btnDucats.Size = new System.Drawing.Size(75, 23);
@@ -525,13 +534,6 @@
             // clmValue
             // 
             this.clmValue.Text = "Value";
-            // 
-            // editTransportDataToolStripMenuItem
-            // 
-            this.editTransportDataToolStripMenuItem.Name = "editTransportDataToolStripMenuItem";
-            this.editTransportDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editTransportDataToolStripMenuItem.Text = "Edit Transport Data";
-            this.editTransportDataToolStripMenuItem.Click += new System.EventHandler(this.editTransportDataToolStripMenuItem_Click);
             // 
             // frmCommerce
             // 

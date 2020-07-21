@@ -78,7 +78,7 @@ namespace Mabi_Tools
 
         //This method will initiate Dijkstra's algorithm which has been implemented in recursive form
         //Also we are concerned about all destinations - therefore this algorithm will not require a destination
-        public void startDijkstra(String Source)
+        public Dictionary<String, TimeSpan> startDijkstra(String Source)
         {
             //A dictionary to keep track of what vertices have been visited
             Dictionary<String, bool> vVisited = new Dictionary<String, bool>();
@@ -94,7 +94,8 @@ namespace Mabi_Tools
             }
             shortestDistance[Source] = new TimeSpan(0, 0, 0);
             Dijkstra(Vertices[Source], vVisited, prevVertex, shortestDistance);
-
+            //Since we are primarily interested in numbers right now - return the shortest times
+            return shortestDistance;
         }
 
         private void Dijkstra(Vertex cur, Dictionary<String, bool> vVisited, Dictionary<String, String> prevVertex, Dictionary<String, TimeSpan> ShortestDistance)

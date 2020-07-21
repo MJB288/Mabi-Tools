@@ -178,5 +178,44 @@ namespace Mabi_Tools
                 clbox.Items.RemoveAt(clbox.SelectedIndex + 1);
             }
         }
+
+        public static void displayResultsNetProfit(ListView lview, Dictionary<String,int> results)
+        {
+            lview.Items.Clear();
+            foreach (KeyValuePair<String, int> townPrice in results.OrderByDescending(key => key.Value))
+            {
+                String[] arr = { townPrice.Key, "" + townPrice.Value };
+                ListViewItem newItem = new ListViewItem(arr);
+                lview.Items.Add(newItem);
+            }
+        }
+
+        public static void displayResultsTime(ListView lview, Dictionary<String, int> results, Dictionary<String, TimeSpan> shortestTime)
+        {
+            lview.Items.Clear();
+            foreach (KeyValuePair<String, TimeSpan> townTime in shortestTime.OrderByDescending(key => key.Value))
+            {
+                //Due to the nature of Dijkstra's algorithm - the source will also be in the dictionary, while in the net profit results it is not there
+                //Therefore - we need to add a check to skip (plus if for whatever reason there isn't a net profit - this doesn't work anyway)
+                if (!results.ContainsKey(townTime.Key))
+                {
+                    continue;
+                }
+                String[] arr = new String[2];
+                arr[0] = townTime.Key;
+                //Also check for a divide by zero as well
+                if (townTime.Value.Ticks == 0)
+                {
+                    arr[1] = "0";
+                }
+                else 
+                {
+                    //arr[1] =(results[townTime.Key] / townTime.Value.Ticks).ToString();
+                    arr[1] = townTime.Value.ToString();
+                }
+                ListViewItem newItem = new ListViewItem(arr);
+                lview.Items.Add(newItem);
+            }
+        }
     }
 }
