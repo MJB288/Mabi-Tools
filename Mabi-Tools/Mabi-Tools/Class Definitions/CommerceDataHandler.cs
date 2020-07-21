@@ -161,26 +161,32 @@ namespace Mabi_Tools
             File.WriteAllText(filepath, stringBuilder.ToString());
         }
 
-        public static Dictionary<String, List<TimeSpan>> loadTimeData(String filePath)
+        public static Dictionary<String, Dictionary<String, List<TimeSpan>>> loadTimeData(String filePath)
         {
-            Dictionary<String, List<TimeSpan>> timeData = new Dictionary<String, List<TimeSpan>>();
-            
+            Dictionary<String, Dictionary<String, List<TimeSpan>>> timeData = new Dictionary<String, Dictionary<String, List<TimeSpan>>>();
+
             String[] rawLines = File.ReadAllLines(filePath);
-            //Each line of data should be structured as 'start - endpoint - lane name - time' (without the quotes)
+            //Each line of data should be structured as 'transport - start - endpoint - lane name - time' (without the quotes)
             for (int i = 0; i < rawLines.Length; i++)
             {
-                String source = "", destination = "", name = "", time = "";
+                String transport = "", source = "", destination = "", name = "", time = "";
                 try
                 {
                     String[] splitline = rawLines[i].Split(MAIN_TEXT_SEPARATOR);
-                    source = splitline[0];
-                    destination = splitline[1];
-                    name = splitline[2];
-                    time = splitline[3];
+                    transport = splitline[0];
+                    source = splitline[1];
+                    destination = splitline[2];
+                    name = splitline[3];
+                    time = splitline[4];
+
+                    if (!timeData.ContainsKey(transport))
+                    {
+                        timeData[transport] = new Dictionary<String, List<TimeSpan>>();
+                    }
 
                     String key = "";
                     //To avoid flipping the cities around - enforce alphabetical order at both load and save
-                    if(source.CompareTo(destination) < 0) 
+                    if (source.CompareTo(destination) < 0)
                     {
                         key = destination + MAIN_TEXT_SEPARATOR + source + MAIN_TEXT_SEPARATOR + name;
                         //timeData[destination + MAIN_TEXT_SEPARATOR + source + MAIN_TEXT_SEPARATOR + name].Add(TimeSpan.Parse(time));
@@ -191,15 +197,15 @@ namespace Mabi_Tools
                         //timeData[source + MAIN_TEXT_SEPARATOR + destination + MAIN_TEXT_SEPARATOR + name].Add(TimeSpan.Parse(time));
                     }
                     //Check for uninitiated list then add
-                    if(!timeData.ContainsKey(key))
+                    if (!timeData[transport].ContainsKey(key))
                     {
-                        timeData[key] = new List<TimeSpan>();
+                        timeData[transport][key] = new List<TimeSpan>();
                     }
-                    timeData[key].Add(TimeSpan.Parse(time));
+                    timeData[transport][key].Add(TimeSpan.Parse(time));
                 }
                 catch (FormatException fex)
                 {
-                    MessageBox.Show("Error converting '" + time + "' into a time at path '" + source + " " + destination + " " + name + "':\n" + fex.Message, "Time Formatting Error");
+                    MessageBox.Show("Error converting '" + time + "' into a time at path '" + source + " " + destination + " " + name + " " + transport + "':\n" + fex.Message, "Time Formatting Error");
                 }
             }
             return timeData;

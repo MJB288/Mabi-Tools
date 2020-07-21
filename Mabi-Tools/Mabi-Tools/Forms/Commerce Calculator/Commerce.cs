@@ -20,14 +20,16 @@ namespace Mabi_Tools
         private int SelectedGoodWeight = 0, SelectedGoodSlots = 0;
         //These are for tracking the current Weight Capacity and Slots of the transport
         private int SelectedTransportWeight = 0, SelectedTransportSlots = 0;
+        private String SelectedTransportName = "";
         public Dictionary<String, City> CityData;
         public Dictionary<String, Transport> TransportData;
-        public Dictionary<String, List<TimeSpan>> TimeData;
+        //public Dictionary<String, List<TimeSpan>> TimeData;
+        public Dictionary<String, Dictionary<String, List<TimeSpan>>> TimeData;
         public Dictionary<String, TimeSpan> AvgTimeData;
         //Keeping this in global memory for filter purposes
         private Dictionary<String, int> EndResults;
-        private Dictionary<String, TimeSpan> EndResultsTime;
         private Dictionary<String, int> DucatsMin;
+        private Dictionary<String, Graph> GraphsbyTransport;
         private Label[] CityLabels;
         private TextBox[] CityTextboxes;
         
@@ -94,12 +96,15 @@ namespace Mabi_Tools
             ListViewItem lItem = new ListViewItem(arr);
             lviewResults.Items.Add(lItem);
 
-            TimeSpan test = new TimeSpan(0, 5, 30);
-            TimeSpan test1 = new TimeSpan(0, 6, 30);
-            lblTest.Text = (test1 > test).ToString();
-
             TimeData = CommerceDataHandler.loadTimeData("Resources/Time.csv");
-            AvgTimeData = CommerceDataHandler.compressTimeData(TimeData);
+            SingletonGraphFactory graphFactory = SingletonGraphFactory.getFactory();
+            
+            GraphsbyTransport = new Dictionary<String, Graph>();
+            foreach(KeyValuePair<String, Dictionary<String, List<TimeSpan>>> transportToTime in TimeData)
+            {
+                GraphsbyTransport[transportToTime.Key] = graphFactory.constructGraph(CommerceDataHandler.compressTimeData(transportToTime.Value));
+            }
+            
         }
 
         private void clboxGoods_SelectedIndexChanged(object sender, EventArgs e)
@@ -249,6 +254,7 @@ namespace Mabi_Tools
             RadioButton selectedRBTN = flpTransport.Controls.OfType<RadioButton>().FirstOrDefault(rbtn => rbtn.Checked);
             SelectedTransportSlots = TransportData[selectedRBTN.Text].slots;
             SelectedTransportWeight = TransportData[selectedRBTN.Text].weight;
+            SelectedTransportName = selectedRBTN.Text;
            
             //If the player has a commerce partner - they get a small boost to weight capacity and slots
             if (cboxCommerce.Checked)
@@ -312,9 +318,16 @@ namespace Mabi_Tools
             //Display the end results to the user
             UIHelper.displayCommerceResults(lviewResults, EndResults);
 
-            Graph newGraph = Graph.constructGraphCommerce(AvgTimeData);
-            EndResultsTime = newGraph.startDijkstra(clboxCities.SelectedItem.ToString());
-            calculateDucatsPerMin(EndResultsTime);
+            /*Graph newGraph = Graph.constructGraphCommerce(AvgTimeData);
+            Dictionary<String, TimeSpan> endResultsTime = newGraph.startDijkstra(clboxCities.SelectedItem.ToString());*/
+            //Check if we have a time graph on the transport - if not - then
+            if (!TimeData.ContainsKey(SelectedTransportName))
+            {
+                btnDucats.Enabled = false;
+                return;
+            }
+            Dictionary<String, TimeSpan> endResultsTime = GraphsbyTransport[SelectedTransportName].startDijkstra(clboxCities.SelectedItem.ToString());
+            calculateDucatsPerMin(endResultsTime);
         }
 
         private void calculateDucatsPerMin(Dictionary<String, TimeSpan> shortestTime)
@@ -328,8 +341,9 @@ namespace Mabi_Tools
                 {
                     continue;
                 }
-                //Also check for a divide by zero as well
-                if (townTime.Value.Ticks == 0)
+                TimeSpan maxedValue = new TimeSpan(0, Int32.MaxValue, Int32.MaxValue); ;
+                //Also check for a divide by zero and in the case of some shenanigans of the user editing the data - if the timespan is the same maxed out assignment value as assigned in Dijkstra
+                if (townTime.Value.Ticks == 0 || townTime.Value == maxedValue)
                 {
                     DucatsMin[townTime.Key] = 0;
                 }
