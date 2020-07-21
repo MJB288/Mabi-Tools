@@ -78,7 +78,13 @@ namespace Mabi_Tools
                 this.Close();
             }
 
-            UIHelper.generateRadioButtons(flpTransport, TransportData, this);
+            List<String> transportList = new List<String>();
+            foreach (Transport t in TransportData.Values)
+            {
+                transportList.Add(t.name);
+            }
+
+            UIHelper.generateRadioButtons(flpTransport, transportList, this.rbtnTransport_CheckedChanged);
 
             //Adjust Visibility based on the amount of towns detected.
             this.adjustTextBoxesVisibilityCommerce();
@@ -369,8 +375,15 @@ namespace Mabi_Tools
         {
             //Since it only contains radio buttons - we can just clear them all
             flpTransport.Controls.Clear();
+
+            List<String> transportList = new List<String>();
+            foreach(Transport t in TransportData.Values)
+            {
+                transportList.Add(t.name);
+            }
             //Now regenerate all of the Transport Options
-            UIHelper.generateRadioButtons(flpTransport, TransportData, this);
+            UIHelper.generateRadioButtons(flpTransport, transportList, this.rbtnTransport_CheckedChanged);
+
         }
 
 

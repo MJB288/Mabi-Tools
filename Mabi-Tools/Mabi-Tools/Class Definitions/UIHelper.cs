@@ -57,18 +57,20 @@ namespace Mabi_Tools
             checkbox.SelectedItem = checkbox.Items[prevSelected];
         }
 
-        public static void generateRadioButtons(FlowLayoutPanel flow, Dictionary<String, Transport> data, frmCommerce commerce)
+
+        //public delegate RadioButtonFunction(object sender, EventArgs e);
+        public static void generateRadioButtons(FlowLayoutPanel flow, List<String> data, System.EventHandler rbtnFunction)
         {
             int i = 1, rbtnHeight = 0;
             //Dynamically create radio buttons for each type of transport
-            foreach (Transport t in data.Values)
+            foreach (String s in data)
             {
                 //RadioButton temp = new RadioButton { Text = t.getName() + "\nSlots - " + t.getSlots() + "     Weight Capacity - " + t.getWeight(), Name = "rbtnTransport" + i };
-                RadioButton temp = new RadioButton { Text = t.name, Name = "rbtnTransport" + i };
+                RadioButton temp = new RadioButton { Text = s, Name = "rbtnTransport" + i };
                 temp.AutoSize = false;
                 temp.Width = flow.Width - 5;
                 //temp.Height = (int) (temp.Height  * 1.5);
-                temp.CheckedChanged += (commerce.rbtnTransport_CheckedChanged);
+                temp.CheckedChanged += (rbtnFunction);
                 flow.Controls.Add(temp);
                 i++;
                 rbtnHeight = temp.Height;

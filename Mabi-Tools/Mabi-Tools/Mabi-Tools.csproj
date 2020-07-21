@@ -62,6 +62,12 @@
     <Compile Include="Forms\Commerce Calculator\Commerce.Designer.cs">
       <DependentUpon>Commerce.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Commerce Calculator\Time Tracker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Commerce Calculator\Time Tracker.Designer.cs">
+      <DependentUpon>Time Tracker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Commerce Calculator\Transport Editor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Commerce Calculator\Commerce.resx">
       <DependentUpon>Commerce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Commerce Calculator\Time Tracker.resx">
+      <DependentUpon>Time Tracker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Commerce Calculator\Transport Editor.resx">
       <DependentUpon>Transport Editor.cs</DependentUpon>
