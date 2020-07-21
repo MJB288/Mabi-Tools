@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Mabi_Tools
 {
@@ -67,7 +68,7 @@ namespace Mabi_Tools
             }
             if (!Vertices.ContainsKey(newEdge.Destination))
             {
-                Vertices[newEdge.Destination] = new Vertex(newEdge.Source);
+                Vertices[newEdge.Destination] = new Vertex(newEdge.Destination);
             }
             //Now add the edge and reverse Edge
             Vertices[newEdge.Source].Edges.Add(newEdge);
@@ -101,6 +102,7 @@ namespace Mabi_Tools
         private void Dijkstra(Vertex cur, Dictionary<String, bool> vVisited, Dictionary<String, String> prevVertex, Dictionary<String, TimeSpan> ShortestDistance)
         {
             vVisited[cur.name] = true;
+            
             foreach(Edge edge in cur.Edges)
             {
                 //If neighbor not visited - see if we can update the table
@@ -132,6 +134,7 @@ namespace Mabi_Tools
             {
                 return;
             }
+            Dijkstra(this.Vertices[nextDest], vVisited, prevVertex, ShortestDistance);
         }
 
 
