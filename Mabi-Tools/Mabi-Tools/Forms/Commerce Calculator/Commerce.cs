@@ -27,6 +27,7 @@ namespace Mabi_Tools
         //Keeping this in global memory for filter purposes
         private Dictionary<String, int> EndResults;
         private Dictionary<String, TimeSpan> EndResultsTime;
+        private Dictionary<String, int> DucatsMin;
         private Label[] CityLabels;
         private TextBox[] CityTextboxes;
         
@@ -195,7 +196,7 @@ namespace Mabi_Tools
             //Switch colors
             btnDucats.BackColor = Color.PaleGreen;
             btnNetProfit.BackColor = Color.LightGray;
-            UIHelper.displayResultsTime(lviewResults, EndResults, EndResultsTime);
+            UIHelper.displayCommerceResults(lviewResults,DucatsMin);
         }
 
         private void btnNetProfit_Click(object sender, EventArgs e)
@@ -203,7 +204,7 @@ namespace Mabi_Tools
             btnNetProfit.BackColor = Color.PaleGreen;
             btnDucats.BackColor = Color.LightGray;
             //Display the results to the user
-            UIHelper.displayResultsNetProfit(lviewResults, EndResults);
+            UIHelper.displayCommerceResults(lviewResults, EndResults);
             
         }
 
@@ -309,10 +310,36 @@ namespace Mabi_Tools
                 }
             }
             //Display the end results to the user
-            UIHelper.displayResultsNetProfit(lviewResults, EndResults);
+            UIHelper.displayCommerceResults(lviewResults, EndResults);
 
             Graph newGraph = Graph.constructGraphCommerce(AvgTimeData);
-            EndResultsTime = newGraph.startDijkstra("Tir Chonaill");
+            EndResultsTime = newGraph.startDijkstra(clboxCities.SelectedItem.ToString());
+            calculateDucatsPerMin(EndResultsTime);
+        }
+
+        private void calculateDucatsPerMin(Dictionary<String, TimeSpan> shortestTime)
+        {
+            DucatsMin = new Dictionary<string, int>();
+            foreach (KeyValuePair<String, TimeSpan> townTime in shortestTime.OrderByDescending(key => key.Value))
+            {
+                //Due to the nature of Dijkstra's algorithm - the source will also be in the dictionary, while in the net profit results it is not there
+                //Therefore - we need to add a check to skip (plus if for whatever reason there isn't a net profit - this doesn't work anyway)
+                if (!EndResults.ContainsKey(townTime.Key))
+                {
+                    continue;
+                }
+                //Also check for a divide by zero as well
+                if (townTime.Value.Ticks == 0)
+                {
+                    DucatsMin[townTime.Key] = 0;
+                }
+                else
+                {
+                    DucatsMin[townTime.Key] = Convert.ToInt32(EndResults[townTime.Key] / townTime.Value.TotalMinutes);
+                    //arr[1] = townTime.Value.ToString();
+                }
+                
+            }
         }
 
         private void refreshDisplayCities()
