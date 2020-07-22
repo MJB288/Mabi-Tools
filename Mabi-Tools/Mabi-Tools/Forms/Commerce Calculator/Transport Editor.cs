@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Mabi_Tools
+namespace Mabi_Tools.Forms.Commerce_Calculator
 {
     public partial class frmTransport : Form
     {

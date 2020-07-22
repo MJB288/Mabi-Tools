@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Mabi_Tools.Forms.Commerce_Calculator
 {
-    public partial class Time_Tracker : Form
+    public partial class frmTimeTracker : Form
     {
-        public Time_Tracker()
+        public frmTimeTracker()
         {
             InitializeComponent();
+        }
+
+        private void frmTimeTracker_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

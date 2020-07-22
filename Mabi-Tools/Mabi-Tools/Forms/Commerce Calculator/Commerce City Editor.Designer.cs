@@ -1,4 +1,4 @@
-﻿namespace Mabi_Tools
+﻿namespace Mabi_Tools.Forms.Commerce_Calculator
 {
     partial class frmCommerceCityEditor
     {
