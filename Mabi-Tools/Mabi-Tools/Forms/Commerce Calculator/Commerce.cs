@@ -46,19 +46,11 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             //While it is extremely unlikely that they'll add another city or trade post to the game
             //I decided to add dynamic loading into the mix to allow for more flexiility in the event it happens anyway
             //TODO- Move from loading from a text file to other forms of storage
-            //this.loadCommerceData("Cities.txt");
-            try
-            {
-                CityData = CommerceDataHandler.loadCommerceDataText("Resources/Cities.csv");
-            }
-            catch(FileNotFoundException ex)
-            {
-                MessageBox.Show("Error while loading City data : \n" + ex.Message, "Error");
-                //We can't proceed without city data - close
-                this.Close();
-            }
-            
-            UIHelper.populateCheckListBox(clboxCities, CityData.Keys.ToArray());
+            loadDataStartup();
+            //Generate the graphs from the time data
+            generateGraphs();
+
+            //UIHelper.populateCheckListBox(clboxCities, CityData.Keys.ToArray());
 
             Label[] testLabels = { lblTown0, lblTown1, lblTown2, lblTown3, lblTown4, lblTown5, lblTown6, lblTown7, lblTown8, lblTown9 };
             TextBox[] textBoxes = { txtTown0, txtTown1, txtTown2, txtTown3, txtTown4, txtTown5, txtTown6, txtTown7, txtTown8, txtTown9 };
@@ -67,7 +59,52 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             testLabels = null;
             textBoxes = null;
 
-            //Similarly, with the transport Mounts
+            //So this should return an enumerator of labels that contain the name - perhaps use this logic to assign the labels?
+            //this.Controls.OfType<Label>().Where(lbl => lbl.Name.Contains("lblTown"));
+
+            /*List<String> transportList = new List<String>();
+            foreach (Transport t in TransportData.Values)
+            {
+                transportList.Add(t.name);
+            }
+
+            UIHelper.generateRadioButtons(flpTransport, transportList, this.rbtnTransport_CheckedChanged);*/
+            refreshDisplayTransport();
+            refreshDisplayCities();
+
+            //Adjust Visibility based on the amount of towns detected.
+            this.adjustTextBoxesVisibilityCommerce();
+            this.adjustLabelsCities(0, 0);
+
+            //Check off the default value in the lists when loading
+            
+            //clboxCities.SetItemChecked(this.ClboxprevSelectedT, true);
+            //clboxCities.SelectedItem = clboxCities.Items[ClboxprevSelectedG];
+            //UIHelper.populateGoodCheckListBox(clboxGoods, CityData[CityData.Keys.ToList()[this.ClboxprevSelectedT]], ClboxprevSelectedG);
+            
+            //Check off the first one for now.
+            flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
+            String[] arr = { "1", "2" };
+            ListViewItem lItem = new ListViewItem(arr);
+            lviewResults.Items.Add(lItem);
+
+                  
+        }
+
+        private void loadDataStartup()
+        {
+            //Todo:Have some sort of settings to allow the user to specify which file they use
+            try
+            {
+                CityData = CommerceDataHandler.loadCommerceDataText("Resources/Cities.csv");
+            }
+            catch (FileNotFoundException ex)
+            {
+                MessageBox.Show("Error while loading City data : \n" + ex.Message, "Error");
+                //We can't proceed without city data - close
+                this.Close();
+            }
+
             try
             {
                 TransportData = CommerceDataHandler.loadTransportDataText("Resources/Transport.csv");
@@ -78,40 +115,30 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 this.Close();
             }
 
-            List<String> transportList = new List<String>();
-            foreach (Transport t in TransportData.Values)
+            try
             {
-                transportList.Add(t.name);
+                TimeData = CommerceDataHandler.loadTimeData("Resources/Time.csv");
             }
-
-            UIHelper.generateRadioButtons(flpTransport, transportList, this.rbtnTransport_CheckedChanged);
-
-            //Adjust Visibility based on the amount of towns detected.
-            this.adjustTextBoxesVisibilityCommerce();
-            this.adjustLabelsCities(0, 0);
-
-            //Check off the default value in the lists when loading
-            
-            clboxCities.SetItemChecked(this.ClboxprevSelectedT, true);
-            clboxCities.SelectedItem = clboxCities.Items[ClboxprevSelectedG];
-            UIHelper.populateGoodCheckListBox(clboxGoods, CityData[CityData.Keys.ToList()[this.ClboxprevSelectedT]], ClboxprevSelectedG);
-            
-            //Check off the first one for now.
-            flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
-            String[] arr = { "1", "2" };
-            ListViewItem lItem = new ListViewItem(arr);
-            lviewResults.Items.Add(lItem);
-
-            TimeData = CommerceDataHandler.loadTimeData("Resources/Time.csv");
-            SingletonGraphFactory graphFactory = SingletonGraphFactory.getFactory();
-            
-            GraphsbyTransport = new Dictionary<String, Graph>();
-            foreach(KeyValuePair<String, Dictionary<String, List<TimeSpan>>> transportToTime in TimeData)
+            catch (FileNotFoundException ex)
             {
-                GraphsbyTransport[transportToTime.Key] = graphFactory.constructGraph(CommerceDataHandler.compressTimeData(transportToTime.Value));
+                MessageBox.Show("Error while loading Transport Data : \n" + ex.Message, "Error");
+                this.Close();
             }
             
         }
+
+        private void generateGraphs()
+        {
+            SingletonGraphFactory graphFactory = SingletonGraphFactory.getFactory();
+
+            GraphsbyTransport = new Dictionary<String, Graph>();
+            foreach (KeyValuePair<String, Dictionary<String, List<TimeSpan>>> transportToTime in TimeData)
+            {
+                GraphsbyTransport[transportToTime.Key] = graphFactory.constructGraph(CommerceDataHandler.compressTimeData(transportToTime.Value));
+            }
+        }
+
+
 
         private void clboxGoods_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -334,6 +361,12 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             }
             Dictionary<String, TimeSpan> endResultsTime = GraphsbyTransport[SelectedTransportName].startDijkstra(clboxCities.SelectedItem.ToString());
             calculateDucatsPerMin(endResultsTime);
+        }
+
+        private void timeTrackerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTimeTracker timeTracker = new frmTimeTracker(TransportData.Keys.ToList());
+            timeTracker.ShowDialog();
         }
 
         private void calculateDucatsPerMin(Dictionary<String, TimeSpan> shortestTime)

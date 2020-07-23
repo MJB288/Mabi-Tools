@@ -484,22 +484,23 @@
             // editCityDataToolStripMenuItem
             // 
             this.editCityDataToolStripMenuItem.Name = "editCityDataToolStripMenuItem";
-            this.editCityDataToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.editCityDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editCityDataToolStripMenuItem.Text = "Edit City Data";
             this.editCityDataToolStripMenuItem.Click += new System.EventHandler(this.editCityDataToolStripMenuItem_Click);
             // 
             // editTransportDataToolStripMenuItem
             // 
             this.editTransportDataToolStripMenuItem.Name = "editTransportDataToolStripMenuItem";
-            this.editTransportDataToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.editTransportDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editTransportDataToolStripMenuItem.Text = "Edit Transport Data";
             this.editTransportDataToolStripMenuItem.Click += new System.EventHandler(this.editTransportDataToolStripMenuItem_Click);
             // 
             // timeTrackerToolStripMenuItem
             // 
             this.timeTrackerToolStripMenuItem.Name = "timeTrackerToolStripMenuItem";
-            this.timeTrackerToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
+            this.timeTrackerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.timeTrackerToolStripMenuItem.Text = "Time Tracker";
+            this.timeTrackerToolStripMenuItem.Click += new System.EventHandler(this.timeTrackerToolStripMenuItem_Click);
             // 
             // btnDucats
             // 

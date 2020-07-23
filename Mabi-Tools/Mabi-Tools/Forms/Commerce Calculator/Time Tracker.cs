@@ -12,9 +12,12 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 {
     public partial class frmTimeTracker : Form
     {
-        public frmTimeTracker()
+        private List<String> TransportNames;
+        public frmTimeTracker(List<String> transportNames)
         {
             InitializeComponent();
+            TransportNames = transportNames;
+
         }
 
         private void frmTimeTracker_Load(object sender, EventArgs e)
