@@ -45,30 +45,36 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // flpTransport
             // 
-            this.flpTransport.Location = new System.Drawing.Point(28, 23);
+            this.flpTransport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flpTransport.Location = new System.Drawing.Point(33, 39);
             this.flpTransport.Name = "flpTransport";
-            this.flpTransport.Size = new System.Drawing.Size(200, 336);
+            this.flpTransport.Size = new System.Drawing.Size(165, 313);
             this.flpTransport.TabIndex = 0;
             // 
             // clboxSource
             // 
+            this.clboxSource.CheckOnClick = true;
             this.clboxSource.FormattingEnabled = true;
-            this.clboxSource.Location = new System.Drawing.Point(268, 39);
+            this.clboxSource.Location = new System.Drawing.Point(236, 39);
             this.clboxSource.Name = "clboxSource";
             this.clboxSource.Size = new System.Drawing.Size(126, 139);
             this.clboxSource.TabIndex = 2;
+            this.clboxSource.SelectedIndexChanged += new System.EventHandler(this.clboxSource_SelectedIndexChanged);
             // 
             // clboxDestination
             // 
+            this.clboxDestination.CheckOnClick = true;
             this.clboxDestination.FormattingEnabled = true;
-            this.clboxDestination.Location = new System.Drawing.Point(268, 197);
+            this.clboxDestination.Location = new System.Drawing.Point(236, 197);
             this.clboxDestination.Name = "clboxDestination";
             this.clboxDestination.Size = new System.Drawing.Size(126, 139);
             this.clboxDestination.TabIndex = 3;
+            this.clboxDestination.SelectedIndexChanged += new System.EventHandler(this.clboxDestination_SelectedIndexChanged);
             // 
             // listView1
             // 
@@ -95,21 +101,23 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(295, 385);
+            this.btnSave.Location = new System.Drawing.Point(236, 392);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(99, 46);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save and Apply";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(400, 385);
+            this.btnCancel.Location = new System.Drawing.Point(341, 392);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(99, 46);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // textBox1
             // 
@@ -164,7 +172,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(311, 23);
+            this.label3.Location = new System.Drawing.Point(279, 23);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 13;
@@ -173,7 +181,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(292, 181);
+            this.label4.Location = new System.Drawing.Point(260, 181);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 14;
@@ -188,11 +196,21 @@
             this.btnEdit.Text = "Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(50, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(135, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Method of Transportation : ";
+            // 
             // frmTimeTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -235,5 +253,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Label label1;
     }
 }

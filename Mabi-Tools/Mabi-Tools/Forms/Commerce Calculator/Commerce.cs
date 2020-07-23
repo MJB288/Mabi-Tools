@@ -61,14 +61,6 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 
             //So this should return an enumerator of labels that contain the name - perhaps use this logic to assign the labels?
             //this.Controls.OfType<Label>().Where(lbl => lbl.Name.Contains("lblTown"));
-
-            /*List<String> transportList = new List<String>();
-            foreach (Transport t in TransportData.Values)
-            {
-                transportList.Add(t.name);
-            }
-
-            UIHelper.generateRadioButtons(flpTransport, transportList, this.rbtnTransport_CheckedChanged);*/
             refreshDisplayTransport();
             refreshDisplayCities();
 
@@ -281,7 +273,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             refreshDisplayCities();
         }
 
-        public void rbtnTransport_CheckedChanged(object sender, EventArgs e)
+        private void rbtnTransport_CheckedChanged(object sender, EventArgs e)
         {
             //The RadioButton Text should be exactly the same as the indexes used in the Dictionary. An alternative would be using the number found at the end of each radiobutton name
             RadioButton selectedRBTN = flpTransport.Controls.OfType<RadioButton>().FirstOrDefault(rbtn => rbtn.Checked);
@@ -365,7 +357,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 
         private void timeTrackerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmTimeTracker timeTracker = new frmTimeTracker(TransportData.Keys.ToList());
+            frmTimeTracker timeTracker = new frmTimeTracker(TransportData.Keys.ToList(), TimeData, this);
             timeTracker.ShowDialog();
         }
 
