@@ -69,7 +69,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             {
                 String partialKey = "", source = clboxSource.SelectedItem.ToString(), destination = clboxDestination.SelectedItem.ToString();
                 //Remember the alphabetical rules during the TimeData construction - recreate them here during lookup
-                
+                partialKey = determinePartialTimeDataKeyOrder(source, destination);
 
                 //Now the key also contains the path name - thus need to locate all possible keys containing the partial key
                 var relevantkeys = TimeData[SelectedTransport].Where(dictKeyPair => dictKeyPair.Key.Contains(partialKey)).Select(dictKeyPair => dictKeyPair.Key);
@@ -131,7 +131,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 
             
             String key = determinePartialTimeDataKeyOrder(clboxSource.SelectedItem.ToString(), clboxDestination.SelectedItem.ToString()) + txtPath.Text;
-            MessageBox.Show(key, "A key!");
+            //MessageBox.Show(key, "A key!");
 
             //Determine if the list exists for a given key
             if (!TimeData[SelectedTransport].ContainsKey(key))
