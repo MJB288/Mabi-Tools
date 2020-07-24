@@ -36,8 +36,8 @@
             this.clmTime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPath = new System.Windows.Forms.TextBox();
+            this.txtTime = new System.Windows.Forms.TextBox();
             this.lblPathName = new System.Windows.Forms.Label();
             this.lblTime = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -119,19 +119,19 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // textBox1
+            // txtPath
             // 
-            this.textBox1.Location = new System.Drawing.Point(424, 281);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 7;
+            this.txtPath.Location = new System.Drawing.Point(424, 281);
+            this.txtPath.Name = "txtPath";
+            this.txtPath.Size = new System.Drawing.Size(100, 20);
+            this.txtPath.TabIndex = 7;
             // 
-            // textBox2
+            // txtTime
             // 
-            this.textBox2.Location = new System.Drawing.Point(563, 281);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 8;
+            this.txtTime.Location = new System.Drawing.Point(563, 281);
+            this.txtTime.Name = "txtTime";
+            this.txtTime.Size = new System.Drawing.Size(100, 20);
+            this.txtTime.TabIndex = 8;
             // 
             // lblPathName
             // 
@@ -168,6 +168,7 @@
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label3
             // 
@@ -218,8 +219,8 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblTime);
             this.Controls.Add(this.lblPathName);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTime);
+            this.Controls.Add(this.txtPath);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lviewTime);
@@ -244,8 +245,8 @@
         private System.Windows.Forms.ColumnHeader clmTime;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPath;
+        private System.Windows.Forms.TextBox txtTime;
         private System.Windows.Forms.Label lblPathName;
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Button btnDelete;

@@ -69,14 +69,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             {
                 String partialKey = "", source = clboxSource.SelectedItem.ToString(), destination = clboxDestination.SelectedItem.ToString();
                 //Remember the alphabetical rules during the TimeData construction - recreate them here during lookup
-                if (source.CompareTo(destination) < 0)
-                {
-                    partialKey = destination + CommerceDataHandler.MAIN_TEXT_SEPARATOR + source + CommerceDataHandler.MAIN_TEXT_SEPARATOR;
-                }
-                else
-                {
-                    partialKey = source + CommerceDataHandler.MAIN_TEXT_SEPARATOR + destination + CommerceDataHandler.MAIN_TEXT_SEPARATOR;
-                }
+                
 
                 //Now the key also contains the path name - thus need to locate all possible keys containing the partial key
                 var relevantkeys = TimeData[SelectedTransport].Where(dictKeyPair => dictKeyPair.Key.Contains(partialKey)).Select(dictKeyPair => dictKeyPair.Key);
@@ -93,6 +86,65 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 }
                 //lblTest.Text = relevantkeys.ToString();
             }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            //Check if either textbox is empty
+            if(txtPath.Text == null || txtPath.Text.Equals(""))
+            {
+                MessageBox.Show("Path name cannot be empty!", "Input Error");
+                return;
+            }
+            if(txtTime.Text == null || txtTime.Text.Equals(""))
+            {
+                MessageBox.Show("Time value cannot be empty!", "Input Error");
+                return;
+            }
+
+            if (txtPath.Text.Contains(CommerceDataHandler.MAIN_TEXT_SEPARATOR))
+            {
+                MessageBox.Show("Path name may not contain the character '" + CommerceDataHandler.MAIN_TEXT_SEPARATOR + "'!", "Input Error");
+                return;
+            }
+
+            //Now try to parse the timespan from the string
+            TimeSpan newTime = new TimeSpan();
+            try
+            {
+                newTime = TimeSpan.Parse(txtTime.Text);
+            }
+            catch(FormatException fex)
+            {
+                MessageBox.Show("Time format must be HOUR-MINUTE-SECOND - two digits each!\n"+fex.Message, "Format Error");
+                return;
+            }
+
+            //No user input errors so far - now check for and create levels of the internal dictionary if necessary
+
+            //First check that we have data entries for the currently selected transport
+            if (!TimeData.ContainsKey(SelectedTransport))
+            {
+                TimeData[SelectedTransport] = new Dictionary<string, List<TimeSpan>>();
+            }
+            //Now check that the second level exists
+
+            
+            String key = determinePartialTimeDataKeyOrder(clboxSource.SelectedItem.ToString(), clboxDestination.SelectedItem.ToString()) + txtPath.Text;
+            MessageBox.Show(key, "A key!");
+
+            //Determine if the list exists for a given key
+            if (!TimeData[SelectedTransport].ContainsKey(key))
+            {
+                TimeData[SelectedTransport][key] = new List<TimeSpan>();
+            }
+
+            TimeData[SelectedTransport][key].Add(newTime);
+            //Now add the item to the UI
+            String[] listItemValues = { txtPath.Text, newTime.ToString() };
+            ListViewItem lviewItem = new ListViewItem(listItemValues);
+            lviewTime.Items.Add(lviewItem);
+           
         }
 
         private void clboxSource_SelectedIndexChanged(object sender, EventArgs e)
@@ -116,6 +168,21 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             {
                 populateTimeList();
             }
+        }
+
+        //Determines the order of the keys used in the dictionary
+        private string determinePartialTimeDataKeyOrder(String source, String destination)
+        {
+            String partialKey = "";
+            if (source.CompareTo(destination) < 0)
+            {
+                partialKey = destination + CommerceDataHandler.MAIN_TEXT_SEPARATOR + source + CommerceDataHandler.MAIN_TEXT_SEPARATOR;
+            }
+            else
+            {
+                partialKey = source + CommerceDataHandler.MAIN_TEXT_SEPARATOR + destination + CommerceDataHandler.MAIN_TEXT_SEPARATOR;
+            }
+            return partialKey;
         }
     }
 }
