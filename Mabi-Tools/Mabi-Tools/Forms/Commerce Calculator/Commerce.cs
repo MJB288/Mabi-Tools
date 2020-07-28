@@ -359,6 +359,8 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         {
             frmTimeTracker timeTracker = new frmTimeTracker(TransportData.Keys.ToList(), TimeData, this);
             timeTracker.ShowDialog();
+            //Now let's assume the user changed something - rebuild the graphs. If they didn't - the same graphs should be generated
+            generateGraphs();
         }
 
         private void calculateDucatsPerMin(Dictionary<String, TimeSpan> shortestTime)

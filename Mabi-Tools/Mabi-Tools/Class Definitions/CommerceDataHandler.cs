@@ -211,6 +211,22 @@ namespace Mabi_Tools
             return timeData;
         }
 
+        public static void saveTimeData(String filepath, Dictionary<String, Dictionary<String, List<TimeSpan>>> timeData)
+        {
+            StringBuilder timeOutput = new StringBuilder();
+            //Now go through each individual item and save to a file
+            foreach(String transport in timeData.Keys)
+            {
+                foreach(KeyValuePair<String,List<TimeSpan>> kvpTime in timeData[transport])
+                { 
+                    for(int i = 0; i < kvpTime.Value.Count; i++)
+                    {
+                        timeOutput.Append(transport + CommerceDataHandler.MAIN_TEXT_SEPARATOR + kvpTime.Key + CommerceDataHandler.MAIN_TEXT_SEPARATOR + kvpTime.Value[i] + "\n");
+                    }
+                }
+            }
+        }
+
     }
     
 

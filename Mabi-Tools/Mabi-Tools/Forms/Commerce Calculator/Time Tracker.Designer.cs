@@ -81,6 +81,7 @@
             this.lviewTime.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmPath,
             this.clmTime});
+            this.lviewTime.FullRowSelect = true;
             this.lviewTime.HideSelection = false;
             this.lviewTime.Location = new System.Drawing.Point(436, 23);
             this.lviewTime.Name = "lviewTime";

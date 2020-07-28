@@ -15,6 +15,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         private List<String> TransportNames, CityNames;
         private frmCommerce commerceCaller;
         private Dictionary<String, Dictionary<String, List<TimeSpan>>> TimeData;
+        private Dictionary<String, int> LViewGroupIndex;
         private int ClboxPrevSelectedS = 0, ClboxPrevSelectedD = 0;
         private String SelectedTransport = "";
 
@@ -51,6 +52,8 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         private void btnSave_Click(object sender, EventArgs e)
         {
             commerceCaller.TimeData = TimeData;
+            CommerceDataHandler.saveTimeData("Resources/Time.csv", TimeData);
+            this.Close();
         }
 
         private void clboxDestination_SelectedIndexChanged(object sender, EventArgs e)
@@ -64,7 +67,10 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 
         private void populateTimeList()
         {
+            LViewGroupIndex = new Dictionary<string, int>();
+            //Clear Items and Groups
             lviewTime.Items.Clear();
+            lviewTime.Groups.Clear();
             if (TimeData.ContainsKey(SelectedTransport))
             {
                 String partialKey = "", source = clboxSource.SelectedItem.ToString(), destination = clboxDestination.SelectedItem.ToString();
@@ -76,11 +82,21 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 
                 foreach (String key in relevantkeys)
                 {
-                    String[] arr = { key.Split(CommerceDataHandler.MAIN_TEXT_SEPARATOR)[2], "" };
+                    String pathName = key.Split(CommerceDataHandler.MAIN_TEXT_SEPARATOR)[2];
+                    String[] arr = { pathName, "" };
+                    
+                    ListViewGroup lviewGroup = new ListViewGroup(pathName);
+                    //Add this path to the list of groups
+                    if (!LViewGroupIndex.ContainsKey(pathName))
+                    {
+                        lviewTime.Groups.Add(lviewGroup);
+                        LViewGroupIndex[pathName] = lviewTime.Groups.IndexOf(lviewGroup);
+                    }
                     foreach (TimeSpan ts in TimeData[SelectedTransport][key])
                     {
                         arr[1] = ts.ToString();
                         ListViewItem lviewItem = new ListViewItem(arr);
+                        lviewItem.Group = lviewTime.Groups[LViewGroupIndex[pathName]] ;
                         lviewTime.Items.Add(lviewItem);
                     }
                 }
@@ -116,7 +132,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             }
             catch(FormatException fex)
             {
-                MessageBox.Show("Time format must be HOUR-MINUTE-SECOND - two digits each!\n"+fex.Message, "Format Error");
+                MessageBox.Show("Time format must be HOUR-MINUTE-SECOND!\n"+fex.Message, "Format Error");
                 return;
             }
             catch(OverflowException oex)
@@ -147,11 +163,15 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             //Now add the item to the UI
             String[] listItemValues = { txtPath.Text, newTime.ToString() };
             ListViewItem lviewItem = new ListViewItem(listItemValues);
-            /*if (lviewTime.Groups.)
+            ListViewGroup lviewGroup = new ListViewGroup(txtPath.Text);
+            //Check using the dictionary
+            if(!LViewGroupIndex.ContainsKey(txtPath.Text))
             {
-
-            }*/
-            //lviewItem.Gr
+                lviewTime.Groups.Add(lviewGroup);
+                LViewGroupIndex[txtPath.Text] = lviewTime.Groups.IndexOf(lviewGroup);
+            }
+            //Assign the item to a group at a specified index
+            lviewItem.Group = lviewTime.Groups[LViewGroupIndex[txtPath.Text]];
             lviewTime.Items.Add(lviewItem);
            
         }
@@ -175,9 +195,19 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 MessageBox.Show("Must have an item selected to be able to delete", "Delete Error");
                 return;
             }
+           
             //The listview was built with multi select in mind - therefore I will take advantage of that to allow the user to delete multiple items
-            foreach (int index in lviewTime.SelectedIndices) {
-                
+            //To do this I will delete the bottom most index and work upwards
+            for(int i = lviewTime.SelectedIndices.Count - 1; i >= 0; i--) 
+            {
+                //Get the current index
+                int index = lviewTime.SelectedIndices[i];
+                //Get the Listview Item in Question
+                ListViewItem itemToRemove = lviewTime.Items[index];
+                //We need to get a relative index within the group to get the index of item in the TimeData
+                int relativeIndex = itemToRemove.Group.Items.IndexOf(itemToRemove);
+                String key = determinePartialTimeDataKeyOrder(clboxSource.SelectedItem.ToString(), clboxDestination.SelectedItem.ToString()) + itemToRemove.Group.Header;
+                TimeData[SelectedTransport][key].RemoveAt(relativeIndex);
                 //Finally remove from the UI
                 lviewTime.Items.RemoveAt(index);
             };
@@ -210,5 +240,17 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             }
             return partialKey;
         }
+
+        /*private void updateGroupIndices(int startingIndex, Dictionary<String, int> lviewGroupIndex)
+        {
+            //Since the list of groups is indexable - we must update all indices if a group is deleted
+            foreach(KeyValuePair<String, int> kvp in lviewGroupIndex)
+            {
+                if(kvp.Value > startingIndex)
+                {
+
+                }
+            }
+        }*/
     }
 }
