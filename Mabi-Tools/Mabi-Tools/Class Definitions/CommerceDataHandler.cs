@@ -225,6 +225,8 @@ namespace Mabi_Tools
                     }
                 }
             }
+            timeOutput.Remove(timeOutput.Length - 2, 2);
+            File.WriteAllText(filepath, timeOutput.ToString());
         }
 
     }

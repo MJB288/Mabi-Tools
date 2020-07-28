@@ -45,7 +45,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblTest = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // flpTransport
@@ -102,7 +101,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(236, 392);
+            this.btnSave.Location = new System.Drawing.Point(252, 392);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(99, 46);
             this.btnSave.TabIndex = 5;
@@ -112,7 +111,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(341, 392);
+            this.btnCancel.Location = new System.Drawing.Point(357, 392);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(99, 46);
             this.btnCancel.TabIndex = 6;
@@ -122,14 +121,14 @@
             // 
             // txtPath
             // 
-            this.txtPath.Location = new System.Drawing.Point(424, 281);
+            this.txtPath.Location = new System.Drawing.Point(436, 281);
             this.txtPath.Name = "txtPath";
             this.txtPath.Size = new System.Drawing.Size(100, 20);
             this.txtPath.TabIndex = 7;
             // 
             // txtTime
             // 
-            this.txtTime.Location = new System.Drawing.Point(563, 281);
+            this.txtTime.Location = new System.Drawing.Point(550, 281);
             this.txtTime.Name = "txtTime";
             this.txtTime.Size = new System.Drawing.Size(100, 20);
             this.txtTime.TabIndex = 8;
@@ -137,7 +136,7 @@
             // lblPathName
             // 
             this.lblPathName.AutoSize = true;
-            this.lblPathName.Location = new System.Drawing.Point(444, 265);
+            this.lblPathName.Location = new System.Drawing.Point(453, 265);
             this.lblPathName.Name = "lblPathName";
             this.lblPathName.Size = new System.Drawing.Size(66, 13);
             this.lblPathName.TabIndex = 9;
@@ -146,7 +145,7 @@
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(594, 265);
+            this.lblTime.Location = new System.Drawing.Point(582, 265);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(36, 13);
             this.lblTime.TabIndex = 10;
@@ -199,21 +198,11 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Method of Transportation : ";
             // 
-            // lblTest
-            // 
-            this.lblTest.AutoSize = true;
-            this.lblTest.Location = new System.Drawing.Point(269, 355);
-            this.lblTest.Name = "lblTest";
-            this.lblTest.Size = new System.Drawing.Size(66, 13);
-            this.lblTest.TabIndex = 17;
-            this.lblTest.Text = "Path Name :";
-            // 
             // frmTimeTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 450);
-            this.Controls.Add(this.lblTest);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -256,6 +245,5 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblTest;
     }
 }

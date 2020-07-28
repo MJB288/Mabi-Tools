@@ -208,6 +208,15 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 int relativeIndex = itemToRemove.Group.Items.IndexOf(itemToRemove);
                 String key = determinePartialTimeDataKeyOrder(clboxSource.SelectedItem.ToString(), clboxDestination.SelectedItem.ToString()) + itemToRemove.Group.Header;
                 TimeData[SelectedTransport][key].RemoveAt(relativeIndex);
+                //Now determine how many levels we must remove in the dictionary to trim memory usage
+                if(TimeData[SelectedTransport][key].Count <= 0)
+                {
+                    TimeData[SelectedTransport].Remove(key);
+                }
+                if(TimeData[SelectedTransport].Count <= 0)
+                {
+                    TimeData.Remove(SelectedTransport);
+                }
                 //Finally remove from the UI
                 lviewTime.Items.RemoveAt(index);
             };
@@ -240,17 +249,5 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             }
             return partialKey;
         }
-
-        /*private void updateGroupIndices(int startingIndex, Dictionary<String, int> lviewGroupIndex)
-        {
-            //Since the list of groups is indexable - we must update all indices if a group is deleted
-            foreach(KeyValuePair<String, int> kvp in lviewGroupIndex)
-            {
-                if(kvp.Value > startingIndex)
-                {
-
-                }
-            }
-        }*/
     }
 }
