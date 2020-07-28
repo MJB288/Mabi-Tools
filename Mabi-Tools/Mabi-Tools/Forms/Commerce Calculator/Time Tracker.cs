@@ -119,6 +119,10 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 MessageBox.Show("Time format must be HOUR-MINUTE-SECOND - two digits each!\n"+fex.Message, "Format Error");
                 return;
             }
+            catch(OverflowException oex)
+            {
+                MessageBox.Show("Numerical overflow on the input time :\n" + oex.Message, "Format Error");
+            }
 
             //No user input errors so far - now check for and create levels of the internal dictionary if necessary
 
@@ -143,6 +147,11 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             //Now add the item to the UI
             String[] listItemValues = { txtPath.Text, newTime.ToString() };
             ListViewItem lviewItem = new ListViewItem(listItemValues);
+            /*if (lviewTime.Groups.)
+            {
+
+            }*/
+            //lviewItem.Gr
             lviewTime.Items.Add(lviewItem);
            
         }
@@ -156,6 +165,23 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             cityNames2.Remove(clboxSource.SelectedItem.ToString());
             UIHelper.populateCheckListBox(clboxDestination, cityNames2.ToArray());
             clboxDestination.SelectedIndex = ClboxPrevSelectedD;
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            //First check that a time has been selected
+            if(lviewTime.SelectedItems.Count <= 0)
+            {
+                MessageBox.Show("Must have an item selected to be able to delete", "Delete Error");
+                return;
+            }
+            //The listview was built with multi select in mind - therefore I will take advantage of that to allow the user to delete multiple items
+            foreach (int index in lviewTime.SelectedIndices) {
+                
+                //Finally remove from the UI
+                lviewTime.Items.RemoveAt(index);
+            };
+            
         }
 
         private void rbtnTransport_CheckedChanged(object sender, EventArgs e)
