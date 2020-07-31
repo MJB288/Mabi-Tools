@@ -39,8 +39,11 @@ Here are some of the assumptions I made when compiling my own time dataset:
 1. Time spent moving around Bandit ambushes will be included - since it's not easy to uninclude it anyway
 2. Time spent fighting Bandits will not be included (aka the timer is paused at these moments)
 3. For the boat between Cobh and Belvast - maximum time spent waiting for the boat will be assumed.
+4. No movement speed boosting titles or potions were used
 
-For assumption 2 - the damage output of each user is different and there are different types of bandits - it's better to not factor them in. This primarily mostly affects the times of Osna Sail and somewhat affects Corrib Valley due to the narrowness of those two paths making some encounters unavoidable.
+For assumption 2 - the damage output of each user is different and there are different types of bandits - it's better to not factor them in. This primarily mostly affects the times of Osna Sail and somewhat affects Corrib Valley due to the narrowness of those two paths making some encounters unavoidable. For assumption 4 - there are various ways of boosting movement speed in the game - but since they all boost in varying amounts and not all methods might not be available to each individual player - I decided to disclude them for the default data set.
+
+If you wish to make your own time data set - you do not have to follow the assumptions made above.
 
 Even though the commerce system has not really changed that much for multiple years, I decided to accommodate the potential for changes by dynamically loading the data and including tools for the user to change the various data sets in the event I am unavailable to do so myself.
 

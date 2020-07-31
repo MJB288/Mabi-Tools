@@ -1,10 +1,26 @@
-﻿Wagon,Dunbarton,Tir Chonaill,Dugald Isle,00:01:00
-Wagon,Bangor,Dunbarton,Gairech Hills,00:02:00
-Wagon,Bangor,Emain Macha,Sen Mag Plains,00:03:00
-Wagon,Dunbarton,Emain Macha,Osna Sail,00:04:00
-Wagon,Emain Macha,Tara,Blago Prarie,00:05:00
-Wagon,Tailteann,Tara,Corrib Valley,00:06:00
-Wagon,Tailteann,Tir Chonaill,Siab Cullin,00:07:00
-Wagon,Dunbarton,Tailteann,Abb Neagh,00:08:00
-Wagon,Dunbarton,Port Cobh,Cobh Way,00:09:00
+﻿Wagon,Tir Chonaill,Dunbarton,Dugald Isle,00:03:04
+Wagon,Tir Chonaill,Dunbarton,Dugald Isle,00:03:21
+Wagon,Tir Chonaill,Dunbarton,Dugald Isle,00:02:54
+Wagon,Tir Chonaill,Dunbarton,Dugald Isle,00:03:03
+Wagon,Tir Chonaill,Dunbarton,Dugald Isle,00:03:09
+Wagon,Dunbarton,Bangor,Gairech Hills,00:03:17
+Wagon,Dunbarton,Bangor,Gairech Hills,00:03:20
+Wagon,Dunbarton,Bangor,Gairech Hills,00:03:26
+Wagon,Dunbarton,Bangor,Gairech Hills,00:03:24
+Wagon,Dunbarton,Bangor,Gairech Hills,00:03:21
+Wagon,Emain Macha,Bangor,Sen Mag Plains,00:05:44
+Wagon,Emain Macha,Bangor,Sen Mag Plains,00:05:34
+Wagon,Emain Macha,Bangor,Sen Mag Plains,00:05:33
+Wagon,Emain Macha,Bangor,Sen Mag Plains,00:05:34
+Wagon,Emain Macha,Bangor,Sen Mag Plains,00:05:30
+Wagon,Emain Macha,Dunbarton,Osna Sail,00:04:00
+Wagon,Tara,Emain Macha,Blago Prarie,00:05:00
+Wagon,Tara,Tailteann,Corrib Valley,00:06:00
+Wagon,Tir Chonaill,Tailteann,Siab Cullin,00:07:00
+Wagon,Tailteann,Dunbarton,Abb Neagh,00:08:00
+Wagon,Port Cobh,Dunbarton,Cobh Way,00:00:44
+Wagon,Port Cobh,Dunbarton,Cobh Way,00:00:42
+Wagon,Port Cobh,Dunbarton,Cobh Way,00:00:41
+Wagon,Port Cobh,Dunbarton,Cobh Way,00:00:42
+Wagon,Port Cobh,Dunbarton,Cobh Way,00:00:41
 Wagon,Port Cobh,Belvast,Boat,00:10:00
