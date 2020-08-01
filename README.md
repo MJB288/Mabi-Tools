@@ -1,10 +1,10 @@
 # Mabi-Tools
 
-##Table of Contents
+## Table of Contents
 1. [Standards](##Standards)
 1. [Commerce Calculator](##Commerce-Calculator)
 
-##Introduction [[TOC](##Table-of-Contents)]
+## Introduction [[TOC](##Table-of-Contents)]
 In an effort to teach myself C#, I figured I would create some tools for a Massively Multiplayer Online Role-playing Game (MMORPG) I used to play called Mabinogi. Some of various tools are suggestions from friends who still play the game, others are ideas I have thought of. I won't claim they are unique ideas though, it is quite possible someone else may have already thought of them and made their own implementation.
 
 ## Standards [[TOC](##Table-of-Contents)]
