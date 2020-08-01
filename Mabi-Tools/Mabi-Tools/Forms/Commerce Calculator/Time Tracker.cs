@@ -22,9 +22,10 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         public frmTimeTracker(List<String> transportNames, Dictionary<String, Dictionary<String, List<TimeSpan>>> timeData, frmCommerce commerce)
         {
             InitializeComponent();
-            TransportNames = transportNames;
+            TransportNames = new List<String>(transportNames);
             commerceCaller = commerce;
-            TimeData = timeData;
+            //TimeData = new Dictionary<String, Dictionary<String, List<TimeSpan>>>(timeData);
+            TimeData = duplicateTimeDictionary(timeData);
             CityNames = commerce.CityData.Keys.ToList();
         }
 
@@ -40,6 +41,22 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             UIHelper.populateCheckListBox(clboxSource, CityNames.ToArray());
             UIHelper.generateRadioButtons(flpTransport, TransportNames, rbtnTransport_CheckedChanged);
             flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
+        }
+
+        private Dictionary<String, Dictionary<String, List<TimeSpan>>> duplicateTimeDictionary(Dictionary<String, Dictionary<String, List<TimeSpan>>> duplicateMe)
+        {
+            Dictionary<String, Dictionary<String, List<TimeSpan>>> returnDict = new Dictionary<String, Dictionary<String, List<TimeSpan>>>(duplicateMe);
+            //Now we need to iterate througgh each level of the dictionary to retun a new one
+            foreach(String key in duplicateMe.Keys)
+            {
+                returnDict[key] = new Dictionary<string, List<TimeSpan>>(duplicateMe[key]);
+                foreach(String key2ndLevel in duplicateMe[key].Keys)
+                {
+                    returnDict[key][key2ndLevel] = new List<TimeSpan>(duplicateMe[key][key2ndLevel]);
+                }
+            }
+
+            return returnDict;
         }
 
 

@@ -18,7 +18,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         public frmTransport(Dictionary<String, Transport> transportData, frmCommerce commerce)
         {
             InitializeComponent();
-            TransportData = transportData;
+            TransportData = new Dictionary<String, Transport>(transportData);
             Commerce = commerce;
         }
 
