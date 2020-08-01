@@ -1,20 +1,20 @@
 # Mabi-Tools
 
-##Table of Contents
-1. [Standards](##Standards)
-1. [Commerce Calculator](##Commerce-Calculator)
+## Table of Contents
+1. [Standards](#standards-toc)
+1. [Commerce Calculator](#commerce-calculator-toc)
 
-##Introduction [[TOC](##Table-of-Contents)]
+## Introduction [[TOC](#table-of-contents)]
 In an effort to teach myself C#, I figured I would create some tools for a Massively Multiplayer Online Role-playing Game (MMORPG) I used to play called Mabinogi. Some of various tools are suggestions from friends who still play the game, others are ideas I have thought of. I won't claim they are unique ideas though, it is quite possible someone else may have already thought of them and made their own implementation.
 
-## Standards [[TOC](##Table-of-Contents)]
+## Standards [[TOC](#table-of-contents)]
 These are some rules I have in place for what future tools I might make.
 
 1. Nothing that plays the game for you (e.x. Macros)
 2. No kind of software that allows the player to cheat or hack the game client or game server.
 
 
-## Commerce Calculator [[TOC](##Table-of-Contents)]
+## Commerce Calculator [[TOC](#table-of-contents)]
 This was a suggestion from a friend. In the game, there is a commerce system that allows the player to transport goods between cities. The player pays for the goods they transport, and are paid according to value of the goods at the city they arrive. Players may choose any city to drop off their goods. Players also know the prices of a particular good in all of the other cities when selecting which goods to transport. There is also a smuggler who you can also trade goods to at a higher price. There are downsides to doing this, but they are not relevant to the current project.
 
 There are two main factors that affect price:
@@ -47,5 +47,5 @@ If you wish to make your own time data set - you do not have to follow the assum
 
 Even though the commerce system has not really changed that much for multiple years, I decided to accommodate the potential for changes by dynamically loading the data and including tools for the user to change the various data sets in the event I am unavailable to do so myself.
 
-## Cooking Meter [[TOC](##Table-of-Contents)]
+## Cooking Meter [[TOC](#table-of-contents)]
 Not currently in development but the next idea would be to make my own cooking meter. This not an original idea, there are a few decently made cooking meters already. I just simply wanted to make my own as well. I will expand upon this feature in the README when I reach that phase in development.
