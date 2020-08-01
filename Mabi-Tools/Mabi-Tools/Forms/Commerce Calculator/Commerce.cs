@@ -51,6 +51,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             generateGraphs();
 
             //UIHelper.populateCheckListBox(clboxCities, CityData.Keys.ToArray());
+            //TODO- dynamically generate each textbox and label for more future flexibility
             Label[] testLabels = { lblTown0, lblTown1, lblTown2, lblTown3, lblTown4, lblTown5, lblTown6, lblTown7, lblTown8, lblTown9 };
             TextBox[] textBoxes = { txtTown0, txtTown1, txtTown2, txtTown3, txtTown4, txtTown5, txtTown6, txtTown7, txtTown8, txtTown9 };
             CityLabels = testLabels;

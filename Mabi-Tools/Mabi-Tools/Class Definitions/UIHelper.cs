@@ -5,8 +5,17 @@ using System.Windows.Forms;
 
 namespace Mabi_Tools
 {
+    /// <summary>
+    /// A static helper class that contains some reusable methods for altering/changing the UI
+    /// </summary>
     public static class UIHelper
     {
+        /// <summary>
+        /// On a checkListbox - ensure that only one value is check at a time. 
+        /// </summary>
+        /// <param name="clistbox">The checklist box</param>
+        /// <param name="prevSelected">The index previous value on the list that was selected</param>
+        /// <returns></returns>
         public static int makeListBoxExclusitivity(CheckedListBox clistbox, int prevSelected)
         {
             //One item must always be selected. Re-check the box if it was the one selected.
@@ -33,13 +42,27 @@ namespace Mabi_Tools
                 return clistbox.SelectedIndex;
             }
         }
+        //Perhaps a redundant method - it used to be more complex
+
+        
+        /// <summary>
+        /// Adds contents of a string array to a supplied checklist box
+        /// </summary>
+        /// <param name="checkbox">A checklistbox to populate with values</param>
+        /// <param name="dataArray">A list of strings to add as selectable values</param>
         public static void populateCheckListBox(CheckedListBox checkbox, String[] dataArray)
         {
             checkbox.Items.Clear();
-            //checkbox.Items.AddRange(data.Keys.ToArray());
             checkbox.Items.AddRange(dataArray);
         }
 
+
+        /// <summary>
+        /// Adds contents of a City Object's goods to a supplied checklist box
+        /// </summary>
+        /// <param name="checkbox">A checklist box to populate with values</param>
+        /// <param name="city">A city with a list of goods to display</param>
+        /// <param name="prevSelected"></param>
         public static void populateGoodCheckListBox(CheckedListBox checkbox, City city, int prevSelected)
         {
             checkbox.Items.Clear();
@@ -53,12 +76,21 @@ namespace Mabi_Tools
                 return;
             }
             //Since we just cleared all items, we must recheck the last one the user selected
+            //However - check for an outof bound index in event of custom/new city that has uneven amount of goods
+            if(prevSelected > checkbox.Items.Count)
+            {
+                prevSelected = checkbox.Items.Count - 1;
+            }
             checkbox.SetItemChecked(prevSelected, true);
             checkbox.SelectedItem = checkbox.Items[prevSelected];
         }
-
-
-        //public delegate RadioButtonFunction(object sender, EventArgs e);
+        
+        /// <summary>
+        /// Generate Radio Buttons for a flow layout panel. Allows event handler to be supplied for checkedChanged
+        /// </summary>
+        /// <param name="flow"></param>
+        /// <param name="data">A list of strings to be used as the text of each radio button</param>
+        /// <param name="rbtnFunction">Event handler function for CheckedChanged of each radio button</param>
         public static void generateRadioButtons(FlowLayoutPanel flow, List<String> data, System.EventHandler rbtnFunction)
         {
             int i = 1, rbtnHeight = 0;
@@ -75,40 +107,22 @@ namespace Mabi_Tools
                 i++;
                 rbtnHeight = temp.Height;
             }
-            //Trim the Height of the Flow Panel to remove whitespace
+            //Trim the Height of the Flow Panel to remove whitespace from border
             flow.Height = (int)(flow.Controls.OfType<RadioButton>().Count() * rbtnHeight * 1.3);
         }
 
-        public static void labelTextBoxInvisible(Label label, TextBox txtbox)
+        /*public static void labelTextBoxInvisible(Label label, TextBox txtbox)
         {
             label.Visible = false;
             txtbox.Visible = false;
-        }
-
-        //A small function to delay without locking the UI with Thread.Sleep()
-        public static void Delay(int milliseconds)
-        {
-            Timer delayTimer = new Timer();
-            if (milliseconds == 0 || milliseconds < 0) return;
-
-            delayTimer.Interval = milliseconds;
-            delayTimer.Enabled = true;
-            delayTimer.Start();
-
-            delayTimer.Tick += (s, e) =>
-            {
-                delayTimer.Enabled = false;
-                delayTimer.Stop();
-                // Console.WriteLine("stop wait timer");
-            };
-
-            while (delayTimer.Enabled)
-            {
-                Application.DoEvents();
-            }
-        }
+        }*/
 
         //Two functions for moving items up and down a checklist
+        /// <summary>
+        /// Moves a selected item in a CheckListBox up. Assumes singular selection.
+        /// </summary>
+        /// <param name="clbox">CheckListBox to be changed visually</param>
+        /// <returns>Returns index of currently selected item</returns>
         public static int moveSelectedItemUpChecklist(CheckedListBox clbox)
         {
             if (clbox.SelectedIndex < 0)
@@ -126,6 +140,11 @@ namespace Mabi_Tools
             return clbox.SelectedIndex;
         }
 
+        /// <summary>
+        /// Moves a selected item in a CheckListBox . Assumes singular selection.
+        /// </summary>
+        /// <param name="clbox">CheckListBox to be changed visually</param>
+        /// <returns>Returns index of currently selected item</returns>
         public static int moveSelectedItemDownChecklist(CheckedListBox clbox)
         {
             if (clbox.SelectedIndex < 0)
@@ -143,6 +162,12 @@ namespace Mabi_Tools
             return clbox.SelectedIndex;
         }
 
+        /// <summary>
+        /// Checks that a string does not already exist in a given CheckListBox
+        /// </summary>
+        /// <param name="newItem">String to check for uniqueness</param>
+        /// <param name="clbox">CheckListBox to be checked</param>
+        /// <returns>Returns if String is unique or not</returns>
         public static Boolean checkForUniqueItem(String newItem, CheckedListBox clbox)
         {
             //First - check that the new name doesn't exist in the current momemnt. We can afford to loop through all of them since the number of cities will stay a really small number
@@ -156,6 +181,10 @@ namespace Mabi_Tools
             return true;
         }
 
+        /// <summary>
+        /// Handles deleting currently selected item from a CheckListBox and ensuring one item still remains selected to prevent possible user errors
+        /// </summary>
+        /// <param name="clbox">The ChecklistBox to delete currently selected Item</param>
         public static void deleteItemFromList(CheckedListBox clbox)
         {
             Boolean indexAt0 = clbox.SelectedIndex == 0;
@@ -181,6 +210,11 @@ namespace Mabi_Tools
             }
         }
 
+        /// <summary>
+        /// A method for displaying the results of Commerce Computation in a list view
+        /// </summary>
+        /// <param name="lview">The List View in which to display results</param>
+        /// <param name="results">A Dictionary of values to be supplied in data rows</param>
         public static void displayCommerceResults(ListView lview, Dictionary<String,int> results)
         {
             lview.Items.Clear();
@@ -190,34 +224,6 @@ namespace Mabi_Tools
                 ListViewItem newItem = new ListViewItem(arr);
                 lview.Items.Add(newItem);
             }
-        }
-
-        public static void displayResultsTime(ListView lview, Dictionary<String, int> results, Dictionary<String, TimeSpan> shortestTime)
-        {
-            lview.Items.Clear();
-            /*foreach (KeyValuePair<String, TimeSpan> townTime in shortestTime.OrderByDescending(key => key.Value))
-            {
-                //Due to the nature of Dijkstra's algorithm - the source will also be in the dictionary, while in the net profit results it is not there
-                //Therefore - we need to add a check to skip (plus if for whatever reason there isn't a net profit - this doesn't work anyway)
-                if (!results.ContainsKey(townTime.Key))
-                {
-                    continue;
-                }
-                String[] arr = new String[2];
-                arr[0] = townTime.Key;
-                //Also check for a divide by zero as well
-                if (townTime.Value.Ticks == 0)
-                {
-                    arr[1] = "0";
-                }
-                else 
-                {
-                    arr[1] =String.Format("{0:0.##}",((double)results[townTime.Key] / townTime.Value.TotalMinutes).ToString());
-                    //arr[1] = townTime.Value.ToString();
-                }
-                ListViewItem newItem = new ListViewItem(arr);
-                lview.Items.Add(newItem);
-            }*/
         }
     }
 }
