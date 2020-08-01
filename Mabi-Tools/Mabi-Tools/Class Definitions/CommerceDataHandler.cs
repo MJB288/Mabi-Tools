@@ -9,16 +9,32 @@ using System.Xml.Serialization;
 
 namespace Mabi_Tools
 {
+    /// <summary>
+    /// A static class to contain methods for loading, saving, and processing data to and from disk
+    /// </summary>
     public static class CommerceDataHandler
     {
+        /// <summary>
+        /// The character that separates data on each line of a text/csv file
+        /// </summary>
         public static readonly char MAIN_TEXT_SEPARATOR = ',';
+        /// <summary>
+        /// The character to be used that separates small subentries within each main entry of a line from a text/csv file
+        /// </summary>
         public static readonly char SECONDARY_TEXT_SEPARATOR = ';';
-        public static Dictionary<String, City> loadCommerceDataText(String citiesFile)
+
+        /// <summary>
+        /// Loads the data for Cities and the goods associated with each from the disk. Currently assumes a csv/text file format with data separated by MAIN_TEXT_SEPARATOR
+        /// and secondary values separated by SECONDARY_TEXT_SEPARATOR
+        /// </summary>
+        /// <param name="filePath">The location of the file on disk</param>
+        /// <returns>Dictionary that contains every city and the goods under each city</returns>
+        public static Dictionary<String, City> loadCommerceData(String filePath)
         {
             Dictionary<String, City> cityData = new Dictionary<string, City>();
             //CityNames = File.ReadAllLines(citiesFile).ToList();
             //We will handle file not found exception on the outside
-            String[] rawData = File.ReadAllLines(citiesFile);
+            String[] rawData = File.ReadAllLines(filePath);
             foreach (String s in rawData)
             {
                 //Separate the individual good strings and process
@@ -30,6 +46,11 @@ namespace Mabi_Tools
             }
             return cityData;
         }
+        /// <summary>
+        /// Converts a supplied string to a list of Good Objects. Currently the only method that utilizes SECONDARY_TEXT_SEPARATOR.
+        /// </summary>
+        /// <param name="input">An array of strings where the MAIN_TEXT_SEPARATOR has already been processed</param>
+        /// <returns>A list of Goods</returns>
         public static List<Good> convertStringArrayToGoods(String[] input)
         {
             //Currently, I am operating under the assumption the first item in the input string array is the city name - therefore I will skip over it
@@ -51,7 +72,12 @@ namespace Mabi_Tools
             return returnList;
         }
 
-        public static Dictionary<String, Transport> loadTransportDataText(String transportFile)
+        /// <summary>
+        /// Loads the data from disk for the Transport Objects. Assumes a csv/text file with values separated by MAIN_TEXT_SEPARATOR
+        /// </summary>
+        /// <param name="filePath">Location of the file on disk</param>
+        /// <returns></returns>
+        public static Dictionary<String, Transport> loadTransportData(String filePath)
         {
             Dictionary<String, Transport> TransportData = new Dictionary<String, Transport>();
             //Moving this variable out for Error Reporting
@@ -59,15 +85,9 @@ namespace Mabi_Tools
             //Will be expanded upon later - for now only need name of transports
             try
             {
-                string[] rawdata = File.ReadAllLines(transportFile);
+                string[] rawdata = File.ReadAllLines(filePath);
                 foreach (String s in rawdata)
                 {
-                    //This could be condensed into one line of code, saving a bit of memory, but for Readability purposes I decided against that
-                    /*int graveI = s.IndexOf(MAIN_TEXT_SEPARATOR);
-                    int semiI = s.IndexOf(";");
-                    name = s.Substring(0, graveI);
-                    String slots = s.Substring(graveI + 1, semiI - graveI - 1);
-                    String weight = s.Substring(semiI + 1, s.Length - semiI - 1);*/
                     String[] split = s.Split(MAIN_TEXT_SEPARATOR);
                     name = split[0];
                     //Current ordering assumes number of slots comes first and weight second
@@ -83,17 +103,23 @@ namespace Mabi_Tools
 
         }
 
-        public static void saveCommerceDataCSV(String filepath, Dictionary<String, City> CityData)
-        {
-            File.WriteAllLines(filepath, CityData.Select(kv => kv.Value.ToString()));
-        }
-
         //I need a function that saves in the order of a checklist box - since you can't reorder a dictionary's keys - let the checklist box determine the saving order
 
-        public static void saveCommerceDataCSVOrdered(String filepath, Dictionary<String, City> CityData, CheckedListBox orderList)
+        /// <summary>
+        /// Saves the CityData Dictionary to disk in csv/text format. A checklistbox is supplied to enforce the order keys are saved for UI purposes.
+        /// </summary>
+        /// <remarks>
+        /// Since the only order to dictionary keys are determined by the order they are added,I decided the best way to maintain the order of cities 
+        /// by the user's choice is to restructure the data so that when the Dictionary is next loaded, the order is how the user arranged them, and not the order they were created.
+        /// Also, While I could create a list of strings from the checkboxes content and pass that, I feel that it's faster to simply pass a refernce and take directly from it instead
+        /// </remarks>
+        /// <param name="filePath">Location of file on disk</param>
+        /// <param name="CityData">City Data to be saved</param>
+        /// <param name="orderList">A checklist box to enforce order that keys are saved</param>
+        public static void saveCommerceDataOrdered(String filePath, Dictionary<String, City> CityData, CheckedListBox orderList)
         {
-            //We don't want to keep old data - overwrite the file
-            using (StreamWriter sw = new StreamWriter(filepath, false))
+            //I don't want to keep old data - overwrite the file
+            using (StreamWriter sw = new StreamWriter(filePath, false))
             {
                 for (int i = 0; i < orderList.Items.Count; i++)
                 {
@@ -106,10 +132,16 @@ namespace Mabi_Tools
             }
         }
 
-        public static void saveTransportDataCSVOrdered(String filepath, Dictionary<String, Transport> TransportData, CheckedListBox orderList)
+        /// <summary>
+        /// Saves the TransportData object to disk in csv/text format. A checklistbox is supplied to enforce the order keys are saved for UI purposes
+        /// </summary>
+        /// <param name="filePath">Location of file on disk</param>
+        /// <param name="TransportData"></param>
+        /// <param name="orderList"></param>
+        public static void saveTransportDataOrdered(String filePath, Dictionary<String, Transport> TransportData, CheckedListBox orderList)
         {
             //We don't want to keep old data - overwrite the file
-            using (StreamWriter sw = new StreamWriter(filepath, false))
+            using (StreamWriter sw = new StreamWriter(filePath, false))
             {
                 for (int i = 0; i < orderList.Items.Count; i++)
                 {
@@ -122,45 +154,31 @@ namespace Mabi_Tools
             }
         }
 
+
+        /// <summary>
+        /// Takes each list of TimeSpans in a supplied Dictionary and returns the average of each one
+        /// </summary>
+        /// <param name="TimeData">A dictionary of times to take an avearage of</param>
+        /// <returns>A Dictionary of Average time for each key</returns>
         //Compresses the time statistics into an average so that we may load it into the graph
         public static Dictionary<String, TimeSpan> compressTimeData(Dictionary<String, List<TimeSpan>> TimeData)
         {
             Dictionary<String, TimeSpan> avgTime = new Dictionary<String, TimeSpan>();
-            foreach(KeyValuePair<String,List<TimeSpan>> kvp in TimeData)
+            foreach (KeyValuePair<String, List<TimeSpan>> kvp in TimeData)
             {
-                avgTime[kvp.Key] = new TimeSpan(kvp.Value.Sum(t => t.Ticks)/kvp.Value.Count);
+                avgTime[kvp.Key] = new TimeSpan(kvp.Value.Sum(t => t.Ticks) / kvp.Value.Count);
             }
             return avgTime;
         }
 
-        //A method for writing time data
-        public static void saveTimeData(String filepath, Dictionary<String, List<TimeSpan>> TimeData)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            bool firstTime = true;
-            foreach (KeyValuePair<String, List<TimeSpan>> kvp in TimeData)
-            {
-                //Basically - don't append a newline the first iteration
-                if (!firstTime)
-                {
-                    stringBuilder.Append("\n");
-                }
-                firstTime = false;
-                for (int i = 0; i < kvp.Value.Count; i++)
-                {
-                    stringBuilder.Append(kvp.Key);
-                    stringBuilder.Append(MAIN_TEXT_SEPARATOR);
-                    stringBuilder.Append(kvp.Value[i]);
-                    //Avoid the extra new line at the end of the file
-                    if (i != kvp.Value.Count - 1)
-                    {
-                        stringBuilder.Append("\n");
-                    }
-                }
-            }
-            File.WriteAllText(filepath, stringBuilder.ToString());
-        }
-
+        /// <summary>
+        /// Loads the data from disk for the TimeData. Assumes a csv/text file with values separated by MAIN_TEXT_SEPARATOR
+        /// </summary>
+        /// <remarks>
+        /// The reason why I return a multi-level dictioanry inestead of averaging the time here is primarily for the Time Tracker editor
+        /// </remarks>
+        /// <param name="filePath">Location of file on disk</param>
+        /// <returns>A multi-level dictionary containing every single line of time data</returns>
         public static Dictionary<String, Dictionary<String, List<TimeSpan>>> loadTimeData(String filePath)
         {
             Dictionary<String, Dictionary<String, List<TimeSpan>>> timeData = new Dictionary<String, Dictionary<String, List<TimeSpan>>>();
@@ -210,8 +228,13 @@ namespace Mabi_Tools
             }
             return timeData;
         }
-
-        public static void saveTimeData(String filepath, Dictionary<String, Dictionary<String, List<TimeSpan>>> timeData)
+        
+        /// <summary>
+        /// Saves the time data to disk in text/csv format.
+        /// </summary>
+        /// <param name="filePath">Location of file to save to</param>
+        /// <param name="timeData">Multi-Level Dictionary of time data to be saved.</param>
+        public static void saveTimeData(String filePath, Dictionary<String, Dictionary<String, List<TimeSpan>>> timeData)
         {
             StringBuilder timeOutput = new StringBuilder();
             //Now go through each individual item and save to a file
@@ -226,7 +249,7 @@ namespace Mabi_Tools
                 }
             }
             timeOutput.Remove(timeOutput.Length - 1, 1);
-            File.WriteAllText(filepath, timeOutput.ToString());
+            File.WriteAllText(filePath, timeOutput.ToString());
         }
 
     }

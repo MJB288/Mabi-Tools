@@ -51,7 +51,6 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             generateGraphs();
 
             //UIHelper.populateCheckListBox(clboxCities, CityData.Keys.ToArray());
-
             Label[] testLabels = { lblTown0, lblTown1, lblTown2, lblTown3, lblTown4, lblTown5, lblTown6, lblTown7, lblTown8, lblTown9 };
             TextBox[] textBoxes = { txtTown0, txtTown1, txtTown2, txtTown3, txtTown4, txtTown5, txtTown6, txtTown7, txtTown8, txtTown9 };
             CityLabels = testLabels;
@@ -88,7 +87,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             //Todo:Have some sort of settings to allow the user to specify which file they use
             try
             {
-                CityData = CommerceDataHandler.loadCommerceDataText("Resources/Cities.csv");
+                CityData = CommerceDataHandler.loadCommerceData("Resources/Cities.csv");
             }
             catch (FileNotFoundException ex)
             {
@@ -99,7 +98,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 
             try
             {
-                TransportData = CommerceDataHandler.loadTransportDataText("Resources/Transport.csv");
+                TransportData = CommerceDataHandler.loadTransportData("Resources/Transport.csv");
             }
             catch (FileNotFoundException ex)
             {

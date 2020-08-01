@@ -206,7 +206,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 newData[clboxCities.Items[i].ToString()] = CityData[clboxCities.Items[i].ToString()];
             }
             commerce.CityData = newData;
-            CommerceDataHandler.saveCommerceDataCSVOrdered("Resources/Cities.csv", CityData, clboxCities);
+            CommerceDataHandler.saveCommerceDataOrdered("Resources/Cities.csv", CityData, clboxCities);
             this.Close();
         }
 
