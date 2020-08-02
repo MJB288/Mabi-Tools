@@ -32,7 +32,9 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         private Dictionary<String, Graph> GraphsbyTransport;
         private Label[] CityLabels;
         private TextBox[] CityTextboxes;
-        
+
+        private ListViewColumnSorter lvwColumnSorter;
+
         public frmCommerce()
         {
             InitializeComponent();
@@ -80,7 +82,8 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             ListViewItem lItem = new ListViewItem(arr);
             lviewResults.Items.Add(lItem);
 
-                  
+            lvwColumnSorter = new ListViewColumnSorter();
+            lviewResults.ListViewItemSorter = lvwColumnSorter;
         }
 
         private void loadDataStartup()
@@ -219,25 +222,6 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             this.Close();
         }
 
-        
-
-        private void btnDucats_Click(object sender, EventArgs e)
-        {
-            //Switch colors
-            btnDucats.BackColor = Color.PaleGreen;
-            btnNetProfit.BackColor = Color.LightGray;
-            UIHelper.displayCommerceResults(lviewResults,DucatsMin);
-        }
-
-        private void btnNetProfit_Click(object sender, EventArgs e)
-        {
-            btnNetProfit.BackColor = Color.PaleGreen;
-            btnDucats.BackColor = Color.LightGray;
-            //Display the results to the user
-            UIHelper.displayCommerceResults(lviewResults, EndResults);
-            
-        }
-
         private void cboxAlpaca_CheckedChanged(object sender, EventArgs e)
         {
             if (cboxAlpaca.Checked)
@@ -305,12 +289,6 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         private void btnCompute_Click(object sender, EventArgs e)
         {
             EndResults = new Dictionary<string, int>();
-            //Enforcing starting in net profit mode
-            btnNetProfit.BackColor = Color.PaleGreen;
-            btnDucats.BackColor = Color.LightGray;
-
-            btnDucats.Enabled = true;
-            btnNetProfit.Enabled = true;
             
             //For now - we will assume the player is transporting one good at a time. Later, I will add functioanlity for mixing and matching if necessary
             int numGoods = 0;
@@ -340,19 +318,31 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                     EndResults[CityLabels[i].Text] = 0;
                 }
             }
-            //Display the end results to the user
-            UIHelper.displayCommerceResults(lviewResults, EndResults);
+
+            DucatsMin = null;
 
             /*Graph newGraph = Graph.constructGraphCommerce(AvgTimeData);
             Dictionary<String, TimeSpan> endResultsTime = newGraph.startDijkstra(clboxCities.SelectedItem.ToString());*/
             //Check if we have a time graph on the transport - if not - then
-            if (!TimeData.ContainsKey(SelectedTransportName))
+            if (TimeData.ContainsKey(SelectedTransportName))
             {
-                btnDucats.Enabled = false;
-                return;
+                try
+                {
+                    Dictionary<String, TimeSpan> endResultsTime = GraphsbyTransport[SelectedTransportName].startDijkstra(clboxCities.SelectedItem.ToString());
+                    calculateDucatsPerMin(endResultsTime);
+                }
+                catch (System.Collections.Generic.KeyNotFoundException)
+                {
+                    //This means that the user has a source city that is not connected to the time graph. Simply do nothing - displayCommerceResults should be able to handle this
+                    //Since DucatsMin should still be null if this exception fires
+                    //Nonetheless - declare DucatsMin as null anyways as a precaution
+                    DucatsMin = null;
+                }
             }
-            Dictionary<String, TimeSpan> endResultsTime = GraphsbyTransport[SelectedTransportName].startDijkstra(clboxCities.SelectedItem.ToString());
-            calculateDucatsPerMin(endResultsTime);
+
+            //Display the end results to the user
+            UIHelper.displayCommerceResults(lviewResults, EndResults, DucatsMin);
+
         }
 
         private void timeTrackerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -361,6 +351,31 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             timeTracker.ShowDialog();
             //Now let's assume the user changed something - rebuild the graphs. If they didn't - the same graphs should be generated
             generateGraphs();
+        }
+
+        private void lviewResults_ColumnClicked(object sender, ColumnClickEventArgs e)
+        {
+            //Checking to see if column is already selected
+            if(e.Column == lvwColumnSorter.ColumnToSort)
+            {
+                //If already selected - reverse the order
+                if(lvwColumnSorter.SortMode == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.SortMode = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.SortMode = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                //New column - default to ascending order
+                lvwColumnSorter.ColumnToSort = e.Column;
+                lvwColumnSorter.SortMode = SortOrder.Descending;
+            }
+            //Now perform the sort
+            lviewResults.Sort();
         }
 
         private void calculateDucatsPerMin(Dictionary<String, TimeSpan> shortestTime)

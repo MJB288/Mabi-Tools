@@ -215,12 +215,36 @@ namespace Mabi_Tools
         /// </summary>
         /// <param name="lview">The List View in which to display results</param>
         /// <param name="results">A Dictionary of values to be supplied in data rows</param>
-        public static void displayCommerceResults(ListView lview, Dictionary<String,int> results)
+        public static void displayCommerceResults(ListView lview, Dictionary<String,int> netProfit, Dictionary<String,int> ducatsMins)
         {
-            lview.Items.Clear();
-            foreach (KeyValuePair<String, int> townPrice in results.OrderByDescending(key => key.Value))
+            //Check if a null dictionary was sent - simply declare it new as a future check will handle this
+            if(ducatsMins == null)
             {
-                String[] arr = { townPrice.Key, "" + townPrice.Value };
+                ducatsMins = new Dictionary<string, int>();
+            }
+            lview.Items.Clear();
+
+            Dictionary<String, int> filteredValue, nonFilteredValue;
+
+           /* if (filterByTime)
+            {
+                filteredValue = ducatsMins;
+                nonFilteredValue = netProfit;
+            }
+            else
+            {
+                filteredValue = netProfit;
+                nonFilteredValue = ducatsMins;
+            }*/
+           
+            foreach (KeyValuePair<String, int> townPrice in netProfit.OrderByDescending(key => key.Value))
+            {
+                String[] arr = { townPrice.Key, "" + townPrice.Value, "0" };
+                //Check if 
+                if (ducatsMins.ContainsKey(townPrice.Key))
+                {
+                    arr[2] = ducatsMins[townPrice.Key].ToString();
+                }
                 ListViewItem newItem = new ListViewItem(arr);
                 lview.Items.Add(newItem);
             }

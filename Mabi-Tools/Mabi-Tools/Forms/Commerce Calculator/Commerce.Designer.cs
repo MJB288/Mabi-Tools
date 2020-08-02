@@ -64,8 +64,6 @@
             this.lblTransportSlots = new System.Windows.Forms.Label();
             this.lblItemSlots = new System.Windows.Forms.Label();
             this.lblTransportWeight = new System.Windows.Forms.Label();
-            this.lblFilter = new System.Windows.Forms.Label();
-            this.btnNetProfit = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmmFile = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,10 +71,10 @@
             this.editCityDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editTransportDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timeTrackerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDucats = new System.Windows.Forms.Button();
             this.lviewResults = new System.Windows.Forms.ListView();
             this.clmName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clmValue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmNetProfit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clmDucatsMin = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -151,7 +149,7 @@
             this.lblResults.AutoSize = true;
             this.lblResults.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblResults.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResults.Location = new System.Drawing.Point(680, 220);
+            this.lblResults.Location = new System.Drawing.Point(698, 175);
             this.lblResults.Name = "lblResults";
             this.lblResults.Size = new System.Drawing.Size(55, 22);
             this.lblResults.TabIndex = 6;
@@ -329,7 +327,7 @@
             // 
             // btnCompute
             // 
-            this.btnCompute.Location = new System.Drawing.Point(641, 54);
+            this.btnCompute.Location = new System.Drawing.Point(660, 76);
             this.btnCompute.Name = "btnCompute";
             this.btnCompute.Size = new System.Drawing.Size(129, 61);
             this.btnCompute.TabIndex = 27;
@@ -423,28 +421,6 @@
             this.lblTransportWeight.TabIndex = 41;
             this.lblTransportWeight.Text = "Weight Capacity : ";
             // 
-            // lblFilter
-            // 
-            this.lblFilter.AutoSize = true;
-            this.lblFilter.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFilter.Location = new System.Drawing.Point(672, 144);
-            this.lblFilter.Name = "lblFilter";
-            this.lblFilter.Size = new System.Drawing.Size(70, 19);
-            this.lblFilter.TabIndex = 42;
-            this.lblFilter.Text = "Filter by:";
-            // 
-            // btnNetProfit
-            // 
-            this.btnNetProfit.BackColor = System.Drawing.Color.PaleGreen;
-            this.btnNetProfit.Enabled = false;
-            this.btnNetProfit.Location = new System.Drawing.Point(616, 185);
-            this.btnNetProfit.Name = "btnNetProfit";
-            this.btnNetProfit.Size = new System.Drawing.Size(75, 23);
-            this.btnNetProfit.TabIndex = 43;
-            this.btnNetProfit.Text = "Net Profit";
-            this.btnNetProfit.UseVisualStyleBackColor = false;
-            this.btnNetProfit.Click += new System.EventHandler(this.btnNetProfit_Click);
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -452,7 +428,7 @@
             this.tsmmTools});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(854, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1016, 24);
             this.menuStrip1.TabIndex = 45;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -484,45 +460,34 @@
             // editCityDataToolStripMenuItem
             // 
             this.editCityDataToolStripMenuItem.Name = "editCityDataToolStripMenuItem";
-            this.editCityDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editCityDataToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.editCityDataToolStripMenuItem.Text = "Edit City Data";
             this.editCityDataToolStripMenuItem.Click += new System.EventHandler(this.editCityDataToolStripMenuItem_Click);
             // 
             // editTransportDataToolStripMenuItem
             // 
             this.editTransportDataToolStripMenuItem.Name = "editTransportDataToolStripMenuItem";
-            this.editTransportDataToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editTransportDataToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.editTransportDataToolStripMenuItem.Text = "Edit Transport Data";
             this.editTransportDataToolStripMenuItem.Click += new System.EventHandler(this.editTransportDataToolStripMenuItem_Click);
             // 
             // timeTrackerToolStripMenuItem
             // 
             this.timeTrackerToolStripMenuItem.Name = "timeTrackerToolStripMenuItem";
-            this.timeTrackerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.timeTrackerToolStripMenuItem.Size = new System.Drawing.Size(174, 22);
             this.timeTrackerToolStripMenuItem.Text = "Time Tracker";
             this.timeTrackerToolStripMenuItem.Click += new System.EventHandler(this.timeTrackerToolStripMenuItem_Click);
-            // 
-            // btnDucats
-            // 
-            this.btnDucats.BackColor = System.Drawing.Color.LightGray;
-            this.btnDucats.Enabled = false;
-            this.btnDucats.Location = new System.Drawing.Point(730, 185);
-            this.btnDucats.Name = "btnDucats";
-            this.btnDucats.Size = new System.Drawing.Size(75, 23);
-            this.btnDucats.TabIndex = 44;
-            this.btnDucats.Text = "Ducats/min";
-            this.btnDucats.UseVisualStyleBackColor = false;
-            this.btnDucats.Click += new System.EventHandler(this.btnDucats_Click);
             // 
             // lviewResults
             // 
             this.lviewResults.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmName,
-            this.clmValue});
+            this.clmNetProfit,
+            this.clmDucatsMin});
             this.lviewResults.HideSelection = false;
-            this.lviewResults.Location = new System.Drawing.Point(616, 248);
+            this.lviewResults.Location = new System.Drawing.Point(601, 213);
             this.lviewResults.Name = "lviewResults";
-            this.lviewResults.Size = new System.Drawing.Size(192, 169);
+            this.lviewResults.Size = new System.Drawing.Size(249, 170);
             this.lviewResults.TabIndex = 46;
             this.lviewResults.UseCompatibleStateImageBehavior = false;
             this.lviewResults.View = System.Windows.Forms.View.Details;
@@ -532,19 +497,21 @@
             this.clmName.Text = "Name";
             this.clmName.Width = 100;
             // 
-            // clmValue
+            // clmNetProfit
             // 
-            this.clmValue.Text = "Value";
+            this.clmNetProfit.Text = "Value";
+            // 
+            // clmDucatsMin
+            // 
+            this.clmDucatsMin.Text = "Ducats/Min";
+            this.clmDucatsMin.Width = 69;
             // 
             // frmCommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(854, 460);
+            this.ClientSize = new System.Drawing.Size(1016, 487);
             this.Controls.Add(this.lviewResults);
-            this.Controls.Add(this.btnDucats);
-            this.Controls.Add(this.btnNetProfit);
-            this.Controls.Add(this.lblFilter);
             this.Controls.Add(this.lblTransportWeight);
             this.Controls.Add(this.lblItemSlots);
             this.Controls.Add(this.lblTransportSlots);
@@ -631,18 +598,16 @@
         private System.Windows.Forms.Label lblTransportSlots;
         private System.Windows.Forms.Label lblItemSlots;
         private System.Windows.Forms.Label lblTransportWeight;
-        private System.Windows.Forms.Label lblFilter;
-        private System.Windows.Forms.Button btnNetProfit;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem tsmmFile;
         private System.Windows.Forms.ToolStripMenuItem tsmiExit;
         private System.Windows.Forms.ToolStripMenuItem tsmmTools;
         private System.Windows.Forms.ToolStripMenuItem editCityDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem timeTrackerToolStripMenuItem;
-        private System.Windows.Forms.Button btnDucats;
         private System.Windows.Forms.ListView lviewResults;
         private System.Windows.Forms.ColumnHeader clmName;
-        private System.Windows.Forms.ColumnHeader clmValue;
+        private System.Windows.Forms.ColumnHeader clmNetProfit;
         private System.Windows.Forms.ToolStripMenuItem editTransportDataToolStripMenuItem;
+        private System.Windows.Forms.ColumnHeader clmDucatsMin;
     }
 }
