@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mabi_Tools.Forms.Commerce_Calculator;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,8 +29,14 @@ namespace Mabi_Tools
             foreach (KeyValuePair<String, TimeSpan> kvp in averageTime)
             {
                 String[] splitKey = kvp.Key.Split(CommerceDataHandler.MAIN_TEXT_SEPARATOR);
+                TimeSpan timeValue = kvp.Value;
                 //The key Should be source then destination then name
-                Edge newEdge = new Edge(splitKey[2], splitKey[0], splitKey[1], kvp.Value);
+                //Initialize check for the belvast addition
+                if (splitKey[2].Equals("Boat") && (splitKey[0].Equals("Belvast") || splitKey[1].Equals("Belvast")));
+                {
+                    timeValue += frmTimeTracker.BelvastBoatTime;
+                }
+                Edge newEdge = new Edge(splitKey[2], splitKey[0], splitKey[1], timeValue);
                 commerceGraph.addEdgeC(newEdge);
             }
             return commerceGraph;

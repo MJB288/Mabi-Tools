@@ -45,20 +45,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.flpBoat = new System.Windows.Forms.FlowLayoutPanel();
             this.rbtnMin = new System.Windows.Forms.RadioButton();
             this.rbtnMax = new System.Windows.Forms.RadioButton();
             this.rbtnMiddle = new System.Windows.Forms.RadioButton();
             this.rbtnCustom = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.txtCustomTime = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.flpBoat.SuspendLayout();
             this.SuspendLayout();
             // 
             // flpTransport
             // 
             this.flpTransport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpTransport.Location = new System.Drawing.Point(33, 39);
+            this.flpTransport.Location = new System.Drawing.Point(43, 32);
             this.flpTransport.Name = "flpTransport";
             this.flpTransport.Size = new System.Drawing.Size(165, 239);
             this.flpTransport.TabIndex = 0;
@@ -77,7 +77,7 @@
             // 
             this.clboxDestination.CheckOnClick = true;
             this.clboxDestination.FormattingEnabled = true;
-            this.clboxDestination.Location = new System.Drawing.Point(252, 187);
+            this.clboxDestination.Location = new System.Drawing.Point(252, 196);
             this.clboxDestination.Name = "clboxDestination";
             this.clboxDestination.Size = new System.Drawing.Size(126, 139);
             this.clboxDestination.TabIndex = 3;
@@ -144,9 +144,10 @@
             // lblPathName
             // 
             this.lblPathName.AutoSize = true;
-            this.lblPathName.Location = new System.Drawing.Point(453, 290);
+            this.lblPathName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPathName.Location = new System.Drawing.Point(440, 290);
             this.lblPathName.Name = "lblPathName";
-            this.lblPathName.Size = new System.Drawing.Size(66, 13);
+            this.lblPathName.Size = new System.Drawing.Size(92, 16);
             this.lblPathName.TabIndex = 9;
             this.lblPathName.Text = "Path Name :";
             // 
@@ -182,50 +183,44 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(295, 13);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(278, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.Size = new System.Drawing.Size(76, 20);
             this.label3.TabIndex = 13;
             this.label3.Text = "Source :";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(276, 171);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(267, 171);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
+            this.label4.Size = new System.Drawing.Size(111, 20);
             this.label4.TabIndex = 14;
             this.label4.Text = "Destination :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 23);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 13);
+            this.label1.Size = new System.Drawing.Size(227, 20);
             this.label1.TabIndex = 16;
             this.label1.Text = "Method of Transportation : ";
             // 
-            // flowLayoutPanel1
+            // flpBoat
             // 
-            this.flowLayoutPanel1.Controls.Add(this.rbtnMin);
-            this.flowLayoutPanel1.Controls.Add(this.rbtnMax);
-            this.flowLayoutPanel1.Controls.Add(this.rbtnMiddle);
-            this.flowLayoutPanel1.Controls.Add(this.rbtnCustom);
-            this.flowLayoutPanel1.Controls.Add(this.textBox1);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 303);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(203, 112);
-            this.flowLayoutPanel1.TabIndex = 17;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 284);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(161, 13);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "For the Belvast Boat Assume.... :";
+            this.flpBoat.Controls.Add(this.rbtnMin);
+            this.flpBoat.Controls.Add(this.rbtnMax);
+            this.flpBoat.Controls.Add(this.rbtnMiddle);
+            this.flpBoat.Controls.Add(this.rbtnCustom);
+            this.flpBoat.Controls.Add(this.txtCustomTime);
+            this.flpBoat.Location = new System.Drawing.Point(24, 296);
+            this.flpBoat.Name = "flpBoat";
+            this.flpBoat.Size = new System.Drawing.Size(203, 112);
+            this.flpBoat.TabIndex = 17;
             // 
             // rbtnMin
             // 
@@ -271,12 +266,22 @@
             this.rbtnCustom.Text = "Custom Time:";
             this.rbtnCustom.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtCustomTime
             // 
-            this.textBox1.Location = new System.Drawing.Point(98, 72);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 6;
+            this.txtCustomTime.Location = new System.Drawing.Point(98, 72);
+            this.txtCustomTime.Name = "txtCustomTime";
+            this.txtCustomTime.Size = new System.Drawing.Size(100, 20);
+            this.txtCustomTime.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(20, 274);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(211, 16);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "For the Belvast Boat Assume:";
             // 
             // frmTimeTracker
             // 
@@ -284,7 +289,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 427);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.flpBoat);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -303,8 +308,8 @@
             this.Name = "frmTimeTracker";
             this.Text = "Time Tracker";
             this.Load += new System.EventHandler(this.frmTimeTracker_Load);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.flpBoat.ResumeLayout(false);
+            this.flpBoat.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,12 +334,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flpBoat;
         private System.Windows.Forms.RadioButton rbtnMin;
         private System.Windows.Forms.RadioButton rbtnMax;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RadioButton rbtnMiddle;
         private System.Windows.Forms.RadioButton rbtnCustom;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCustomTime;
     }
 }

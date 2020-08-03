@@ -12,7 +12,11 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 {
     public partial class frmTimeTracker : Form
     {
-        public static TimeSpan belvastBoastTime;
+        //TODO - have a setting that allows user to change default time for this - or keep last saved value
+        public static TimeSpan BelvastBoatTime = new TimeSpan(0, 2, 15);
+        private readonly TimeSpan MINTIME = new TimeSpan(0, 2, 15);
+        private readonly TimeSpan MAXTIME = new TimeSpan(0, 8, 30);
+        private readonly TimeSpan MIDTIME = new TimeSpan(0, 5, 22);
         private List<String> TransportNames, CityNames;
         private frmCommerce commerceCaller;
         private Dictionary<String, Dictionary<String, List<TimeSpan>>> TimeData;
@@ -34,6 +38,9 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         {
             populateLists();
             clboxSource.SelectedIndex = ClboxPrevSelectedS;
+            //Populate the custom box with what the startup value was
+            txtCustomTime.Text = BelvastBoatTime.ToString();
+            selectRadioButtonStartup();
         }
 
         //A method for populating the lists at startup
@@ -42,6 +49,26 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             UIHelper.populateCheckListBox(clboxSource, CityNames.ToArray());
             UIHelper.generateRadioButtons(flpTransport, TransportNames, rbtnTransport_CheckedChanged);
             flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
+        }
+
+        private void selectRadioButtonStartup()
+        {
+            if (BelvastBoatTime == MINTIME)
+            {
+                rbtnMin.Checked = true;
+            }   
+            else if (BelvastBoatTime == MAXTIME)
+            {
+                rbtnMax.Checked = true;
+            }
+            else if (BelvastBoatTime == MIDTIME)
+            {
+                rbtnMiddle.Checked = true;
+            }
+            else
+            {
+                rbtnCustom.Checked = true;
+            }
         }
 
         private Dictionary<String, Dictionary<String, List<TimeSpan>>> duplicateTimeDictionary(Dictionary<String, Dictionary<String, List<TimeSpan>>> duplicateMe)
@@ -64,14 +91,46 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         private void btnCancel_Click(object sender, EventArgs e)
         {
             //Close without making changes
-            this.Close();
+            this.Close();           
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             commerceCaller.TimeData = TimeData;
             CommerceDataHandler.saveTimeData("Resources/Time.csv", TimeData);
+            updateBelvastTime();
             this.Close();
+        }
+
+        private void updateBelvastTime()
+        {
+            RadioButton selectedRBTN = flpBoat.Controls.OfType<RadioButton>().FirstOrDefault(rbtn => rbtn.Checked);
+            switch (selectedRBTN.Name)
+            {
+                case "rbtnMin":
+                    BelvastBoatTime = MINTIME;
+                    break;
+                case "rbtnMax":
+                    BelvastBoatTime = MAXTIME;
+                    break;
+                case "rbtnMiddle":
+                    BelvastBoatTime = MIDTIME;
+                    break;
+                case "rbtnCustom":
+                    try
+                    {
+                        BelvastBoatTime = TimeSpan.Parse(txtCustomTime.Text);
+                    }
+                    catch (FormatException)
+                    {
+                        MessageBox.Show("Could not parse time from Custom Time! Needs to be (HH-MM-SS)!\nBoast time will not be updated!");
+                    }
+                    break;
+                //In case it somehow reaches here - do nothing
+                default:
+                    break;
+
+            }
         }
 
         private void clboxDestination_SelectedIndexChanged(object sender, EventArgs e)
