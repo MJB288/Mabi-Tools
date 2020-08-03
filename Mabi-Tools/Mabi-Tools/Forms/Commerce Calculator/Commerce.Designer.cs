@@ -83,6 +83,7 @@
             this.lblResultGood2 = new System.Windows.Forms.Label();
             this.lblResultTransport1 = new System.Windows.Forms.Label();
             this.lblResultTransport2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -381,6 +382,7 @@
             this.lblItemWeight.Size = new System.Drawing.Size(47, 13);
             this.lblItemWeight.TabIndex = 37;
             this.lblItemWeight.Text = "Weight :";
+            this.lblItemWeight.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTransportSlots
             // 
@@ -399,6 +401,7 @@
             this.lblItemSlots.Size = new System.Drawing.Size(78, 13);
             this.lblItemSlots.TabIndex = 40;
             this.lblItemSlots.Text = "Slot Capacity : ";
+            this.lblItemSlots.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTransportWeight
             // 
@@ -582,11 +585,23 @@
             this.lblResultTransport2.Text = "Transport";
             this.lblResultTransport2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(847, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 22);
+            this.label1.TabIndex = 55;
+            this.label1.Text = "Results";
+            // 
             // frmCommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1241, 437);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblResultTransport2);
             this.Controls.Add(this.lblResultTransport1);
             this.Controls.Add(this.lblResultGood2);
@@ -698,5 +713,6 @@
         private System.Windows.Forms.Label lblResultGood2;
         private System.Windows.Forms.Label lblResultTransport1;
         private System.Windows.Forms.Label lblResultTransport2;
+        private System.Windows.Forms.Label label1;
     }
 }
