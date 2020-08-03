@@ -33,7 +33,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         private Label[] CityLabels;
         private TextBox[] CityTextboxes;
 
-        private ListViewColumnSorter lvwColumnSorter;
+        private ListViewColumnSorter lvwColumnSorter1, lvwColumnSorter2;
 
         public frmCommerce()
         {
@@ -78,12 +78,17 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             
             //Check off the first one for now.
             flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
-            String[] arr = { "1", "2" };
+            /*String[] arr = { "1", "2" };
             ListViewItem lItem = new ListViewItem(arr);
-            lviewResults.Items.Add(lItem);
+            lviewResults1.Items.Add(lItem);*/
 
-            lvwColumnSorter = new ListViewColumnSorter();
-            lviewResults.ListViewItemSorter = lvwColumnSorter;
+            lvwColumnSorter1 = new ListViewColumnSorter();
+            lvwColumnSorter2 = new ListViewColumnSorter();
+
+            lviewResults1.ListViewItemSorter = lvwColumnSorter1;
+            lviewResults2.ListViewItemSorter = lvwColumnSorter2;
+            lviewResults1.ColumnClick += this.lviewResults1_ColumnClicked;
+            lviewResults2.ColumnClick += this.lviewResults2_ColumnClicked;
         }
 
         private void loadDataStartup()
@@ -288,15 +293,29 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 
         private void btnCompute_Click(object sender, EventArgs e)
         {
+            calculateResultsAndDisplay(lviewResults1, lblResultGood1, lblResultTransport1);
+        }
+
+        private void btnCompute2_Click(object sender, EventArgs e)
+        {
+            calculateResultsAndDisplay(lviewResults2, lblResultGood2, lblResultTransport2);
+        }
+
+        /// <summary>
+        /// Calculates and displays the results in the supplied List View and matching label
+        /// </summary>
+        /// <param name="lview">List view to display the results in</param>
+        private void calculateResultsAndDisplay(ListView lview, Label goodDisplay, Label transportDisplay)
+        {
             EndResults = new Dictionary<string, int>();
-            
+
             //For now - we will assume the player is transporting one good at a time. Later, I will add functioanlity for mixing and matching if necessary
             int numGoods = 0;
             //Calculate the total number of goods
             //First - assume we can fill the toal number of slots
             int ongoingWeight = SelectedGoodWeight * SelectedGoodSlots * SelectedTransportSlots;
             //Now check if we're over the weight limit - if yes then reduce the number of goods
-            if(ongoingWeight > SelectedTransportWeight)
+            if (ongoingWeight > SelectedTransportWeight)
             {
                 numGoods = SelectedTransportWeight / SelectedGoodWeight;
             }
@@ -306,7 +325,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             }
 
             //Loop Through all of the text boxes
-            for(int i = 0; i < CityData.Count; i++)
+            for (int i = 0; i < CityData.Count; i++)
             {
                 try
                 {
@@ -339,10 +358,10 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                     DucatsMin = null;
                 }
             }
-
+            goodDisplay.Text = clboxGoods.SelectedItem.ToString();
+            transportDisplay.Text = SelectedTransportName;
             //Display the end results to the user
-            UIHelper.displayCommerceResults(lviewResults, EndResults, DucatsMin);
-
+            UIHelper.displayCommerceResults(lview, EndResults, DucatsMin);
         }
 
         private void timeTrackerToolStripMenuItem_Click(object sender, EventArgs e)
@@ -353,13 +372,24 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             generateGraphs();
         }
 
-        private void lviewResults_ColumnClicked(object sender, ColumnClickEventArgs e)
+        private void lviewResults1_ColumnClicked(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSort(e, lviewResults1, lvwColumnSorter1);
+            
+        }
+
+        private void lviewResults2_ColumnClicked(object sender, ColumnClickEventArgs e)
+        {
+            ColumnSort(e, lviewResults2, lvwColumnSorter2);
+        }
+
+        private void ColumnSort(ColumnClickEventArgs e, ListView lviewResults, ListViewColumnSorter lvwColumnSorter)
         {
             //Checking to see if column is already selected
-            if(e.Column == lvwColumnSorter.ColumnToSort)
+            if (e.Column == lvwColumnSorter.ColumnToSort)
             {
                 //If already selected - reverse the order
-                if(lvwColumnSorter.SortMode == SortOrder.Ascending)
+                if (lvwColumnSorter.SortMode == SortOrder.Ascending)
                 {
                     lvwColumnSorter.SortMode = SortOrder.Descending;
                 }
@@ -377,6 +407,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             //Now perform the sort
             lviewResults.Sort();
         }
+
 
         private void calculateDucatsPerMin(Dictionary<String, TimeSpan> shortestTime)
         {

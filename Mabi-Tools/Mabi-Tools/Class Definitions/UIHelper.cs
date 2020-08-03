@@ -223,24 +223,12 @@ namespace Mabi_Tools
                 ducatsMins = new Dictionary<string, int>();
             }
             lview.Items.Clear();
-
-            Dictionary<String, int> filteredValue, nonFilteredValue;
-
-           /* if (filterByTime)
-            {
-                filteredValue = ducatsMins;
-                nonFilteredValue = netProfit;
-            }
-            else
-            {
-                filteredValue = netProfit;
-                nonFilteredValue = ducatsMins;
-            }*/
            
+            //Display in descending order of net profit first
             foreach (KeyValuePair<String, int> townPrice in netProfit.OrderByDescending(key => key.Value))
             {
                 String[] arr = { townPrice.Key, "" + townPrice.Value, "0" };
-                //Check if 
+                //Check if there is an entry for town in DucatsMin
                 if (ducatsMins.ContainsKey(townPrice.Key))
                 {
                     arr[2] = ducatsMins[townPrice.Key].ToString();

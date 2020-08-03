@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             this.clboxGoods = new System.Windows.Forms.CheckedListBox();
-            this.lblTest = new System.Windows.Forms.Label();
             this.lblGoods = new System.Windows.Forms.Label();
             this.clboxCities = new System.Windows.Forms.CheckedListBox();
             this.lblCities = new System.Windows.Forms.Label();
-            this.lblResults = new System.Windows.Forms.Label();
             this.txtTown0 = new System.Windows.Forms.TextBox();
             this.lblTown0 = new System.Windows.Forms.Label();
             this.lblTown1 = new System.Windows.Forms.Label();
@@ -71,10 +69,20 @@
             this.editCityDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editTransportDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timeTrackerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lviewResults = new System.Windows.Forms.ListView();
+            this.lviewResults1 = new System.Windows.Forms.ListView();
             this.clmName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmNetProfit = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmDucatsMin = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lviewResults2 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnCompute2 = new System.Windows.Forms.Button();
+            this.lblVS = new System.Windows.Forms.Label();
+            this.lblResultGood1 = new System.Windows.Forms.Label();
+            this.lblResultGood2 = new System.Windows.Forms.Label();
+            this.lblResultTransport1 = new System.Windows.Forms.Label();
+            this.lblResultTransport2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,15 +101,6 @@
             this.clboxGoods.Size = new System.Drawing.Size(145, 124);
             this.clboxGoods.TabIndex = 0;
             this.clboxGoods.SelectedIndexChanged += new System.EventHandler(this.clboxGoods_SelectedIndexChanged);
-            // 
-            // lblTest
-            // 
-            this.lblTest.AutoSize = true;
-            this.lblTest.Location = new System.Drawing.Point(447, 392);
-            this.lblTest.Name = "lblTest";
-            this.lblTest.Size = new System.Drawing.Size(57, 13);
-            this.lblTest.TabIndex = 1;
-            this.lblTest.Text = "Something";
             // 
             // lblGoods
             // 
@@ -143,17 +142,6 @@
             this.lblCities.Size = new System.Drawing.Size(44, 22);
             this.lblCities.TabIndex = 4;
             this.lblCities.Text = "Cities";
-            // 
-            // lblResults
-            // 
-            this.lblResults.AutoSize = true;
-            this.lblResults.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblResults.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResults.Location = new System.Drawing.Point(698, 175);
-            this.lblResults.Name = "lblResults";
-            this.lblResults.Size = new System.Drawing.Size(55, 22);
-            this.lblResults.TabIndex = 6;
-            this.lblResults.Text = "Results";
             // 
             // txtTown0
             // 
@@ -428,7 +416,7 @@
             this.tsmmTools});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1016, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1241, 24);
             this.menuStrip1.TabIndex = 45;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -478,19 +466,19 @@
             this.timeTrackerToolStripMenuItem.Text = "Time Tracker";
             this.timeTrackerToolStripMenuItem.Click += new System.EventHandler(this.timeTrackerToolStripMenuItem_Click);
             // 
-            // lviewResults
+            // lviewResults1
             // 
-            this.lviewResults.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lviewResults1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmName,
             this.clmNetProfit,
             this.clmDucatsMin});
-            this.lviewResults.HideSelection = false;
-            this.lviewResults.Location = new System.Drawing.Point(601, 213);
-            this.lviewResults.Name = "lviewResults";
-            this.lviewResults.Size = new System.Drawing.Size(249, 170);
-            this.lviewResults.TabIndex = 46;
-            this.lviewResults.UseCompatibleStateImageBehavior = false;
-            this.lviewResults.View = System.Windows.Forms.View.Details;
+            this.lviewResults1.HideSelection = false;
+            this.lviewResults1.Location = new System.Drawing.Point(601, 213);
+            this.lviewResults1.Name = "lviewResults1";
+            this.lviewResults1.Size = new System.Drawing.Size(249, 170);
+            this.lviewResults1.TabIndex = 46;
+            this.lviewResults1.UseCompatibleStateImageBehavior = false;
+            this.lviewResults1.View = System.Windows.Forms.View.Details;
             // 
             // clmName
             // 
@@ -506,12 +494,107 @@
             this.clmDucatsMin.Text = "Ducats/Min";
             this.clmDucatsMin.Width = 69;
             // 
+            // lviewResults2
+            // 
+            this.lviewResults2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.lviewResults2.HideSelection = false;
+            this.lviewResults2.Location = new System.Drawing.Point(896, 213);
+            this.lviewResults2.Name = "lviewResults2";
+            this.lviewResults2.Size = new System.Drawing.Size(249, 170);
+            this.lviewResults2.TabIndex = 47;
+            this.lviewResults2.UseCompatibleStateImageBehavior = false;
+            this.lviewResults2.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Name";
+            this.columnHeader1.Width = 100;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Value";
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Ducats/Min";
+            this.columnHeader3.Width = 69;
+            // 
+            // btnCompute2
+            // 
+            this.btnCompute2.Location = new System.Drawing.Point(956, 76);
+            this.btnCompute2.Name = "btnCompute2";
+            this.btnCompute2.Size = new System.Drawing.Size(129, 61);
+            this.btnCompute2.TabIndex = 48;
+            this.btnCompute2.Text = "Compute";
+            this.btnCompute2.UseVisualStyleBackColor = true;
+            this.btnCompute2.Click += new System.EventHandler(this.btnCompute2_Click);
+            // 
+            // lblVS
+            // 
+            this.lblVS.AutoSize = true;
+            this.lblVS.Font = new System.Drawing.Font("Arial", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVS.Location = new System.Drawing.Point(845, 149);
+            this.lblVS.Name = "lblVS";
+            this.lblVS.Size = new System.Drawing.Size(59, 32);
+            this.lblVS.TabIndex = 50;
+            this.lblVS.Text = "VS.";
+            // 
+            // lblResultGood1
+            // 
+            this.lblResultGood1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResultGood1.Location = new System.Drawing.Point(601, 180);
+            this.lblResultGood1.Name = "lblResultGood1";
+            this.lblResultGood1.Size = new System.Drawing.Size(249, 29);
+            this.lblResultGood1.TabIndex = 51;
+            this.lblResultGood1.Text = "Good 1";
+            this.lblResultGood1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblResultGood2
+            // 
+            this.lblResultGood2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResultGood2.Location = new System.Drawing.Point(896, 181);
+            this.lblResultGood2.Name = "lblResultGood2";
+            this.lblResultGood2.Size = new System.Drawing.Size(249, 29);
+            this.lblResultGood2.TabIndex = 52;
+            this.lblResultGood2.Text = "Good 2";
+            this.lblResultGood2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblResultTransport1
+            // 
+            this.lblResultTransport1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResultTransport1.Location = new System.Drawing.Point(601, 154);
+            this.lblResultTransport1.Name = "lblResultTransport1";
+            this.lblResultTransport1.Size = new System.Drawing.Size(249, 29);
+            this.lblResultTransport1.TabIndex = 53;
+            this.lblResultTransport1.Text = "Transport";
+            this.lblResultTransport1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblResultTransport2
+            // 
+            this.lblResultTransport2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResultTransport2.Location = new System.Drawing.Point(896, 154);
+            this.lblResultTransport2.Name = "lblResultTransport2";
+            this.lblResultTransport2.Size = new System.Drawing.Size(249, 29);
+            this.lblResultTransport2.TabIndex = 54;
+            this.lblResultTransport2.Text = "Transport";
+            this.lblResultTransport2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmCommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1016, 487);
-            this.Controls.Add(this.lviewResults);
+            this.ClientSize = new System.Drawing.Size(1241, 437);
+            this.Controls.Add(this.lblResultTransport2);
+            this.Controls.Add(this.lblResultTransport1);
+            this.Controls.Add(this.lblResultGood2);
+            this.Controls.Add(this.lblResultGood1);
+            this.Controls.Add(this.lblVS);
+            this.Controls.Add(this.btnCompute2);
+            this.Controls.Add(this.lviewResults2);
+            this.Controls.Add(this.lviewResults1);
             this.Controls.Add(this.lblTransportWeight);
             this.Controls.Add(this.lblItemSlots);
             this.Controls.Add(this.lblTransportSlots);
@@ -542,11 +625,9 @@
             this.Controls.Add(this.lblTown1);
             this.Controls.Add(this.lblTown0);
             this.Controls.Add(this.txtTown0);
-            this.Controls.Add(this.lblResults);
             this.Controls.Add(this.lblCities);
             this.Controls.Add(this.clboxCities);
             this.Controls.Add(this.lblGoods);
-            this.Controls.Add(this.lblTest);
             this.Controls.Add(this.clboxGoods);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -563,11 +644,9 @@
         #endregion
 
         private System.Windows.Forms.CheckedListBox clboxGoods;
-        private System.Windows.Forms.Label lblTest;
         private System.Windows.Forms.Label lblGoods;
         private System.Windows.Forms.CheckedListBox clboxCities;
         private System.Windows.Forms.Label lblCities;
-        private System.Windows.Forms.Label lblResults;
         private System.Windows.Forms.TextBox txtTown0;
         private System.Windows.Forms.Label lblTown0;
         private System.Windows.Forms.Label lblTown1;
@@ -604,10 +683,20 @@
         private System.Windows.Forms.ToolStripMenuItem tsmmTools;
         private System.Windows.Forms.ToolStripMenuItem editCityDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem timeTrackerToolStripMenuItem;
-        private System.Windows.Forms.ListView lviewResults;
+        private System.Windows.Forms.ListView lviewResults1;
         private System.Windows.Forms.ColumnHeader clmName;
         private System.Windows.Forms.ColumnHeader clmNetProfit;
         private System.Windows.Forms.ToolStripMenuItem editTransportDataToolStripMenuItem;
         private System.Windows.Forms.ColumnHeader clmDucatsMin;
+        private System.Windows.Forms.ListView lviewResults2;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Button btnCompute2;
+        private System.Windows.Forms.Label lblVS;
+        private System.Windows.Forms.Label lblResultGood1;
+        private System.Windows.Forms.Label lblResultGood2;
+        private System.Windows.Forms.Label lblResultTransport1;
+        private System.Windows.Forms.Label lblResultTransport2;
     }
 }
