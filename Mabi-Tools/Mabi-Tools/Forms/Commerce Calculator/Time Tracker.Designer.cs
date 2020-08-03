@@ -45,6 +45,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.rbtnMin = new System.Windows.Forms.RadioButton();
+            this.rbtnMax = new System.Windows.Forms.RadioButton();
+            this.rbtnMiddle = new System.Windows.Forms.RadioButton();
+            this.rbtnCustom = new System.Windows.Forms.RadioButton();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // flpTransport
@@ -52,14 +60,14 @@
             this.flpTransport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flpTransport.Location = new System.Drawing.Point(33, 39);
             this.flpTransport.Name = "flpTransport";
-            this.flpTransport.Size = new System.Drawing.Size(165, 313);
+            this.flpTransport.Size = new System.Drawing.Size(165, 239);
             this.flpTransport.TabIndex = 0;
             // 
             // clboxSource
             // 
             this.clboxSource.CheckOnClick = true;
             this.clboxSource.FormattingEnabled = true;
-            this.clboxSource.Location = new System.Drawing.Point(236, 39);
+            this.clboxSource.Location = new System.Drawing.Point(252, 29);
             this.clboxSource.Name = "clboxSource";
             this.clboxSource.Size = new System.Drawing.Size(126, 139);
             this.clboxSource.TabIndex = 2;
@@ -69,7 +77,7 @@
             // 
             this.clboxDestination.CheckOnClick = true;
             this.clboxDestination.FormattingEnabled = true;
-            this.clboxDestination.Location = new System.Drawing.Point(236, 197);
+            this.clboxDestination.Location = new System.Drawing.Point(252, 187);
             this.clboxDestination.Name = "clboxDestination";
             this.clboxDestination.Size = new System.Drawing.Size(126, 139);
             this.clboxDestination.TabIndex = 3;
@@ -101,7 +109,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(252, 392);
+            this.btnSave.Location = new System.Drawing.Point(255, 375);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(99, 46);
             this.btnSave.TabIndex = 5;
@@ -111,7 +119,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(357, 392);
+            this.btnCancel.Location = new System.Drawing.Point(360, 375);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(99, 46);
             this.btnCancel.TabIndex = 6;
@@ -121,14 +129,14 @@
             // 
             // txtPath
             // 
-            this.txtPath.Location = new System.Drawing.Point(436, 281);
+            this.txtPath.Location = new System.Drawing.Point(436, 306);
             this.txtPath.Name = "txtPath";
             this.txtPath.Size = new System.Drawing.Size(100, 20);
             this.txtPath.TabIndex = 7;
             // 
             // txtTime
             // 
-            this.txtTime.Location = new System.Drawing.Point(550, 281);
+            this.txtTime.Location = new System.Drawing.Point(550, 306);
             this.txtTime.Name = "txtTime";
             this.txtTime.Size = new System.Drawing.Size(100, 20);
             this.txtTime.TabIndex = 8;
@@ -136,7 +144,7 @@
             // lblPathName
             // 
             this.lblPathName.AutoSize = true;
-            this.lblPathName.Location = new System.Drawing.Point(453, 265);
+            this.lblPathName.Location = new System.Drawing.Point(453, 290);
             this.lblPathName.Name = "lblPathName";
             this.lblPathName.Size = new System.Drawing.Size(66, 13);
             this.lblPathName.TabIndex = 9;
@@ -145,7 +153,7 @@
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(582, 265);
+            this.lblTime.Location = new System.Drawing.Point(582, 290);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(36, 13);
             this.lblTime.TabIndex = 10;
@@ -153,7 +161,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(563, 312);
+            this.btnDelete.Location = new System.Drawing.Point(563, 337);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 24);
             this.btnDelete.TabIndex = 11;
@@ -163,7 +171,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(449, 312);
+            this.btnAdd.Location = new System.Drawing.Point(449, 337);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 24);
             this.btnAdd.TabIndex = 12;
@@ -174,7 +182,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(279, 23);
+            this.label3.Location = new System.Drawing.Point(295, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(47, 13);
             this.label3.TabIndex = 13;
@@ -183,7 +191,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(260, 181);
+            this.label4.Location = new System.Drawing.Point(276, 171);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 14;
@@ -198,11 +206,85 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Method of Transportation : ";
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.rbtnMin);
+            this.flowLayoutPanel1.Controls.Add(this.rbtnMax);
+            this.flowLayoutPanel1.Controls.Add(this.rbtnMiddle);
+            this.flowLayoutPanel1.Controls.Add(this.rbtnCustom);
+            this.flowLayoutPanel1.Controls.Add(this.textBox1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 303);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(203, 112);
+            this.flowLayoutPanel1.TabIndex = 17;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(37, 284);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(161, 13);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "For the Belvast Boat Assume.... :";
+            // 
+            // rbtnMin
+            // 
+            this.rbtnMin.AutoSize = true;
+            this.rbtnMin.Location = new System.Drawing.Point(3, 3);
+            this.rbtnMin.Name = "rbtnMin";
+            this.rbtnMin.Size = new System.Drawing.Size(134, 17);
+            this.rbtnMin.TabIndex = 0;
+            this.rbtnMin.TabStop = true;
+            this.rbtnMin.Text = "Minimum Possible Time";
+            this.rbtnMin.UseVisualStyleBackColor = true;
+            // 
+            // rbtnMax
+            // 
+            this.rbtnMax.AutoSize = true;
+            this.rbtnMax.Location = new System.Drawing.Point(3, 26);
+            this.rbtnMax.Name = "rbtnMax";
+            this.rbtnMax.Size = new System.Drawing.Size(137, 17);
+            this.rbtnMax.TabIndex = 1;
+            this.rbtnMax.TabStop = true;
+            this.rbtnMax.Text = "Maximum Possible Time";
+            this.rbtnMax.UseVisualStyleBackColor = true;
+            // 
+            // rbtnMiddle
+            // 
+            this.rbtnMiddle.AutoSize = true;
+            this.rbtnMiddle.Location = new System.Drawing.Point(3, 49);
+            this.rbtnMiddle.Name = "rbtnMiddle";
+            this.rbtnMiddle.Size = new System.Drawing.Size(176, 17);
+            this.rbtnMiddle.TabIndex = 4;
+            this.rbtnMiddle.TabStop = true;
+            this.rbtnMiddle.Text = "Directly inbetween Min and Max";
+            this.rbtnMiddle.UseVisualStyleBackColor = true;
+            // 
+            // rbtnCustom
+            // 
+            this.rbtnCustom.AutoSize = true;
+            this.rbtnCustom.Location = new System.Drawing.Point(3, 72);
+            this.rbtnCustom.Name = "rbtnCustom";
+            this.rbtnCustom.Size = new System.Drawing.Size(89, 17);
+            this.rbtnCustom.TabIndex = 5;
+            this.rbtnCustom.TabStop = true;
+            this.rbtnCustom.Text = "Custom Time:";
+            this.rbtnCustom.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(98, 72);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 6;
+            // 
             // frmTimeTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(708, 450);
+            this.ClientSize = new System.Drawing.Size(708, 427);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -221,6 +303,8 @@
             this.Name = "frmTimeTracker";
             this.Text = "Time Tracker";
             this.Load += new System.EventHandler(this.frmTimeTracker_Load);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,5 +329,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.RadioButton rbtnMin;
+        private System.Windows.Forms.RadioButton rbtnMax;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RadioButton rbtnMiddle;
+        private System.Windows.Forms.RadioButton rbtnCustom;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

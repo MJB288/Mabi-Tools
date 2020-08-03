@@ -12,6 +12,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 {
     public partial class frmTimeTracker : Form
     {
+        public static TimeSpan belvastBoastTime;
         private List<String> TransportNames, CityNames;
         private frmCommerce commerceCaller;
         private Dictionary<String, Dictionary<String, List<TimeSpan>>> TimeData;
