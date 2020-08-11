@@ -10,10 +10,16 @@ namespace Mabi_Tools
     class SingletonGraphFactory
     {
         private static SingletonGraphFactory instance = new SingletonGraphFactory();
+        public TimeSpan BelvastBoatTime { get; set; }
 
         private SingletonGraphFactory()
         {
+            BelvastBoatTime = new TimeSpan(0, 2, 15);
+        }
 
+        private SingletonGraphFactory(TimeSpan belvastBoatTime)
+        {
+            BelvastBoatTime = belvastBoatTime;
         }
 
         public static SingletonGraphFactory getFactory()
@@ -34,7 +40,7 @@ namespace Mabi_Tools
                 //Initialize check for the belvast addition
                 if (splitKey[2].Equals("Boat") && (splitKey[0].Equals("Belvast") || splitKey[1].Equals("Belvast")));
                 {
-                    timeValue += frmTimeTracker.BelvastBoatTime;
+                    timeValue += BelvastBoatTime;
                 }
                 Edge newEdge = new Edge(splitKey[2], splitKey[0], splitKey[1], timeValue);
                 commerceGraph.addEdgeC(newEdge);

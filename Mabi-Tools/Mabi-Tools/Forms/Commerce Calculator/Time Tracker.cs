@@ -13,7 +13,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
     public partial class frmTimeTracker : Form
     {
         //TODO - have a setting that allows user to change default time for this - or keep last saved value
-        public static TimeSpan BelvastBoatTime = new TimeSpan(0, 2, 15);
+        //public static TimeSpan BelvastBoatTime = new TimeSpan(0, 2, 15);
         private readonly TimeSpan MINTIME = new TimeSpan(0, 2, 15);
         private readonly TimeSpan MAXTIME = new TimeSpan(0, 8, 30);
         private readonly TimeSpan MIDTIME = new TimeSpan(0, 5, 22);
@@ -39,7 +39,9 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             populateLists();
             clboxSource.SelectedIndex = ClboxPrevSelectedS;
             //Populate the custom box with what the startup value was
-            txtCustomTime.Text = BelvastBoatTime.ToString();
+            SingletonGraphFactory graphFactory = SingletonGraphFactory.getFactory();
+            
+            txtCustomTime.Text = graphFactory.BelvastBoatTime.ToString();
             selectRadioButtonStartup();
         }
 
@@ -53,15 +55,16 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 
         private void selectRadioButtonStartup()
         {
-            if (BelvastBoatTime == MINTIME)
+            SingletonGraphFactory graphFactory = SingletonGraphFactory.getFactory();
+            if (graphFactory.BelvastBoatTime == MINTIME)
             {
                 rbtnMin.Checked = true;
             }   
-            else if (BelvastBoatTime == MAXTIME)
+            else if (graphFactory.BelvastBoatTime == MAXTIME)
             {
                 rbtnMax.Checked = true;
             }
-            else if (BelvastBoatTime == MIDTIME)
+            else if (graphFactory.BelvastBoatTime == MIDTIME)
             {
                 rbtnMiddle.Checked = true;
             }
@@ -104,30 +107,32 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 
         private void updateBelvastTime()
         {
+            SingletonGraphFactory graphFactory = SingletonGraphFactory.getFactory();
             RadioButton selectedRBTN = flpBoat.Controls.OfType<RadioButton>().FirstOrDefault(rbtn => rbtn.Checked);
             switch (selectedRBTN.Name)
             {
                 case "rbtnMin":
-                    BelvastBoatTime = MINTIME;
+                    graphFactory.BelvastBoatTime = MINTIME;
                     break;
                 case "rbtnMax":
-                    BelvastBoatTime = MAXTIME;
+                    graphFactory.BelvastBoatTime = MAXTIME;
                     break;
                 case "rbtnMiddle":
-                    BelvastBoatTime = MIDTIME;
+                    graphFactory.BelvastBoatTime = MIDTIME;
                     break;
                 case "rbtnCustom":
                     try
                     {
-                        BelvastBoatTime = TimeSpan.Parse(txtCustomTime.Text);
+                        graphFactory.BelvastBoatTime = TimeSpan.Parse(txtCustomTime.Text);
                     }
                     catch (FormatException)
                     {
                         MessageBox.Show("Could not parse time from Custom Time! Needs to be (HH-MM-SS)!\nBoast time will not be updated!");
                     }
                     break;
-                //In case it somehow reaches here - do nothing
+                //In case it somehow reaches here - do nothing, but notify
                 default:
+                    MessageBox.Show("Error, currently selected radiobutton for the Belvast - Cobh boat unrecognized!", "Error");
                     break;
 
             }
