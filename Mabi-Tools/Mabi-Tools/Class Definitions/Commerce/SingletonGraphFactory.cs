@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace Mabi_Tools
 {
+    /// <summary>
+    /// An object that follows the Singleton and Fsactory design patterns. Is Designed to construct graphs and save parameters
+    /// specifically for Graph construction and no other purpose
+    /// </summary>
     class SingletonGraphFactory
     {
         private static SingletonGraphFactory instance = new SingletonGraphFactory();
+        private bool Initialized = false;
         public TimeSpan BelvastBoatTime { get; set; }
 
         private SingletonGraphFactory()
@@ -38,7 +43,7 @@ namespace Mabi_Tools
                 TimeSpan timeValue = kvp.Value;
                 //The key Should be source then destination then name
                 //Initialize check for the belvast addition
-                if (splitKey[2].Equals("Boat") && (splitKey[0].Equals("Belvast") || splitKey[1].Equals("Belvast")));
+                if (splitKey[2].Equals("Boat") && (splitKey[0].Equals("Belvast") || splitKey[1].Equals("Belvast")))
                 {
                     timeValue += BelvastBoatTime;
                 }

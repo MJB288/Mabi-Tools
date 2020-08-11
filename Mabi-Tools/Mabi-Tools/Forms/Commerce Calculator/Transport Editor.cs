@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mabi_Tools.Class_Definitions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -137,7 +138,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 newData[clboxTransport.Items[i].ToString()] = TransportData[clboxTransport.Items[i].ToString()];
             }
             Commerce.TransportData = newData;
-            CommerceDataHandler.saveTransportDataOrdered("Resources/Transport.csv", TransportData, clboxTransport);
+            CommerceDataHandler.saveTransportDataOrdered(MabiSettings.Commerce.transportFilePath, TransportData, clboxTransport);
             this.Close();
         }
     }

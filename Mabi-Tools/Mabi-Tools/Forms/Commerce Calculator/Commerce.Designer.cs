@@ -419,7 +419,7 @@
             this.tsmmTools});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1241, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1187, 24);
             this.menuStrip1.TabIndex = 45;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -490,7 +490,7 @@
             // 
             // clmNetProfit
             // 
-            this.clmNetProfit.Text = "Value";
+            this.clmNetProfit.Text = "Net Profit";
             // 
             // clmDucatsMin
             // 
@@ -518,7 +518,7 @@
             // 
             // columnHeader2
             // 
-            this.columnHeader2.Text = "Value";
+            this.columnHeader2.Text = "Net Profit";
             // 
             // columnHeader3
             // 
@@ -600,7 +600,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1241, 437);
+            this.ClientSize = new System.Drawing.Size(1187, 432);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblResultTransport2);
             this.Controls.Add(this.lblResultTransport1);

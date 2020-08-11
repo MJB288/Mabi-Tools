@@ -46,11 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class Definitions\Graph Classes.cs" />
-    <Compile Include="Class Definitions\ListViewColumnSorter.cs" />
-    <Compile Include="Class Definitions\SingletonGraphFactory.cs" />
+    <Compile Include="Class Definitions\Commerce\Graph Classes.cs" />
+    <Compile Include="Class Definitions\Commerce\ListViewColumnSorter.cs" />
+    <Compile Include="Class Definitions\Commerce\SingletonGraphFactory.cs" />
+    <Compile Include="Class Definitions\MabiSettings.cs" />
     <Compile Include="Class Definitions\UIHelper.cs" />
-    <Compile Include="Class Definitions\CommerceDataHandler.cs" />
+    <Compile Include="Class Definitions\Commerce\CommerceDataHandler.cs" />
     <Compile Include="Legacy Code.cs" />
     <Compile Include="Forms\Commerce Calculator\Commerce City Editor.cs">
       <SubType>Form</SubType>
@@ -84,7 +85,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Class Definitions\Supporting Classes.cs" />
+    <Compile Include="Class Definitions\Commerce\Supporting Classes.cs" />
     <EmbeddedResource Include="Forms\Commerce Calculator\Commerce City Editor.resx">
       <DependentUpon>Commerce City Editor.cs</DependentUpon>
     </EmbeddedResource>

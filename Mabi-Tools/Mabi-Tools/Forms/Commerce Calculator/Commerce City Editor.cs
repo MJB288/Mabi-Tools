@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mabi_Tools.Class_Definitions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -206,7 +207,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 newData[clboxCities.Items[i].ToString()] = CityData[clboxCities.Items[i].ToString()];
             }
             commerce.CityData = newData;
-            CommerceDataHandler.saveCommerceDataOrdered("Resources/Cities.csv", CityData, clboxCities);
+            CommerceDataHandler.saveCommerceDataOrdered(MabiSettings.Commerce.cityFilePath, CityData, clboxCities);
             this.Close();
         }
 

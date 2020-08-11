@@ -154,9 +154,10 @@
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(582, 290);
+            this.lblTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblTime.Location = new System.Drawing.Point(575, 290);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(36, 13);
+            this.lblTime.Size = new System.Drawing.Size(51, 16);
             this.lblTime.TabIndex = 10;
             this.lblTime.Text = "Time :";
             // 

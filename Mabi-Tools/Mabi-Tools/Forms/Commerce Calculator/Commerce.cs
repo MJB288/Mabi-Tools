@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using Mabi_Tools.Class_Definitions;
 
 namespace Mabi_Tools.Forms.Commerce_Calculator
 {
@@ -69,12 +70,6 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             //Adjust Visibility based on the amount of towns detected.
             this.adjustTextBoxesVisibilityCommerce();
             this.adjustLabelsCities(0, 0);
-
-            //Check off the default value in the lists when loading
-            
-            //clboxCities.SetItemChecked(this.ClboxprevSelectedT, true);
-            //clboxCities.SelectedItem = clboxCities.Items[ClboxprevSelectedG];
-            //UIHelper.populateGoodCheckListBox(clboxGoods, CityData[CityData.Keys.ToList()[this.ClboxprevSelectedT]], ClboxprevSelectedG);
             
             //Check off the first one for now.
             flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
@@ -90,13 +85,15 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             lviewResults1.ColumnClick += this.lviewResults1_ColumnClicked;
             lviewResults2.ColumnClick += this.lviewResults2_ColumnClicked;
         }
-
+        /// <summary>
+        /// A function that loads all of the data at startup time
+        /// </summary>
         private void loadDataStartup()
         {
-            //Todo:Have some sort of settings to allow the user to specify which file they use
+            //Todo:Have some sort of settings to allow the user to specify which file they use for each set of data
             try
             {
-                CityData = CommerceDataHandler.loadCommerceData("Resources/Cities.csv");
+                CityData = CommerceDataHandler.loadCommerceData(MabiSettings.Commerce.cityFilePath);
             }
             catch (FileNotFoundException ex)
             {
@@ -107,7 +104,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 
             try
             {
-                TransportData = CommerceDataHandler.loadTransportData("Resources/Transport.csv");
+                TransportData = CommerceDataHandler.loadTransportData(MabiSettings.Commerce.transportFilePath);
             }
             catch (FileNotFoundException ex)
             {
@@ -117,7 +114,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 
             try
             {
-                TimeData = CommerceDataHandler.loadTimeData("Resources/Time.csv");
+                TimeData = CommerceDataHandler.loadTimeData(MabiSettings.Commerce.timeFilePath);
             }
             catch (FileNotFoundException ex)
             {
@@ -127,6 +124,9 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             
         }
 
+        /// <summary>
+        /// A method for regenerating the graphs from the TimeData dictionary. Used both at startup and for instaces where the TimeData may be altered.
+        /// </summary>
         private void generateGraphs()
         {
             SingletonGraphFactory graphFactory = SingletonGraphFactory.getFactory();
@@ -175,6 +175,12 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             }
         }
 
+        /// <summary>
+        /// Iterates through an array of labels that have city names and removes the currently selected citie's name and replaces it with the previously selected city.
+        /// Also the order of the cities is maintained in the process.
+        /// </summary>
+        /// <param name="oldindex"></param>
+        /// <param name="newIndex"></param>
         private void adjustLabelsCities(int oldindex, int newIndex)
         {
             if(oldindex > newIndex)
@@ -262,6 +268,11 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             refreshDisplayCities();
         }
 
+        /// <summary>
+        /// When any of the dynamically generated transport buttons are selected - determine which one is selected and gather the statistics of the selected transport
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbtnTransport_CheckedChanged(object sender, EventArgs e)
         {
             //The RadioButton Text should be exactly the same as the indexes used in the Dictionary. An alternative would be using the number found at the end of each radiobutton name
@@ -305,6 +316,8 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         /// Calculates and displays the results in the supplied List View and matching label
         /// </summary>
         /// <param name="lview">List view to display the results in</param>
+        /// <param name="goodDisplay">Label which displays the name of the good over the ListView</param>
+        /// <param name="transportDisplay">Label which displays the name of the transport over the Listview</param>
         private void calculateResultsAndDisplay(ListView lview, Label goodDisplay, Label transportDisplay)
         {
             EndResults = new Dictionary<string, int>();
@@ -364,6 +377,11 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             UIHelper.displayCommerceResults(lview, EndResults, DucatsMin);
         }
 
+        /// <summary>
+        /// Opens the time tracker form when the menu strip item is clicked on. Regenerates the graphs to meet the user's changes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void timeTrackerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmTimeTracker timeTracker = new frmTimeTracker(TransportData.Keys.ToList(), TimeData, this);
@@ -372,17 +390,34 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             generateGraphs();
         }
 
+        /// <summary>
+        /// Sorts the rows of the First ListViewBox when a column is clicked on
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lviewResults1_ColumnClicked(object sender, ColumnClickEventArgs e)
         {
             ColumnSort(e, lviewResults1, lvwColumnSorter1);
             
         }
 
+        /// <summary>
+        /// Sorts the rows of the second ListViewBox when a column is clicked on
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lviewResults2_ColumnClicked(object sender, ColumnClickEventArgs e)
         {
             ColumnSort(e, lviewResults2, lvwColumnSorter2);
         }
 
+        /// <summary>
+        /// Given the event of a column being clicked on, use the supplied column sorter to sort a ListView. 
+        /// The column sorter's mode will switch between ascending and descending, or change columns
+        /// </summary>
+        /// <param name="e"></param>
+        /// <param name="lviewResults"></param>
+        /// <param name="lvwColumnSorter"></param>
         private void ColumnSort(ColumnClickEventArgs e, ListView lviewResults, ListViewColumnSorter lvwColumnSorter)
         {
             //Checking to see if column is already selected
@@ -408,7 +443,10 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             lviewResults.Sort();
         }
 
-
+        /// <summary>
+        /// Calculates the amount of ducats per minute given the Timespan dictionary whose keys should match the EndResult dictionary
+        /// </summary>
+        /// <param name="shortestTime">Timespan dictionary - produced from running Dijkstra on the graphs.</param>
         private void calculateDucatsPerMin(Dictionary<String, TimeSpan> shortestTime)
         {
             DucatsMin = new Dictionary<string, int>();
@@ -435,6 +473,9 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             }
         }
 
+        /// <summary>
+        /// Refreshes the display of UI elements pertaining to cities and goods. This is to display any user made changes in the City Data editor
+        /// </summary>
         private void refreshDisplayCities()
         {
             UIHelper.populateCheckListBox(clboxCities, CityData.Keys.ToArray());
@@ -444,6 +485,9 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             adjustTextBoxesVisibilityCommerce();          
         }
         
+        /// <summary>
+        /// Refreshes the display of UI elements pertaining to transports. This is to display any user made changes in the transport editor.
+        /// </summary>
         private void refreshDisplayTransport()
         {
             //Since it only contains radio buttons - we can just clear them all

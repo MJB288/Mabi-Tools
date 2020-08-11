@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mabi_Tools.Class_Definitions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -100,7 +101,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         private void btnSave_Click(object sender, EventArgs e)
         {
             commerceCaller.TimeData = TimeData;
-            CommerceDataHandler.saveTimeData("Resources/Time.csv", TimeData);
+            CommerceDataHandler.saveTimeData(MabiSettings.Commerce.timeFilePath, TimeData);
             updateBelvastTime();
             this.Close();
         }
