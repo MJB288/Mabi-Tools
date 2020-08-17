@@ -10,11 +10,34 @@ using System.Windows.Forms;
 
 namespace Mabi_Tools.Forms
 {
-    public partial class Settings : Form
+    public partial class frmSettings : Form
     {
-        public Settings()
+        public frmSettings()
         {
             InitializeComponent();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            //Save the file paths
+            Properties.Settings.Default.TransportFilePath = txtTransportFile.Text;
+            Properties.Settings.Default.TimeFilePath = txtTimeFile.Text;
+            Properties.Settings.Default.CityFilePath = txtCityFile.Text;
+
+        }
+
+        private void frmSettings_Load(object sender, EventArgs e)
+        {
+            txtTransportFile.Text = Properties.Settings.Default.TransportFilePath;
+            txtTimeFile.Text = Properties.Settings.Default.TimeFilePath;
+            txtCityFile.Text = Properties.Settings.Default.CityFilePath;
+        }
+
+        private void btnDefaults_Click(object sender, EventArgs e)
+        {
+            txtTransportFile.Text = "Resources/Transport.csv";
+            txtTimeFile.Text = "Resources/Time.csv";
+            txtCityFile.Text = "Resources/Cities.csv";
         }
     }
 }

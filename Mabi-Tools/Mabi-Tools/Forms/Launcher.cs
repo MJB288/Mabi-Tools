@@ -29,5 +29,11 @@ namespace Mabi_Tools
             //Close Entire Application if Clicking Exit. 
             System.Windows.Forms.Application.Exit();
         }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            Forms.frmSettings settingsForm = new Forms.frmSettings();
+            settingsForm.ShowDialog();
+        }
     }
 }
