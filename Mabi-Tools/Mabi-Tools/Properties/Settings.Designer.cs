@@ -58,5 +58,17 @@ namespace Mabi_Tools.Properties {
                 this["TransportFilePath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AssumeHour0 {
+            get {
+                return ((bool)(this["AssumeHour0"]));
+            }
+            set {
+                this["AssumeHour0"] = value;
+            }
+        }
     }
 }

@@ -23,6 +23,7 @@ namespace Mabi_Tools.Forms
             Properties.Settings.Default.TransportFilePath = txtTransportFile.Text;
             Properties.Settings.Default.TimeFilePath = txtTimeFile.Text;
             Properties.Settings.Default.CityFilePath = txtCityFile.Text;
+            Properties.Settings.Default.AssumeHour0 = cboxTimeFormat.Checked;
 
         }
 
@@ -31,6 +32,8 @@ namespace Mabi_Tools.Forms
             txtTransportFile.Text = Properties.Settings.Default.TransportFilePath;
             txtTimeFile.Text = Properties.Settings.Default.TimeFilePath;
             txtCityFile.Text = Properties.Settings.Default.CityFilePath;
+            cboxTimeFormat.Checked = Properties.Settings.Default.AssumeHour0;
+
         }
 
         private void btnDefaults_Click(object sender, EventArgs e)
@@ -38,6 +41,7 @@ namespace Mabi_Tools.Forms
             txtTransportFile.Text = "Resources/Transport.csv";
             txtTimeFile.Text = "Resources/Time.csv";
             txtCityFile.Text = "Resources/Cities.csv";
+            cboxTimeFormat.Checked = true;
         }
     }
 }

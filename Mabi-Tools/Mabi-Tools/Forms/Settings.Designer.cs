@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnDefaults = new System.Windows.Forms.Button();
+            this.cboxTimeFormat = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtCityFile
@@ -116,11 +117,22 @@
             this.btnDefaults.UseVisualStyleBackColor = true;
             this.btnDefaults.Click += new System.EventHandler(this.btnDefaults_Click);
             // 
+            // cboxTimeFormat
+            // 
+            this.cboxTimeFormat.AutoSize = true;
+            this.cboxTimeFormat.Location = new System.Drawing.Point(313, 31);
+            this.cboxTimeFormat.Name = "cboxTimeFormat";
+            this.cboxTimeFormat.Size = new System.Drawing.Size(80, 17);
+            this.cboxTimeFormat.TabIndex = 24;
+            this.cboxTimeFormat.Text = "checkBox1";
+            this.cboxTimeFormat.UseVisualStyleBackColor = true;
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 207);
+            this.Controls.Add(this.cboxTimeFormat);
             this.Controls.Add(this.btnDefaults);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -149,5 +161,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnDefaults;
+        private System.Windows.Forms.CheckBox cboxTimeFormat;
     }
 }
