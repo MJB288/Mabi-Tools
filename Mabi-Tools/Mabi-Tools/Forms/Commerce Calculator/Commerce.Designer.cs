@@ -83,7 +83,8 @@
             this.lblResultGood2 = new System.Windows.Forms.Label();
             this.lblResultTransport1 = new System.Windows.Forms.Label();
             this.lblResultTransport2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblResults = new System.Windows.Forms.Label();
+            this.btnExpand = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -419,7 +420,7 @@
             this.tsmmTools});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1187, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
             this.menuStrip1.TabIndex = 45;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -585,23 +586,35 @@
             this.lblResultTransport2.Text = "Transport";
             this.lblResultTransport2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // lblResults
             // 
-            this.label1.AutoSize = true;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(847, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 22);
-            this.label1.TabIndex = 55;
-            this.label1.Text = "Results";
+            this.lblResults.AutoSize = true;
+            this.lblResults.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblResults.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResults.Location = new System.Drawing.Point(847, 24);
+            this.lblResults.Name = "lblResults";
+            this.lblResults.Size = new System.Drawing.Size(55, 22);
+            this.lblResults.TabIndex = 55;
+            this.lblResults.Text = "Results";
+            // 
+            // btnExpand
+            // 
+            this.btnExpand.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExpand.Location = new System.Drawing.Point(1102, 24);
+            this.btnExpand.Name = "btnExpand";
+            this.btnExpand.Size = new System.Drawing.Size(43, 41);
+            this.btnExpand.TabIndex = 56;
+            this.btnExpand.Text = "+";
+            this.btnExpand.UseVisualStyleBackColor = true;
+            this.btnExpand.Click += new System.EventHandler(this.btnExpand_Click);
             // 
             // frmCommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1187, 432);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1184, 425);
+            this.Controls.Add(this.btnExpand);
+            this.Controls.Add(this.lblResults);
             this.Controls.Add(this.lblResultTransport2);
             this.Controls.Add(this.lblResultTransport1);
             this.Controls.Add(this.lblResultGood2);
@@ -713,6 +726,7 @@
         private System.Windows.Forms.Label lblResultGood2;
         private System.Windows.Forms.Label lblResultTransport1;
         private System.Windows.Forms.Label lblResultTransport2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblResults;
+        private System.Windows.Forms.Button btnExpand;
     }
 }

@@ -42,21 +42,21 @@
             // 
             // txtCityFile
             // 
-            this.txtCityFile.Location = new System.Drawing.Point(29, 87);
+            this.txtCityFile.Location = new System.Drawing.Point(51, 34);
             this.txtCityFile.Name = "txtCityFile";
             this.txtCityFile.Size = new System.Drawing.Size(100, 20);
             this.txtCityFile.TabIndex = 0;
             // 
             // txtTransportFile
             // 
-            this.txtTransportFile.Location = new System.Drawing.Point(221, 87);
+            this.txtTransportFile.Location = new System.Drawing.Point(51, 77);
             this.txtTransportFile.Name = "txtTransportFile";
             this.txtTransportFile.Size = new System.Drawing.Size(100, 20);
             this.txtTransportFile.TabIndex = 1;
             // 
             // txtTimeFile
             // 
-            this.txtTimeFile.Location = new System.Drawing.Point(405, 87);
+            this.txtTimeFile.Location = new System.Drawing.Point(51, 118);
             this.txtTimeFile.Name = "txtTimeFile";
             this.txtTimeFile.Size = new System.Drawing.Size(100, 20);
             this.txtTimeFile.TabIndex = 2;
@@ -64,7 +64,7 @@
             // lblCityFile
             // 
             this.lblCityFile.AutoSize = true;
-            this.lblCityFile.Location = new System.Drawing.Point(29, 68);
+            this.lblCityFile.Location = new System.Drawing.Point(47, 15);
             this.lblCityFile.Name = "lblCityFile";
             this.lblCityFile.Size = new System.Drawing.Size(108, 13);
             this.lblCityFile.TabIndex = 3;
@@ -72,7 +72,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(223, 154);
+            this.btnSave.Location = new System.Drawing.Point(197, 154);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(84, 41);
             this.btnSave.TabIndex = 19;
@@ -82,7 +82,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(313, 154);
+            this.btnCancel.Location = new System.Drawing.Point(287, 154);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 41);
             this.btnCancel.TabIndex = 20;
@@ -92,7 +92,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(204, 68);
+            this.label1.Location = new System.Drawing.Point(33, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(136, 13);
             this.label1.TabIndex = 21;
@@ -101,7 +101,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(402, 68);
+            this.label2.Location = new System.Drawing.Point(44, 99);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 13);
             this.label2.TabIndex = 22;
@@ -109,7 +109,7 @@
             // 
             // btnDefaults
             // 
-            this.btnDefaults.Location = new System.Drawing.Point(133, 154);
+            this.btnDefaults.Location = new System.Drawing.Point(107, 154);
             this.btnDefaults.Name = "btnDefaults";
             this.btnDefaults.Size = new System.Drawing.Size(84, 41);
             this.btnDefaults.TabIndex = 23;
@@ -120,18 +120,18 @@
             // cboxTimeFormat
             // 
             this.cboxTimeFormat.AutoSize = true;
-            this.cboxTimeFormat.Location = new System.Drawing.Point(313, 31);
+            this.cboxTimeFormat.Location = new System.Drawing.Point(274, 57);
             this.cboxTimeFormat.Name = "cboxTimeFormat";
-            this.cboxTimeFormat.Size = new System.Drawing.Size(80, 17);
+            this.cboxTimeFormat.Size = new System.Drawing.Size(180, 17);
             this.cboxTimeFormat.TabIndex = 24;
-            this.cboxTimeFormat.Text = "checkBox1";
+            this.cboxTimeFormat.Text = "Time Tracker : Assume Hour is 0";
             this.cboxTimeFormat.UseVisualStyleBackColor = true;
             // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(585, 207);
+            this.ClientSize = new System.Drawing.Size(478, 209);
             this.Controls.Add(this.cboxTimeFormat);
             this.Controls.Add(this.btnDefaults);
             this.Controls.Add(this.label2);

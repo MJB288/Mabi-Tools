@@ -33,7 +33,6 @@ namespace Mabi_Tools.Forms
             txtTimeFile.Text = Properties.Settings.Default.TimeFilePath;
             txtCityFile.Text = Properties.Settings.Default.CityFilePath;
             cboxTimeFormat.Checked = Properties.Settings.Default.AssumeHour0;
-
         }
 
         private void btnDefaults_Click(object sender, EventArgs e)

@@ -33,6 +33,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         private Dictionary<String, Graph> GraphsbyTransport;
         private Label[] CityLabels;
         private TextBox[] CityTextboxes;
+        private bool Expanded = false;
 
         private ListViewColumnSorter lvwColumnSorter1, lvwColumnSorter2;
 
@@ -84,6 +85,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             lviewResults2.ListViewItemSorter = lvwColumnSorter2;
             lviewResults1.ColumnClick += this.lviewResults1_ColumnClicked;
             lviewResults2.ColumnClick += this.lviewResults2_ColumnClicked;
+            expandControl(false);
         }
         /// <summary>
         /// A function that loads all of the data at startup time
@@ -409,6 +411,55 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         private void lviewResults2_ColumnClicked(object sender, ColumnClickEventArgs e)
         {
             ColumnSort(e, lviewResults2, lvwColumnSorter2);
+        }
+
+        private void btnExpand_Click(object sender, EventArgs e)
+        {
+            //Flip the boolean value
+            Expanded = !Expanded;
+            expandControl(Expanded);
+        }
+
+        /// <summary>
+        /// Handles the control of expanding or shrinking the form in regards to incorporating a results box
+        /// </summary>
+        /// <param name="expand">Which state to set the form in</param>
+        private void expandControl(bool expand)
+        {
+            
+            if (expand)
+            {
+                //Check if the form needs to be horizontally expanded
+                if (this.Size.Width < 1200)
+                {
+                    this.Size = new Size(1200, this.Size.Height);
+                }
+                //Now set everything visible and move the label
+                lblResults.Location = new Point(847, 24);
+                lviewResults2.Visible = true;
+                lblResultGood2.Visible = true;
+                lblResultTransport2.Visible = true;
+                btnCompute2.Visible = true;
+                btnExpand.Text = "-";
+                btnExpand.Location = new Point(1100,24);
+                lblVS.Visible = true;
+            }
+            else
+            {
+                if (this.Size.Width > 890)
+                {
+                    this.Size = new Size(890, this.Size.Height);
+                }
+                //Now set everything invisible and move the label
+                lblResults.Location = new Point(698, 24);
+                lviewResults2.Visible = false;
+                lblResultGood2.Visible = false;
+                lblResultTransport2.Visible = false;
+                btnCompute2.Visible = false;
+                btnExpand.Text = "+";
+                btnExpand.Location = new Point(798,24);
+                lblVS.Visible = false;
+            }
         }
 
         /// <summary>
