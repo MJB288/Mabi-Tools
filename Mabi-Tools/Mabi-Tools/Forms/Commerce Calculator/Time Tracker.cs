@@ -1,4 +1,5 @@
 ﻿using Mabi_Tools.Class_Definitions;
+using Mabi_Tools.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -211,16 +212,29 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             TimeSpan newTime = new TimeSpan();
             try
             {
-                newTime = TimeSpan.Parse(txtTime.Text);
+                String timeString = txtTime.Text;
+                if (Settings.Default.AssumeHour0)
+                {
+                    timeString = "00:" + timeString;
+                }
+                newTime = TimeSpan.Parse(timeString);
             }
             catch(FormatException fex)
             {
-                MessageBox.Show("Time format must be HOUR-MINUTE-SECOND!\n"+fex.Message, "Format Error");
+                if (!Settings.Default.AssumeHour0)
+                {
+                    MessageBox.Show("Time format must be HOURs:MINUTEs:SECONDS! Two digits each!\n" + fex.Message, "Format Error");
+                }
+                else
+                {
+                    MessageBox.Show("Time format must be MINUTE:SECOND (no hours)!\n" + fex.Message, "Format Error");
+                }
                 return;
             }
             catch(OverflowException oex)
             {
-                MessageBox.Show("Numerical overflow on the input time :\n" + oex.Message, "Format Error");
+                MessageBox.Show("Input time is too large! (Typically cause by a large hour value) :\n" + oex.Message, "Format Error");
+                return;
             }
 
             //No user input errors so far - now check for and create levels of the internal dictionary if necessary
