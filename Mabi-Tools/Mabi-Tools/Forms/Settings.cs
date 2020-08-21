@@ -43,5 +43,11 @@ namespace Mabi_Tools.Forms
             txtCityFile.Text = "Resources/Cities.csv";
             cboxTimeFormat.Checked = true;
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            //Close the form without making changes
+            this.Close();
+        }
     }
 }

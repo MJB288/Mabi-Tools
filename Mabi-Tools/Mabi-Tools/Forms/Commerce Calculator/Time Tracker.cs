@@ -42,9 +42,22 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             clboxSource.SelectedIndex = ClboxPrevSelectedS;
             //Populate the custom box with what the startup value was
             SingletonGraphFactory graphFactory = SingletonGraphFactory.getFactory();
-            
+
+            StringBuilder timeString = new StringBuilder(graphFactory.BelvastBoatTime.ToString());
+            //If assuming hour is 0 - chop off hour and colon
+            if (Settings.Default.AssumeHour0)
+            {
+                timeString.Remove(0, 3);
+                lblTimeFormat.Text = "Time Format : (MM:SS)";
+            }
+            else
+            {
+                lblTimeFormat.Text = "Time Format : (HH:MM:SS)";
+            }
+
             txtCustomTime.Text = graphFactory.BelvastBoatTime.ToString();
             selectRadioButtonStartup();
+            
         }
 
         //A method for populating the lists at startup
@@ -123,6 +136,11 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                     graphFactory.BelvastBoatTime = MIDTIME;
                     break;
                 case "rbtnCustom":
+                    String timeString = txtCustomTime.Text;
+                    if (Settings.Default.AssumeHour0)
+                    {
+                        timeString = "00:" + timeString;
+                    }
                     try
                     {
                         graphFactory.BelvastBoatTime = TimeSpan.Parse(txtCustomTime.Text);

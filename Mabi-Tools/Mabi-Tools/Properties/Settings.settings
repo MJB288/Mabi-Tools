@@ -12,7 +12,7 @@
       <Value Profile="(Default)">Resources/Transport.csv</Value>
     </Setting>
     <Setting Name="AssumeHour0" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

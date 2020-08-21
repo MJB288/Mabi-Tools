@@ -61,7 +61,7 @@ namespace Mabi_Tools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool AssumeHour0 {
             get {
                 return ((bool)(this["AssumeHour0"]));

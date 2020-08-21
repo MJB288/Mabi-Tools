@@ -52,6 +52,7 @@
             this.rbtnCustom = new System.Windows.Forms.RadioButton();
             this.txtCustomTime = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblTimeFormat = new System.Windows.Forms.Label();
             this.flpBoat.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -284,11 +285,22 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "For the Belvast Boat Assume:";
             // 
+            // lblTimeFormat
+            // 
+            this.lblTimeFormat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeFormat.Location = new System.Drawing.Point(436, 255);
+            this.lblTimeFormat.Name = "lblTimeFormat";
+            this.lblTimeFormat.Size = new System.Drawing.Size(214, 16);
+            this.lblTimeFormat.TabIndex = 19;
+            this.lblTimeFormat.Text = "Time Format : ";
+            this.lblTimeFormat.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmTimeTracker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(708, 427);
+            this.Controls.Add(this.lblTimeFormat);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.flpBoat);
             this.Controls.Add(this.label1);
@@ -342,5 +354,6 @@
         private System.Windows.Forms.RadioButton rbtnMiddle;
         private System.Windows.Forms.RadioButton rbtnCustom;
         private System.Windows.Forms.TextBox txtCustomTime;
+        private System.Windows.Forms.Label lblTimeFormat;
     }
 }
