@@ -38,27 +38,28 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnDefaults = new System.Windows.Forms.Button();
             this.cboxTimeFormat = new System.Windows.Forms.CheckBox();
+            this.btnFileBrowser = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtCityFile
             // 
-            this.txtCityFile.Location = new System.Drawing.Point(51, 34);
+            this.txtCityFile.Location = new System.Drawing.Point(21, 34);
             this.txtCityFile.Name = "txtCityFile";
-            this.txtCityFile.Size = new System.Drawing.Size(100, 20);
+            this.txtCityFile.Size = new System.Drawing.Size(148, 20);
             this.txtCityFile.TabIndex = 0;
             // 
             // txtTransportFile
             // 
-            this.txtTransportFile.Location = new System.Drawing.Point(51, 77);
+            this.txtTransportFile.Location = new System.Drawing.Point(21, 76);
             this.txtTransportFile.Name = "txtTransportFile";
-            this.txtTransportFile.Size = new System.Drawing.Size(100, 20);
+            this.txtTransportFile.Size = new System.Drawing.Size(148, 20);
             this.txtTransportFile.TabIndex = 1;
             // 
             // txtTimeFile
             // 
-            this.txtTimeFile.Location = new System.Drawing.Point(51, 118);
+            this.txtTimeFile.Location = new System.Drawing.Point(21, 118);
             this.txtTimeFile.Name = "txtTimeFile";
-            this.txtTimeFile.Size = new System.Drawing.Size(100, 20);
+            this.txtTimeFile.Size = new System.Drawing.Size(148, 20);
             this.txtTimeFile.TabIndex = 2;
             // 
             // lblCityFile
@@ -128,11 +129,23 @@
             this.cboxTimeFormat.Text = "Time Tracker : Assume Hour is 0";
             this.cboxTimeFormat.UseVisualStyleBackColor = true;
             // 
+            // btnFileBrowser
+            // 
+            this.btnFileBrowser.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFileBrowser.Location = new System.Drawing.Point(175, 34);
+            this.btnFileBrowser.Name = "btnFileBrowser";
+            this.btnFileBrowser.Size = new System.Drawing.Size(30, 20);
+            this.btnFileBrowser.TabIndex = 25;
+            this.btnFileBrowser.Text = "...";
+            this.btnFileBrowser.UseVisualStyleBackColor = true;
+            this.btnFileBrowser.Click += new System.EventHandler(this.btnFileBrowser_Click);
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(478, 209);
+            this.Controls.Add(this.btnFileBrowser);
             this.Controls.Add(this.cboxTimeFormat);
             this.Controls.Add(this.btnDefaults);
             this.Controls.Add(this.label2);
@@ -163,5 +176,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnDefaults;
         private System.Windows.Forms.CheckBox cboxTimeFormat;
+        private System.Windows.Forms.Button btnFileBrowser;
     }
 }

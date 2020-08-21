@@ -25,6 +25,8 @@ namespace Mabi_Tools.Forms
             Properties.Settings.Default.CityFilePath = txtCityFile.Text;
             Properties.Settings.Default.AssumeHour0 = cboxTimeFormat.Checked;
 
+            Properties.Settings.Default.Save();
+
             this.Close();
         }
 
@@ -49,5 +51,27 @@ namespace Mabi_Tools.Forms
             //Close the form without making changes
             this.Close();
         }
+
+        private void btnFileBrowser_Click(object sender, EventArgs e)
+        {
+            getFilePathSettings(txtCityFile);
+        }
+
+        private void getFilePathSettings(TextBox txtBox)
+        {
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                //Get the current directory
+                ofd.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+                ofd.RestoreDirectory = true;
+                //Now if the user selects OK, update the textbox
+                if(ofd.ShowDialog() == DialogResult.OK)
+                {
+                    txtBox.Text = ofd.FileName;
+                }
+            }
+            
+        }
+
     }
 }
