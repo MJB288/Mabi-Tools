@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using Mabi_Tools.Class_Definitions;
+using Mabi_Tools.Properties;
 
 namespace Mabi_Tools.Forms.Commerce_Calculator
 {
@@ -95,7 +96,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             //Todo:Have some sort of settings to allow the user to specify which file they use for each set of data
             try
             {
-                CityData = CommerceDataHandler.loadCommerceData(MabiSettings.Commerce.cityFilePath);
+                CityData = CommerceDataHandler.loadCommerceData(Settings.Default.CityFilePath);
             }
             catch (FileNotFoundException ex)
             {
@@ -106,7 +107,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 
             try
             {
-                TransportData = CommerceDataHandler.loadTransportData(MabiSettings.Commerce.transportFilePath);
+                TransportData = CommerceDataHandler.loadTransportData(Settings.Default.TransportFilePath);
             }
             catch (FileNotFoundException ex)
             {
@@ -116,7 +117,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 
             try
             {
-                TimeData = CommerceDataHandler.loadTimeData(MabiSettings.Commerce.timeFilePath);
+                TimeData = CommerceDataHandler.loadTimeData(Settings.Default.TimeFilePath);
             }
             catch (FileNotFoundException ex)
             {

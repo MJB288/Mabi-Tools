@@ -64,6 +64,8 @@ namespace Mabi_Tools.Forms
                 //Get the current directory
                 ofd.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
                 ofd.RestoreDirectory = true;
+                ofd.Filter = "csv files(*.csv)|*.csv|txt files (*.txt)|*.txt|All files (*.*)|*.*"; ;
+                ofd.FilterIndex = 2;
                 //Now if the user selects OK, update the textbox
                 if(ofd.ShowDialog() == DialogResult.OK)
                 {
@@ -73,5 +75,14 @@ namespace Mabi_Tools.Forms
             
         }
 
+        private void btnFileBroswerTransport_Click(object sender, EventArgs e)
+        {
+            getFilePathSettings(txtTransportFile);
+        }
+
+        private void btnFileBrowserTime_Click(object sender, EventArgs e)
+        {
+            getFilePathSettings(txtTimeFile);
+        }
     }
 }
