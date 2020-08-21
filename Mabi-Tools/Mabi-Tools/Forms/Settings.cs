@@ -25,6 +25,7 @@ namespace Mabi_Tools.Forms
             Properties.Settings.Default.CityFilePath = txtCityFile.Text;
             Properties.Settings.Default.AssumeHour0 = cboxTimeFormat.Checked;
 
+            this.Close();
         }
 
         private void frmSettings_Load(object sender, EventArgs e)

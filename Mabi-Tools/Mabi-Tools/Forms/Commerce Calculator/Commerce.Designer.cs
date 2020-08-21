@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCommerce));
             this.clboxGoods = new System.Windows.Forms.CheckedListBox();
             this.lblGoods = new System.Windows.Forms.Label();
             this.clboxCities = new System.Windows.Forms.CheckedListBox();
@@ -658,6 +659,7 @@
             this.Controls.Add(this.lblGoods);
             this.Controls.Add(this.clboxGoods);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmCommerce";
             this.Text = "Commerce Calculator";
