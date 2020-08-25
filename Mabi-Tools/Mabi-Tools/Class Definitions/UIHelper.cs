@@ -248,6 +248,7 @@ namespace Mabi_Tools
         /// <returns>An array of references to the generated textboxes</returns>
         public static TextBox[] generateCommerceTextBoxes(FlowLayoutPanel flpTextBoxes, int numTowns, System.EventHandler textboxFocusFunc)
         {
+            flpTextBoxes.Controls.Clear();
             TextBox[] referenceArray = new TextBox[numTowns];
             for (int i = 0; i < numTowns; i++)
             {
@@ -273,6 +274,7 @@ namespace Mabi_Tools
         /// <returns>An array of references to the generated labels</returns>
         public static Label[] generateCommerceLabels(FlowLayoutPanel flpLabels, List<String> cityNames)
         {
+            flpLabels.Controls.Clear();
             Label[] referenceArray = new Label[cityNames.Count];
             for (int i = 0; i < cityNames.Count; i++)
             {

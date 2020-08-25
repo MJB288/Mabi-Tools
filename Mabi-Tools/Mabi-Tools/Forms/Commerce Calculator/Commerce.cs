@@ -55,36 +55,14 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             //Generate the graphs from the time data
             generateGraphs();
 
-            //UIHelper.populateCheckListBox(clboxCities, CityData.Keys.ToArray());
-            //TODO- dynamically generate each textbox and label for more future flexibility
-            Label[] testLabels = { lblTown0, lblTown1, lblTown2, lblTown3, lblTown4, lblTown5, lblTown6, lblTown7, lblTown8, lblTown9 };
-            TextBox[] textBoxes = { txtTown0, txtTown1, txtTown2, txtTown3, txtTown4, txtTown5, txtTown6, txtTown7, txtTown8, txtTown9 };
-            CityLabels = testLabels;
-            CityTextboxes = textBoxes;
-            testLabels = null;
-            textBoxes = null;
-
             //So this should return an enumerator of labels that contain the name - perhaps use this logic to assign the labels?
             //this.Controls.OfType<Label>().Where(lbl => lbl.Name.Contains("lblTown"));
             refreshDisplayTransport();
             refreshDisplayCities();
 
-            List<String> cityNames = CityData.Keys.ToList();
-            cityNames.Add("Smuggler");
-            cityNames.Remove(clboxCities.SelectedItem.ToString());
-
-            UIHelper.generateCommerceTextBoxes(flpTextBoxes, CityData.Keys.Count, this.txtCities_GotFocus);
-            UIHelper.generateCommerceLabels(flpCityLabels, cityNames);
-
-            //Adjust Visibility based on the amount of towns detected.
-            this.adjustTextBoxesVisibilityCommerce();
-            this.adjustLabelsCities(0, 0);
             
             //Check off the first one for now.
             flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
-            /*String[] arr = { "1", "2" };
-            ListViewItem lItem = new ListViewItem(arr);
-            lviewResults1.Items.Add(lItem);*/
 
             lvwColumnSorter1 = new ListViewColumnSorter();
             lvwColumnSorter2 = new ListViewColumnSorter();
@@ -547,11 +525,18 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         /// </summary>
         private void refreshDisplayCities()
         {
+            List<String> cityNames = CityData.Keys.ToList();
+            cityNames.Add("Smuggler");
+            cityNames.RemoveAt(0);
+
+            //Clear the flow layoutpanels and generate the correct amount of textboxes
+            CityTextboxes = UIHelper.generateCommerceTextBoxes(flpTextBoxes, CityData.Keys.Count, this.txtCities_GotFocus);
+            CityLabels = UIHelper.generateCommerceLabels(flpCityLabels, cityNames);
+
             UIHelper.populateCheckListBox(clboxCities, CityData.Keys.ToArray());
             clboxCities.SetItemChecked(this.ClboxprevSelectedT, true);
             clboxCities.SelectedItem = clboxCities.Items[ClboxprevSelectedG];
             UIHelper.populateGoodCheckListBox(clboxGoods, CityData[CityData.Keys.ToList()[this.ClboxprevSelectedT]], ClboxprevSelectedG);
-            adjustTextBoxesVisibilityCommerce();          
         }
         
         /// <summary>
