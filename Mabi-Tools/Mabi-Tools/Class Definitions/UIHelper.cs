@@ -238,5 +238,57 @@ namespace Mabi_Tools
                 lview.Items.Add(newItem);
             }
         }
+
+
+        /// <summary>
+        /// Dynamically generates textboxes for a flow layoutpanel. Retruns an array of references to make some operations easier.
+        /// </summary>
+        /// <param name="flpTextBoxes">A flow layout panel that the textboxes will be put into</param>
+        /// <param name="numTowns">The number of textboxes to generate. Assumes full total, including the smuggler</param>
+        /// <returns>An array of references to the generated textboxes</returns>
+        public static TextBox[] generateCommerceTextBoxes(FlowLayoutPanel flpTextBoxes, int numTowns, System.EventHandler textboxFocusFunc)
+        {
+            TextBox[] referenceArray = new TextBox[numTowns];
+            for (int i = 0; i < numTowns; i++)
+            {
+                TextBox addToPanel = new TextBox();
+                addToPanel.Name = "txtTown" + i;
+                addToPanel.Text = "0";
+                addToPanel.GotFocus += textboxFocusFunc;
+                //For whatever reason setting them exactly as the width chops off the rightmost line of the textbox.
+                addToPanel.Width = flpTextBoxes.Width - 5;
+                addToPanel.Margin = new Padding(3, 3, 3, 10);
+                flpTextBoxes.Controls.Add(addToPanel);
+                referenceArray[i] = addToPanel;
+
+            }
+            return referenceArray;
+        }
+
+        /// <summary>
+        /// Dynamically generates labels for a flow layoutpanel. Retruns an array of references to make some operations easier.
+        /// </summary>
+        /// <param name="flpLabels">A flow layout panel that the labels will be put into</param>
+        /// <param name="cityNames">The number of labels to generate. Assumes all cities, including if the smuggler is used or not</param>
+        /// <returns>An array of references to the generated labels</returns>
+        public static Label[] generateCommerceLabels(FlowLayoutPanel flpLabels, List<String> cityNames)
+        {
+            Label[] referenceArray = new Label[cityNames.Count];
+            for (int i = 0; i < cityNames.Count; i++)
+            {
+                Label addToPanel = new Label();
+                addToPanel.Name = "txtTown" + i;
+                addToPanel.Text = cityNames[i];
+                addToPanel.AutoSize = false;
+                addToPanel.Width = flpLabels.Width;
+                addToPanel.Height = 20;
+                //Should Match the same margin as in textboxes unless a change in ratios is necessary
+                addToPanel.Margin = new Padding(3, 3, 3, 10);
+                addToPanel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+                flpLabels.Controls.Add(addToPanel);
+                referenceArray[i] = addToPanel;
+            }
+            return referenceArray;
+        }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSettings));
             this.txtCityFile = new System.Windows.Forms.TextBox();
             this.txtTransportFile = new System.Windows.Forms.TextBox();
             this.txtTimeFile = new System.Windows.Forms.TextBox();
@@ -182,6 +183,7 @@
             this.Controls.Add(this.txtTimeFile);
             this.Controls.Add(this.txtTransportFile);
             this.Controls.Add(this.txtCityFile);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSettings";
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.frmSettings_Load);

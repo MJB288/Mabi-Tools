@@ -55,7 +55,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 lblTimeFormat.Text = "Time Format : (HH:MM:SS)";
             }
 
-            txtCustomTime.Text = graphFactory.BelvastBoatTime.ToString();
+            txtCustomTime.Text = timeString.ToString();
             selectRadioButtonStartup();
             
         }

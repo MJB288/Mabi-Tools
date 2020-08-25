@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTimeTracker));
             this.flpTransport = new System.Windows.Forms.FlowLayoutPanel();
             this.clboxSource = new System.Windows.Forms.CheckedListBox();
             this.clboxDestination = new System.Windows.Forms.CheckedListBox();
@@ -318,6 +319,7 @@
             this.Controls.Add(this.clboxDestination);
             this.Controls.Add(this.clboxSource);
             this.Controls.Add(this.flpTransport);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmTimeTracker";
             this.Text = "Time Tracker";
             this.Load += new System.EventHandler(this.frmTimeTracker_Load);

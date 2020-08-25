@@ -69,6 +69,13 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             refreshDisplayTransport();
             refreshDisplayCities();
 
+            List<String> cityNames = CityData.Keys.ToList();
+            cityNames.Add("Smuggler");
+            cityNames.Remove(clboxCities.SelectedItem.ToString());
+
+            UIHelper.generateCommerceTextBoxes(flpTextBoxes, CityData.Keys.Count, this.txtCities_GotFocus);
+            UIHelper.generateCommerceLabels(flpCityLabels, cityNames);
+
             //Adjust Visibility based on the amount of towns detected.
             this.adjustTextBoxesVisibilityCommerce();
             this.adjustLabelsCities(0, 0);
@@ -141,7 +148,17 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             }
         }
 
-
+        /// <summary>
+        /// An event handler that automatically highlights all of the text when selected. For convienince when rapidly inputting prices
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtCities_GotFocus(object sender, EventArgs e)
+        {
+            TextBox selectedTextBox = flpTextBoxes.Controls.OfType<TextBox>().FirstOrDefault(txtBox => txtBox.Focused);
+            selectedTextBox.SelectionStart = 0;
+            selectedTextBox.SelectionLength = selectedTextBox.Text.Length;
+        }
 
         private void clboxGoods_SelectedIndexChanged(object sender, EventArgs e)
         {

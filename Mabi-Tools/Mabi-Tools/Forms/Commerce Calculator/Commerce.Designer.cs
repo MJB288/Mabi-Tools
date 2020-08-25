@@ -86,6 +86,8 @@
             this.lblResultTransport2 = new System.Windows.Forms.Label();
             this.lblResults = new System.Windows.Forms.Label();
             this.btnExpand = new System.Windows.Forms.Button();
+            this.flpTextBoxes = new System.Windows.Forms.FlowLayoutPanel();
+            this.flpCityLabels = new System.Windows.Forms.FlowLayoutPanel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -609,11 +611,28 @@
             this.btnExpand.UseVisualStyleBackColor = true;
             this.btnExpand.Click += new System.EventHandler(this.btnExpand_Click);
             // 
+            // flpTextBoxes
+            // 
+            this.flpTextBoxes.Location = new System.Drawing.Point(275, 76);
+            this.flpTextBoxes.Margin = new System.Windows.Forms.Padding(3, 30, 3, 30);
+            this.flpTextBoxes.Name = "flpTextBoxes";
+            this.flpTextBoxes.Size = new System.Drawing.Size(100, 329);
+            this.flpTextBoxes.TabIndex = 57;
+            // 
+            // flpCityLabels
+            // 
+            this.flpCityLabels.Location = new System.Drawing.Point(185, 76);
+            this.flpCityLabels.Name = "flpCityLabels";
+            this.flpCityLabels.Size = new System.Drawing.Size(84, 329);
+            this.flpCityLabels.TabIndex = 58;
+            // 
             // frmCommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 425);
+            this.Controls.Add(this.flpCityLabels);
+            this.Controls.Add(this.flpTextBoxes);
             this.Controls.Add(this.btnExpand);
             this.Controls.Add(this.lblResults);
             this.Controls.Add(this.lblResultTransport2);
@@ -730,5 +749,7 @@
         private System.Windows.Forms.Label lblResultTransport2;
         private System.Windows.Forms.Label lblResults;
         private System.Windows.Forms.Button btnExpand;
+        private System.Windows.Forms.FlowLayoutPanel flpTextBoxes;
+        private System.Windows.Forms.FlowLayoutPanel flpCityLabels;
     }
 }
