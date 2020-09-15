@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mabi_Tools.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,6 +35,12 @@ namespace Mabi_Tools
         {
             Forms.frmSettings settingsForm = new Forms.frmSettings();
             settingsForm.ShowDialog();
+        }
+
+        private void btnCredits_Click(object sender, EventArgs e)
+        {
+            Forms.frmCredits creditsForm = new Forms.frmSettings();
+            creditsForm.ShowDialog();
         }
     }
 }

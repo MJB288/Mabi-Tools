@@ -31,8 +31,8 @@
             this.btnCommerce = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.lblVersion = new System.Windows.Forms.Label();
-            this.lblCommerceVersion = new System.Windows.Forms.Label();
             this.btnSettings = new System.Windows.Forms.Button();
+            this.btnCredits = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCommerce
@@ -47,7 +47,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(70, 223);
+            this.btnExit.Location = new System.Drawing.Point(70, 263);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(109, 47);
             this.btnExit.TabIndex = 1;
@@ -62,20 +62,11 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(37, 13);
             this.lblVersion.TabIndex = 2;
-            this.lblVersion.Text = "v0.0.5";
-            // 
-            // lblCommerceVersion
-            // 
-            this.lblCommerceVersion.AutoSize = true;
-            this.lblCommerceVersion.Location = new System.Drawing.Point(202, 29);
-            this.lblCommerceVersion.Name = "lblCommerceVersion";
-            this.lblCommerceVersion.Size = new System.Drawing.Size(28, 13);
-            this.lblCommerceVersion.TabIndex = 3;
-            this.lblCommerceVersion.Text = "v0.7";
+            this.lblVersion.Text = "v0.9.0";
             // 
             // btnSettings
             // 
-            this.btnSettings.Location = new System.Drawing.Point(70, 170);
+            this.btnSettings.Location = new System.Drawing.Point(70, 157);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(109, 47);
             this.btnSettings.TabIndex = 4;
@@ -83,13 +74,23 @@
             this.btnSettings.UseVisualStyleBackColor = true;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
+            // btnCredits
+            // 
+            this.btnCredits.Location = new System.Drawing.Point(70, 210);
+            this.btnCredits.Name = "btnCredits";
+            this.btnCredits.Size = new System.Drawing.Size(109, 47);
+            this.btnCredits.TabIndex = 5;
+            this.btnCredits.Text = "Credits";
+            this.btnCredits.UseVisualStyleBackColor = true;
+            this.btnCredits.Click += new System.EventHandler(this.btnCredits_Click);
+            // 
             // MainLauncher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(261, 319);
+            this.ClientSize = new System.Drawing.Size(261, 331);
+            this.Controls.Add(this.btnCredits);
             this.Controls.Add(this.btnSettings);
-            this.Controls.Add(this.lblCommerceVersion);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnCommerce);
@@ -105,8 +106,8 @@
         private System.Windows.Forms.Button btnCommerce;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label lblVersion;
-        private System.Windows.Forms.Label lblCommerceVersion;
         private System.Windows.Forms.Button btnSettings;
+        private System.Windows.Forms.Button btnCredits;
     }
 }
 

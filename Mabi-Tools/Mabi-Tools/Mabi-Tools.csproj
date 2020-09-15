@@ -49,7 +49,6 @@
     <Compile Include="Class Definitions\Commerce\Graph Classes.cs" />
     <Compile Include="Class Definitions\Commerce\ListViewColumnSorter.cs" />
     <Compile Include="Class Definitions\Commerce\SingletonGraphFactory.cs" />
-    <Compile Include="Class Definitions\MabiSettings.cs" />
     <Compile Include="Class Definitions\UIHelper.cs" />
     <Compile Include="Class Definitions\Commerce\CommerceDataHandler.cs" />
     <Compile Include="Forms\Settings.cs">
