@@ -16,5 +16,15 @@ namespace Mabi_Tools.Forms
         {
             InitializeComponent();
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lnklblUXWING_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://uxwing.com/");
+        }
     }
 }
