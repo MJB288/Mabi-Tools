@@ -51,6 +51,12 @@
     <Compile Include="Class Definitions\Commerce\SingletonGraphFactory.cs" />
     <Compile Include="Class Definitions\UIHelper.cs" />
     <Compile Include="Class Definitions\Commerce\CommerceDataHandler.cs" />
+    <Compile Include="Forms\Credits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Credits.Designer.cs">
+      <DependentUpon>Credits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Commerce Calculator\Transport Editor.resx">
       <DependentUpon>Transport Editor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Credits.resx">
+      <DependentUpon>Credits.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Launcher.resx">
       <DependentUpon>Launcher.cs</DependentUpon>

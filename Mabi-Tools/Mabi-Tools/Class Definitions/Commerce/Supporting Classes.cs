@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mabi_Tools 
+namespace Mabi_Tools.Classes
 {
     [Serializable()]
     public class Transport

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Mabi_Tools
+namespace Mabi_Tools.Classes
 {
     /// <summary>
     /// A static helper class that contains some reusable methods for altering/changing the UI

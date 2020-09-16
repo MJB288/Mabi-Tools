@@ -1,4 +1,4 @@
-﻿using Mabi_Tools.Class_Definitions;
+﻿using Mabi_Tools.Classes;
 using Mabi_Tools.Properties;
 using System;
 using System.Collections.Generic;
@@ -115,7 +115,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         private void btnSave_Click(object sender, EventArgs e)
         {
             commerceCaller.TimeData = TimeData;
-            CommerceDataHandler.saveTimeData(MabiSettings.Commerce.timeFilePath, TimeData);
+            CommerceDataHandler.saveTimeData(Settings.Default.TimeFilePath, TimeData);
             updateBelvastTime();
             this.Close();
         }

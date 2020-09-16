@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace Mabi_Tools
+namespace Mabi_Tools.Classes
 {
     /// <summary>
     /// A static class to contain methods for loading, saving, and processing data to and from disk

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Mabi_Tools
+namespace Mabi_Tools.Classes
 {
     public class Vertex
     {

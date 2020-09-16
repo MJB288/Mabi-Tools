@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using Mabi_Tools.Class_Definitions;
+using Mabi_Tools.Classes;
 using Mabi_Tools.Properties;
 
 namespace Mabi_Tools.Forms.Commerce_Calculator

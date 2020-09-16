@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Mabi_Tools
+namespace Mabi_Tools.Classes
 {
     //A class designed to sort the columns of a listview when clicked on - written based off the guide from Microsoft Documentation -
     class ListViewColumnSorter : IComparer

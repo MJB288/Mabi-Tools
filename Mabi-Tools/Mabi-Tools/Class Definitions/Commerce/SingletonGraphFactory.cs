@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Mabi_Tools
+namespace Mabi_Tools.Classes
 {
     /// <summary>
     /// An object that follows the Singleton and Fsactory design patterns. Is Designed to construct graphs and save parameters
@@ -14,7 +14,6 @@ namespace Mabi_Tools
     class SingletonGraphFactory
     {
         private static SingletonGraphFactory instance = new SingletonGraphFactory();
-        private bool Initialized = false;
         public TimeSpan BelvastBoatTime { get; set; }
 
         private SingletonGraphFactory()

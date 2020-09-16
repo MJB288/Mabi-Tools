@@ -39,7 +39,7 @@ namespace Mabi_Tools
 
         private void btnCredits_Click(object sender, EventArgs e)
         {
-            Forms.frmCredits creditsForm = new Forms.frmSettings();
+            Forms.frmCredits creditsForm = new Forms.frmCredits();
             creditsForm.ShowDialog();
         }
     }

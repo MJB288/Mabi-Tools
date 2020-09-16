@@ -1,4 +1,5 @@
-﻿using Mabi_Tools.Class_Definitions;
+﻿using Mabi_Tools.Classes;
+using Mabi_Tools.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -207,7 +208,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 newData[clboxCities.Items[i].ToString()] = CityData[clboxCities.Items[i].ToString()];
             }
             commerce.CityData = newData;
-            CommerceDataHandler.saveCommerceDataOrdered(MabiSettings.Commerce.cityFilePath, CityData, clboxCities);
+            CommerceDataHandler.saveCommerceDataOrdered(Settings.Default.CityFilePath, CityData, clboxCities);
             this.Close();
         }
 
