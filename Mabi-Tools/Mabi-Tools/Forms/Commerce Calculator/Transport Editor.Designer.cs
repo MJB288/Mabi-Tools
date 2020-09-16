@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTransport));
             this.clboxTransport = new System.Windows.Forms.CheckedListBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnMoveUp = new System.Windows.Forms.Button();
@@ -197,6 +198,7 @@
             this.Controls.Add(this.btnMoveUp);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.clboxTransport);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmTransport";
             this.Text = "Transport Editor";
             this.Load += new System.EventHandler(this.frmTransport_Load);

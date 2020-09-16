@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCommerceCityEditor));
             this.clboxCities = new System.Windows.Forms.CheckedListBox();
             this.lblWeight = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -317,6 +318,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblWeight);
             this.Controls.Add(this.clboxCities);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCommerceCityEditor";
             this.Text = "Commerce City Editor";
             this.Load += new System.EventHandler(this.frmCommerceCityEditor_Load);
