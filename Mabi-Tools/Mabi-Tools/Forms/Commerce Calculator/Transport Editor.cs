@@ -70,6 +70,13 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 return;
             }
 
+            //Check that the name does not contain the text separator
+            if (txtName.Text.Contains(CommerceDataHandler.MAIN_TEXT_SEPARATOR))
+            {
+                MessageBox.Show("Transport name cannot contain the character '" + CommerceDataHandler.MAIN_TEXT_SEPARATOR + "' !");
+                return;
+            }
+
             //Now to add a transport to the list
             try
             {
@@ -89,6 +96,12 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             if (!UIHelper.checkForUniqueItem(txtName.Text, clboxTransport))
             {
                 MessageBox.Show("Transport '" + txtName.Text + "' already exists!", "Unique Error");
+                return;
+            }
+
+            if (txtName.Text.Contains(CommerceDataHandler.MAIN_TEXT_SEPARATOR))
+            {
+                MessageBox.Show("Transport name cannot contain the character '" + CommerceDataHandler.MAIN_TEXT_SEPARATOR + "' !");
                 return;
             }
 

@@ -74,6 +74,12 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 return;
             }
 
+            if(txtCityName.Text.Contains(CommerceDataHandler.MAIN_TEXT_SEPARATOR) || txtGoodName.Text.Contains(CommerceDataHandler.SECONDARY_TEXT_SEPARATOR))
+            {
+                MessageBox.Show("Error - city name may not contain either '" + CommerceDataHandler.MAIN_TEXT_SEPARATOR + "' or '" + CommerceDataHandler.SECONDARY_TEXT_SEPARATOR + "' !");
+                return;
+            }
+
             //First create the new object
             String newCityName = txtCityName.Text;
             //TODO-Add a check before saving that all cities have at least one good
@@ -88,6 +94,12 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             if (!UIHelper.checkForUniqueItem(txtCityName.Text, clboxCities))
             {
                 MessageBox.Show("City '" + txtCityName.Text + "' already exists!", "Existence Error");
+                return;
+            }
+
+            if (txtCityName.Text.Contains(CommerceDataHandler.MAIN_TEXT_SEPARATOR) || txtGoodName.Text.Contains(CommerceDataHandler.SECONDARY_TEXT_SEPARATOR))
+            {
+                MessageBox.Show("Error - city name may not contain either '" + CommerceDataHandler.MAIN_TEXT_SEPARATOR + "' or '" + CommerceDataHandler.SECONDARY_TEXT_SEPARATOR + "' !");
                 return;
             }
 
@@ -113,7 +125,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             //We don't want the user to delete the very last city - 
             if(clboxCities.Items.Count == 1)
             {
-                MessageBox.Show("Cannot have a city count of 0! Create a nother city before deleting this one!", "User Error");
+                MessageBox.Show("Cannot have a city count of 0! Create another city before deleting this one!", "User Error");
                 return;
             }
 
@@ -130,6 +142,13 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 MessageBox.Show("Good '" + txtGoodName.Text + "' already exists!", "Existence Error");
                 return;
             }
+
+            if (txtGoodName.Text.Contains(CommerceDataHandler.MAIN_TEXT_SEPARATOR) || txtGoodName.Text.Contains(CommerceDataHandler.SECONDARY_TEXT_SEPARATOR))
+            {
+                MessageBox.Show("Error - Good name may not contain either '" + CommerceDataHandler.MAIN_TEXT_SEPARATOR + "' or '" + CommerceDataHandler.SECONDARY_TEXT_SEPARATOR + "' !");
+                return;
+            }
+
             try
             {
                 CityData[clboxCities.SelectedItem.ToString()].goods.Add(new Good(txtGoodName.Text, Int32.Parse(txtGoodWeight.Text), Int32.Parse(txtGoodSlots.Text)));
@@ -149,6 +168,13 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 MessageBox.Show("Good '" + txtGoodName.Text + "' already exists!", "Existence Error");
                 return;
             }
+
+            if (txtGoodName.Text.Contains(CommerceDataHandler.MAIN_TEXT_SEPARATOR) || txtGoodName.Text.Contains(CommerceDataHandler.SECONDARY_TEXT_SEPARATOR))
+            {
+                MessageBox.Show("Error - Good name may not contain either '" + CommerceDataHandler.MAIN_TEXT_SEPARATOR + "' or '" + CommerceDataHandler.SECONDARY_TEXT_SEPARATOR + "' !");
+                return;
+            }
+
             try
             {
                 //Override the current good with the new one
