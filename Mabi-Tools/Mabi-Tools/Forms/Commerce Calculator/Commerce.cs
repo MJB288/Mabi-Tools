@@ -546,11 +546,13 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         {
             //Since it only contains radio buttons - we can just clear them all
             flpTransport.Controls.Clear();
+            cboxTransport.Items.Clear();
 
             List<String> transportList = new List<String>();
             foreach(Transport t in TransportData.Values)
             {
                 transportList.Add(t.name);
+                cboxTransport.Items.Add(t.name);
             }
             //Now regenerate all of the Transport Options
             UIHelper.generateRadioButtons(flpTransport, transportList, this.rbtnTransport_CheckedChanged);

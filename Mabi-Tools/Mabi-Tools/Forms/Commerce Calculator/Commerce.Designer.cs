@@ -68,6 +68,8 @@
             this.btnExpand = new System.Windows.Forms.Button();
             this.flpTextBoxes = new System.Windows.Forms.FlowLayoutPanel();
             this.flpCityLabels = new System.Windows.Forms.FlowLayoutPanel();
+            this.cboxTransport = new System.Windows.Forms.ComboBox();
+            this.cboxMastery = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -436,11 +438,29 @@
             this.flpCityLabels.Size = new System.Drawing.Size(84, 329);
             this.flpCityLabels.TabIndex = 58;
             // 
+            // cboxTransport
+            // 
+            this.cboxTransport.FormattingEnabled = true;
+            this.cboxTransport.Location = new System.Drawing.Point(807, 149);
+            this.cboxTransport.Name = "cboxTransport";
+            this.cboxTransport.Size = new System.Drawing.Size(121, 21);
+            this.cboxTransport.TabIndex = 59;
+            // 
+            // cboxMastery
+            // 
+            this.cboxMastery.FormattingEnabled = true;
+            this.cboxMastery.Location = new System.Drawing.Point(807, 176);
+            this.cboxMastery.Name = "cboxMastery";
+            this.cboxMastery.Size = new System.Drawing.Size(121, 21);
+            this.cboxMastery.TabIndex = 60;
+            // 
             // frmCommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 425);
+            this.Controls.Add(this.cboxMastery);
+            this.Controls.Add(this.cboxTransport);
             this.Controls.Add(this.flpCityLabels);
             this.Controls.Add(this.flpTextBoxes);
             this.Controls.Add(this.btnExpand);
@@ -521,5 +541,7 @@
         private System.Windows.Forms.Button btnExpand;
         private System.Windows.Forms.FlowLayoutPanel flpTextBoxes;
         private System.Windows.Forms.FlowLayoutPanel flpCityLabels;
+        private System.Windows.Forms.ComboBox cboxTransport;
+        private System.Windows.Forms.ComboBox cboxMastery;
     }
 }

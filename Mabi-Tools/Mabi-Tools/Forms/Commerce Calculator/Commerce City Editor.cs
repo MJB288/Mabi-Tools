@@ -197,7 +197,6 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         {
             ClboxPrevSelectedC = UIHelper.moveSelectedItemUpChecklist(clboxCities);
         }
-
         private void btnMoveDownCity_Click(object sender, EventArgs e)
         {
             ClboxPrevSelectedC = UIHelper.moveSelectedItemDownChecklist(clboxCities);
