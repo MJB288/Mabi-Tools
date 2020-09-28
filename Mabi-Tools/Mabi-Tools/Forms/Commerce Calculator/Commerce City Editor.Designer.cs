@@ -57,6 +57,7 @@
             // 
             // clboxCities
             // 
+            this.clboxCities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(254)))), ((int)(((byte)(190)))));
             this.clboxCities.CheckOnClick = true;
             this.clboxCities.FormattingEnabled = true;
             this.clboxCities.Items.AddRange(new object[] {
@@ -100,32 +101,35 @@
             // 
             // btnAddCity
             // 
+            this.btnAddCity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnAddCity.Location = new System.Drawing.Point(285, 105);
             this.btnAddCity.Name = "btnAddCity";
             this.btnAddCity.Size = new System.Drawing.Size(89, 23);
             this.btnAddCity.TabIndex = 5;
             this.btnAddCity.Text = "Add";
-            this.btnAddCity.UseVisualStyleBackColor = true;
+            this.btnAddCity.UseVisualStyleBackColor = false;
             this.btnAddCity.Click += new System.EventHandler(this.btnAddCity_Click);
             // 
             // btnDelete
             // 
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnDelete.Location = new System.Drawing.Point(161, 62);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
             this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnDeleteGood
             // 
+            this.btnDeleteGood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnDeleteGood.Location = new System.Drawing.Point(161, 224);
             this.btnDeleteGood.Name = "btnDeleteGood";
             this.btnDeleteGood.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteGood.TabIndex = 8;
             this.btnDeleteGood.Text = "Delete";
-            this.btnDeleteGood.UseVisualStyleBackColor = true;
+            this.btnDeleteGood.UseVisualStyleBackColor = false;
             this.btnDeleteGood.Click += new System.EventHandler(this.btnDeleteGood_Click);
             // 
             // txtGoodWeight
@@ -161,32 +165,35 @@
             // 
             // btnEditCity
             // 
+            this.btnEditCity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnEditCity.Location = new System.Drawing.Point(428, 105);
             this.btnEditCity.Name = "btnEditCity";
             this.btnEditCity.Size = new System.Drawing.Size(89, 23);
             this.btnEditCity.TabIndex = 13;
             this.btnEditCity.Text = "Edit Selected";
-            this.btnEditCity.UseVisualStyleBackColor = true;
+            this.btnEditCity.UseVisualStyleBackColor = false;
             this.btnEditCity.Click += new System.EventHandler(this.btnEditCity_Click);
             // 
             // btnAddGood
             // 
+            this.btnAddGood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnAddGood.Location = new System.Drawing.Point(285, 276);
             this.btnAddGood.Name = "btnAddGood";
             this.btnAddGood.Size = new System.Drawing.Size(89, 23);
             this.btnAddGood.TabIndex = 14;
             this.btnAddGood.Text = "Add";
-            this.btnAddGood.UseVisualStyleBackColor = true;
+            this.btnAddGood.UseVisualStyleBackColor = false;
             this.btnAddGood.Click += new System.EventHandler(this.btnAddGood_Click);
             // 
             // btnEditGood
             // 
+            this.btnEditGood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnEditGood.Location = new System.Drawing.Point(428, 276);
             this.btnEditGood.Name = "btnEditGood";
             this.btnEditGood.Size = new System.Drawing.Size(89, 23);
             this.btnEditGood.TabIndex = 15;
             this.btnEditGood.Text = "Edit Selected";
-            this.btnEditGood.UseVisualStyleBackColor = true;
+            this.btnEditGood.UseVisualStyleBackColor = false;
             this.btnEditGood.Click += new System.EventHandler(this.btnEditGood_Click);
             // 
             // label3
@@ -208,26 +215,29 @@
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnSave.Location = new System.Drawing.Point(176, 360);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(84, 41);
             this.btnSave.TabIndex = 18;
             this.btnSave.Text = "Save and Apply";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCancel.Location = new System.Drawing.Point(281, 360);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 41);
             this.btnCancel.TabIndex = 19;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // clboxGoods
             // 
+            this.clboxGoods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(254)))), ((int)(((byte)(190)))));
             this.clboxGoods.CheckOnClick = true;
             this.clboxGoods.FormattingEnabled = true;
             this.clboxGoods.Items.AddRange(new object[] {
@@ -241,42 +251,46 @@
             // 
             // btnMoveUpCity
             // 
+            this.btnMoveUpCity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(205)))), ((int)(((byte)(255)))));
             this.btnMoveUpCity.Location = new System.Drawing.Point(161, 96);
             this.btnMoveUpCity.Name = "btnMoveUpCity";
             this.btnMoveUpCity.Size = new System.Drawing.Size(75, 23);
             this.btnMoveUpCity.TabIndex = 21;
             this.btnMoveUpCity.Text = "Move Up";
-            this.btnMoveUpCity.UseVisualStyleBackColor = true;
+            this.btnMoveUpCity.UseVisualStyleBackColor = false;
             this.btnMoveUpCity.Click += new System.EventHandler(this.btnMoveUpCity_Click);
             // 
             // btnMoveDownCity
             // 
+            this.btnMoveDownCity.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(205)))), ((int)(((byte)(255)))));
             this.btnMoveDownCity.Location = new System.Drawing.Point(161, 130);
             this.btnMoveDownCity.Name = "btnMoveDownCity";
             this.btnMoveDownCity.Size = new System.Drawing.Size(75, 23);
             this.btnMoveDownCity.TabIndex = 22;
             this.btnMoveDownCity.Text = "Move Down";
-            this.btnMoveDownCity.UseVisualStyleBackColor = true;
+            this.btnMoveDownCity.UseVisualStyleBackColor = false;
             this.btnMoveDownCity.Click += new System.EventHandler(this.btnMoveDownCity_Click);
             // 
             // btnMoveUpGood
             // 
+            this.btnMoveUpGood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(205)))), ((int)(((byte)(255)))));
             this.btnMoveUpGood.Location = new System.Drawing.Point(161, 257);
             this.btnMoveUpGood.Name = "btnMoveUpGood";
             this.btnMoveUpGood.Size = new System.Drawing.Size(75, 23);
             this.btnMoveUpGood.TabIndex = 23;
             this.btnMoveUpGood.Text = "Move Up";
-            this.btnMoveUpGood.UseVisualStyleBackColor = true;
+            this.btnMoveUpGood.UseVisualStyleBackColor = false;
             this.btnMoveUpGood.Click += new System.EventHandler(this.btnMoveUpGood_Click);
             // 
             // btnMoveDownGood
             // 
+            this.btnMoveDownGood.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(205)))), ((int)(((byte)(255)))));
             this.btnMoveDownGood.Location = new System.Drawing.Point(161, 292);
             this.btnMoveDownGood.Name = "btnMoveDownGood";
             this.btnMoveDownGood.Size = new System.Drawing.Size(75, 23);
             this.btnMoveDownGood.TabIndex = 24;
             this.btnMoveDownGood.Text = "Move Down";
-            this.btnMoveDownGood.UseVisualStyleBackColor = true;
+            this.btnMoveDownGood.UseVisualStyleBackColor = false;
             this.btnMoveDownGood.Click += new System.EventHandler(this.btnMoveDownGood_Click);
             // 
             // lblGood
@@ -293,6 +307,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(180)))), ((int)(((byte)(167)))));
             this.ClientSize = new System.Drawing.Size(540, 408);
             this.Controls.Add(this.lblGood);
             this.Controls.Add(this.btnMoveDownGood);

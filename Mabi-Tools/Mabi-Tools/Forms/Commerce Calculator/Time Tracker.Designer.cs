@@ -67,6 +67,7 @@
             // 
             // clboxSource
             // 
+            this.clboxSource.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(255)))), ((int)(((byte)(204)))));
             this.clboxSource.CheckOnClick = true;
             this.clboxSource.FormattingEnabled = true;
             this.clboxSource.Location = new System.Drawing.Point(252, 29);
@@ -77,6 +78,7 @@
             // 
             // clboxDestination
             // 
+            this.clboxDestination.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(255)))), ((int)(((byte)(204)))));
             this.clboxDestination.CheckOnClick = true;
             this.clboxDestination.FormattingEnabled = true;
             this.clboxDestination.Location = new System.Drawing.Point(252, 196);
@@ -87,6 +89,7 @@
             // 
             // lviewTime
             // 
+            this.lviewTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(255)))), ((int)(((byte)(204)))));
             this.lviewTime.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmPath,
             this.clmTime});
@@ -111,22 +114,24 @@
             // 
             // btnSave
             // 
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnSave.Location = new System.Drawing.Point(255, 375);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(99, 46);
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save and Apply";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
+            this.btnCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnCancel.Location = new System.Drawing.Point(360, 375);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(99, 46);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtPath
@@ -165,22 +170,24 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.btnDelete.Location = new System.Drawing.Point(563, 337);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 24);
             this.btnDelete.TabIndex = 11;
             this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
+            this.btnAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnAdd.Location = new System.Drawing.Point(449, 337);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 24);
             this.btnAdd.TabIndex = 12;
             this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // label3
@@ -252,10 +259,10 @@
             this.rbtnMiddle.AutoSize = true;
             this.rbtnMiddle.Location = new System.Drawing.Point(3, 49);
             this.rbtnMiddle.Name = "rbtnMiddle";
-            this.rbtnMiddle.Size = new System.Drawing.Size(176, 17);
+            this.rbtnMiddle.Size = new System.Drawing.Size(127, 17);
             this.rbtnMiddle.TabIndex = 4;
             this.rbtnMiddle.TabStop = true;
-            this.rbtnMiddle.Text = "Directly inbetween Min and Max";
+            this.rbtnMiddle.Text = "Average Time            ";
             this.rbtnMiddle.UseVisualStyleBackColor = true;
             // 
             // rbtnCustom
@@ -300,6 +307,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(194)))), ((int)(((byte)(185)))));
             this.ClientSize = new System.Drawing.Size(708, 427);
             this.Controls.Add(this.lblTimeFormat);
             this.Controls.Add(this.label2);

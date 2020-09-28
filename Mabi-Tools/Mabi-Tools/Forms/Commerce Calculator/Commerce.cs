@@ -63,7 +63,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
 
             
             //Check off the first one for now.
-            flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
+            //flpTransport.Controls.OfType<RadioButton>().First().Checked = true;
 
             lvwColumnSorter1 = new ListViewColumnSorter();
             lvwColumnSorter2 = new ListViewColumnSorter();
@@ -441,7 +441,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                     this.Size = new Size(1200, this.Size.Height);
                 }
                 //Now set everything visible and move the label
-                lblResults.Location = new Point(847, 24);
+                lblResults.Location = new Point(840, 24);
                 lviewResults2.Visible = true;
                 lblResultGood2.Visible = true;
                 lblResultTransport2.Visible = true;
@@ -457,13 +457,13 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                     this.Size = new Size(890, this.Size.Height);
                 }
                 //Now set everything invisible and move the label
-                lblResults.Location = new Point(698, 24);
+                lblResults.Location = new Point(690, 24);
                 lviewResults2.Visible = false;
                 lblResultGood2.Visible = false;
                 lblResultTransport2.Visible = false;
                 btnCompute2.Visible = false;
                 btnExpand.Text = "+";
-                btnExpand.Location = new Point(798,24);
+                btnExpand.Location = new Point(788,24);
                 lblVS.Visible = false;
             }
         }
@@ -581,23 +581,15 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         /// </summary>
         private void refreshDisplayTransport()
         {
-            //Since it only contains radio buttons - we can just clear them all
-            flpTransport.Controls.Clear();
+            //Switched to combobox from radio buttons
             cboxTransport.Items.Clear();
             cboxMastery.Items.Clear();
 
-            List<String> transportList = new List<String>();
-            foreach(Transport t in TransportData.Values)
-            {
-                transportList.Add(t.name);
-            }
             cboxTransport.Items.AddRange(TransportData.Keys.ToArray());
             cboxMastery.Items.AddRange(MasteryData.Keys.ToArray());
 
             cboxMastery.SelectedIndex = 0;
             cboxTransport.SelectedIndex = 0;
-            //Now regenerate all of the Transport Options
-            UIHelper.generateRadioButtons(flpTransport, transportList, this.rbtnTransport_CheckedChanged);
 
         }
 

@@ -70,11 +70,13 @@
             this.flpCityLabels = new System.Windows.Forms.FlowLayoutPanel();
             this.cboxTransport = new System.Windows.Forms.ComboBox();
             this.cboxMastery = new System.Windows.Forms.ComboBox();
+            this.lbl = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // clboxGoods
             // 
+            this.clboxGoods.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(255)))), ((int)(((byte)(187)))));
             this.clboxGoods.CheckOnClick = true;
             this.clboxGoods.FormattingEnabled = true;
             this.clboxGoods.Items.AddRange(new object[] {
@@ -93,15 +95,16 @@
             // 
             this.lblGoods.AutoSize = true;
             this.lblGoods.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblGoods.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGoods.Location = new System.Drawing.Point(61, 240);
+            this.lblGoods.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGoods.Location = new System.Drawing.Point(56, 240);
             this.lblGoods.Name = "lblGoods";
-            this.lblGoods.Size = new System.Drawing.Size(52, 22);
+            this.lblGoods.Size = new System.Drawing.Size(62, 21);
             this.lblGoods.TabIndex = 2;
             this.lblGoods.Text = "Goods";
             // 
             // clboxCities
             // 
+            this.clboxCities.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(255)))), ((int)(((byte)(187)))));
             this.clboxCities.CheckOnClick = true;
             this.clboxCities.FormattingEnabled = true;
             this.clboxCities.Items.AddRange(new object[] {
@@ -123,31 +126,34 @@
             // 
             this.lblCities.AutoSize = true;
             this.lblCities.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblCities.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCities.Location = new System.Drawing.Point(65, 24);
+            this.lblCities.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCities.Location = new System.Drawing.Point(60, 24);
             this.lblCities.Name = "lblCities";
-            this.lblCities.Size = new System.Drawing.Size(44, 22);
+            this.lblCities.Size = new System.Drawing.Size(54, 21);
             this.lblCities.TabIndex = 4;
             this.lblCities.Text = "Cities";
             // 
             // btnCompute
             // 
+            this.btnCompute.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnCompute.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCompute.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnCompute.Location = new System.Drawing.Point(660, 76);
             this.btnCompute.Name = "btnCompute";
             this.btnCompute.Size = new System.Drawing.Size(129, 61);
             this.btnCompute.TabIndex = 27;
-            this.btnCompute.Text = "Compute";
-            this.btnCompute.UseVisualStyleBackColor = true;
+            this.btnCompute.Text = "Calculate";
+            this.btnCompute.UseVisualStyleBackColor = false;
             this.btnCompute.Click += new System.EventHandler(this.btnCompute_Click);
             // 
             // lblTransport
             // 
             this.lblTransport.AutoSize = true;
             this.lblTransport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTransport.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransport.Location = new System.Drawing.Point(461, 24);
+            this.lblTransport.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransport.Location = new System.Drawing.Point(452, 24);
             this.lblTransport.Name = "lblTransport";
-            this.lblTransport.Size = new System.Drawing.Size(66, 22);
+            this.lblTransport.Size = new System.Drawing.Size(85, 21);
             this.lblTransport.TabIndex = 29;
             this.lblTransport.Text = "Transport";
             // 
@@ -155,20 +161,22 @@
             // 
             this.lblPrices.AutoSize = true;
             this.lblPrices.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblPrices.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrices.Location = new System.Drawing.Point(245, 24);
+            this.lblPrices.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrices.Location = new System.Drawing.Point(239, 24);
             this.lblPrices.Name = "lblPrices";
-            this.lblPrices.Size = new System.Drawing.Size(49, 22);
+            this.lblPrices.Size = new System.Drawing.Size(59, 21);
             this.lblPrices.TabIndex = 30;
             this.lblPrices.Text = "Prices";
             // 
             // flpTransport
             // 
             this.flpTransport.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpTransport.Location = new System.Drawing.Point(405, 149);
+            this.flpTransport.Enabled = false;
+            this.flpTransport.Location = new System.Drawing.Point(1151, 27);
             this.flpTransport.Name = "flpTransport";
-            this.flpTransport.Size = new System.Drawing.Size(179, 233);
+            this.flpTransport.Size = new System.Drawing.Size(28, 32);
             this.flpTransport.TabIndex = 34;
+            this.flpTransport.Visible = false;
             // 
             // cboxCommerce
             // 
@@ -193,7 +201,7 @@
             // lblItemWeight
             // 
             this.lblItemWeight.AutoSize = true;
-            this.lblItemWeight.Location = new System.Drawing.Point(65, 392);
+            this.lblItemWeight.Location = new System.Drawing.Point(64, 392);
             this.lblItemWeight.Name = "lblItemWeight";
             this.lblItemWeight.Size = new System.Drawing.Size(47, 13);
             this.lblItemWeight.TabIndex = 37;
@@ -212,7 +220,7 @@
             // lblItemSlots
             // 
             this.lblItemSlots.AutoSize = true;
-            this.lblItemSlots.Location = new System.Drawing.Point(49, 405);
+            this.lblItemSlots.Location = new System.Drawing.Point(48, 405);
             this.lblItemSlots.Name = "lblItemSlots";
             this.lblItemSlots.Size = new System.Drawing.Size(78, 13);
             this.lblItemSlots.TabIndex = 40;
@@ -230,6 +238,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(198)))), ((int)(((byte)(189)))));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmmFile,
             this.tsmmTools});
@@ -287,12 +296,13 @@
             // 
             // lviewResults1
             // 
+            this.lviewResults1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lviewResults1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clmName,
             this.clmNetProfit,
             this.clmDucatsMin});
             this.lviewResults1.HideSelection = false;
-            this.lviewResults1.Location = new System.Drawing.Point(601, 213);
+            this.lviewResults1.Location = new System.Drawing.Point(600, 213);
             this.lviewResults1.Name = "lviewResults1";
             this.lviewResults1.Size = new System.Drawing.Size(249, 170);
             this.lviewResults1.TabIndex = 46;
@@ -315,6 +325,7 @@
             // 
             // lviewResults2
             // 
+            this.lviewResults2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lviewResults2.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -343,12 +354,14 @@
             // 
             // btnCompute2
             // 
+            this.btnCompute2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnCompute2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCompute2.Location = new System.Drawing.Point(956, 76);
             this.btnCompute2.Name = "btnCompute2";
             this.btnCompute2.Size = new System.Drawing.Size(129, 61);
             this.btnCompute2.TabIndex = 48;
-            this.btnCompute2.Text = "Compute";
-            this.btnCompute2.UseVisualStyleBackColor = true;
+            this.btnCompute2.Text = "Calculate";
+            this.btnCompute2.UseVisualStyleBackColor = false;
             this.btnCompute2.Click += new System.EventHandler(this.btnCompute2_Click);
             // 
             // lblVS
@@ -364,7 +377,7 @@
             // lblResultGood1
             // 
             this.lblResultGood1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResultGood1.Location = new System.Drawing.Point(601, 180);
+            this.lblResultGood1.Location = new System.Drawing.Point(600, 180);
             this.lblResultGood1.Name = "lblResultGood1";
             this.lblResultGood1.Size = new System.Drawing.Size(249, 29);
             this.lblResultGood1.TabIndex = 51;
@@ -384,7 +397,7 @@
             // lblResultTransport1
             // 
             this.lblResultTransport1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResultTransport1.Location = new System.Drawing.Point(601, 154);
+            this.lblResultTransport1.Location = new System.Drawing.Point(600, 154);
             this.lblResultTransport1.Name = "lblResultTransport1";
             this.lblResultTransport1.Size = new System.Drawing.Size(249, 29);
             this.lblResultTransport1.TabIndex = 53;
@@ -405,22 +418,23 @@
             // 
             this.lblResults.AutoSize = true;
             this.lblResults.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblResults.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResults.Location = new System.Drawing.Point(847, 24);
+            this.lblResults.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResults.Location = new System.Drawing.Point(840, 27);
             this.lblResults.Name = "lblResults";
-            this.lblResults.Size = new System.Drawing.Size(55, 22);
+            this.lblResults.Size = new System.Drawing.Size(69, 21);
             this.lblResults.TabIndex = 55;
             this.lblResults.Text = "Results";
             // 
             // btnExpand
             // 
+            this.btnExpand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.btnExpand.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExpand.Location = new System.Drawing.Point(1102, 24);
             this.btnExpand.Name = "btnExpand";
             this.btnExpand.Size = new System.Drawing.Size(43, 41);
             this.btnExpand.TabIndex = 56;
             this.btnExpand.Text = "+";
-            this.btnExpand.UseVisualStyleBackColor = true;
+            this.btnExpand.UseVisualStyleBackColor = false;
             this.btnExpand.Click += new System.EventHandler(this.btnExpand_Click);
             // 
             // flpTextBoxes
@@ -440,26 +454,42 @@
             // 
             // cboxTransport
             // 
+            this.cboxTransport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(255)))), ((int)(((byte)(185)))));
+            this.cboxTransport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboxTransport.FormattingEnabled = true;
-            this.cboxTransport.Location = new System.Drawing.Point(420, 392);
+            this.cboxTransport.Location = new System.Drawing.Point(434, 153);
             this.cboxTransport.Name = "cboxTransport";
-            this.cboxTransport.Size = new System.Drawing.Size(121, 21);
+            this.cboxTransport.Size = new System.Drawing.Size(121, 28);
             this.cboxTransport.TabIndex = 59;
             this.cboxTransport.SelectedIndexChanged += new System.EventHandler(this.cboxTransport_SelectedIndexChanged);
             // 
             // cboxMastery
             // 
+            this.cboxMastery.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(255)))), ((int)(((byte)(185)))));
             this.cboxMastery.FormattingEnabled = true;
-            this.cboxMastery.Location = new System.Drawing.Point(547, 392);
+            this.cboxMastery.Location = new System.Drawing.Point(434, 242);
             this.cboxMastery.Name = "cboxMastery";
             this.cboxMastery.Size = new System.Drawing.Size(121, 21);
             this.cboxMastery.TabIndex = 60;
+            // 
+            // lbl
+            // 
+            this.lbl.AutoSize = true;
+            this.lbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lbl.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl.Location = new System.Drawing.Point(415, 213);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(158, 21);
+            this.lbl.TabIndex = 61;
+            this.lbl.Text = "Commerce Mastery";
             // 
             // frmCommerce
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(203)))), ((int)(((byte)(190)))), ((int)(((byte)(180)))));
             this.ClientSize = new System.Drawing.Size(1184, 425);
+            this.Controls.Add(this.lbl);
             this.Controls.Add(this.cboxTransport);
             this.Controls.Add(this.cboxMastery);
             this.Controls.Add(this.flpCityLabels);
@@ -544,5 +574,6 @@
         private System.Windows.Forms.FlowLayoutPanel flpCityLabels;
         private System.Windows.Forms.ComboBox cboxTransport;
         private System.Windows.Forms.ComboBox cboxMastery;
+        private System.Windows.Forms.Label lbl;
     }
 }
