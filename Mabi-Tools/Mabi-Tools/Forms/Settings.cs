@@ -23,6 +23,7 @@ namespace Mabi_Tools.Forms
             Properties.Settings.Default.TransportFilePath = txtTransportFile.Text;
             Properties.Settings.Default.TimeFilePath = txtTimeFile.Text;
             Properties.Settings.Default.CityFilePath = txtCityFile.Text;
+            Properties.Settings.Default.MasteryFilePath = txtMasteryFile.Text;
             Properties.Settings.Default.AssumeHour0 = cboxTimeFormat.Checked;
 
             Properties.Settings.Default.Save();
@@ -35,6 +36,7 @@ namespace Mabi_Tools.Forms
             txtTransportFile.Text = Properties.Settings.Default.TransportFilePath;
             txtTimeFile.Text = Properties.Settings.Default.TimeFilePath;
             txtCityFile.Text = Properties.Settings.Default.CityFilePath;
+            txtMasteryFile.Text = Properties.Settings.Default.MasteryFilePath;
             cboxTimeFormat.Checked = Properties.Settings.Default.AssumeHour0;
         }
 
@@ -43,6 +45,7 @@ namespace Mabi_Tools.Forms
             txtTransportFile.Text = "Resources/Transport.csv";
             txtTimeFile.Text = "Resources/Time.csv";
             txtCityFile.Text = "Resources/Cities.csv";
+            txtMasteryFile.Text = "Resources/Mastery.csv";
             cboxTimeFormat.Checked = true;
         }
 
@@ -65,7 +68,7 @@ namespace Mabi_Tools.Forms
                 ofd.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
                 ofd.RestoreDirectory = true;
                 ofd.Filter = "csv files(*.csv)|*.csv|txt files (*.txt)|*.txt|All files (*.*)|*.*"; ;
-                ofd.FilterIndex = 2;
+                ofd.FilterIndex = 1;
                 //Now if the user selects OK, update the textbox
                 if(ofd.ShowDialog() == DialogResult.OK)
                 {
@@ -83,6 +86,11 @@ namespace Mabi_Tools.Forms
         private void btnFileBrowserTime_Click(object sender, EventArgs e)
         {
             getFilePathSettings(txtTimeFile);
+        }
+
+        private void btnFileBroswerMastery_Click(object sender, EventArgs e)
+        {
+            getFilePathSettings(txtMasteryFile);
         }
     }
 }

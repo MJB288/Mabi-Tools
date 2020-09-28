@@ -42,6 +42,9 @@
             this.btnFileBrowserCity = new System.Windows.Forms.Button();
             this.btnFileBroswerTransport = new System.Windows.Forms.Button();
             this.btnFileBrowserTime = new System.Windows.Forms.Button();
+            this.btnFileBroswerMastery = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtMasteryFile = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtCityFile
@@ -68,7 +71,7 @@
             // lblCityFile
             // 
             this.lblCityFile.AutoSize = true;
-            this.lblCityFile.Location = new System.Drawing.Point(47, 15);
+            this.lblCityFile.Location = new System.Drawing.Point(41, 15);
             this.lblCityFile.Name = "lblCityFile";
             this.lblCityFile.Size = new System.Drawing.Size(108, 13);
             this.lblCityFile.TabIndex = 3;
@@ -76,7 +79,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(197, 154);
+            this.btnSave.Location = new System.Drawing.Point(197, 202);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(84, 41);
             this.btnSave.TabIndex = 19;
@@ -86,7 +89,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(287, 154);
+            this.btnCancel.Location = new System.Drawing.Point(287, 202);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 41);
             this.btnCancel.TabIndex = 20;
@@ -97,7 +100,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 58);
+            this.label1.Location = new System.Drawing.Point(27, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(136, 13);
             this.label1.TabIndex = 21;
@@ -106,7 +109,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(44, 99);
+            this.label2.Location = new System.Drawing.Point(38, 99);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 13);
             this.label2.TabIndex = 22;
@@ -114,7 +117,7 @@
             // 
             // btnDefaults
             // 
-            this.btnDefaults.Location = new System.Drawing.Point(107, 154);
+            this.btnDefaults.Location = new System.Drawing.Point(107, 202);
             this.btnDefaults.Name = "btnDefaults";
             this.btnDefaults.Size = new System.Drawing.Size(84, 41);
             this.btnDefaults.TabIndex = 23;
@@ -165,11 +168,41 @@
             this.btnFileBrowserTime.UseVisualStyleBackColor = true;
             this.btnFileBrowserTime.Click += new System.EventHandler(this.btnFileBrowserTime_Click);
             // 
+            // btnFileBroswerMastery
+            // 
+            this.btnFileBroswerMastery.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFileBroswerMastery.Location = new System.Drawing.Point(175, 165);
+            this.btnFileBroswerMastery.Name = "btnFileBroswerMastery";
+            this.btnFileBroswerMastery.Size = new System.Drawing.Size(30, 20);
+            this.btnFileBroswerMastery.TabIndex = 30;
+            this.btnFileBroswerMastery.Text = "...";
+            this.btnFileBroswerMastery.UseVisualStyleBackColor = true;
+            this.btnFileBroswerMastery.Click += new System.EventHandler(this.btnFileBroswerMastery_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(31, 146);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(128, 13);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "Filepath of Mastery Data :";
+            // 
+            // txtMasteryFile
+            // 
+            this.txtMasteryFile.Location = new System.Drawing.Point(21, 165);
+            this.txtMasteryFile.Name = "txtMasteryFile";
+            this.txtMasteryFile.Size = new System.Drawing.Size(148, 20);
+            this.txtMasteryFile.TabIndex = 28;
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 209);
+            this.ClientSize = new System.Drawing.Size(478, 251);
+            this.Controls.Add(this.btnFileBroswerMastery);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtMasteryFile);
             this.Controls.Add(this.btnFileBrowserTime);
             this.Controls.Add(this.btnFileBroswerTransport);
             this.Controls.Add(this.btnFileBrowserCity);
@@ -207,5 +240,8 @@
         private System.Windows.Forms.Button btnFileBrowserCity;
         private System.Windows.Forms.Button btnFileBroswerTransport;
         private System.Windows.Forms.Button btnFileBrowserTime;
+        private System.Windows.Forms.Button btnFileBroswerMastery;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtMasteryFile;
     }
 }
