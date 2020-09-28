@@ -14,5 +14,8 @@
     <Setting Name="AssumeHour0" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="MasteryFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Resources/Mastery.csv</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

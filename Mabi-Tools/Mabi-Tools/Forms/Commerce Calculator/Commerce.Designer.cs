@@ -441,15 +441,16 @@
             // cboxTransport
             // 
             this.cboxTransport.FormattingEnabled = true;
-            this.cboxTransport.Location = new System.Drawing.Point(807, 149);
+            this.cboxTransport.Location = new System.Drawing.Point(420, 392);
             this.cboxTransport.Name = "cboxTransport";
             this.cboxTransport.Size = new System.Drawing.Size(121, 21);
             this.cboxTransport.TabIndex = 59;
+            this.cboxTransport.SelectedIndexChanged += new System.EventHandler(this.cboxTransport_SelectedIndexChanged);
             // 
             // cboxMastery
             // 
             this.cboxMastery.FormattingEnabled = true;
-            this.cboxMastery.Location = new System.Drawing.Point(807, 176);
+            this.cboxMastery.Location = new System.Drawing.Point(547, 392);
             this.cboxMastery.Name = "cboxMastery";
             this.cboxMastery.Size = new System.Drawing.Size(121, 21);
             this.cboxMastery.TabIndex = 60;
@@ -459,8 +460,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 425);
-            this.Controls.Add(this.cboxMastery);
             this.Controls.Add(this.cboxTransport);
+            this.Controls.Add(this.cboxMastery);
             this.Controls.Add(this.flpCityLabels);
             this.Controls.Add(this.flpTextBoxes);
             this.Controls.Add(this.btnExpand);

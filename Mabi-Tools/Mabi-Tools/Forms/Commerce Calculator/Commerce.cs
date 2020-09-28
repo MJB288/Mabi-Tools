@@ -28,6 +28,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         //public Dictionary<String, List<TimeSpan>> TimeData;
         public Dictionary<String, Dictionary<String, List<TimeSpan>>> TimeData;
         public Dictionary<String, TimeSpan> AvgTimeData;
+        public Dictionary<String, int> MasteryData;
         //Keeping this in global memory for filter purposes
         private Dictionary<String, int> EndResults;
         private Dictionary<String, int> DucatsMin;
@@ -109,7 +110,16 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
                 MessageBox.Show("Error while loading Transport Data : \n" + ex.Message, "Error");
                 this.Close();
             }
-            
+
+            try
+            {
+                MasteryData = CommerceDataHandler.loadCMasteryData(Settings.Default.MasteryFilePath);
+            }
+            catch(FileNotFoundException ex)
+            {
+                MessageBox.Show("Error while loading Mastery Data : \n" + ex.Message, "Error");
+                this.Close();
+            }
         }
 
         /// <summary>
@@ -340,7 +350,7 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             {
                 try
                 {
-                    EndResults[CityLabels[i].Text] = (Int32.Parse(CityTextboxes[i].Text) * numGoods);
+                    EndResults[CityLabels[i].Text] = (Int32.Parse(CityTextboxes[i].Text) * numGoods) + (int)((Int32.Parse(CityTextboxes[i].Text) * numGoods) * (MasteryData[cboxMastery.SelectedItem.ToString()] * .01));
                 }
                 catch (FormatException)
                 {
@@ -458,6 +468,33 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
             }
         }
 
+        private void cboxTransport_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            SelectedTransportName = cboxTransport.SelectedItem.ToString();
+            SelectedTransportSlots = TransportData[SelectedTransportName].slots;
+            SelectedTransportWeight = TransportData[SelectedTransportName].weight;
+
+            if (cboxCommerce.Checked)
+            {
+                SelectedTransportSlots += 1;
+                SelectedTransportWeight += 100;
+            }
+            //Enable the player to check the Alpaca bonus
+            if (SelectedTransportName.Equals("Wagon"))
+            {
+                cboxAlpaca.Enabled = true;
+            }
+            else
+            {
+                //Trigger the CheckedChanged for the alpaca to cause it to auto decrement instead of decrementing here
+                cboxAlpaca.Checked = false;
+                cboxAlpaca.Enabled = false;
+            }
+            lblTransportSlots.Text = "Slots : " + SelectedTransportSlots;
+            lblTransportWeight.Text = "Weight Capacity : " + SelectedTransportWeight;
+        }
+
         /// <summary>
         /// Given the event of a column being clicked on, use the supplied column sorter to sort a ListView. 
         /// The column sorter's mode will switch between ascending and descending, or change columns
@@ -540,24 +577,30 @@ namespace Mabi_Tools.Forms.Commerce_Calculator
         }
         
         /// <summary>
-        /// Refreshes the display of UI elements pertaining to transports. This is to display any user made changes in the transport editor.
+        /// Refreshes the display of UI elements pertaining to transports. This is to display any user made changes in the transport editor. Also refreshes mastery data
         /// </summary>
         private void refreshDisplayTransport()
         {
             //Since it only contains radio buttons - we can just clear them all
             flpTransport.Controls.Clear();
             cboxTransport.Items.Clear();
+            cboxMastery.Items.Clear();
 
             List<String> transportList = new List<String>();
             foreach(Transport t in TransportData.Values)
             {
                 transportList.Add(t.name);
-                cboxTransport.Items.Add(t.name);
             }
+            cboxTransport.Items.AddRange(TransportData.Keys.ToArray());
+            cboxMastery.Items.AddRange(MasteryData.Keys.ToArray());
+
+            cboxMastery.SelectedIndex = 0;
+            cboxTransport.SelectedIndex = 0;
             //Now regenerate all of the Transport Options
             UIHelper.generateRadioButtons(flpTransport, transportList, this.rbtnTransport_CheckedChanged);
 
         }
+
 
 
     }

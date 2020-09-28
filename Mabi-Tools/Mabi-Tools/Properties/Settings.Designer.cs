@@ -70,5 +70,17 @@ namespace Mabi_Tools.Properties {
                 this["AssumeHour0"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Resources/Mastery.csv")]
+        public string MasteryFilePath {
+            get {
+                return ((string)(this["MasteryFilePath"]));
+            }
+            set {
+                this["MasteryFilePath"] = value;
+            }
+        }
     }
 }

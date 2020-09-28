@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
@@ -250,6 +251,32 @@ namespace Mabi_Tools.Classes
             }
             timeOutput.Remove(timeOutput.Length - 1, 1);
             File.WriteAllText(filePath, timeOutput.ToString());
+        }
+
+        public static Dictionary<String, int> loadCMasteryData(String filePath)
+        {
+            Dictionary<String, int> masteryData = new Dictionary<String, int>();
+            String[] masteryLines = File.ReadAllLines(filePath);
+            foreach(String s in masteryLines)
+            {
+                try
+                {
+                    String[] splitString = s.Split(MAIN_TEXT_SEPARATOR);
+                    masteryData[splitString[0]] = int.Parse(splitString[1]);
+                }
+                catch(Exception ex) when (parsingAndIndexBounds(ex))
+                {
+                    MessageBox.Show("Error formatting commerce mastery line '" + s + "' : \n" + ex.Message);
+                }
+            }
+
+            return masteryData;
+
+        }
+
+        private static bool parsingAndIndexBounds(Exception ex)
+        {
+            return ex is FormatException || ex is IndexOutOfRangeException;
         }
 
     }
