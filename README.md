@@ -15,7 +15,7 @@ These are some rules I have in place for what future tools I might make.
 1. Nothing that plays the game for you (e.x. Macros)
 2. No kind of software that allows the player to cheat or hack the game client or game server.
 
-##Requirements [[TOC](#table-of-contents)]
+## Requirements [[TOC](#table-of-contents)]
 Only known requirement at the moment that your computer is compatible with Microsoft .NET version 4.7.2. 
 
 
@@ -76,4 +76,8 @@ Currently the user can edit the following data sets:
 * City and Goods
 
 ## Cooking Meter [[TOC](#table-of-contents)]
-Not currently in development but the next idea would be to make my own cooking meter. This not an original idea, there are a few decently made cooking meters already. I just simply wanted to make my own as well. 
+Currently planning out this feature. This not an original idea, there are a few decently made cooking meters already. I just simply wanted to make my own as well.
+
+In the game, there is a cooking skill that allows players to make food to help refill stamina and provide helpful effects. In the actual act of making food, the player must combine 2 or 3 ingredients for each recipe to a specific percentage. However, the only guidance you have to measure each ingredient is a progress bar with no labels. While you don't have to be exact for various foods an recipes, for certain effects and conditions, you have to be pixel perfect or close to it. Without a cooking meter, this can be incredibly difficult, especially after a long day of work or school.
+
+Therefore, the solution is a window that can sit directly on top of the game and show you the exact percentage of the bar that you need to fill.
