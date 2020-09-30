@@ -1,12 +1,12 @@
-#Commerce Calculator Instructions and FAQ
+# Commerce Calculator Instructions and FAQ
 
 
-##Table of Contents
+## Table of Contents
 1. [Step by Step Instructions](#step-by-step-instructions-toc)
 2. [FAQ](#faq-toc)
 
 
-##Step by Step Instructions [[TOC](#table-of-contents)]
+## Step by Step Instructions [[TOC](#table-of-contents)]
 ![](Images/CommerceCalculatorNumbered.png)	
 
 1. Select a town that you are transporting goods from
@@ -18,7 +18,7 @@
 7. (Optional) Expand the window to incorporate a 2nd results listing for comparisons
 
 
-##FAQ [[TOC](#table-of-contents)]
+## FAQ [[TOC](#table-of-contents)]
 Will be updated as necessary
 
 __1. Net Profit is some large positive/negative but the Ducats/Min shows exactly 0?__
