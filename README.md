@@ -1,7 +1,9 @@
 # Mabi-Tools
 
 ## Table of Contents
+1. [Introduction](#introduction-toc)
 1. [Standards](#standards-toc)
+1. [Requirements](#requirements-toc) 
 1. [Commerce Calculator](#commerce-calculator-toc)
 
 ## Introduction [[TOC](#table-of-contents)]
@@ -13,10 +15,13 @@ These are some rules I have in place for what future tools I might make.
 1. Nothing that plays the game for you (e.x. Macros)
 2. No kind of software that allows the player to cheat or hack the game client or game server.
 
+##Requirements [[TOC](#table-of-contents)]
+Only known requirement at the moment that your computer is compatible with Microsoft .NET version 4.7.2. 
+
 
 ## Commerce Calculator [[TOC](#table-of-contents)]
 ![](Images/CommerceCalculatorNormal.png)
-[Usage Instructions](Commerce%20Instruction%20Manual.md)
+### [__Usage Instructions and FAQ__](Commerce%20Instruction%20Manual.md)
 
 This was a suggestion from a friend. In the game, there is a commerce system that allows the player to transport goods between cities. The player pays for the goods they transport, and are paid according to value of the goods at the city they arrive. Players may choose any city to drop off their goods. Players also know the prices of a particular good in all of the other cities when selecting which goods to transport. There is also a smuggler who you can also trade goods to at a higher price. There are downsides to doing this, but they are not relevant to the current project.
 
