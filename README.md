@@ -16,6 +16,8 @@ These are some rules I have in place for what future tools I might make.
 
 ## Commerce Calculator [[TOC](#table-of-contents)]
 ![](Images/CommerceCalculatorNormal.png)
+[Usage Instructions](Commerce%20Instruction%20Manual.md)
+
 This was a suggestion from a friend. In the game, there is a commerce system that allows the player to transport goods between cities. The player pays for the goods they transport, and are paid according to value of the goods at the city they arrive. Players may choose any city to drop off their goods. Players also know the prices of a particular good in all of the other cities when selecting which goods to transport. There is also a smuggler who you can also trade goods to at a higher price. There are downsides to doing this, but they are not relevant to the current project.
 
 The idea is to make a tool that allows a user to input the prices of a good in each City and give statistics
