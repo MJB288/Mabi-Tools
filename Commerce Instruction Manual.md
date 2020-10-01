@@ -7,7 +7,7 @@
 
 
 ## Step by Step Instructions [[TOC](#table-of-contents)]
-![](Images/CommerceCalculatorNumbered.png)	
+![](Images/CommerceCalculatorNumbered2.png)	
 
 1. Select a town that you are transporting goods from
 2. Select a good that you wish to transport
