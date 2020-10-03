@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,14 +14,16 @@ namespace Mabi_Tools.Forms.Cooking_Meter
 {
     public partial class frmCooking : Form
     {
-        private static readonly int METER_LENGTH = 200;
-        private static readonly int METER_START_X = 49;
+        private static readonly int METER_LENGTH = 229;
+        private static readonly int METER_START_X = 16;
         private static readonly int METER_START_Y = 169;
         private static readonly int METER_HEIGHT = 5;
         private static readonly Color[] RECTANGLE_COLORS = { Color.Green, Color.Yellow, Color.Red };
+        private Graphics FormGraphics;
         public frmCooking()
         {
             InitializeComponent();
+            FormGraphics = this.CreateGraphics();
         }
 
         private void frmCooking_Load(object sender, EventArgs e)
@@ -79,30 +82,33 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             //Calculate third portion
             percentages[2] = 100 - (percentages[0] + percentages[1]);
 
-            int cur_x = METER_START_X, cur_y = METER_START_Y;
+            float cur_x = METER_START_X, cur_y = METER_START_Y;
+
+            FormGraphics.Clear(Color.FromArgb(71, 69, 152));
             
             //Now draw each rectangle
             for (int i = 0; i < percentages.Length; i++)
             {
-                drawRectangleCooking((int)Math.Round(.01 * percentages[i] * METER_LENGTH), cur_x, cur_y, RECTANGLE_COLORS[i]);
+                drawRectangleCooking((float)(.01 * percentages[i] * METER_LENGTH), cur_x, cur_y, RECTANGLE_COLORS[i]);
                 //Update Current X
-                cur_x += (int)Math.Round(0.01 * percentages[i] * METER_LENGTH);
+                cur_x += (float)(0.01 * percentages[i] * METER_LENGTH);
             }
             lblTest.Text = "";
             for(int i = 0; i < percentages.Length; i++)
             {
-                lblTest.Text += " - " + percentages[i];
+                lblTest.Text += " - " + 0.01 * percentages[i] * METER_LENGTH;
             }
 
         }
 
 
-        private void drawRectangleCooking(int length, int x, int y, Color colorType)
+        private void drawRectangleCooking(float length, float x, float y, Color colorType)
         {
             SolidBrush mainBrush = new SolidBrush(colorType);
-            Graphics formGraphics = this.CreateGraphics();
-            formGraphics.FillRectangle(mainBrush, new Rectangle(x, y, length, METER_HEIGHT));
-            formGraphics.Dispose();
+            //Graphics formGraphics = this.CreateGraphics();
+            FormGraphics.SmoothingMode = SmoothingMode.HighQuality;
+            FormGraphics.FillRectangle(mainBrush, new RectangleF(x, y, length, METER_HEIGHT));
+            //formGraphics.Dispose();
             mainBrush.Dispose();
         }
 
