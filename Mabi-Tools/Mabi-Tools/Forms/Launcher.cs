@@ -42,5 +42,11 @@ namespace Mabi_Tools
             Forms.frmCredits creditsForm = new Forms.frmCredits();
             creditsForm.ShowDialog();
         }
+
+        private void btnCooking_Click(object sender, EventArgs e)
+        {
+            Forms.Cooking_Meter.frmCooking cookingMeter = new Forms.Cooking_Meter.frmCooking();
+            cookingMeter.Show();
+        }
     }
 }

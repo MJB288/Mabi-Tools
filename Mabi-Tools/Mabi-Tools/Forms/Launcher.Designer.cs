@@ -87,12 +87,13 @@
             // 
             // btnCooking
             // 
-            this.btnCooking.Location = new System.Drawing.Point(70, 75);
+            this.btnCooking.Location = new System.Drawing.Point(70, 65);
             this.btnCooking.Name = "btnCooking";
             this.btnCooking.Size = new System.Drawing.Size(109, 50);
             this.btnCooking.TabIndex = 6;
             this.btnCooking.Text = "Cooking Meter";
             this.btnCooking.UseVisualStyleBackColor = true;
+            this.btnCooking.Click += new System.EventHandler(this.btnCooking_Click);
             // 
             // MainLauncher
             // 
