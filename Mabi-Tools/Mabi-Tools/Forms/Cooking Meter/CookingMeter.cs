@@ -13,7 +13,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
 {
     public partial class frmCooking : Form
     {
-        private static readonly int METER_LENGTH = 300;
+        private static readonly int METER_LENGTH = 200;
         private static readonly int METER_START_X = 49;
         private static readonly int METER_START_Y = 169;
         private static readonly int METER_HEIGHT = 5;
@@ -29,25 +29,36 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             draw3Rectangles();
         }
 
+        /// <summary>
+        /// Draws the the 3 rectangles that represent the percentages of the meter
+        /// </summary>
         private void draw3Rectangles()
         {
             int[] percentages = { 0, 0, 0 };
             try
             {
-                percentages[0] = int.Parse(txtIng1.Text);
+                try
+                {
+                    percentages[0] = int.Parse(txtIng1.Text);
+                }
+                catch (FormatException fex)
+                {
+                    MessageBox.Show("Error: Could not parse integer from Ingredient 1!\n" + fex.Message, "Format Error");
+                    return;
+                }
+                try
+                {
+                    percentages[1] = int.Parse(txtIng2.Text);
+                }
+                catch (FormatException fex)
+                {
+                    MessageBox.Show("Error: Could not parse integer from Ingredient 2!\n" + fex.Message, "Format Error");
+                    return;
+                }
             }
-            catch (FormatException fex)
+            catch (OverflowException oex) //I trust my users to be responsible for this one instance - but I'll catch this anyway.
             {
-                MessageBox.Show("Error: Could not parse integer from Ingredient 1!\n" + fex.Message, "Format Error");
-                return;
-            }
-            try
-            {
-                percentages[1] = int.Parse(txtIng2.Text);
-            }
-            catch (FormatException fex)
-            {
-                MessageBox.Show("Error: Could not parse integer from Ingredient 2!\n" + fex.Message, "Format Error");
+                MessageBox.Show("Error : Integer too large!\n" + oex.Message, "Overflow Error");
                 return;
             }
             //Sanitize User input
@@ -66,7 +77,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             }
 
             //Calculate third portion
-            percentages[2] = 100 - percentages[0] + percentages[1];
+            percentages[2] = 100 - (percentages[0] + percentages[1]);
 
             int cur_x = METER_START_X, cur_y = METER_START_Y;
             
@@ -76,6 +87,11 @@ namespace Mabi_Tools.Forms.Cooking_Meter
                 drawRectangleCooking((int)Math.Round(.01 * percentages[i] * METER_LENGTH), cur_x, cur_y, RECTANGLE_COLORS[i]);
                 //Update Current X
                 cur_x += (int)Math.Round(0.01 * percentages[i] * METER_LENGTH);
+            }
+            lblTest.Text = "";
+            for(int i = 0; i < percentages.Length; i++)
+            {
+                lblTest.Text += " - " + percentages[i];
             }
 
         }
