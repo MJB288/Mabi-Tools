@@ -45,6 +45,8 @@
             this.btnFileBroswerMastery = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtMasteryFile = new System.Windows.Forms.TextBox();
+            this.txtPixelC = new System.Windows.Forms.TextBox();
+            this.lblPixelLengthC = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtCityFile
@@ -79,7 +81,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(197, 202);
+            this.btnSave.Location = new System.Drawing.Point(193, 231);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(84, 41);
             this.btnSave.TabIndex = 19;
@@ -89,7 +91,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(287, 202);
+            this.btnCancel.Location = new System.Drawing.Point(283, 231);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 41);
             this.btnCancel.TabIndex = 20;
@@ -117,7 +119,7 @@
             // 
             // btnDefaults
             // 
-            this.btnDefaults.Location = new System.Drawing.Point(107, 202);
+            this.btnDefaults.Location = new System.Drawing.Point(103, 231);
             this.btnDefaults.Name = "btnDefaults";
             this.btnDefaults.Size = new System.Drawing.Size(84, 41);
             this.btnDefaults.TabIndex = 23;
@@ -128,7 +130,7 @@
             // cboxTimeFormat
             // 
             this.cboxTimeFormat.AutoSize = true;
-            this.cboxTimeFormat.Location = new System.Drawing.Point(274, 57);
+            this.cboxTimeFormat.Location = new System.Drawing.Point(21, 208);
             this.cboxTimeFormat.Name = "cboxTimeFormat";
             this.cboxTimeFormat.Size = new System.Drawing.Size(180, 17);
             this.cboxTimeFormat.TabIndex = 24;
@@ -195,11 +197,29 @@
             this.txtMasteryFile.Size = new System.Drawing.Size(148, 20);
             this.txtMasteryFile.TabIndex = 28;
             // 
+            // txtPixelC
+            // 
+            this.txtPixelC.Location = new System.Drawing.Point(297, 50);
+            this.txtPixelC.Name = "txtPixelC";
+            this.txtPixelC.Size = new System.Drawing.Size(70, 20);
+            this.txtPixelC.TabIndex = 31;
+            // 
+            // lblPixelLengthC
+            // 
+            this.lblPixelLengthC.AutoSize = true;
+            this.lblPixelLengthC.Location = new System.Drawing.Point(259, 34);
+            this.lblPixelLengthC.Name = "lblPixelLengthC";
+            this.lblPixelLengthC.Size = new System.Drawing.Size(155, 13);
+            this.lblPixelLengthC.TabIndex = 32;
+            this.lblPixelLengthC.Text = "Pixel Length of Cooking Meter :";
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 251);
+            this.ClientSize = new System.Drawing.Size(478, 284);
+            this.Controls.Add(this.lblPixelLengthC);
+            this.Controls.Add(this.txtPixelC);
             this.Controls.Add(this.btnFileBroswerMastery);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtMasteryFile);
@@ -243,5 +263,7 @@
         private System.Windows.Forms.Button btnFileBroswerMastery;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtMasteryFile;
+        private System.Windows.Forms.TextBox txtPixelC;
+        private System.Windows.Forms.Label lblPixelLengthC;
     }
 }
