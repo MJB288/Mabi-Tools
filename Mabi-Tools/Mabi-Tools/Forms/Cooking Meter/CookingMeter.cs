@@ -29,7 +29,13 @@ namespace Mabi_Tools.Forms.Cooking_Meter
         private void frmCooking_Load(object sender, EventArgs e)
         {
             this.TopMost = true;
-            draw3Rectangles();
+            //draw3Rectangles();
+            this.Paint += frmCooking_Paint;
+        }
+
+        private void frmCooking_Paint(object sender, PaintEventArgs pe)
+        {
+            //draw3Rectangles();
         }
 
         /// <summary>
@@ -94,12 +100,16 @@ namespace Mabi_Tools.Forms.Cooking_Meter
                 cur_x += (float)(0.01 * percentages[i] * METER_LENGTH);
             }
             lblTest.Text = "";
-            for(int i = 0; i < percentages.Length; i++)
+            for(int i = 0; i < percentages.Length; i++) 
             {
                 lblTest.Text += " - " + 0.01 * percentages[i] * METER_LENGTH;
             }
-
+            //Invalidate the region upon success
+            /*Rectangle MeterRegion = new Rectangle(METER_START_X, METER_START_Y, METER_LENGTH, METER_HEIGHT);
+            this.Invalidate(MeterRegion);*/
         }
+
+
 
 
         private void drawRectangleCooking(float length, float x, float y, Color colorType)
