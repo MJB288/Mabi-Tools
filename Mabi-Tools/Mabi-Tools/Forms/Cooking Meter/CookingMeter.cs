@@ -19,13 +19,10 @@ namespace Mabi_Tools.Forms.Cooking_Meter
         private static readonly int METER_START_Y = 169;
         private static readonly int METER_HEIGHT = 5;
         private static readonly Color[] RECTANGLE_COLORS = { Color.Green, Color.Yellow, Color.Red };
-        private Graphics FormGraphics;
-        private bool DrawRectangles = false;
         private int[] Percentages = {30, 40, 30};
         public frmCooking()
         {
             InitializeComponent();
-            FormGraphics = this.CreateGraphics();
         }
 
         private void frmCooking_Load(object sender, EventArgs e)
@@ -41,6 +38,10 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             draw3Rectangles(pe.Graphics);
         }
 
+        /// <summary>
+        /// Processes user input in the two textboxes - checks those inputs for any errors and then calculates the third percentage. Returns null if input invalid
+        /// </summary>
+        /// <returns>Integer array with 3 percentages. Null if invalid input</returns>
         private int[] getTextBoxInput()
         {
             int[] percentages = { 0, 0, 0 };
@@ -98,7 +99,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             float cur_x = METER_START_X, cur_y = METER_START_Y;
 
             //graphics.Clear(Color.FromArgb(71, 69, 152));
-            
+
             //Now draw each rectangle
             for (int i = 0; i < Percentages.Length; i++)
             {
@@ -106,19 +107,16 @@ namespace Mabi_Tools.Forms.Cooking_Meter
                 //Update Current X
                 cur_x += (float)(0.01 * Percentages[i] * METER_LENGTH);
             }
-            lblTest.Text = "";
-            for(int i = 0; i < Percentages.Length; i++) 
-            {
-                lblTest.Text += " - " + 0.01 * Percentages[i] * METER_LENGTH;
-            }
-            //Invalidate the region upon success
-            /*Rectangle MeterRegion = new Rectangle(METER_START_X, METER_START_Y, METER_LENGTH, METER_HEIGHT);
-            this.Invalidate(MeterRegion);*/
         }
 
-
-
-
+        /// <summary>
+        /// Draws a portion of the cooking meter with the specified color using a RectangleF.
+        /// </summary>
+        /// <param name="length">Length of the Rectangle</param>
+        /// <param name="x">Starting x coordinate</param>
+        /// <param name="y">Starting y coordinate</param>
+        /// <param name="colorType">Desired color of rectangle</param>
+        /// <param name="graphics">Graphics object to paint it on</param>
         private void drawRectangleCooking(float length, float x, float y, Color colorType, Graphics graphics)
         {
             SolidBrush mainBrush = new SolidBrush(colorType);
@@ -131,10 +129,13 @@ namespace Mabi_Tools.Forms.Cooking_Meter
 
         private void btnDisplay_Click(object sender, EventArgs e)
         {
-            Percentages = getTextBoxInput();
-            //pboxCMeter.Invalidate();
-            //DrawRectangles = true;
-            Invalidate();
+            int[] tempPercent = getTextBoxInput();
+            //Check that return was not null
+            if (tempPercent != null) {
+                //Update the global values so that it now redraws the desired portion
+                Percentages = tempPercent;
+                Invalidate();
+            }
         }
     }
 }
