@@ -17,5 +17,8 @@
     <Setting Name="MasteryFilePath" Type="System.String" Scope="User">
       <Value Profile="(Default)">Resources/Mastery.csv</Value>
     </Setting>
+    <Setting Name="CMeterLength" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">229</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

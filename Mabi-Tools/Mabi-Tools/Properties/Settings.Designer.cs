@@ -82,5 +82,17 @@ namespace Mabi_Tools.Properties {
                 this["MasteryFilePath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("229")]
+        public int CMeterLength {
+            get {
+                return ((int)(this["CMeterLength"]));
+            }
+            set {
+                this["CMeterLength"] = value;
+            }
+        }
     }
 }

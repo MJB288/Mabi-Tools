@@ -95,7 +95,7 @@
             this.Controls.Add(this.txtIng1);
             this.Controls.Add(this.btnDisplay);
             this.Name = "frmCooking";
-            this.Text = "CookingMeter";
+            this.Text = "Cooking Meter";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(152)))));
             this.Load += new System.EventHandler(this.frmCooking_Load);
             this.ResumeLayout(false);

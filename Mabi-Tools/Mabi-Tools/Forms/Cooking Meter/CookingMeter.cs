@@ -14,15 +14,26 @@ namespace Mabi_Tools.Forms.Cooking_Meter
 {
     public partial class frmCooking : Form
     {
-        private static readonly int METER_LENGTH = 229;
-        private static readonly int METER_START_X = 16;
-        private static readonly int METER_START_Y = 169;
-        private static readonly int METER_HEIGHT = 5;
-        private static readonly Color[] RECTANGLE_COLORS = { Color.Green, Color.Yellow, Color.Red };
+        private readonly int METER_LENGTH = 229;
+        private readonly int METER_START_X = 16;
+        private readonly int METER_START_Y = 229;
+        private readonly int METER_HEIGHT = 5;
+        private readonly Color[] RECTANGLE_COLORS = { Color.Green, Color.Yellow, Color.Red };
         private int[] Percentages = {30, 40, 30};
         public frmCooking()
         {
             InitializeComponent();
+        }
+
+        public frmCooking(int newLength)
+        {
+            InitializeComponent();
+            METER_LENGTH = newLength;
+            //Now add a check for form size
+            if(METER_LENGTH > this.Width)
+            {
+                this.Width = METER_LENGTH + 24;
+            }
         }
 
         private void frmCooking_Load(object sender, EventArgs e)
