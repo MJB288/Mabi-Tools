@@ -37,7 +37,7 @@
             // 
             // btnDisplay
             // 
-            this.btnDisplay.Location = new System.Drawing.Point(86, 52);
+            this.btnDisplay.Location = new System.Drawing.Point(94, 52);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.Size = new System.Drawing.Size(75, 23);
             this.btnDisplay.TabIndex = 0;
@@ -47,25 +47,27 @@
             // 
             // txtIng1
             // 
-            this.txtIng1.Location = new System.Drawing.Point(40, 26);
+            this.txtIng1.Location = new System.Drawing.Point(42, 26);
             this.txtIng1.Name = "txtIng1";
-            this.txtIng1.Size = new System.Drawing.Size(48, 20);
+            this.txtIng1.Size = new System.Drawing.Size(60, 20);
             this.txtIng1.TabIndex = 1;
             this.txtIng1.Text = "30";
+            this.txtIng1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtIng2
             // 
-            this.txtIng2.Location = new System.Drawing.Point(168, 26);
+            this.txtIng2.Location = new System.Drawing.Point(160, 26);
             this.txtIng2.Name = "txtIng2";
-            this.txtIng2.Size = new System.Drawing.Size(48, 20);
+            this.txtIng2.Size = new System.Drawing.Size(57, 20);
             this.txtIng2.TabIndex = 2;
             this.txtIng2.Text = "40";
+            this.txtIng2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblIng1
             // 
             this.lblIng1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lblIng1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIng1.Location = new System.Drawing.Point(10, 10);
+            this.lblIng1.Location = new System.Drawing.Point(13, 10);
             this.lblIng1.Name = "lblIng1";
             this.lblIng1.Size = new System.Drawing.Size(118, 16);
             this.lblIng1.TabIndex = 3;
@@ -76,7 +78,7 @@
             // 
             this.lblIng2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lblIng2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIng2.Location = new System.Drawing.Point(125, 10);
+            this.lblIng2.Location = new System.Drawing.Point(127, 10);
             this.lblIng2.Name = "lblIng2";
             this.lblIng2.Size = new System.Drawing.Size(123, 16);
             this.lblIng2.TabIndex = 4;

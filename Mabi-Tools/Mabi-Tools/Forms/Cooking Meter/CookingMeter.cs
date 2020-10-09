@@ -32,7 +32,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             //Now add a check for form size
             if(METER_LENGTH > this.Width)
             {
-                this.Width = METER_LENGTH + 24;
+                this.Width = METER_LENGTH + 48;
             }
         }
 
