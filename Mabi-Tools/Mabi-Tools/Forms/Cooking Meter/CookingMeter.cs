@@ -47,6 +47,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
         private void frmCooking_Paint(object sender, PaintEventArgs pe)
         {
             draw3Rectangles(pe.Graphics);
+            drawSupportingLines(pe.Graphics);
         }
 
         /// <summary>
@@ -118,6 +119,16 @@ namespace Mabi_Tools.Forms.Cooking_Meter
                 //Update Current X
                 cur_x += (float)(0.01 * Percentages[i] * METER_LENGTH);
             }
+        }
+
+        private void drawSupportingLines(Graphics graphics)
+        {
+            SolidBrush lineBrush = new SolidBrush(Color.Black);
+            Rectangle line1 = new Rectangle(METER_START_X - 1, METER_START_Y - 15, 1, 35);
+            Rectangle line2 = new Rectangle(METER_LENGTH + METER_START_X, METER_START_Y - 15, 1, 35);
+            graphics.FillRectangle(lineBrush, line1);
+            graphics.FillRectangle(lineBrush, line2);
+            lineBrush.Dispose();
         }
 
         /// <summary>
