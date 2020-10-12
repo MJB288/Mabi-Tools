@@ -38,12 +38,13 @@
             // 
             // btnDisplay
             // 
-            this.btnDisplay.Location = new System.Drawing.Point(142, 52);
+            this.btnDisplay.BackColor = System.Drawing.Color.LightPink;
+            this.btnDisplay.Location = new System.Drawing.Point(151, 52);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.Size = new System.Drawing.Size(75, 23);
             this.btnDisplay.TabIndex = 0;
             this.btnDisplay.Text = "Adjust";
-            this.btnDisplay.UseVisualStyleBackColor = true;
+            this.btnDisplay.UseVisualStyleBackColor = false;
             this.btnDisplay.Click += new System.EventHandler(this.btnDisplay_Click);
             // 
             // txtIng1
@@ -88,12 +89,13 @@
             // 
             // btnGuideMode
             // 
-            this.btnGuideMode.Location = new System.Drawing.Point(16, 52);
+            this.btnGuideMode.BackColor = System.Drawing.Color.LightPink;
+            this.btnGuideMode.Location = new System.Drawing.Point(22, 52);
             this.btnGuideMode.Name = "btnGuideMode";
             this.btnGuideMode.Size = new System.Drawing.Size(101, 23);
             this.btnGuideMode.TabIndex = 5;
             this.btnGuideMode.Text = "Guide : Edge";
-            this.btnGuideMode.UseVisualStyleBackColor = true;
+            this.btnGuideMode.UseVisualStyleBackColor = false;
             this.btnGuideMode.Click += new System.EventHandler(this.btnGuideMode_Click);
             // 
             // frmCooking

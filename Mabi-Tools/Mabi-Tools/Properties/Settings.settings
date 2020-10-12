@@ -20,5 +20,8 @@
     <Setting Name="CMeterLength" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">229</Value>
     </Setting>
+    <Setting Name="GuideMode" Type="System.Int16" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

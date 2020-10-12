@@ -20,7 +20,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
         private readonly int METER_HEIGHT = 5;
         private readonly Color[] RECTANGLE_COLORS = { Color.Green, Color.Yellow, Color.Red };
         private int[] Percentages = {30, 40, 30};
-        private int GuideMode = 1; //0 = None 1 = Edge ----- 2 = Button ----- 
+        private short GuideMode = Properties.Settings.Default.GuideMode; //0 = None ----- 1 = Edge ----- 2 = Button ----- 
         public frmCooking()
         {
             InitializeComponent();
@@ -35,13 +35,15 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             {
                 this.Width = METER_LENGTH + 48;
             }
+
+            //Since the Guide Mode is set by a user setting, adjust the text from here
+            adjustbtnGuideText();
         }
 
         private void frmCooking_Load(object sender, EventArgs e)
         {
             this.DoubleBuffered = true;
             this.TopMost = true;
-            //draw3Rectangles();
             this.Paint += frmCooking_Paint;
         }
 
@@ -192,8 +194,18 @@ namespace Mabi_Tools.Forms.Cooking_Meter
                 GuideMode = 0;
             }
             //Adjust Button Text - Build with String Builder
+            adjustbtnGuideText();
+            //Save the setting so that it will show up exactly the same when the user rebbots
+            Properties.Settings.Default.GuideMode = GuideMode;
+            Properties.Settings.Default.Save();
+            //Now draw the lines
+            Invalidate();
+        }
+
+        private void adjustbtnGuideText()
+        {
             StringBuilder newButtonText = new StringBuilder("Guide : ");
-            switch (GuideMode) 
+            switch (GuideMode)
             {
                 case 0:
                     newButtonText.Append("None");
@@ -207,7 +219,6 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             }
             //Set the text
             btnGuideMode.Text = newButtonText.ToString();
-
         }
     }
 }

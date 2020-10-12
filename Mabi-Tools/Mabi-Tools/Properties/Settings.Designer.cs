@@ -94,5 +94,17 @@ namespace Mabi_Tools.Properties {
                 this["CMeterLength"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public short GuideMode {
+            get {
+                return ((short)(this["GuideMode"]));
+            }
+            set {
+                this["GuideMode"] = value;
+            }
+        }
     }
 }
