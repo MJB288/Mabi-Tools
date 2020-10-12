@@ -20,6 +20,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
         private readonly int METER_HEIGHT = 5;
         private readonly Color[] RECTANGLE_COLORS = { Color.Green, Color.Yellow, Color.Red };
         private int[] Percentages = {30, 40, 30};
+        private int GuideMode = 1; //0 = None 1 = Edge ----- 2 = Button ----- 
         public frmCooking()
         {
             InitializeComponent();
@@ -47,7 +48,18 @@ namespace Mabi_Tools.Forms.Cooking_Meter
         private void frmCooking_Paint(object sender, PaintEventArgs pe)
         {
             draw3Rectangles(pe.Graphics);
-            drawSupportingLines(pe.Graphics);
+            //Determine which kind of lines to draw
+            switch (GuideMode) 
+            {
+                //Don't draw lines for case 0
+                case 1:
+                    drawSupportingLinesEdge(pe.Graphics);
+                    break;
+                case 2:
+                    drawSupportingLinesButton(pe.Graphics);
+                    break;
+
+            }
         }
 
         /// <summary>
@@ -121,11 +133,21 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             }
         }
 
-        private void drawSupportingLines(Graphics graphics)
+        private void drawSupportingLinesEdge(Graphics graphics)
         {
             SolidBrush lineBrush = new SolidBrush(Color.Black);
             Rectangle line1 = new Rectangle(METER_START_X - 1, METER_START_Y - 15, 1, 35);
             Rectangle line2 = new Rectangle(METER_LENGTH + METER_START_X, METER_START_Y - 15, 1, 35);
+            graphics.FillRectangle(lineBrush, line1);
+            graphics.FillRectangle(lineBrush, line2);
+            lineBrush.Dispose();
+        }
+
+        private void drawSupportingLinesButton(Graphics graphics)
+        {
+            SolidBrush lineBrush = new SolidBrush(Color.Black);
+            Rectangle line1 = new Rectangle(METER_START_X + 20, METER_START_Y + METER_HEIGHT, 1, 35);
+            Rectangle line2 = new Rectangle(METER_LENGTH + METER_START_X - 20, METER_START_Y + METER_HEIGHT, 1, 35);
             graphics.FillRectangle(lineBrush, line1);
             graphics.FillRectangle(lineBrush, line2);
             lineBrush.Dispose();
@@ -158,6 +180,34 @@ namespace Mabi_Tools.Forms.Cooking_Meter
                 Percentages = tempPercent;
                 Invalidate();
             }
+        }
+
+        private void btnGuideMode_Click(object sender, EventArgs e)
+        {
+            //Increment
+            GuideMode++;
+            //Detect if it goes over the boundary of 2
+            if(GuideMode >= 3)
+            {
+                GuideMode = 0;
+            }
+            //Adjust Button Text - Build with String Builder
+            StringBuilder newButtonText = new StringBuilder("Guide : ");
+            switch (GuideMode) 
+            {
+                case 0:
+                    newButtonText.Append("None");
+                    break;
+                case 1:
+                    newButtonText.Append("Edge");
+                    break;
+                case 2:
+                    newButtonText.Append("Button");
+                    break;
+            }
+            //Set the text
+            btnGuideMode.Text = newButtonText.ToString();
+
         }
     }
 }

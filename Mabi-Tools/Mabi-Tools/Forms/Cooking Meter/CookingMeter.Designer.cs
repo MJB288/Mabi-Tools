@@ -33,11 +33,12 @@
             this.txtIng2 = new System.Windows.Forms.TextBox();
             this.lblIng1 = new System.Windows.Forms.Label();
             this.lblIng2 = new System.Windows.Forms.Label();
+            this.btnGuideMode = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnDisplay
             // 
-            this.btnDisplay.Location = new System.Drawing.Point(94, 52);
+            this.btnDisplay.Location = new System.Drawing.Point(142, 52);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.Size = new System.Drawing.Size(75, 23);
             this.btnDisplay.TabIndex = 0;
@@ -85,12 +86,23 @@
             this.lblIng2.Text = "% Ingredient 2 :";
             this.lblIng2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // btnGuideMode
+            // 
+            this.btnGuideMode.Location = new System.Drawing.Point(16, 52);
+            this.btnGuideMode.Name = "btnGuideMode";
+            this.btnGuideMode.Size = new System.Drawing.Size(101, 23);
+            this.btnGuideMode.TabIndex = 5;
+            this.btnGuideMode.Text = "Guide : Edge";
+            this.btnGuideMode.UseVisualStyleBackColor = true;
+            this.btnGuideMode.Click += new System.EventHandler(this.btnGuideMode_Click);
+            // 
             // frmCooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(152)))));
             this.ClientSize = new System.Drawing.Size(263, 301);
+            this.Controls.Add(this.btnGuideMode);
             this.Controls.Add(this.lblIng2);
             this.Controls.Add(this.lblIng1);
             this.Controls.Add(this.txtIng2);
@@ -112,5 +124,6 @@
         private System.Windows.Forms.TextBox txtIng2;
         private System.Windows.Forms.Label lblIng1;
         private System.Windows.Forms.Label lblIng2;
+        private System.Windows.Forms.Button btnGuideMode;
     }
 }
