@@ -39,6 +39,7 @@
             // btnDisplay
             // 
             this.btnDisplay.BackColor = System.Drawing.Color.LightPink;
+            this.btnDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisplay.Location = new System.Drawing.Point(151, 52);
             this.btnDisplay.Name = "btnDisplay";
             this.btnDisplay.Size = new System.Drawing.Size(75, 23);
@@ -68,7 +69,7 @@
             // lblIng1
             // 
             this.lblIng1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lblIng1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIng1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIng1.Location = new System.Drawing.Point(13, 10);
             this.lblIng1.Name = "lblIng1";
             this.lblIng1.Size = new System.Drawing.Size(118, 16);
@@ -79,7 +80,7 @@
             // lblIng2
             // 
             this.lblIng2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.lblIng2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIng2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIng2.Location = new System.Drawing.Point(127, 10);
             this.lblIng2.Name = "lblIng2";
             this.lblIng2.Size = new System.Drawing.Size(123, 16);
@@ -90,6 +91,7 @@
             // btnGuideMode
             // 
             this.btnGuideMode.BackColor = System.Drawing.Color.LightPink;
+            this.btnGuideMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuideMode.Location = new System.Drawing.Point(22, 52);
             this.btnGuideMode.Name = "btnGuideMode";
             this.btnGuideMode.Size = new System.Drawing.Size(101, 23);
