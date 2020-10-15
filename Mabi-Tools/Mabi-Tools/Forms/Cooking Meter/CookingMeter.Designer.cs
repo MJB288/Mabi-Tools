@@ -104,7 +104,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Violet;
+            this.BackColor = System.Drawing.Color.DarkGreen;
             this.ClientSize = new System.Drawing.Size(263, 301);
             this.Controls.Add(this.btnGuideMode);
             this.Controls.Add(this.lblIng2);
@@ -114,7 +114,7 @@
             this.Controls.Add(this.btnDisplay);
             this.Name = "frmCooking";
             this.Text = "Cooking Meter";
-            this.TransparencyKey = System.Drawing.Color.Violet;
+            this.TransparencyKey = System.Drawing.Color.DarkGreen;
             this.Load += new System.EventHandler(this.frmCooking_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
