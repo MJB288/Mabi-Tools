@@ -19,7 +19,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
         private readonly int METER_START_Y = 229;
         private readonly int METER_HEIGHT = 5;
         //Relatiive to the start of the guide
-        private readonly int GUIDE_BUTTON_START_X_OFFSET = 28;
+        private readonly int GUIDE_BUTTON_X_OFFSET = 28;
         private readonly int BUTTON_WIDTH = 69;
         private readonly Color[] RECTANGLE_COLORS = { Color.Green, Color.Yellow, Color.Red };
         private int[] Percentages = {30, 40, 30};
@@ -27,6 +27,8 @@ namespace Mabi_Tools.Forms.Cooking_Meter
         public frmCooking()
         {
             InitializeComponent();
+            /*int initialStyle = GetWindowLong(this.Handle, -20);
+            SetWindowLong(this.Handle, -20, initialStyle | 0x80000 | 0x20);*/ 
         }
 
         public frmCooking(int newLength)
@@ -38,10 +40,24 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             {
                 this.Width = METER_LENGTH + 48;
             }
-
+            /*int initialStyle = GetWindowLong(this.Handle, -20);
+            SetWindowLong(this.Handle, -20, initialStyle | 0x80000 | 0x20);*/
             //Since the Guide Mode is set by a user setting, adjust the text from here
             adjustbtnGuideText();
+
         }
+
+        /*protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                // Set the form click-through
+                cp.ExStyle |= 0x80000  | 0x20 ;
+                /* WS_EX_LAYERED *//* WS_EX_TRANSPARENT */
+               /* return cp;
+            }
+        }*/
 
         private void frmCooking_Load(object sender, EventArgs e)
         {
@@ -151,10 +167,10 @@ namespace Mabi_Tools.Forms.Cooking_Meter
         private void drawSupportingLinesButton(Graphics graphics)
         {
             SolidBrush lineBrush = new SolidBrush(Color.Black);
-            Rectangle LeftButton1 = new Rectangle(METER_START_X + GUIDE_BUTTON_START_X_OFFSET, METER_START_Y + METER_HEIGHT, 1, 35);
-            Rectangle LeftButton2 = new Rectangle(METER_START_X + GUIDE_BUTTON_START_X_OFFSET + BUTTON_WIDTH, METER_START_Y + METER_HEIGHT, 1, 35);
-            Rectangle RightButton1 = new Rectangle(METER_LENGTH + METER_START_X - GUIDE_BUTTON_START_X_OFFSET - BUTTON_WIDTH, METER_START_Y + METER_HEIGHT, 1, 35);
-            Rectangle RightButton2 = new Rectangle(METER_LENGTH + METER_START_X - GUIDE_BUTTON_START_X_OFFSET, METER_START_Y + METER_HEIGHT, 1, 35);
+            Rectangle LeftButton1 = new Rectangle(METER_START_X + GUIDE_BUTTON_X_OFFSET, METER_START_Y + METER_HEIGHT, 1, 35);
+            Rectangle LeftButton2 = new Rectangle(METER_START_X + GUIDE_BUTTON_X_OFFSET + BUTTON_WIDTH, METER_START_Y + METER_HEIGHT, 1, 35);
+            Rectangle RightButton1 = new Rectangle(METER_LENGTH + METER_START_X - GUIDE_BUTTON_X_OFFSET - BUTTON_WIDTH, METER_START_Y + METER_HEIGHT, 1, 35);
+            Rectangle RightButton2 = new Rectangle(METER_LENGTH + METER_START_X - GUIDE_BUTTON_X_OFFSET, METER_START_Y + METER_HEIGHT, 1, 35);
             graphics.FillRectangle(lineBrush, LeftButton1);
             graphics.FillRectangle(lineBrush, LeftButton2);
             graphics.FillRectangle(lineBrush, RightButton1);
