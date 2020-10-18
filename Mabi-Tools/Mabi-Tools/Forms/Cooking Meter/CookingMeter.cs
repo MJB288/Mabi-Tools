@@ -145,10 +145,13 @@ namespace Mabi_Tools.Forms.Cooking_Meter
 
             //graphics.Clear(Color.FromArgb(71, 69, 152));
 
+            //Create a matching array from the user preferences
+            Color[] userColors = { Properties.Settings.Default.CMColor1, Properties.Settings.Default.CMColor2, Properties.Settings.Default.CMColor3 };
+
             //Now draw each rectangle
             for (int i = 0; i < Percentages.Length; i++)
             {
-                drawRectangleCooking((float)(.01 * Percentages[i] * METER_LENGTH), cur_x, cur_y, RECTANGLE_COLORS[i], graphics);
+                drawRectangleCooking((float)(.01 * Percentages[i] * METER_LENGTH), cur_x, cur_y, userColors[i], graphics);
                 //Update Current X
                 cur_x += (float)(0.01 * Percentages[i] * METER_LENGTH);
             }

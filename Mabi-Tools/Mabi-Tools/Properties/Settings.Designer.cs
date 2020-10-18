@@ -109,7 +109,7 @@ namespace Mabi_Tools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100, 0, 230, 0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Green")]
         public global::System.Drawing.Color CMColor1 {
             get {
                 return ((global::System.Drawing.Color)(this["CMColor1"]));
@@ -121,7 +121,7 @@ namespace Mabi_Tools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100, 0, 0, 0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yellow")]
         public global::System.Drawing.Color CMColor2 {
             get {
                 return ((global::System.Drawing.Color)(this["CMColor2"]));
@@ -133,7 +133,7 @@ namespace Mabi_Tools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100, 0, 0, 0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Red")]
         public global::System.Drawing.Color CMColor3 {
             get {
                 return ((global::System.Drawing.Color)(this["CMColor3"]));
