@@ -16,7 +16,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
     {
         private readonly int METER_LENGTH = 229;
         private readonly int METER_START_X = 16;
-        private readonly int METER_START_Y = 229;
+        private readonly int METER_START_Y = 309;
         private readonly int METER_HEIGHT = 5;
         //Relatiive to the start of the guide
         private readonly int GUIDE_BUTTON_X_OFFSET = 28;
@@ -159,7 +159,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
 
         private void drawSupportingLinesEdge(Graphics graphics)
         {
-            SolidBrush lineBrush = new SolidBrush(Color.Blue);
+            SolidBrush lineBrush = new SolidBrush(Properties.Settings.Default.CMGuideColor);
             Rectangle line1 = new Rectangle(METER_START_X - 1, METER_START_Y - 15, 1, 35);
             Rectangle line2 = new Rectangle(METER_LENGTH + METER_START_X, METER_START_Y - 15, 1, 35);
             graphics.FillRectangle(lineBrush, line1);
@@ -169,7 +169,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
 
         private void drawSupportingLinesButton(Graphics graphics)
         {
-            SolidBrush lineBrush = new SolidBrush(Color.Black);
+            SolidBrush lineBrush = new SolidBrush(Properties.Settings.Default.CMGuideColor);
             Rectangle LeftButton1 = new Rectangle(METER_START_X + GUIDE_BUTTON_X_OFFSET, METER_START_Y + METER_HEIGHT, 1, 50);
             Rectangle LeftButton2 = new Rectangle(METER_START_X + GUIDE_BUTTON_X_OFFSET + BUTTON_WIDTH + 1, METER_START_Y + METER_HEIGHT, 1, 50);
             Rectangle RightButton1 = new Rectangle(METER_LENGTH + METER_START_X - GUIDE_BUTTON_X_OFFSET - BUTTON_WIDTH - 1, METER_START_Y + METER_HEIGHT, 1, 50);

@@ -53,6 +53,8 @@
             this.lblCMColor3 = new System.Windows.Forms.Label();
             this.cmboxCMColor2 = new System.Windows.Forms.ComboBox();
             this.cmboxCMColor3 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmboxCMGuideColor = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtCityFile
@@ -87,7 +89,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(193, 231);
+            this.btnSave.Location = new System.Drawing.Point(221, 231);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(84, 41);
             this.btnSave.TabIndex = 19;
@@ -97,7 +99,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(283, 231);
+            this.btnCancel.Location = new System.Drawing.Point(311, 231);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(84, 41);
             this.btnCancel.TabIndex = 20;
@@ -125,7 +127,7 @@
             // 
             // btnDefaults
             // 
-            this.btnDefaults.Location = new System.Drawing.Point(103, 231);
+            this.btnDefaults.Location = new System.Drawing.Point(131, 231);
             this.btnDefaults.Name = "btnDefaults";
             this.btnDefaults.Size = new System.Drawing.Size(84, 41);
             this.btnDefaults.TabIndex = 23;
@@ -205,7 +207,7 @@
             // 
             // txtPixelC
             // 
-            this.txtPixelC.Location = new System.Drawing.Point(297, 50);
+            this.txtPixelC.Location = new System.Drawing.Point(329, 47);
             this.txtPixelC.Name = "txtPixelC";
             this.txtPixelC.Size = new System.Drawing.Size(70, 20);
             this.txtPixelC.TabIndex = 31;
@@ -213,7 +215,7 @@
             // lblPixelLengthC
             // 
             this.lblPixelLengthC.AutoSize = true;
-            this.lblPixelLengthC.Location = new System.Drawing.Point(259, 34);
+            this.lblPixelLengthC.Location = new System.Drawing.Point(291, 31);
             this.lblPixelLengthC.Name = "lblPixelLengthC";
             this.lblPixelLengthC.Size = new System.Drawing.Size(155, 13);
             this.lblPixelLengthC.TabIndex = 32;
@@ -229,8 +231,10 @@
             "Blue",
             "Cyan",
             "Orange",
-            "Purple"});
-            this.cmboxCMColor1.Location = new System.Drawing.Point(273, 90);
+            "Purple",
+            "Black",
+            "White"});
+            this.cmboxCMColor1.Location = new System.Drawing.Point(372, 73);
             this.cmboxCMColor1.Name = "cmboxCMColor1";
             this.cmboxCMColor1.Size = new System.Drawing.Size(121, 21);
             this.cmboxCMColor1.TabIndex = 33;
@@ -238,7 +242,7 @@
             // lblCMColor1
             // 
             this.lblCMColor1.AutoSize = true;
-            this.lblCMColor1.Location = new System.Drawing.Point(221, 93);
+            this.lblCMColor1.Location = new System.Drawing.Point(259, 76);
             this.lblCMColor1.Name = "lblCMColor1";
             this.lblCMColor1.Size = new System.Drawing.Size(46, 13);
             this.lblCMColor1.TabIndex = 36;
@@ -247,7 +251,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(221, 122);
+            this.label4.Location = new System.Drawing.Point(259, 105);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 37;
@@ -256,7 +260,7 @@
             // lblCMColor3
             // 
             this.lblCMColor3.AutoSize = true;
-            this.lblCMColor3.Location = new System.Drawing.Point(221, 149);
+            this.lblCMColor3.Location = new System.Drawing.Point(259, 132);
             this.lblCMColor3.Name = "lblCMColor3";
             this.lblCMColor3.Size = new System.Drawing.Size(46, 13);
             this.lblCMColor3.TabIndex = 38;
@@ -272,8 +276,10 @@
             "Blue",
             "Cyan",
             "Orange",
-            "Purple"});
-            this.cmboxCMColor2.Location = new System.Drawing.Point(273, 118);
+            "Purple",
+            "Black",
+            "White"});
+            this.cmboxCMColor2.Location = new System.Drawing.Point(372, 101);
             this.cmboxCMColor2.Name = "cmboxCMColor2";
             this.cmboxCMColor2.Size = new System.Drawing.Size(121, 21);
             this.cmboxCMColor2.TabIndex = 39;
@@ -288,17 +294,48 @@
             "Blue",
             "Cyan",
             "Orange",
-            "Purple"});
-            this.cmboxCMColor3.Location = new System.Drawing.Point(273, 146);
+            "Purple",
+            "Black",
+            "White"});
+            this.cmboxCMColor3.Location = new System.Drawing.Point(372, 129);
             this.cmboxCMColor3.Name = "cmboxCMColor3";
             this.cmboxCMColor3.Size = new System.Drawing.Size(121, 21);
             this.cmboxCMColor3.TabIndex = 40;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(259, 161);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(84, 13);
+            this.label5.TabIndex = 41;
+            this.label5.Text = "Guideline Color :";
+            // 
+            // cmboxCMGuideColor
+            // 
+            this.cmboxCMGuideColor.FormattingEnabled = true;
+            this.cmboxCMGuideColor.Items.AddRange(new object[] {
+            "Green",
+            "Yellow",
+            "Red",
+            "Blue",
+            "Cyan",
+            "Orange",
+            "Purple",
+            "Black",
+            "White"});
+            this.cmboxCMGuideColor.Location = new System.Drawing.Point(372, 158);
+            this.cmboxCMGuideColor.Name = "cmboxCMGuideColor";
+            this.cmboxCMGuideColor.Size = new System.Drawing.Size(121, 21);
+            this.cmboxCMGuideColor.TabIndex = 42;
             // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 284);
+            this.ClientSize = new System.Drawing.Size(526, 284);
+            this.Controls.Add(this.cmboxCMGuideColor);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.cmboxCMColor3);
             this.Controls.Add(this.cmboxCMColor2);
             this.Controls.Add(this.lblCMColor3);
@@ -358,5 +395,7 @@
         private System.Windows.Forms.Label lblCMColor3;
         private System.Windows.Forms.ComboBox cmboxCMColor2;
         private System.Windows.Forms.ComboBox cmboxCMColor3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmboxCMGuideColor;
     }
 }

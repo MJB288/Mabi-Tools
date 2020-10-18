@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCooking));
             this.btnDisplay = new System.Windows.Forms.Button();
             this.txtIng1 = new System.Windows.Forms.TextBox();
             this.txtIng2 = new System.Windows.Forms.TextBox();
@@ -38,7 +39,7 @@
             // 
             // btnDisplay
             // 
-            this.btnDisplay.BackColor = System.Drawing.Color.LightPink;
+            this.btnDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnDisplay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDisplay.Location = new System.Drawing.Point(151, 52);
             this.btnDisplay.Name = "btnDisplay";
@@ -90,7 +91,7 @@
             // 
             // btnGuideMode
             // 
-            this.btnGuideMode.BackColor = System.Drawing.Color.LightPink;
+            this.btnGuideMode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnGuideMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuideMode.Location = new System.Drawing.Point(22, 52);
             this.btnGuideMode.Name = "btnGuideMode";
@@ -105,13 +106,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGreen;
-            this.ClientSize = new System.Drawing.Size(263, 301);
+            this.ClientSize = new System.Drawing.Size(285, 387);
             this.Controls.Add(this.btnGuideMode);
             this.Controls.Add(this.lblIng2);
             this.Controls.Add(this.lblIng1);
             this.Controls.Add(this.txtIng2);
             this.Controls.Add(this.txtIng1);
             this.Controls.Add(this.btnDisplay);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCooking";
             this.Text = "Cooking Meter";
             this.TransparencyKey = System.Drawing.Color.DarkGreen;

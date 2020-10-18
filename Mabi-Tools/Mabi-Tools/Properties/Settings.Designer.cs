@@ -142,5 +142,17 @@ namespace Mabi_Tools.Properties {
                 this["CMColor3"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color CMGuideColor {
+            get {
+                return ((global::System.Drawing.Color)(this["CMGuideColor"]));
+            }
+            set {
+                this["CMGuideColor"] = value;
+            }
+        }
     }
 }

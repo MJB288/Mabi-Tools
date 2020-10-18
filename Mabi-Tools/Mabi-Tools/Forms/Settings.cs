@@ -17,7 +17,7 @@ namespace Mabi_Tools.Forms
         {
             InitializeComponent();
         }
-        private readonly Color[] RECTANGLE_COLORS = { Color.Green, Color.Yellow, Color.Red, Color.Blue, Color.Cyan, Color.Orange, Color.Purple };
+        private readonly Color[] RECTANGLE_COLORS = { Color.Green, Color.Yellow, Color.Red, Color.Blue, Color.Cyan, Color.Orange, Color.Purple, Color.Black, Color.White };
         private void btnSave_Click(object sender, EventArgs e)
         {
             //Save the file paths
@@ -39,6 +39,7 @@ namespace Mabi_Tools.Forms
             Properties.Settings.Default.CMColor1 = RECTANGLE_COLORS[cmboxCMColor1.SelectedIndex];
             Properties.Settings.Default.CMColor2 = RECTANGLE_COLORS[cmboxCMColor2.SelectedIndex];
             Properties.Settings.Default.CMColor3 = RECTANGLE_COLORS[cmboxCMColor3.SelectedIndex];
+            Properties.Settings.Default.CMGuideColor = RECTANGLE_COLORS[cmboxCMGuideColor.SelectedIndex];
 
             //Save the settings
             Properties.Settings.Default.Save();
@@ -59,6 +60,7 @@ namespace Mabi_Tools.Forms
             cmboxCMColor1.SelectedIndex = Array.IndexOf(RECTANGLE_COLORS, Properties.Settings.Default.CMColor1);
             cmboxCMColor2.SelectedIndex = Array.IndexOf(RECTANGLE_COLORS, Properties.Settings.Default.CMColor2);
             cmboxCMColor3.SelectedIndex = Array.IndexOf(RECTANGLE_COLORS, Properties.Settings.Default.CMColor3);
+            cmboxCMGuideColor.SelectedIndex = Array.IndexOf(RECTANGLE_COLORS, Properties.Settings.Default.CMGuideColor);
         }
 
         private void btnDefaults_Click(object sender, EventArgs e)
@@ -72,6 +74,7 @@ namespace Mabi_Tools.Forms
             cmboxCMColor1.SelectedIndex = 0;
             cmboxCMColor2.SelectedIndex = 1;
             cmboxCMColor3.SelectedIndex = 2;
+            cmboxCMGuideColor.SelectedIndex = 7;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
