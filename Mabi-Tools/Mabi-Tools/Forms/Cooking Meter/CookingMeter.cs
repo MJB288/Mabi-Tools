@@ -21,7 +21,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
         //Relatiive to the start of the guide
         private readonly int GUIDE_BUTTON_X_OFFSET = 28;
         private readonly int BUTTON_WIDTH = 69;
-        private readonly Color[] RECTANGLE_COLORS = { Color.Green, Color.Yellow, Color.Red };
+        private readonly Color[] RECTANGLE_COLORS = { Color.Green, Color.Yellow, Color.Red , Color.Blue, Color.Cyan, Color.Orange, Color.Purple};
         private int[] Percentages = {30, 40, 30};
         private short GuideMode = Properties.Settings.Default.GuideMode; //0 = None ----- 1 = Edge ----- 2 = Button ----- 
         public frmCooking()

@@ -106,5 +106,41 @@ namespace Mabi_Tools.Properties {
                 this["GuideMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100, 0, 230, 0")]
+        public global::System.Drawing.Color CMColor1 {
+            get {
+                return ((global::System.Drawing.Color)(this["CMColor1"]));
+            }
+            set {
+                this["CMColor1"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100, 0, 0, 0")]
+        public global::System.Drawing.Color CMColor2 {
+            get {
+                return ((global::System.Drawing.Color)(this["CMColor2"]));
+            }
+            set {
+                this["CMColor2"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100, 0, 0, 0")]
+        public global::System.Drawing.Color CMColor3 {
+            get {
+                return ((global::System.Drawing.Color)(this["CMColor3"]));
+            }
+            set {
+                this["CMColor3"] = value;
+            }
+        }
     }
 }

@@ -47,6 +47,12 @@
             this.txtMasteryFile = new System.Windows.Forms.TextBox();
             this.txtPixelC = new System.Windows.Forms.TextBox();
             this.lblPixelLengthC = new System.Windows.Forms.Label();
+            this.cboxCMColor1 = new System.Windows.Forms.ComboBox();
+            this.lblCMColor1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblCMColor3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtCityFile
@@ -213,11 +219,92 @@
             this.lblPixelLengthC.TabIndex = 32;
             this.lblPixelLengthC.Text = "Pixel Length of Cooking Meter :";
             // 
+            // cboxCMColor1
+            // 
+            this.cboxCMColor1.FormattingEnabled = true;
+            this.cboxCMColor1.Items.AddRange(new object[] {
+            "Green",
+            "Yellow",
+            "Red",
+            "Blue",
+            "Cyan",
+            "Orange",
+            "Purple"});
+            this.cboxCMColor1.Location = new System.Drawing.Point(273, 90);
+            this.cboxCMColor1.Name = "cboxCMColor1";
+            this.cboxCMColor1.Size = new System.Drawing.Size(121, 21);
+            this.cboxCMColor1.TabIndex = 33;
+            // 
+            // lblCMColor1
+            // 
+            this.lblCMColor1.AutoSize = true;
+            this.lblCMColor1.Location = new System.Drawing.Point(221, 93);
+            this.lblCMColor1.Name = "lblCMColor1";
+            this.lblCMColor1.Size = new System.Drawing.Size(46, 13);
+            this.lblCMColor1.TabIndex = 36;
+            this.lblCMColor1.Text = "Color 1 :";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(221, 122);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 13);
+            this.label4.TabIndex = 37;
+            this.label4.Text = "Color 2 :";
+            // 
+            // lblCMColor3
+            // 
+            this.lblCMColor3.AutoSize = true;
+            this.lblCMColor3.Location = new System.Drawing.Point(221, 149);
+            this.lblCMColor3.Name = "lblCMColor3";
+            this.lblCMColor3.Size = new System.Drawing.Size(46, 13);
+            this.lblCMColor3.TabIndex = 38;
+            this.lblCMColor3.Text = "Color 3 :";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Green",
+            "Yellow",
+            "Red",
+            "Blue",
+            "Cyan",
+            "Orange",
+            "Purple"});
+            this.comboBox1.Location = new System.Drawing.Point(273, 118);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 39;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Green",
+            "Yellow",
+            "Red",
+            "Blue",
+            "Cyan",
+            "Orange",
+            "Purple"});
+            this.comboBox2.Location = new System.Drawing.Point(273, 146);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 40;
+            // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(478, 284);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.lblCMColor3);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblCMColor1);
+            this.Controls.Add(this.cboxCMColor1);
             this.Controls.Add(this.lblPixelLengthC);
             this.Controls.Add(this.txtPixelC);
             this.Controls.Add(this.btnFileBroswerMastery);
@@ -265,5 +352,11 @@
         private System.Windows.Forms.TextBox txtMasteryFile;
         private System.Windows.Forms.TextBox txtPixelC;
         private System.Windows.Forms.Label lblPixelLengthC;
+        private System.Windows.Forms.ComboBox cboxCMColor1;
+        private System.Windows.Forms.Label lblCMColor1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblCMColor3;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

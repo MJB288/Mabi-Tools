@@ -23,5 +23,14 @@
     <Setting Name="GuideMode" Type="System.Int16" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
+    <Setting Name="CMColor1" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">100, 0, 230, 0</Value>
+    </Setting>
+    <Setting Name="CMColor2" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">100, 0, 0, 0</Value>
+    </Setting>
+    <Setting Name="CMColor3" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">100, 0, 0, 0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
