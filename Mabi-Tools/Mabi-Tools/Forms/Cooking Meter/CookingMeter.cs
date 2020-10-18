@@ -61,7 +61,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
 
         private void frmCooking_Load(object sender, EventArgs e)
         {
-            this.DoubleBuffered = true;
+            //this.DoubleBuffered = true;
             this.TopMost = true;
             this.Paint += frmCooking_Paint;
         }
