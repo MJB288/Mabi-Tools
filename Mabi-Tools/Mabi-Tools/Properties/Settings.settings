@@ -35,5 +35,14 @@
     <Setting Name="CMGuideColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Black</Value>
     </Setting>
+    <Setting Name="CMGuideLeft" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">28</Value>
+    </Setting>
+    <Setting Name="CMGuideRight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">28</Value>
+    </Setting>
+    <Setting Name="CMBtnWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">69</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

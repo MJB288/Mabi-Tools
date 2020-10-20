@@ -56,8 +56,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.cmboxCMGuideColor = new System.Windows.Forms.ComboBox();
             this.txtCMLeft = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblCMLeftGuide = new System.Windows.Forms.Label();
+            this.lblCMRightGuide = new System.Windows.Forms.Label();
             this.txtCMRight = new System.Windows.Forms.TextBox();
             this.txtCMButtonWidth = new System.Windows.Forms.TextBox();
             this.lblButtonWidth = new System.Windows.Forms.Label();
@@ -342,23 +342,23 @@
             this.txtCMLeft.Size = new System.Drawing.Size(70, 20);
             this.txtCMLeft.TabIndex = 43;
             // 
-            // label6
+            // lblCMLeftGuide
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(260, 37);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(153, 13);
-            this.label6.TabIndex = 44;
-            this.label6.Text = "Distance to Left Guide Button :";
+            this.lblCMLeftGuide.AutoSize = true;
+            this.lblCMLeftGuide.Location = new System.Drawing.Point(260, 37);
+            this.lblCMLeftGuide.Name = "lblCMLeftGuide";
+            this.lblCMLeftGuide.Size = new System.Drawing.Size(153, 13);
+            this.lblCMLeftGuide.TabIndex = 44;
+            this.lblCMLeftGuide.Text = "Distance to Left Guide Button :";
             // 
-            // label7
+            // lblCMRightGuide
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(260, 58);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(160, 13);
-            this.label7.TabIndex = 45;
-            this.label7.Text = "Distance to Right Guide Button :";
+            this.lblCMRightGuide.AutoSize = true;
+            this.lblCMRightGuide.Location = new System.Drawing.Point(260, 58);
+            this.lblCMRightGuide.Name = "lblCMRightGuide";
+            this.lblCMRightGuide.Size = new System.Drawing.Size(160, 13);
+            this.lblCMRightGuide.TabIndex = 45;
+            this.lblCMRightGuide.Text = "Distance to Right Guide Button :";
             // 
             // txtCMRight
             // 
@@ -391,8 +391,8 @@
             this.Controls.Add(this.txtCMButtonWidth);
             this.Controls.Add(this.lblButtonWidth);
             this.Controls.Add(this.txtCMRight);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lblCMRightGuide);
+            this.Controls.Add(this.lblCMLeftGuide);
             this.Controls.Add(this.txtCMLeft);
             this.Controls.Add(this.cmboxCMGuideColor);
             this.Controls.Add(this.label5);
@@ -458,8 +458,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmboxCMGuideColor;
         private System.Windows.Forms.TextBox txtCMLeft;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblCMLeftGuide;
+        private System.Windows.Forms.Label lblCMRightGuide;
         private System.Windows.Forms.TextBox txtCMRight;
         private System.Windows.Forms.TextBox txtCMButtonWidth;
         private System.Windows.Forms.Label lblButtonWidth;

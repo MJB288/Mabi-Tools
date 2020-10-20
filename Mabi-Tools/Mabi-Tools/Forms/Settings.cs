@@ -35,11 +35,22 @@ namespace Mabi_Tools.Forms
                 MessageBox.Show("Error processing input for number of pixels : \n" + ex.Message, "Input Error");
             }
             //Save the color scheme
-
+            try
+            {
+                Properties.Settings.Default.CMGuideLeft = int.Parse(txtCMLeft.Text);
+                Properties.Settings.Default.CMGuideRight = int.Parse(txtCMRight.Text);
+                Properties.Settings.Default.CMBtnWidth = int.Parse(txtCMButtonWidth.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error processing input for Guide Buttons : \n" + ex.Message, "Input Error");
+            }
             Properties.Settings.Default.CMColor1 = RECTANGLE_COLORS[cmboxCMColor1.SelectedIndex];
             Properties.Settings.Default.CMColor2 = RECTANGLE_COLORS[cmboxCMColor2.SelectedIndex];
             Properties.Settings.Default.CMColor3 = RECTANGLE_COLORS[cmboxCMColor3.SelectedIndex];
             Properties.Settings.Default.CMGuideColor = RECTANGLE_COLORS[cmboxCMGuideColor.SelectedIndex];
+
+
 
             //Save the settings
             Properties.Settings.Default.Save();
@@ -55,7 +66,11 @@ namespace Mabi_Tools.Forms
             txtCityFile.Text = Properties.Settings.Default.CityFilePath;
             txtMasteryFile.Text = Properties.Settings.Default.MasteryFilePath;
             cboxTimeFormat.Checked = Properties.Settings.Default.AssumeHour0;
+            //Pixel Guidance of Buttons
             txtPixelC.Text = "" + Properties.Settings.Default.CMeterLength;
+            txtCMLeft.Text = "" + Properties.Settings.Default.CMGuideLeft;
+            txtCMRight.Text = "" + Properties.Settings.Default.CMGuideRight;
+            txtCMButtonWidth.Text = "" + Properties.Settings.Default.CMBtnWidth;
             //Colors
             cmboxCMColor1.SelectedIndex = Array.IndexOf(RECTANGLE_COLORS, Properties.Settings.Default.CMColor1);
             cmboxCMColor2.SelectedIndex = Array.IndexOf(RECTANGLE_COLORS, Properties.Settings.Default.CMColor2);
@@ -71,6 +86,9 @@ namespace Mabi_Tools.Forms
             txtMasteryFile.Text = "Resources/Mastery.csv";
             cboxTimeFormat.Checked = true;
             txtPixelC.Text = "229";
+            txtCMLeft.Text = "28";
+            txtCMRight.Text = "28";
+            txtCMButtonWidth.Text = "69";
             cmboxCMColor1.SelectedIndex = 0;
             cmboxCMColor2.SelectedIndex = 1;
             cmboxCMColor3.SelectedIndex = 2;

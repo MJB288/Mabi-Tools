@@ -154,5 +154,41 @@ namespace Mabi_Tools.Properties {
                 this["CMGuideColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("28")]
+        public int CMGuideLeft {
+            get {
+                return ((int)(this["CMGuideLeft"]));
+            }
+            set {
+                this["CMGuideLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("28")]
+        public int CMGuideRight {
+            get {
+                return ((int)(this["CMGuideRight"]));
+            }
+            set {
+                this["CMGuideRight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("69")]
+        public int CMBtnWidth {
+            get {
+                return ((int)(this["CMBtnWidth"]));
+            }
+            set {
+                this["CMBtnWidth"] = value;
+            }
+        }
     }
 }
