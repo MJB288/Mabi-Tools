@@ -79,7 +79,7 @@
             // 
             // lblIng1
             // 
-            this.lblIng1.BackColor = System.Drawing.Color.PaleGreen;
+            this.lblIng1.BackColor = System.Drawing.Color.DarkKhaki;
             this.lblIng1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIng1.Location = new System.Drawing.Point(7, 9);
             this.lblIng1.Name = "lblIng1";
@@ -90,7 +90,7 @@
             // 
             // lblIng2
             // 
-            this.lblIng2.BackColor = System.Drawing.Color.PaleGreen;
+            this.lblIng2.BackColor = System.Drawing.Color.DarkKhaki;
             this.lblIng2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIng2.Location = new System.Drawing.Point(5, 51);
             this.lblIng2.Name = "lblIng2";
@@ -113,7 +113,7 @@
             // 
             // label1
             // 
-            this.label1.BackColor = System.Drawing.Color.PaleGreen;
+            this.label1.BackColor = System.Drawing.Color.DarkKhaki;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";

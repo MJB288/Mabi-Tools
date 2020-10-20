@@ -55,6 +55,12 @@
             this.cmboxCMColor3 = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmboxCMGuideColor = new System.Windows.Forms.ComboBox();
+            this.txtCMLeft = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtCMRight = new System.Windows.Forms.TextBox();
+            this.txtCMButtonWidth = new System.Windows.Forms.TextBox();
+            this.lblButtonWidth = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtCityFile
@@ -207,7 +213,7 @@
             // 
             // txtPixelC
             // 
-            this.txtPixelC.Location = new System.Drawing.Point(329, 47);
+            this.txtPixelC.Location = new System.Drawing.Point(424, 12);
             this.txtPixelC.Name = "txtPixelC";
             this.txtPixelC.Size = new System.Drawing.Size(70, 20);
             this.txtPixelC.TabIndex = 31;
@@ -215,7 +221,7 @@
             // lblPixelLengthC
             // 
             this.lblPixelLengthC.AutoSize = true;
-            this.lblPixelLengthC.Location = new System.Drawing.Point(291, 31);
+            this.lblPixelLengthC.Location = new System.Drawing.Point(260, 15);
             this.lblPixelLengthC.Name = "lblPixelLengthC";
             this.lblPixelLengthC.Size = new System.Drawing.Size(155, 13);
             this.lblPixelLengthC.TabIndex = 32;
@@ -234,7 +240,7 @@
             "Purple",
             "Black",
             "White"});
-            this.cmboxCMColor1.Location = new System.Drawing.Point(372, 73);
+            this.cmboxCMColor1.Location = new System.Drawing.Point(373, 110);
             this.cmboxCMColor1.Name = "cmboxCMColor1";
             this.cmboxCMColor1.Size = new System.Drawing.Size(121, 21);
             this.cmboxCMColor1.TabIndex = 33;
@@ -242,7 +248,7 @@
             // lblCMColor1
             // 
             this.lblCMColor1.AutoSize = true;
-            this.lblCMColor1.Location = new System.Drawing.Point(259, 76);
+            this.lblCMColor1.Location = new System.Drawing.Point(260, 113);
             this.lblCMColor1.Name = "lblCMColor1";
             this.lblCMColor1.Size = new System.Drawing.Size(46, 13);
             this.lblCMColor1.TabIndex = 36;
@@ -251,7 +257,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(259, 105);
+            this.label4.Location = new System.Drawing.Point(260, 142);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 13);
             this.label4.TabIndex = 37;
@@ -260,7 +266,7 @@
             // lblCMColor3
             // 
             this.lblCMColor3.AutoSize = true;
-            this.lblCMColor3.Location = new System.Drawing.Point(259, 132);
+            this.lblCMColor3.Location = new System.Drawing.Point(260, 169);
             this.lblCMColor3.Name = "lblCMColor3";
             this.lblCMColor3.Size = new System.Drawing.Size(46, 13);
             this.lblCMColor3.TabIndex = 38;
@@ -279,7 +285,7 @@
             "Purple",
             "Black",
             "White"});
-            this.cmboxCMColor2.Location = new System.Drawing.Point(372, 101);
+            this.cmboxCMColor2.Location = new System.Drawing.Point(373, 138);
             this.cmboxCMColor2.Name = "cmboxCMColor2";
             this.cmboxCMColor2.Size = new System.Drawing.Size(121, 21);
             this.cmboxCMColor2.TabIndex = 39;
@@ -297,7 +303,7 @@
             "Purple",
             "Black",
             "White"});
-            this.cmboxCMColor3.Location = new System.Drawing.Point(372, 129);
+            this.cmboxCMColor3.Location = new System.Drawing.Point(373, 166);
             this.cmboxCMColor3.Name = "cmboxCMColor3";
             this.cmboxCMColor3.Size = new System.Drawing.Size(121, 21);
             this.cmboxCMColor3.TabIndex = 40;
@@ -305,7 +311,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(259, 161);
+            this.label5.Location = new System.Drawing.Point(260, 198);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(84, 13);
             this.label5.TabIndex = 41;
@@ -324,16 +330,70 @@
             "Purple",
             "Black",
             "White"});
-            this.cmboxCMGuideColor.Location = new System.Drawing.Point(372, 158);
+            this.cmboxCMGuideColor.Location = new System.Drawing.Point(373, 195);
             this.cmboxCMGuideColor.Name = "cmboxCMGuideColor";
             this.cmboxCMGuideColor.Size = new System.Drawing.Size(121, 21);
             this.cmboxCMGuideColor.TabIndex = 42;
+            // 
+            // txtCMLeft
+            // 
+            this.txtCMLeft.Location = new System.Drawing.Point(424, 34);
+            this.txtCMLeft.Name = "txtCMLeft";
+            this.txtCMLeft.Size = new System.Drawing.Size(70, 20);
+            this.txtCMLeft.TabIndex = 43;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(260, 37);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(153, 13);
+            this.label6.TabIndex = 44;
+            this.label6.Text = "Distance to Left Guide Button :";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(260, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(160, 13);
+            this.label7.TabIndex = 45;
+            this.label7.Text = "Distance to Right Guide Button :";
+            // 
+            // txtCMRight
+            // 
+            this.txtCMRight.Location = new System.Drawing.Point(424, 55);
+            this.txtCMRight.Name = "txtCMRight";
+            this.txtCMRight.Size = new System.Drawing.Size(70, 20);
+            this.txtCMRight.TabIndex = 46;
+            // 
+            // txtCMButtonWidth
+            // 
+            this.txtCMButtonWidth.Location = new System.Drawing.Point(424, 76);
+            this.txtCMButtonWidth.Name = "txtCMButtonWidth";
+            this.txtCMButtonWidth.Size = new System.Drawing.Size(70, 20);
+            this.txtCMButtonWidth.TabIndex = 48;
+            // 
+            // lblButtonWidth
+            // 
+            this.lblButtonWidth.AutoSize = true;
+            this.lblButtonWidth.Location = new System.Drawing.Point(260, 79);
+            this.lblButtonWidth.Name = "lblButtonWidth";
+            this.lblButtonWidth.Size = new System.Drawing.Size(117, 13);
+            this.lblButtonWidth.TabIndex = 47;
+            this.lblButtonWidth.Text = "Cooking Button Width :";
             // 
             // frmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(526, 284);
+            this.Controls.Add(this.txtCMButtonWidth);
+            this.Controls.Add(this.lblButtonWidth);
+            this.Controls.Add(this.txtCMRight);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtCMLeft);
             this.Controls.Add(this.cmboxCMGuideColor);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cmboxCMColor3);
@@ -397,5 +457,11 @@
         private System.Windows.Forms.ComboBox cmboxCMColor3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmboxCMGuideColor;
+        private System.Windows.Forms.TextBox txtCMLeft;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtCMRight;
+        private System.Windows.Forms.TextBox txtCMButtonWidth;
+        private System.Windows.Forms.Label lblButtonWidth;
     }
 }
