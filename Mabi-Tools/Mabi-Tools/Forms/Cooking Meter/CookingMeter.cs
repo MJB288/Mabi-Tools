@@ -14,14 +14,14 @@ namespace Mabi_Tools.Forms.Cooking_Meter
 {
     public partial class frmCooking : Form
     {
-        private readonly int METER_LENGTH = 229;
+        private int METER_LENGTH = 229;
         private readonly int METER_START_X = 16;
         private readonly int METER_START_Y = 309;
         private readonly int METER_HEIGHT = 5;
         //Relatiive to the start of the guide
-        private readonly int GUIDE_BUTTON_X_OFFSET_LEFT = 28;
-        private readonly int GUIDE_BUTTON_X_OFFSET_RIGHT = 28;
-        private readonly int BUTTON_WIDTH = 69;
+        private int GUIDE_BUTTON_X_OFFSET_LEFT = 28;
+        private int GUIDE_BUTTON_X_OFFSET_RIGHT = 28;
+        private int BUTTON_WIDTH = 69;
         private readonly Color[] RECTANGLE_COLORS = { Color.Green, Color.Yellow, Color.Red , Color.Blue, Color.Cyan, Color.Orange, Color.Purple};
         private int[] Percentages = {30, 40, 30};
         private short GuideMode = Properties.Settings.Default.GuideMode; //0 = None ----- 1 = Edge ----- 2 = Button ----- 
@@ -29,27 +29,25 @@ namespace Mabi_Tools.Forms.Cooking_Meter
         {
             InitializeComponent();
             /*int initialStyle = GetWindowLong(this.Handle, -20);
-            SetWindowLong(this.Handle, -20, initialStyle | 0x80000 | 0x20);*/ 
-        }
-
-        public frmCooking(int newLength, int guideBtnLeft, int guideBtnRight, int buttonWidth)
-        {
-            InitializeComponent();
-            METER_LENGTH = newLength;
-            //Now add a check for form size
-            if(METER_LENGTH > this.Width)
-            {
-                this.Width = METER_LENGTH + 48;
-            }
-            /*int initialStyle = GetWindowLong(this.Handle, -20);
             SetWindowLong(this.Handle, -20, initialStyle | 0x80000 | 0x20);*/
-            //Since the Guide Mode is set by a user setting, adjust the text from here
             adjustbtnGuideText();
             //Import the user settings for the guide buttons
-            GUIDE_BUTTON_X_OFFSET_LEFT = guideBtnLeft;
-            GUIDE_BUTTON_X_OFFSET_RIGHT = guideBtnRight;
-            BUTTON_WIDTH = buttonWidth;
-    }
+            adjustMeterMeasurements();
+        }
+
+        private void adjustMeterMeasurements()
+        {
+            GUIDE_BUTTON_X_OFFSET_LEFT = Properties.Settings.Default.CMGuideLeft;
+            GUIDE_BUTTON_X_OFFSET_RIGHT = Properties.Settings.Default.CMGuideRight;
+            BUTTON_WIDTH = Properties.Settings.Default.CMBtnWidth;
+            METER_LENGTH = Properties.Settings.Default.CMeterLength;
+            //Now add a check for form size
+            if (METER_LENGTH >= 138)
+            {
+                this.Width = METER_LENGTH + 56;
+            }
+            
+        }
 
         /*protected override CreateParams CreateParams
         {
@@ -72,6 +70,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
 
         private void frmCooking_Paint(object sender, PaintEventArgs pe)
         {
+            adjustMeterMeasurements();
             draw3Rectangles(pe.Graphics);
             //Determine which kind of lines to draw
             switch (GuideMode) 

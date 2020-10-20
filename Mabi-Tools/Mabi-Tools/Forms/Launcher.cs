@@ -45,8 +45,7 @@ namespace Mabi_Tools
 
         private void btnCooking_Click(object sender, EventArgs e)
         {
-            Forms.Cooking_Meter.frmCooking cookingMeter = new Forms.Cooking_Meter.frmCooking(Properties.Settings.Default.CMeterLength,
-                Properties.Settings.Default.CMGuideLeft, Properties.Settings.Default.CMGuideRight, Properties.Settings.Default.CMBtnWidth);
+            Forms.Cooking_Meter.frmCooking cookingMeter = new Forms.Cooking_Meter.frmCooking();
 
             cookingMeter.Show();
         }
