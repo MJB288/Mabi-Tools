@@ -35,6 +35,9 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             adjustMeterMeasurements();
         }
 
+        /// <summary>
+        /// Imports the user settings for the cooking meter pixel measurements and adjusts the window length based off of meter length
+        /// </summary>
         private void adjustMeterMeasurements()
         {
             GUIDE_BUTTON_X_OFFSET_LEFT = Properties.Settings.Default.CMGuideLeft;
@@ -45,6 +48,10 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             if (METER_LENGTH >= 138)
             {
                 this.Width = METER_LENGTH + 56;
+            }
+            else
+            {
+                this.Width = 194; //138 + 56
             }
             
         }
@@ -160,6 +167,10 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             }
         }
 
+        /// <summary>
+        /// Draws the lines for helping to align the meter with the Cooking UI. For the Edge guide mode.
+        /// </summary>
+        /// <param name="graphics">Graphics object to draw on</param>
         private void drawSupportingLinesEdge(Graphics graphics)
         {
             SolidBrush lineBrush = new SolidBrush(Properties.Settings.Default.CMGuideColor);
@@ -169,7 +180,10 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             graphics.FillRectangle(lineBrush, line2);
             lineBrush.Dispose();
         }
-
+        /// <summary>
+        /// Draws the lines for helping to align the meter with the Cooking UI. For the Button guide mode.
+        /// </summary>
+        /// <param name="graphics"></param>
         private void drawSupportingLinesButton(Graphics graphics)
         {
             SolidBrush lineBrush = new SolidBrush(Properties.Settings.Default.CMGuideColor);
@@ -231,6 +245,9 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             Invalidate();
         }
 
+        /// <summary>
+        /// Adjusts the text of the guide mode button to indicate which mode is selected
+        /// </summary>
         private void adjustbtnGuideText()
         {
             StringBuilder newButtonText = new StringBuilder("Guide : ");
