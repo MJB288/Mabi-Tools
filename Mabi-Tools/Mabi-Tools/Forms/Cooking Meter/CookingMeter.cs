@@ -22,14 +22,12 @@ namespace Mabi_Tools.Forms.Cooking_Meter
         private int GUIDE_BUTTON_X_OFFSET_LEFT = 28;
         private int GUIDE_BUTTON_X_OFFSET_RIGHT = 28;
         private int BUTTON_WIDTH = 69;
-        private readonly Color[] RECTANGLE_COLORS = { Color.Green, Color.Yellow, Color.Red , Color.Blue, Color.Cyan, Color.Orange, Color.Purple};
+
         private int[] Percentages = {30, 40, 30};
         private short GuideMode = Properties.Settings.Default.GuideMode; //0 = None ----- 1 = Edge ----- 2 = Button ----- 
         public frmCooking()
         {
             InitializeComponent();
-            /*int initialStyle = GetWindowLong(this.Handle, -20);
-            SetWindowLong(this.Handle, -20, initialStyle | 0x80000 | 0x20);*/
             adjustbtnGuideText();
             //Import the user settings for the guide buttons
             adjustMeterMeasurements();
@@ -56,21 +54,14 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             
         }
 
-        /*protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                // Set the form click-through
-                cp.ExStyle |= 0x80000  | 0x20 ;
-                /* WS_EX_LAYERED *//* WS_EX_TRANSPARENT */
-               /* return cp;
-            }
-        }*/
-
+        /// <summary>
+        /// Sets the window to double buffered, topmost and adds a paint event handler (frmCooking_Paint) to the form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmCooking_Load(object sender, EventArgs e)
         {
-            //this.DoubleBuffered = true;
+            this.DoubleBuffered = true;
             this.TopMost = true;
             this.Paint += frmCooking_Paint;
         }
@@ -153,8 +144,6 @@ namespace Mabi_Tools.Forms.Cooking_Meter
         {
             float cur_x = METER_START_X, cur_y = METER_START_Y;
 
-            //graphics.Clear(Color.FromArgb(71, 69, 152));
-
             //Create a matching array from the user preferences
             Color[] userColors = { Properties.Settings.Default.CMColor1, Properties.Settings.Default.CMColor2, Properties.Settings.Default.CMColor3 };
 
@@ -209,13 +198,16 @@ namespace Mabi_Tools.Forms.Cooking_Meter
         private void drawRectangleCooking(float length, float x, float y, Color colorType, Graphics graphics)
         {
             SolidBrush mainBrush = new SolidBrush(colorType);
-            //Graphics formGraphics = this.CreateGraphics();
             graphics.SmoothingMode = SmoothingMode.HighQuality;
             graphics.FillRectangle(mainBrush, new RectangleF(x, y, length, METER_HEIGHT));
-            //formGraphics.Dispose();
             mainBrush.Dispose();
         }
 
+        /// <summary>
+        /// Adjusts the percentages based off of user input and if successful calls the paint events through Invalidate
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDisplay_Click(object sender, EventArgs e)
         {
             int[] tempPercent = getTextBoxInput();
@@ -227,6 +219,11 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             }
         }
 
+        /// <summary>
+        /// Changes the Guide Mode being displayed to the user.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGuideMode_Click(object sender, EventArgs e)
         {
             //Increment
