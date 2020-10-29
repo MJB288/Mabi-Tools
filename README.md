@@ -76,8 +76,14 @@ Currently the user can edit the following data sets:
 * City and Goods
 
 ## Cooking Meter [[TOC](#table-of-contents)]
-Currently planning out this feature. This not an original idea, there are a few decently made cooking meters already. I just simply wanted to make my own as well.
+![](Images/CookingMeter1.png)
 
-In the game, there is a cooking skill that allows players to make food to help refill stamina and provide helpful effects. In the actual act of making food, the player must combine 2 or 3 ingredients for each recipe to a specific percentage. However, the only guidance you have to measure each ingredient is a progress bar with no labels. While you don't have to be exact for various foods an recipes, for certain effects and conditions, you have to be pixel perfect or close to it. Without a cooking meter, this can be incredibly difficult, especially after a long day of work or school.
+This not an original idea, there are a couple decently made cooking meters already. I just simply wanted to make my own as well.
+
+In the game, there is a cooking skill that allows players to make food to help refill stamina and provide helpful effects. In the actual act of making food, the player must combine 2 or 3 ingredients for each recipe to a specific percentage. However, the only guidance you have to measure each ingredient is a progress bar with no labels. While you don't have to be exact for various foods and recipes, for certain effects and conditions, you have to be pixel perfect or close to it. Without any measurement guidelines, this can be incredibly difficult, especially after a long day of work or school.
 
 Therefore, the solution is a window that can sit directly on top of the game and show you the exact percentage of the bar that you need to fill.
+
+The user may customize their experience with this tool. You may change any of the three colors used on the meter as well as the guidelines for assistance in lining up the meter. This may be changed in the Settings menu from the launcher. The 'Edge' guide mode produces lines off of the edge of the meter, providing an alternative way to line up the meter with the cooking interface.
+
+![](Images/CookingMeter2.png) 
