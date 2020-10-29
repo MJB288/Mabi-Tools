@@ -35,7 +35,7 @@
             this.lblIng1 = new System.Windows.Forms.Label();
             this.lblIng2 = new System.Windows.Forms.Label();
             this.btnGuideMode = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblIngBackdrop = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnDisplay
@@ -111,32 +111,35 @@
             this.btnGuideMode.UseVisualStyleBackColor = false;
             this.btnGuideMode.Click += new System.EventHandler(this.btnGuideMode_Click);
             // 
-            // label1
+            // lblIngBackdrop
             // 
-            this.label1.BackColor = System.Drawing.Color.DarkKhaki;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 174);
-            this.label1.TabIndex = 6;
-            this.label1.Text = " ";
+            this.lblIngBackdrop.BackColor = System.Drawing.Color.DarkKhaki;
+            this.lblIngBackdrop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblIngBackdrop.Location = new System.Drawing.Point(0, 0);
+            this.lblIngBackdrop.Name = "lblIngBackdrop";
+            this.lblIngBackdrop.Size = new System.Drawing.Size(133, 174);
+            this.lblIngBackdrop.TabIndex = 6;
+            this.lblIngBackdrop.Text = " ";
             // 
             // frmCooking
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightGray;
-            this.ClientSize = new System.Drawing.Size(347, 422);
+            this.ClientSize = new System.Drawing.Size(347, 403);
             this.Controls.Add(this.btnGuideMode);
             this.Controls.Add(this.lblIng2);
             this.Controls.Add(this.lblIng1);
             this.Controls.Add(this.txtIng2);
             this.Controls.Add(this.txtIng1);
             this.Controls.Add(this.btnDisplay);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblIngBackdrop);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmCooking";
             this.Text = "Cooking Meter";
+            this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.LightGray;
             this.Load += new System.EventHandler(this.frmCooking_Load);
             this.ResumeLayout(false);
@@ -151,7 +154,7 @@
         private System.Windows.Forms.Label lblIng1;
         private System.Windows.Forms.Label lblIng2;
         private System.Windows.Forms.Button btnGuideMode;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblIngBackdrop;
         private System.Windows.Forms.TextBox txtIng2;
     }
 }

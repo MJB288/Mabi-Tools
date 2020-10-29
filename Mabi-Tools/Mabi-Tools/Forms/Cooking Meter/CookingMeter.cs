@@ -15,9 +15,11 @@ namespace Mabi_Tools.Forms.Cooking_Meter
     public partial class frmCooking : Form
     {
         private int METER_LENGTH = 229;
-        private readonly int METER_START_X = 16;
+        private readonly int METER_START_X = 54;
         private readonly int METER_START_Y = 309;
         private readonly int METER_HEIGHT = 5;
+        private readonly int WINDOW_METER_SPACING; //= 126;
+        private readonly int INGREDIENT_LABEL_WIDTH;
         //Relatiive to the start of the guide
         private int GUIDE_BUTTON_X_OFFSET_LEFT = 28;
         private int GUIDE_BUTTON_X_OFFSET_RIGHT = 28;
@@ -31,6 +33,8 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             adjustbtnGuideText();
             //Import the user settings for the guide buttons
             adjustMeterMeasurements();
+            INGREDIENT_LABEL_WIDTH = lblIngBackdrop.Width;
+            WINDOW_METER_SPACING = 2 * METER_START_X + 17;
         }
 
         /// <summary>
@@ -43,13 +47,13 @@ namespace Mabi_Tools.Forms.Cooking_Meter
             BUTTON_WIDTH = Properties.Settings.Default.CMBtnWidth;
             METER_LENGTH = Properties.Settings.Default.CMeterLength;
             //Now add a check for form size
-            if (METER_LENGTH >= 138)
+            if (METER_LENGTH >= INGREDIENT_LABEL_WIDTH)
             {
-                this.Width = METER_LENGTH + 56;
+                this.Width = METER_LENGTH + WINDOW_METER_SPACING;
             }
-            else
+            else //Minimum Width
             {
-                this.Width = 194; //138 + 56
+                this.Width = INGREDIENT_LABEL_WIDTH + WINDOW_METER_SPACING;
             }
             
         }
