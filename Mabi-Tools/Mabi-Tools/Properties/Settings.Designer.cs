@@ -85,7 +85,7 @@ namespace Mabi_Tools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("229")]
+        [global::System.Configuration.DefaultSettingValueAttribute("231")]
         public int CMeterLength {
             get {
                 return ((int)(this["CMeterLength"]));
@@ -157,7 +157,7 @@ namespace Mabi_Tools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("28")]
+        [global::System.Configuration.DefaultSettingValueAttribute("29")]
         public int CMGuideLeft {
             get {
                 return ((int)(this["CMGuideLeft"]));
@@ -169,7 +169,7 @@ namespace Mabi_Tools.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("28")]
+        [global::System.Configuration.DefaultSettingValueAttribute("29")]
         public int CMGuideRight {
             get {
                 return ((int)(this["CMGuideRight"]));

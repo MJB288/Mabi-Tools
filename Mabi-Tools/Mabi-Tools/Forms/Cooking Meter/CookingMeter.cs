@@ -14,7 +14,7 @@ namespace Mabi_Tools.Forms.Cooking_Meter
 {
     public partial class frmCooking : Form
     {
-        private int METER_LENGTH = 229;
+        private int METER_LENGTH = 231;
         private readonly int METER_START_X = 54;
         private readonly int METER_START_Y = 309;
         private readonly int METER_HEIGHT = 5;

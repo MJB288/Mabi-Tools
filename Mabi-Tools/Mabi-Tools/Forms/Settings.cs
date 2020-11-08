@@ -85,9 +85,9 @@ namespace Mabi_Tools.Forms
             txtCityFile.Text = "Resources/Cities.csv";
             txtMasteryFile.Text = "Resources/Mastery.csv";
             cboxTimeFormat.Checked = true;
-            txtPixelC.Text = "229";
-            txtCMLeft.Text = "28";
-            txtCMRight.Text = "28";
+            txtPixelC.Text = "231";
+            txtCMLeft.Text = "29";
+            txtCMRight.Text = "29";
             txtCMButtonWidth.Text = "69";
             cmboxCMColor1.SelectedIndex = 0;
             cmboxCMColor2.SelectedIndex = 1;

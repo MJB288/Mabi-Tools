@@ -18,7 +18,7 @@
       <Value Profile="(Default)">Resources/Mastery.csv</Value>
     </Setting>
     <Setting Name="CMeterLength" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">229</Value>
+      <Value Profile="(Default)">231</Value>
     </Setting>
     <Setting Name="GuideMode" Type="System.Int16" Scope="User">
       <Value Profile="(Default)">1</Value>
@@ -36,10 +36,10 @@
       <Value Profile="(Default)">Black</Value>
     </Setting>
     <Setting Name="CMGuideLeft" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">28</Value>
+      <Value Profile="(Default)">29</Value>
     </Setting>
     <Setting Name="CMGuideRight" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">28</Value>
+      <Value Profile="(Default)">29</Value>
     </Setting>
     <Setting Name="CMBtnWidth" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">69</Value>
