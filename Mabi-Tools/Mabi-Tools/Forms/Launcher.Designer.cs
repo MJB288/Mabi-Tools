@@ -48,7 +48,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(70, 263);
+            this.btnExit.Location = new System.Drawing.Point(70, 277);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(109, 47);
             this.btnExit.TabIndex = 1;
@@ -59,15 +59,15 @@
             // lblVersion
             // 
             this.lblVersion.AutoSize = true;
-            this.lblVersion.Location = new System.Drawing.Point(202, 297);
+            this.lblVersion.Location = new System.Drawing.Point(201, 338);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(37, 13);
             this.lblVersion.TabIndex = 2;
-            this.lblVersion.Text = "v1.0.0";
+            this.lblVersion.Text = "v1.5.0";
             // 
             // btnSettings
             // 
-            this.btnSettings.Location = new System.Drawing.Point(70, 157);
+            this.btnSettings.Location = new System.Drawing.Point(70, 171);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(109, 47);
             this.btnSettings.TabIndex = 4;
@@ -77,7 +77,7 @@
             // 
             // btnCredits
             // 
-            this.btnCredits.Location = new System.Drawing.Point(70, 210);
+            this.btnCredits.Location = new System.Drawing.Point(70, 224);
             this.btnCredits.Name = "btnCredits";
             this.btnCredits.Size = new System.Drawing.Size(109, 47);
             this.btnCredits.TabIndex = 5;
@@ -99,7 +99,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(261, 331);
+            this.ClientSize = new System.Drawing.Size(261, 360);
             this.Controls.Add(this.btnCooking);
             this.Controls.Add(this.btnCredits);
             this.Controls.Add(this.btnSettings);

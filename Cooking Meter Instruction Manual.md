@@ -1,6 +1,6 @@
 # Cooking Meter Instruction Manual
 
-![]()
+![](Images/CookingMeter1.png)
 
 ## Table of Contents
 
@@ -9,9 +9,19 @@
 3. [FAQ](#faq)
 
 ## Normal Usage
+![](Images/CookingMeterInt1.png)
+
+Each step as numbered in the photo : 
+
+1. Input the percentages of the ingredients as shown in the recipe
+2. (Optional) Select the the type of guidelines that you prefer to use
+3. Click "Adjust" to adjust the portions of the meter to match that of the recipe
+4. Line up the cooking meter on top of the progress bar using whichever guide mode you selected to assist yourself.
 
 
 ## Adjusting Settings
+
+![](Images/SettingsCM15Instructions.png)
 
 1. Click the Settings Button on the Launcher
 2. Adjust the pixel length of the meter itself and position of the guidelines for the button Guide Mode
