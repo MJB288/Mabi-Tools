@@ -47,6 +47,8 @@ Please visit the __Adjusting Settings__ section to see how to change the pixel m
 
 If the meter looks something like this : 
 
+![](Images/TornCookingMeter.png)
+
 Then this is a side effect of adjusting the pixel length of the meter while the Cooking Meter is still running. Click the __Adjust__ button once to fix the display.
 
-If this problem occurs regularly without adjusting the pixel length of the meter,  please post an issue with a bug tag and reproduction steps as to when the bug occurs.
+If this problem occurs regularly without adjusting the pixel length of the meter,  please post an issue with a bug tag and the steps taken to reproduce the visual bug.
