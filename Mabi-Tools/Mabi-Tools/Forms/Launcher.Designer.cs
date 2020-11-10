@@ -63,7 +63,7 @@
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(37, 13);
             this.lblVersion.TabIndex = 2;
-            this.lblVersion.Text = "v1.5.0";
+            this.lblVersion.Text = "v2.0.0";
             // 
             // btnSettings
             // 

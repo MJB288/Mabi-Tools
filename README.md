@@ -1,10 +1,17 @@
 # Mabi-Tools
 
 ## Table of Contents
+
+1. [Quick Links](#quick-links)
 1. [Introduction](#introduction-toc)
 1. [Standards](#standards-toc)
 1. [Requirements](#requirements-toc) 
 1. [Commerce Calculator](#commerce-calculator-toc)
+
+## Quick Links [[TOC](#table-of-contents)]
+
+1. [Commerce Instruction Manual](Commerce%20Instruction%20Manual.md)
+2. [Cooking Meter Instruction Manual](Cooking%20Meter%20Instruction%20Manual.md)
 
 ## Introduction [[TOC](#table-of-contents)]
 In an effort to teach myself C#, I figured I would create some tools for a Massively Multiplayer Online Role-playing Game (MMORPG) I used to play called Mabinogi. Some of various tools are suggestions from friends who still play the game, others are ideas I have thought of. I won't claim they are unique ideas though, it is quite possible someone else may have already thought of them and made their own implementation.
@@ -84,7 +91,7 @@ This not an original idea, there are a couple decently made cooking meters alrea
 
 In the game, there is a cooking skill that allows players to make food to help refill stamina and provide helpful effects. In the actual act of making food, the player must combine 2 or 3 ingredients for each recipe to a specific percentage. However, the only guidance you have to measure each ingredient is a progress bar with no labels. While you don't have to be exact for various foods and recipes, for certain effects and conditions, you have to be pixel perfect or close to it. Without any measurement guidelines, this can be incredibly difficult, especially after a long day of work or school.
 
-Therefore, the solution is a window that can sit directly on top of the game and show you the exact percentage of the bar that you need to fill.
+Therefore, the solution is a window that can sit directly on top of the game and show you the exact percentage of the bar that you need to fill, as well as being able to click through the transparent window.
 
 The user may customize their experience with this tool. You may change any of the three colors used on the meter as well as the guidelines for assistance in lining up the meter. This may be changed in the Settings menu from the launcher. The 'Edge' guide mode produces lines off of the edge of the meter, providing an alternative way to line up the meter with the cooking interface.
 
