@@ -75,5 +75,16 @@ namespace Mabi_Tools
 
             cookingMeter.Show();
         }
+
+        /// <summary>
+        /// Event handler for launching the Upgrade Calculator Form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnUpgrade_Click(object sender, EventArgs e)
+        {
+            Forms.Upgrade_Calculator.frmUpgrade upgradeForm = new Forms.Upgrade_Calculator.frmUpgrade();
+            upgradeForm.Show();
+        }
     }
 }

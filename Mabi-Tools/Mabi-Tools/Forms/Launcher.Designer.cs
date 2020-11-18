@@ -34,6 +34,7 @@
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnCredits = new System.Windows.Forms.Button();
             this.btnCooking = new System.Windows.Forms.Button();
+            this.btnUpgrade = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCommerce
@@ -95,11 +96,22 @@
             this.btnCooking.UseVisualStyleBackColor = true;
             this.btnCooking.Click += new System.EventHandler(this.btnCooking_Click);
             // 
+            // btnUpgrade
+            // 
+            this.btnUpgrade.Location = new System.Drawing.Point(70, 118);
+            this.btnUpgrade.Name = "btnUpgrade";
+            this.btnUpgrade.Size = new System.Drawing.Size(109, 47);
+            this.btnUpgrade.TabIndex = 7;
+            this.btnUpgrade.Text = "Upgrade Calculator";
+            this.btnUpgrade.UseVisualStyleBackColor = true;
+            this.btnUpgrade.Click += new System.EventHandler(this.btnUpgrade_Click);
+            // 
             // MainLauncher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(261, 360);
+            this.Controls.Add(this.btnUpgrade);
             this.Controls.Add(this.btnCooking);
             this.Controls.Add(this.btnCredits);
             this.Controls.Add(this.btnSettings);
@@ -121,6 +133,7 @@
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnCredits;
         private System.Windows.Forms.Button btnCooking;
+        private System.Windows.Forms.Button btnUpgrade;
     }
 }
 
